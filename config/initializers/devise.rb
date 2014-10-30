@@ -180,7 +180,7 @@ Devise.setup do |config|
 
   # Warn on the last attempt before the account is locked.
   # config.last_attempt_warning = true
-  config.omniauth :facebook, "KEY", "SECRET"
+  config.omniauth :facebook, ENV['FB_KEY'], ENV['FB_SECRET']
   # ==> Configuration for :recoverable
   #
   # Defines which key will be used when recovering the password for an account

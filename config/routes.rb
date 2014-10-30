@@ -1,11 +1,18 @@
 Upveil::Application.routes.draw do
+  get "products/index"
+  get "products/show"
+  get "products/new"
+  get "products/edit"
+  get "categories/show"
+  get "categories/new"
+  get "categories/edit"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
     devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
 
     match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
-   root to: 'welcome#index'
+   root to: 'application#index'
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 

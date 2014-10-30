@@ -29,7 +29,7 @@ Upveil::Application.routes.draw do
   #   resources :products do
   #     member do
   #       get 'short'
-  #       post 'toggle'
+  #       product 'toggle'
   #     end
   #
   #     collection do
@@ -53,9 +53,9 @@ Upveil::Application.routes.draw do
 
   # Example resource route with concerns:
   #   concern :toggleable do
-  #     post 'toggle'
+  #     product 'toggle'
   #   end
-  #   resources :posts, concerns: :toggleable
+  #   resources :products, concerns: :toggleable
   #   resources :photos, concerns: :toggleable
 
   # Example resource route within a namespace:

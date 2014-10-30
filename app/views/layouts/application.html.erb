@@ -7,41 +7,35 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-        <span class="pull-left col-md-4 col-lg-offset-4">
-         <%= link_to "Upveil", root_path, class: 'h2 col-md-3 col-md-offset-3' %>
-       </span>
-        <span class="pull-right">
-          <% if current_user %>
-                <%= link_to destroy_user_session_path, method: :delete, class: 'btn-sm btn btn-default' do %>
-                  <span>log out</span>
-                  <% end %>
-                <% else %>
-                    <%= link_to "Sign In", new_user_session_path, class: 'btn-sm btn btn-default'%> 
-                    <%= link_to "Sign Up", new_user_registration_path, class: 'btn-sm btn btn-default' %> 
-                <% end %>
-            </span>
-     <div class = "container">
-      <div class="navbar navbar-default">
+  <div class="container">
+      <div class="navbar navbar-default navbar-fixed-top">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
+        <p class="navbar-brand"><b>Upveil</b></p>
       </div>
       <div class="navbar-collapse collapse navbar-responsive-collapse">
-        <ul class="nav navbar-nav text-center">
-          <li><a href="#"><b>All</b></a></li>
-          <li><a href="#"><b>Tech</b></a></li>
-          <li><a href="#"><b>Fashion</b></a></li>
-          <li><a href="#"><b>Vehicles</b></a></li>
-          <li><a href="#"><b>Sports</b></a></li>
-          <li><a href="#"><b>Decor</b></a></li>
-          <li><a href="#"><b>Food</b></a></li>
+        <ul class="nav navbar-nav">
+           <li><%= link_to "All", root_path%></li>
+          <% Category.all.each do |category| %>
+         <li><%= link_to category.title, category %></li>
+         <% end %>
         </ul>
-      </div>
-    </div>
-  </div>
+        <ul class="nav navbar-nav navbar-right">
+          <% if current_user %>
+                <%= link_to destroy_user_session_path, method: :delete, class: 'btn-sm btn btn-default' do %>
+                  <li>log out</li>
+                  <% end %>
+                <% else %>
+                    <li><%= link_to "Sign In", new_user_session_path, class: 'btn-sm btn btn-warning'%></li>
+                    <li><%= link_to "Sign Up", new_user_registration_path, class: 'btn-sm btn btn-warning' %></li> 
+                <% end %>
+              </ul>
+             </div>
+           </div>
    <% if flash[:notice] %>
          <div class="alert alert-success">
            <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -59,6 +53,6 @@
          </div>
        <% end %>
 <%= yield %>
-
+  </div>
 </body>
 </html>

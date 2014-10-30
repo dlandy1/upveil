@@ -7,8 +7,28 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+        <span class="pull-left col-md-4 col-lg-offset-4">
+         <%= link_to "Upveil", root_path, class: 'h2 col-md-3 col-md-offset-3' %>
+       </span>
+        <span class="pull-right">
+          <% if current_user %>
+                <%= link_to destroy_user_session_path, method: :delete, class: 'btn-sm btn btn-default' do %>
+                  <span>log out</span>
+                  <% end %>
+                <% else %>
+                    <%= link_to "Sign In", new_user_session_path, class: 'btn-sm btn btn-default'%> 
+                    <%= link_to "Sign Up", new_user_registration_path, class: 'btn-sm btn btn-default' %> 
+                <% end %>
+            </span>
+     <div class = "container">
       <div class="navbar navbar-default">
       <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
       <div class="navbar-collapse collapse navbar-responsive-collapse">
         <ul class="nav navbar-nav text-center">
           <li><a href="#"><b>All</b></a></li>

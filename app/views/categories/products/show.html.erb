@@ -1,0 +1,12 @@
+<div class="row"> 
+  <div class="col-md-8">
+    <h1><%= @product.title %></h1>
+    <small>
+      <%= @product.user.name %>
+    </small>
+    <p>
+      <%= image_tag(@product.image.url) %>
+      <%= @product.description %>
+    </p>
+  </div>
+</div>

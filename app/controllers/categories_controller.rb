@@ -9,7 +9,7 @@ class CategoriesController < ApplicationController
      @category = Category.find(params[:id])
      @subcategories = @category.subcategories
      @parent = @category.parent_id
-     @products = @category.products
+     @products = @category.products 
   end
 
   def edit

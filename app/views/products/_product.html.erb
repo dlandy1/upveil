@@ -1,0 +1,17 @@
+<div class="media">
+      <div class="bs-example">
+        <div class="media-body">
+          <h4 class="media-heading">
+            <%= link_to (product.title), [product.category, product] %>
+          </h4>
+          <small>
+            $<%= product.price %>
+            <%= product.user.name %>
+            <%= product.description if product.description?%>
+          </small>
+          <p>
+            <%= image_tag(product.image.thumb.url) %>
+          </p>
+        </div>
+      </div>
+    </div>

@@ -1,7 +1,7 @@
 <% if @parent.nil? %>
-<h1 class="h3 text-center"><b><%=@category.title %>'s</b><br><p class="h6">Newest and Best Products</p></h1>
+<h1 class="h3 text-center"><b><%=@category.title %></b><br><p class="h6">Best Products</p></h1>
 <% else %>
-<h1 class="h3 text-center">The Newest and Best<br><b><%=@category.title %></b></h1>
+<h1 class="h3 text-center"><b><%=@category.title %></b><br><p class="h6">Best Products related to <%=@category.title %></p></h1>
 <% end %>
  <%= link_to "New Product", new_category_product_path(@category), class: 'btn btn-success pull-right' %>
  <div class="row">

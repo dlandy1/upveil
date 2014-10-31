@@ -1,6 +1,8 @@
 class Product < ActiveRecord::Base
+  has_many :comments, dependent: :destroy
   belongs_to :user
   belongs_to :category
+    mount_uploader :image, ImageUploader
 
   validates :title, length: {minimum: 3}, presence: true
   validates :link, :format => URI::regexp(%w(http https))

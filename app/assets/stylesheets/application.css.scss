@@ -3233,6 +3233,13 @@ tbody.collapse.in {
   bottom: 100%;
   margin-bottom: 1px;
 }
+.centered-pills { text-align:center; }
+.centered-pills ul.nav-pills { display:inline-block; }
+.centered-pills li { display:inline; }
+.centered-pills a { float:left; }
+* html .centered-pills ul.nav-pills { display:inline; } /* IE6 */
+*+html .centered-pills ul.nav-pills { display:inline; } /* IE7 */
+
 @media (min-width: 768px) {
   .navbar-right .dropdown-menu {
     left: auto;

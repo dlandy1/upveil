@@ -1,8 +1,17 @@
-
+<% if @parent.nil? %>
 <h1 class="h3 text-center"><b><%=@category.title %>'s</b><br><p class="h6">Newest and Best Products</p></h1>
- <div class="col-md-4">
-      <%= link_to "New Product", new_category_product_path(@category), class: 'btn btn-success pull-right' %>
-  </div>
+<% else %>
+<h1 class="h3 text-center">The Newest and Best<br><b><%=@category.title %></b></h1>
+<% end %>
+ <%= link_to "New Product", new_category_product_path(@category), class: 'btn btn-success pull-right' %>
+ <div class="row">
+  <div class="container block-center">
+  <% @subcategories.each do |sub| %>
+          <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default' %>
+       <% end %>
+ </div>
+ </div>
+      
 <div class="row">
   <div class="col-md-8">
     <% @products.each do |product| %>

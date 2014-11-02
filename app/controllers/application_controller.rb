@@ -6,6 +6,13 @@ class ApplicationController < ActionController::Base
   def index
   end
 
+  def subcategories
+    category = Category.find(params[:id])
+    respond_to do |format|
+      format.json { render :json => category.subcategories }
+    end
+  end
+  
   def ensure_signup_complete
     # Ensure we don't go into an infinite loop
     return if action_name == 'finish_signup'

@@ -1,0 +1,51 @@
+<%= form_for [product] do |f| %>
+  <% if product.errors.any? %>
+    <div class="alert alert-danger">
+      <h4>There are <%= pluralize(product.errors.count, "error") %></h4>
+      <ul>
+        <% product.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+   <% end %>
+   <div class="form-group">
+         <p><%= f.select :category_id, options_from_collection_for_select(Category.parent_categories.all, "id", "title"), :prompt => "Select a Category" %></p>
+         <p><%= f.select :subcat_id, options_from_collection_for_select(Category.sub_categories.all, "id", "title"), :prompt => "Select a Category" %></p>
+      <!-- <p><%= select_tag :subcat_id, options_from_collection_for_select([], "id", "title"),
+                     "data-option-dependent" => true,
+                     "data-option-observed" => "category_id",
+                     "data-option-url" => "/categories/:category_id:/subcategories.json",
+                     "data-option-key-method" => :id,
+                     "data-option-value-method" => :title %></p> -->
+
+    </div>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control', placeholder: "Enter product title" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :link %>
+    <%= f.text_field :link, class: 'form-control', placeholder: "Enter link" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :price, "$" %>
+    <%= f.number_field :price, :class => 'text_field', :step => 'any' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache %>
+  </div>
+  <div>
+     <%= f.label :remote_image_url, "or image URL" %>
+    <%= f.text_field :remote_image_url %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, rows: 2, class: 'form-control', placeholder: "Enter product description" %>
+  </div>
+  <div class="form-group">
+    <%= f.submit "Save", class: 'btn btn-success' %>
+  </div>
+ <% end %>

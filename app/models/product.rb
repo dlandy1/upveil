@@ -2,6 +2,7 @@ class Product < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   belongs_to :user
   belongs_to :category
+  belongs_to :subcategory, :class_name => "Category", :foreign_key => "subcat_id"
     mount_uploader :image, ImageUploader
 
   validates :title, length: {minimum: 3}, presence: true

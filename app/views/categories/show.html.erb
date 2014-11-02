@@ -3,7 +3,7 @@
 <% else %>
 <h1 class="h3 text-center"><b><%=@category.title %></b><br><p class="h6">Best Products related to <%=@category.title %></p></h1>
 <% end %>
- <%= link_to "New Product", new_category_product_path(@category), class: 'btn btn-success pull-right' %>
+ <%= link_to "New Product", new_product_path(@product), class: 'btn btn-success pull-right' %>
  <div class="row">
   <div class="container block-center">
   <% @subcategories.each do |sub| %>
@@ -14,8 +14,14 @@
       
 <div class="row">
   <div class="col-md-8">
-    <% @products.each do |product| %>
+    <% if @parent.nil? %>
+    <% @category.products.each do |product| %>
       <%= render product %>
       <% end %>
+    <% else %>
+    <% @category.subproducts.each do |product| %>
+      <%= render product%>
+    <% end %>
+    <% end %>
   </div>
 </div>

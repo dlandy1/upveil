@@ -1,6 +1,7 @@
 <div class="row">
   <div class='col-md-8'>
     <h1 class="h3 text-center"><b>All</b><br><p class="h6">The Newest and Best Products</p></h1>
+    <%= link_to "New Product", new_product_path(@product), class: 'btn btn-success pull-right' %>
     <%= render @products %>
   </div>
   <div class="col-md-4">

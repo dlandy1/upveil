@@ -1,13 +1,8 @@
 class Categories::ProductsController < ApplicationController
   def show
-    @category = Category.find(params[:category_id])
-    @products = @category.products
     @product = Product.find(params[:id])
-  end
-
-  def new
-    @category = Category.find(params[:category_id])
-    @product = Product.new
+    subcatid = @product.subcat_id
+    subcategory = Category.find(subcatid)
   end
 
    def edit
@@ -15,35 +10,7 @@ class Categories::ProductsController < ApplicationController
       @product = Product.find(params[:id])
     end
 
-   def create
-     @category = Category.find(params[:category_id])
-     @parent = @category.parent_id
-     @product = current_user.products.build(product_params)
-     @product.category = @category
-     if @parent.nil?
-      if @product.save
-        flash[:notice] = "product was saved."
-        redirect_to [@category, @product]
-      else
-        flash[:error] = "There was an error saving the product. Please try again."
-        render :new
-      end
-     else
-     @producttop = current_user.products.build(product_params)
-     @parentcategory = Category.find(@parent)
-     @producttop.category = @parentcategory
-     
-      if @product.save && @producttop.save
-        flash[:notice] = "product was saved."
-        redirect_to [@category, @product]
-      else
-        flash[:error] = "There was an error saving the product. Please try again."
-        render :new
-      end
-      end
-    end
-
-def update
+  def update
       @category = Category.find(params[:category_id])
       @product = Product.find(params[:id])
        if @product.update_attributes(post_params)

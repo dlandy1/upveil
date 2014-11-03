@@ -11,6 +11,7 @@ class ProductsController < ApplicationController
       if @product.save
         subcat = @product.subcat_id
         @category = Category.find(subcat)
+        @product.post!(@product.user, @category)
         flash[:notice] = "product was saved."
         redirect_to [@category, @product]
       else

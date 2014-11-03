@@ -11,4 +11,14 @@ class Product < ActiveRecord::Base
   validates :user, presence: true
   validates :category, presence: true
   validates :description,length: {maximum: 140}, :allow_blank => true
+
+  def post!(posting_user, category)
+      points_manager = PointsManager.new(posting_user, category, self)
+      points_manager.post!
+    end
+
+     def remove_post!(posting_user, category)
+      points_manager = PointsManager.new(posting_user, category, self)
+      points_manager.remove_post!
+    end
 end

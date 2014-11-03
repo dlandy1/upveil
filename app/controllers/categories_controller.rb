@@ -8,6 +8,10 @@ class CategoriesController < ApplicationController
      @category = Category.find(params[:id])
      @subcategories = @category.subcategories
      @parent = @category.parent_id
+     if !@parent.nil?
+      @subcatparent = Category.find(@parent)
+      @parentsubcats = @subcatparent.subcategories
+    end
   end
 
   def edit

@@ -11,6 +11,16 @@ class User < ActiveRecord::Base
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 
+  def points_count
+    points_manager = PointsManager.new(self, nil, nil)
+    points_manager.points_count
+  end
+
+  def cat_points_count(category)
+    points_manager = PointsManager.new(self, category, nil)
+    points_manager.cat_points_count
+  end
+
   def self.find_for_oauth(auth, signed_in_resource = nil)
 
     # Get the identity and user if they exist

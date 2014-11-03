@@ -9,6 +9,12 @@
   <% @subcategories.each do |sub| %>
           <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default' %>
        <% end %>
+  <% if @parent.nil? %>
+  <% else %>
+    <% @parentsubcats.each do |sub| %>
+            <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default' %>
+      <% end %>
+    <% end %>
  </div>
  </div>
       

@@ -27,6 +27,7 @@ class Categories::ProductsController < ApplicationController
     @product = Product.find(params[:id])
 
     if @product.destroy
+      @product.remove_post!(@product.user)
       flash[:notice] = "\"#{title}\" was deleted successfully."
       redirect_to @category
     else 

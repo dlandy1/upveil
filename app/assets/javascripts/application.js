@@ -23,7 +23,7 @@
             var url_mask = $(this).data('option-url');
             var key_method = $(this).data('option-key-method');
             var value_method = $(this).data('option-value-method');
-            var prompt = $(this).has('option[value='+ $(this).val() +']').size() ? $(this).find('option[value='+ $(this).val() +']') : $('<option value=\"\">').text('Select a subcategory');
+            var prompt = $(this).has('option[value=]').size() ? $(this).find('option[value=]') : $('<option value=\"\">').text('Select a subcategory');
             var regexp = /:[0-9a-zA-Z_]+:/g;
             var observer = $('select#' + observer_dom_id);
             var observed = $('#' + observed_dom_id);

@@ -3,23 +3,22 @@
 <% else %>
 <h1 class="h3 text-center"><b><%=@category.title %></b><br><p class="h6">Best Products related to <%=@category.title %></p></h1>
 <% end %>
- <%= link_to "New Product", new_product_path(@product), class: 'btn btn-success pull-right' %>
  <div class="row">
-  <div class="container block-center">
+  <div class="btn-group btn-group-justified size">
   <% @subcategories.each do |sub| %>
-          <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default' %>
+          <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default size' %>
        <% end %>
   <% if @parent.nil? %>
   <% else %>
     <% @parentsubcats.each do |sub| %>
-            <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default' %>
+            <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default size' %>
       <% end %>
     <% end %>
  </div>
  </div>
+  <%= link_to "New Product", new_product_path(@product), class: 'btn btn-success btn-xs pull-right to-right' %>
       
-<div class="row">
-  <div class="col-md-8">
+<div class="show_box">
     <% if @parent.nil? %>
     <% @category.products.each do |product| %>
       <%= render product %>
@@ -29,5 +28,4 @@
       <%= render product%>
     <% end %>
     <% end %>
-  </div>
 </div>

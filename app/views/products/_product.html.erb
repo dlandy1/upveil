@@ -1,17 +1,13 @@
-<div class="media">
-      <div class="bs-example">
-        <div class="media-body">
-          <h4 class="media-heading">
-            <%= link_to (product.title), [product.category, product] %>
-          </h4>
-          <small>
-            $<%= product.price %>
-            <%= product.user.name %>
-            <%= product.description if product.description?%>
-          </small>
-          <p>
-            <%= image_tag(product.image.thumb.url) %>
-          </p>
-        </div>
-      </div>
+<div class="product_box">
+   <span class="money h5">$<%= product.price %></span>
+  <h4 class="text-center">
+    <%= link_to (product.title), [product.category, product] %>
+  </h4>
+  <small>
+    <%= product.description if product.description?%>
+  </small>
+    <div class="image_box">
+      <%= image_tag(product.image.thumb.url) %>
     </div>
+    <span class="user_name">By:<%= link_to product.user.name, root_path %></span>
+</div>

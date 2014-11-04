@@ -3,7 +3,12 @@ class ProductsController < ApplicationController
    @products = Product.all
   end
   def new
+    if current_user != nil
     @product = Product.new
+     else
+       flash[:error] = "You must sign in or up before posting a product."
+       redirect_to new_user_session_path
+    end
   end
 
   def create
@@ -18,7 +23,7 @@ class ProductsController < ApplicationController
         flash[:error] = "There was an error saving the product. Please try again."
         redirect_to [@category, @product]
       end
-    end
+  end
     private
     def product_params
     params.require(:product).permit(:title, :price, :link, :description, :category_id, :subcat_id, :image)

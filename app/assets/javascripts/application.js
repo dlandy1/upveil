@@ -16,6 +16,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
  jQuery(document).ready(function () {
         $('select[data-option-dependent=true]').each(function (i) {
             var observer_dom_id = $(this).attr('id');

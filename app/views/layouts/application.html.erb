@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="navbar navbar-default">
+  <div class="navbar navbar-default navbar-fixed-top">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
       <span class="icon-bar"></span>
@@ -17,7 +17,17 @@
    <p class="navbar-brand"><b>Upveil</b></p>
   </div>
   <div class="navbar-collapse collapse navbar-responsive-collapse">
-    <ul class="nav navbar-nav">
+    <ul class="nav navbar-nav navbar-right">
+      <% if current_user %>
+                <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-link' do %>
+                  <li>log out</li>
+                  <% end %>
+                <% else %>
+                    <li><%= link_to "Sign In", new_user_session_path, class: 'btn btn-link'%></li>
+                <% end %>
+    </ul>
+    <div class="navbar-inner">
+    <ul class="nav">
       <li><%= link_to "All", root_path%></li>
           <% Category.all.each do |category| %>
           <% if category.parent_id.nil? %>
@@ -25,16 +35,7 @@
          <% end %>
          <%end %>
     </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <% if current_user %>
-                <%= link_to destroy_user_session_path, method: :delete, class: 'btn-sm btn btn-default' do %>
-                  <li>log out</li>
-                  <% end %>
-                <% else %>
-                    <li><%= link_to "Sign In", new_user_session_path, class: 'btn-sm btn btn-warning'%></li>
-                    <li><%= link_to "Sign Up", new_user_registration_path, class: 'btn-sm btn btn-warning' %></li> 
-                <% end %>
-    </ul>
+      </div>
   </div>
 </div>
   <div class="container">

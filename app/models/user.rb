@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
     :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
     has_many :products, dependent: :destroy
+    has_many :comments, dependent: :destroy
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 

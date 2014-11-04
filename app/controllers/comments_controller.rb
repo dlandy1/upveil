@@ -1,13 +1,12 @@
 class CommentsController < ApplicationController
+  respond_to :html, :js
  def create
-    @product = Product.find(params[:post_id])
+    @product = Product.find(params[:product_id])
     @comments = @product.comments
 
     @comment = current_user.comments.new( comment_params )
     @comment.product = @product
     @new_comment = Comment.new
-
-    authorize @comment
 
     if @comment.save
       flash[:notice] = "Comment was created successfully."
@@ -21,11 +20,10 @@ class CommentsController < ApplicationController
   end
 
  def destroy
-    @product = Product.find(params[:post_id])
+    @product = Product.find(params[:product_id])
     @category = @product.category
     @comment = @product.comments.find(params[:id])
 
-    authorize @comment
     if @comment.destroy
       flash[:notice] = "Comment was removed"
     else

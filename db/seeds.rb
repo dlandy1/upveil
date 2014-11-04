@@ -17,6 +17,7 @@
    Category.create(title: 'Computers', parent_id:1)
    Category.create(title: 'Gadgets', parent_id:1)
    Category.create(title: 'TVs', parent_id:1)
+   Category.create(title: 'Shirts', parent_id:2)
    Category.create(title: 'Cars', parent_id:3)
    Category.create(title: 'Motorcycles', parent_id:3)
    Category.create(title: 'Water', parent_id:3)

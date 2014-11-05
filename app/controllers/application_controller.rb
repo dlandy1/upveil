@@ -2,16 +2,6 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-
-  def index
-  end
-
-  def subcategories
-    category = Category.find(params[:id])
-    respond_to do |format|
-      format.json { render :json => category.subcategories }
-    end
-  end
   
   def ensure_signup_complete
     # Ensure we don't go into an infinite loop

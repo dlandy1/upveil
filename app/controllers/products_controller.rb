@@ -15,8 +15,9 @@ class ProductsController < ApplicationController
      @product = current_user.products.build(product_params)
       if @product.save
         subcat = @product.subcat_id
+        @product.up_vote!(@product.user)
         @category = Category.find(subcat)
-        @product.post!(@product.user, @category)
+        @category.increase_grade(current_user, 100)
         flash[:notice] = "product was saved."
         redirect_to [@category, @product]
       else
@@ -26,6 +27,6 @@ class ProductsController < ApplicationController
   end
     private
     def product_params
-    params.require(:product).permit(:title, :price, :link, :description, :category_id, :subcat_id, :image)
+    params.require(:product).permit(:title, :price, :link, :description, :category_id, :subcat_id, :image, :remote_image_url)
    end
 end

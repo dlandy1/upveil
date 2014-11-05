@@ -1,12 +1,15 @@
 Upveil::Application.routes.draw do
   devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
   resources :users, only: [:show, :index]
-  get "/categories/:category_id/subcategories" => "application#subcategories", :as => "subcategories", :format => :json
   resources :categories do
+    resources :subcategories, only: [:index]
     resources :products, only: [:show], controller: 'categories/products'
   end
   resources :products, except: [:show] do 
     resources :comments, only: [:create, :destroy]
+    
+    post '/up-vote' => 'votes#up_vote', as: :up_vote
+    post '/down-vote' => 'votes#down_vote', as: :down_vote
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

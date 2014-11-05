@@ -12,12 +12,12 @@
    <div class="form-group">
          <p><%= f.select :category_id, options_from_collection_for_select(Category.parent_categories.all, "id", "title"), :prompt => "Select a Category" %></p>
          <p><%= f.select :subcat_id, options_from_collection_for_select(Category.sub_categories.all, "id", "title"), :prompt => "Select a Category" %></p>
-      <!-- <p><%= select_tag :subcat_id, options_from_collection_for_select([], "id", "title"),
+     <!--  <p><%= f.select :subcat_id, options_from_collection_for_select([], "id", "title"),
                      "data-option-dependent" => true,
-                     "data-option-observed" => "category_id",
+                     "data-option-observed" => "product_category_id",
                      "data-option-url" => "/categories/:category_id:/subcategories.json",
                      "data-option-key-method" => :id,
-                     "data-option-value-method" => :title %></p>  -->
+                     "data-option-value-method" => :title %></p> -->
 
     </div>
   <div class="form-group">

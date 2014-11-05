@@ -30,7 +30,7 @@
     <ul class="nav">
       <li><%= link_to "All", root_path%></li>
           <% Category.all.each do |category| %>
-          <% if category.parent_id.nil? %>
+          <% if category.parent_id.nil? && category.gender != "male" %>
          <li><%= link_to category.title, category %></li>
          <% end %>
          <%end %>

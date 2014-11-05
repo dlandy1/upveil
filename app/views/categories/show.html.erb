@@ -5,6 +5,18 @@
 <% end %>
  <div class="row">
   <div class="btn-group btn-group-justified size">
+    <% if @category.gender %>
+    <div class="male">
+     <% Category.all.where(gender:"male").each do |sub| %>
+     <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default size' %>
+     <% end %>
+    </div>
+    <div class="female">
+     <% Category.all.where(gender:"female").each do |sub| %>
+     <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default size' %>
+     <% end %>
+    </div>
+    <% elsif %>
   <% @subcategories.each do |sub| %>
           <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default size' %>
        <% end %>
@@ -13,6 +25,7 @@
     <% @parentsubcats.each do |sub| %>
             <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default size' %>
       <% end %>
+    <% end %>
     <% end %>
  </div>
  </div>

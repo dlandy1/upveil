@@ -1,6 +1,7 @@
 <div class="row"> 
   <%= render_shareable :buttons=> [ 'facebook', 'twitter', 'reddit', 'pinterest', 'tumblr']  %>
   <div class="col-md-8">
+    <%= render partial: 'votes/voter', locals: {product: @product} %>
     <h1><%= @product.title %></h1>
     <small>
       <%= @product.user.name %>
@@ -9,16 +10,10 @@
       <%= image_tag(@product.image.url) %>
       <%= @product.description %>
     </p>
-  </div>
-  <div class="row">
-      <h2>Comments</h2>
-      <% if current_user%>
-      <h4>Add a comment</h4>
-      <div class='new-comment'>
-        <%= render "comments/form" %>
-      <% end %>
+    <div>
+      <h3><%= pluralize(@product.points, 'point') %></h3>
+      <small>
+        <%= pluralize(@product.up_votes, 'up vote') %>
+      </small>
     </div>
-      <div class='js-comments'>
-        <%= render partial: 'comments/comment', collection: @comments %>
-      </div>
-</div>
+  </div>

@@ -3,7 +3,6 @@ class Categories::ProductsController < ApplicationController
     @product = Product.find(params[:id])
     subcatid = @product.subcat_id
     subcategory = Category.find(subcatid)
-    @comments = @product.comments
   end
 
    def edit

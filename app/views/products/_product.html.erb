@@ -1,14 +1,14 @@
 <%= render partial: 'votes/voter', locals: {product: product} %>
 <div class="product_box">
    <span class="money h5">$<%= product.price %></span>
-  <h4 class="text-center">
+  <h4 class="texter-center">
     <%= link_to (product.title), [product.category, product] %>
   </h4>
-  <small>
-    <%= product.description if product.description?%>
-  </small>
     <div class="image_box">
       <%= image_tag(product.image.thumb.url) %>
     </div>
     <span class="user_name"><%= link_to product.user.name, root_path, class: 'link_color' %></span>
+     <p class="text-center">
+    <%= product.description if product.description?%>
+  </p>
 </div>

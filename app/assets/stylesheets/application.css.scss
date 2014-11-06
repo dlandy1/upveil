@@ -267,6 +267,7 @@ th {
 }
 .glyphicon {
   position: relative;
+  color: grey;
   top: 1px;
   display: inline-block;
   font-family: 'Glyphicons Halflings';
@@ -896,7 +897,7 @@ body {
   font-size: 16px;
   line-height: 1.42857143;
   color: #333333;
-  background-color: #ffffff;
+  background-color: #FCFBFB;
 }
 input,
 button,
@@ -1386,7 +1387,7 @@ pre code {
   overflow-y: scroll;
 }
 .container {
-  background-color: rgb(247, 247, 246);
+  background-color: #FFFFFF;
   margin-right: auto;
   margin-left: auto;
   margin-top: 40px; 
@@ -3592,6 +3593,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   position: relative;
   display: block;
   padding: 10px 15px;
+  color: white;
 }
 .nav > li > a:hover,
 .nav > li > a:focus {
@@ -4093,26 +4095,25 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #ffffff;
-  border-color: #dddddd;
+  background-color: black;
 }
 .navbar-default .navbar-brand {
-  color: #9E916A;
+  color: #FFE685;
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-  color: #9E916A;
+  color: #FFE685;
   background-color: transparent;
 }
 .navbar-default .navbar-text {
   color: #333333;
 }
 .navbar-default .navbar-nav > li > a {
-  color: #9E916A;
+  color: white;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #9E916A;
+  color: #FFE685;
   background-color: transparent;
 }
 .navbar-default .navbar-nav > .active > a,
@@ -4170,17 +4171,17 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default .navbar-link {
-  color: #9E916A;
+  color: #FFE685;
 }
 .navbar-default .navbar-link:hover {
-  color: #9E916A;
+  color: #FFE685;
 }
 .navbar-default .btn-link {
-  color: #9E916A;
+  color: #FFE685;
 }
 .navbar-default .btn-link:hover,
 .navbar-default .btn-link:focus {
-  color: #9E916A;
+  color: #FFE685;
 }
 .navbar-default .btn-link[disabled]:hover,
 fieldset[disabled] .navbar-default .btn-link:hover,
@@ -6333,32 +6334,26 @@ legend {
   padding: 1px;
 }
 .product_box{
-  padding: 5px;
-  padding-right: 0px;
-  padding-left: 0px;
   border-width: 3px;
-  max-width: 473px;
+  max-width: 403px;
   margin-left: auto;
   margin-right: auto;
   border-radius: 3px;
   margin-top: 0px;
   margin-bottom: 10px;
+  margin-bottom: 10px;
   background-color: white;
   border: #dddddd solid 1px;
 }
 .image_box{
-  padding: 5px;
   text-align: center;
-  border-width: 3px;
-  border-radius: 0px;
-  margin-top: 10px;
-  margin-bottom: 10px;
   border-top: #dddddd solid 1px;
   border-bottom: #dddddd solid 1px;
 }
 .money{
   color: green;
   float: right;
+  margin-right: 10px;
 }
 .user_name{
   position: absolute;
@@ -6377,8 +6372,42 @@ legend {
   color: rgb(11, 36, 166);
 }
 .vote-arrows {
+  position: absolute;
   width: 40px;
   text-align: center;
-  margin-left: 58px;
+  margin-left: 96px;
   margin-top: 85px;
  }
+ .voted{
+  color: #9E916A;
+ }
+ .texter-center{
+  text-align: center;
+  margin-left: 35px;
+ }
+
+ .share_row{
+  margin-top: 10px;
+ }
+ .vote-show{
+  width: 40px;
+  text-align: center;
+  margin-top: 140px;
+ }
+ .to_the_left{
+  color: #3154B2;
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 91px;
+ }
+
+ .space{
+  margin-bottom: 10px;
+ }
+
+
+
+
+
+
+ 

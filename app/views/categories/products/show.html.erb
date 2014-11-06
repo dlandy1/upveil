@@ -1,19 +1,27 @@
-<div class="row"> 
+<div> 
+  <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=308749165979195&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+  <div class="share_row">
   <%= render_shareable :buttons=> [ 'facebook', 'twitter', 'reddit', 'pinterest', 'tumblr']  %>
-  <div class="col-md-8">
-    <%= render partial: 'votes/voter', locals: {product: @product} %>
-    <h1><%= @product.title %></h1>
-    <small>
-      <%= @product.user.name %>
-    </small>
-    <p>
-      <%= image_tag(@product.image.url) %>
+  </div>
+  <div>
+    <a class="to_the_left">
+        <%= @product.user.name %>
+      </a>
+    <h1 class="text-center"><%= @product.title %></h1>
+      <p class="text-center"><%= link_to "Buy here", @product.link, :target => "_blank", class: 'btn btn-xs btn-primary space' %></p>
+    <p class="text-center">
+      <%= image_tag(@product.image.thumb.url) %>
+    </p>
+    <p class="text-center">
       <%= @product.description %>
     </p>
-    <div>
-      <h3><%= pluralize(@product.points, 'point') %></h3>
-      <small>
-        <%= pluralize(@product.up_votes, 'up vote') %>
-      </small>
-    </div>
-  </div>
+    <div class="fb-comments" data-href="http://developers.facebook.com/docs/plugins/comments/" data-numposts="10" data-colorscheme="light"></div>
+</div>

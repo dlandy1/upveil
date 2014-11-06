@@ -7,7 +7,7 @@
     <div class="image_box">
       <%= image_tag(product.image.thumb.url) %>
     </div>
-    <span class="user_name"><%= link_to product.user.name, root_path, class: 'link_color' %></span>
+    <span class="user_name"><%= link_to product.user.name, product.user, class: 'link_color' %></span>
      <p class="text-center">
     <%= product.description if product.description?%>
   </p>

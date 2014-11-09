@@ -10,7 +10,7 @@
     </div>
    <% end %>
    <div class="form-group">
-         <p><%= f.select :category_id, options_from_collection_for_select(Category.parent_categories.all, "id", "title"), :prompt => "Select a Category" %></p>
+         <%= f.select :category_id, options_from_collection_for_select(Category.parent_categories.all, "id", "title"), :prompt => "Select a Category" %>
      <p><%= select_tag 'product[subcat_id]', options_from_collection_for_select([], "id", "title"),
                      "data-option-dependent" => true,
                      "data-option-observed" => "product_category_id",
@@ -19,7 +19,7 @@
                      "data-option-value-method" => :title %></p>
 
     </div>
-    <%= f.label "Gender only applies to Fashion" %>
+     <%= f.label "Gender only applies to Fashion" %>
      <div class="form-group fash">
       <%= f.select :gender, options_for_select(["Male", "Female"]), :prompt => "Select a Gender" %>
      </div>

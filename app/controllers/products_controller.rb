@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   def index
    @products = Product.all
   end
+  
   def new
     if current_user != nil
     @product = Product.new
@@ -25,8 +26,37 @@ class ProductsController < ApplicationController
         redirect_to [@category, @product]
       end
   end
+
+    def update
+      @product = Product.find(params[:id])
+      @category = @product.category
+       if @product.update_attributes(product_params)
+         flash[:notice] = "Post was updated."
+         redirect_to [@category, @product]
+       else
+         flash[:error] = "There was an error saving the post. Please try again."
+         render :edit
+       end
+   end
+   
+   def destroy
+    @product = Product.find(params[:id])
+    @category = @product.category
+    subcat = @product.subcat_id
+    @subcategory = Category.find(subcat)
+
+    if @product.destroy
+      @category.increase_grade(current_user, -100)
+      flash[:notice] = "#{@product.title} was deleted successfully."
+      redirect_to  @subcategory
+    else 
+      flash[:error] = "There was an error deleting the post."
+      render :show
+    end
+   end
+
     private
     def product_params
-    params.require(:product).permit(:title, :price, :link, :description, :category_id, :subcat_id, :image, :image_cache, :remote_image_url)
+    params.require(:product).permit(:title, :price, :link, :description, :gender, :category_id, :subcat_id, :image, :image_cache, :remote_image_url)
    end
 end

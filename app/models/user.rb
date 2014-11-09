@@ -8,9 +8,10 @@ class User < ActiveRecord::Base
     :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
     has_many :products, dependent: :destroy
-    has_many :comments, dependent: :destroy
-
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
+  validates :instagram_url, :format => URI::regexp(%w(http https)), :allow_blank => true 
+  validates :twitter_url, :format => URI::regexp(%w(http https)), :allow_blank => true 
+  validates :name, length: {minimum: 3}, presence: true
 
   def points_count
     points_manager = PointsManager.new(self, nil)

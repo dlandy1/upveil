@@ -9,8 +9,21 @@
 }(document, 'script', 'facebook-jssdk'));
 </script>
   <div class="share_row">
-  <%= render_shareable :buttons=> [ 'facebook', 'twitter', 'reddit', 'pinterest', 'tumblr']  %>
+    <a><div class="fb-share-button" data-href= <%= request.original_url %> data-layout="button_count"></div></a>
+    <a><script type="text/javascript" src="//www.redditstatic.com/button/button1.js"></script></a>
+    <a href="https://twitter.com/share" class="twitter-share-button" data-via="upveil">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+  <%= pinterest_button %>
   </div>
+    <div class= "col-md-4">
+    <%if current_user == @product.user %>
+      <%= link_to "Edit",  edit_category_product_path(@product.category, @product) %>
+    <% end %>
+    <%if current_user == @product.user %>
+      <%= link_to "Delete Post", [@categoy, @product], method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this product?'} %>
+    <% end %>
+
+    <div>
   <div>
     <a class="to_the_left">
         <%= @product.user.name %>

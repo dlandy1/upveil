@@ -1,3 +1,16 @@
+<h1 class="h3 text-center"><b><%=@user.name %></b><br><p class="h6">Best Products</p></h1>
+<% if @user == current_user %>
+  <%= link_to "Change User Name", edit_user_path %>
+<% end %>
+ <% if @user == current_user && @user.instagram_url.nil? && @user.twitter_url.nil? %>
+      <h4>Link to you're social media</h4>
+      <div class='new-social'>
+        <%= render "formal" %>
+      <% end %>
+  <div>
+    <a href=""><%= @user.instagram_url %></a>
+    <a href=""><%= @user.twitter_url %></a>
+  </div>
 <div class="show_box">
     <% @user.products.each do |product| %>
       <%= render product %>

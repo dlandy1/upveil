@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-
+require 'json'
   def new
     @category = Category.new
   end
@@ -7,7 +7,9 @@ class CategoriesController < ApplicationController
   def show
      @category = Category.find(params[:id])
      @subcategories = @category.subcategories
+     @products = @category.products
      @parent = @category.parent_id
+     @users = @category.leaderboard.leaders(1)
      if !@parent.nil?
       @subcatparent = Category.find(@parent)
       @parentsubcats = @subcatparent.subcategories
@@ -32,7 +34,6 @@ class CategoriesController < ApplicationController
 
  def update
   @category = Category.find(params[:id])
-  authorize @category
   if @category.update_attributes(category_params)
     redirect_to @category
   else

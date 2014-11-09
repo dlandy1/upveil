@@ -1394,7 +1394,7 @@ pre code {
   padding-left: 15px;
   padding-right: 15px;
   border: 1px solid lightgrey;
-  min-height: 500px;
+  min-height: 640px;
 }
 @media (min-width: 768px) {
   .container {
@@ -6328,10 +6328,12 @@ legend {
   font-size: 11px;
 }
 .to-right{
-  margin-right: -12px;
-  margin-top: -23px;
-  font-size: 10px;
+  position: fixed;
+  font-size: 14px;
   padding: 1px;
+  width: 107px;
+  top: 98px;
+  right: 35px;
 }
 .product_box{
   border-width: 3px;
@@ -6402,12 +6404,19 @@ legend {
  }
 
  .space{
-  margin-bottom: 10px;
+  position: fixed;
+  margin-top: 57px;
+  left: 35px;
+ }
+ .males{
+  display: none;
  }
 
-
-
-
-
+ .hoter{
+  display: none;
+ }
+ .fash{
+ 
+ }
 
  

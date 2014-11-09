@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   # GET /users/:id/edit
   def edit
-    # authorize! :update, @user
+    @user = User.find(params[:id])
   end
 
   # PATCH/PUT /users/:id.:format
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      accessible = [ :name, :email ] # extend with your own params
+      accessible = [ :name, :email, :instagram_url, :twitter_url ] # extend with your own params
       accessible << [ :password, :password_confirmation ] unless params[:user][:password].blank?
       params.require(:user).permit(accessible)
     end

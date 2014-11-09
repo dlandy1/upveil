@@ -14,7 +14,6 @@
 // = require bootstrap-sprockets
 // = require bootstrap
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
 
  jQuery(document).ready(function () {
@@ -45,7 +44,36 @@
                 }
             });
         });
+    $('product[category_id] select').click(function () {
+    if ($(this).val() === '2') {
+        $(".fash").show();
+    }
+})
+
+
+    $(".male").on("click", function(){
+         $(".male").css('background-color', 'rgb(249, 220, 73)');
+         $(".female").css('background-color', 'white');
+         $(".females").hide();
+         $(".males").show();
+     })
+    $(".female").on("click", function(){
+         $(".male").css('background-color', 'white');
+         $(".female").css('background-color', 'rgb(249, 220, 73)');
+         $(".males").hide();
+         $(".females").show();
+     })
+    
+    $(".newer").on("click", function(){
+         $(".newer").hide();
+         $(".hoter").show();
+     })
+    $(".hoter").on("click", function(){
+         $(".hoter").hide();
+         $(".newer").show();
+     })
     });
+    
 
 
 

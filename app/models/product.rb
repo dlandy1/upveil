@@ -7,7 +7,7 @@ class Product < ActiveRecord::Base
       validates :image, 
     :presence => true, 
     :file_size => { 
-      :minimum => 0.03.megabytes.to_i, 
+      :minimum => 0.015.megabytes.to_i, 
       :maximum => 0.5.megabytes.to_i 
     } 
 
@@ -17,14 +17,14 @@ class Product < ActiveRecord::Base
   validates :user, presence: true
   validates :category, presence: true
   validates :description,length: {maximum: 140}, :allow_blank => true
-  # if
-  validates :gender, presence: true
+  validates :subcat_id, presence: true
+  validates :gender, :if => :in_fashion?, presence: true
    default_scope { order('rank DESC') }
 
-    # Product.unscoped do
-    #   @new = New.includes(:product).all
-    # end
 
+    def in_fashion?
+      category == 'Fashion'
+    end
 
     def already_up_voted_by_user?(voting_user)
       vote_manager = VotesManager.new(voting_user, self)

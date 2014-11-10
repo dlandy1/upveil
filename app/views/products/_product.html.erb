@@ -1,3 +1,4 @@
+<div class="product">
 <%= render partial: 'votes/voter', locals: {product: product} %>
 <div class="product_box">
    <span class="money h5">$<%= product.price %></span>
@@ -11,4 +12,5 @@
      <p class="text-center">
     <%= product.description if product.description?%>
   </p>
+</div>
 </div>

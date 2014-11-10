@@ -9,8 +9,17 @@
       <% end %>
     </div>
   <div class="show_box newer">
+    <div id="page">
      <%= render @products %>
+    </div>
   </div>
   <div class="show_box hoter">
+    <div id ="page">
     <%= render :partial => 'product', :collection => @products.unscoped.all.reverse%>
+    </div>
   </div>
+  <% unless @products.current_page == @products.total_pages %>
+  <p id="view-more">
+    <%= link_to('View More', url_for(page: @products.current_page + 1)) %>
+  </p>
+<% end %>

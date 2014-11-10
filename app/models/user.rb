@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
     has_many :products, dependent: :destroy
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
-  validates :instagram_url, :format => URI::regexp(%w(http https)), :allow_blank => true 
+  validates :instagram_url, :format => URI::regexp(%w(http://twitter https://twitter)), :allow_blank => true 
   validates :twitter_url, :format => URI::regexp(%w(http https)), :allow_blank => true 
   validates :name, length: {minimum: 3}, presence: true
 

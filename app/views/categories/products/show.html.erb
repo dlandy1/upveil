@@ -31,7 +31,7 @@
     <h1 class="text-center"><%= @product.title %></h1>
       <p class="text-center"><%= link_to "Buy here", @product.link, :target => "_blank", class: 'btn btn-xs btn-primary space' %></p>
     <p class="text-center">
-      <%= image_tag(@product.image.thumb.url) %>
+      <%= image_tag(@product.image.url) %>
     </p>
     <p class="text-center">
       <%= @product.description %>

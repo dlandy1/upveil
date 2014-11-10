@@ -1,19 +1,18 @@
-
-  <div class="pull-left vote-arrows">
+<div class="pull-left vote-arrows">
     <div>
       <% if current_user %>
       <%= link_to "", 
         product_up_vote_path(product), 
-        class: "glyphicon glyphicon-chevron-up #{(product.already_up_voted_by_user?(current_user)) ? 'voted' : ''} ", method: product%></div>
-    <div><strong><%= product.points %></strong></div>
+        class: "glyphicon glyphicon-chevron-up #{product.id} #{(product.already_up_voted_by_user?(current_user)) ? 'voted' : ''} ", method: product, remote: true %></div>
+    <div class='js-comments-count'><strong><%= product.points %></strong></div>
     <div><%= link_to "", product_down_vote_path(product), 
-    class: "glyphicon glyphicon-chevron-down #{(product.already_down_voted_by_user?(current_user))  ? 'voted' : ''}", method: product%></div>
+    class: "glyphicon glyphicon-chevron-down #{(product.already_down_voted_by_user?(current_user))  ? 'voted' : ''}", method: product, remote: true %></div>
     <% else %>
     <%= link_to "", 
         product_up_vote_path(product), 
-        class: "glyphicon glyphicon-chevron-up", method: product%></div>
+        class: "glyphicon glyphicon-chevron-up", method: product %></div>
     <div><strong><%= product.points %></strong></div>
     <div><%= link_to "", product_down_vote_path(product), 
-    class: "glyphicon glyphicon-chevron-down", method: product%></div>
+    class: "glyphicon glyphicon-chevron-down", method: product %></div>
     <% end %>
   </div>

@@ -75,7 +75,7 @@ class Product < ActiveRecord::Base
     
     def update_rank
     s = self.points
-    order = (Math.log(10)*([(s).abs, 1].max))
+    order = Math.log( [s.abs, 1].max,  10 )
  
     sign = if s > 0
       1
@@ -85,9 +85,9 @@ class Product < ActiveRecord::Base
       0
     end
 
-     seconds = self.created_at.to_i - 1134028003
+     seconds = (self.created_at.to_i - 1134028003).to_f
  
-    new_rank = (order + sign * seconds / 45000).round
+     new_rank = (order + sign) + (seconds / 45000)
  
      update_attribute(:rank, new_rank)
    end

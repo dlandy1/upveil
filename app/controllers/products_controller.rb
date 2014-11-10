@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   def index
    @products = Product.all
+   @leaders =  HIGHSCORE_LB.leaders(1)
   end
   
   def new
@@ -57,6 +58,6 @@ class ProductsController < ApplicationController
 
     private
     def product_params
-    params.require(:product).permit(:title, :price, :link, :description, :gender, :category_id, :subcat_id, :image, :image_cache, :remote_image_url)
+    params.require(:product).permit(:title, :price, :link, :description, :gender, :category_id, :subcat_id, :image)
    end
 end

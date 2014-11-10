@@ -74,9 +74,12 @@
   <% end %>
 
 <div class="show_box newer">
-      <% @users.each do |user| %>
-       <%= user %>
-        <% end %>
+     <div class="leaderboard">
+    <% @leaders.each do |leader| %>
+       <% user = User.find(leader[:member].to_i) %>
+       <%= link_to user.name, [user] %>
+      <% end %>
+    </div>
     <% if @parent.nil? %>
      <% if @category.title == "Fashion" %>
     <div class="males">

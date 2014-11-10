@@ -1,7 +1,16 @@
-
+  <a href="#" class="btn btn-xs btn-primary space hoter">Look by Hotest</a>
+  <a href="#" class="btn btn-xs btn-primary space newer">Look by Newest</a>
     <h1 class="h3 text-center">All<br><p class="h6">The Newest and Best Products</p></h1>
     <%= link_to "New Product", new_product_path(@product), class: 'btn btn-success btn-xs pull-right to-right' %>
-   
-  <div class="show_box">
+    <div class="leaderboard">
+    <% @leaders.each do |leader| %>
+       <% user = User.find(leader[:member].to_i) %>
+       <%= link_to user.name, [user] %>
+      <% end %>
+    </div>
+  <div class="show_box newer">
      <%= render @products %>
+  </div>
+  <div class="show_box hoter">
+    <%= render :partial => 'product', :collection => @products.unscoped.all.reverse%>
   </div>

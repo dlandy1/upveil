@@ -1,5 +1,6 @@
-class CategoriesController < ApplicationController
 require 'json'
+class CategoriesController < ApplicationController
+
   def new
     @category = Category.new
   end
@@ -9,7 +10,8 @@ require 'json'
      @subcategories = @category.subcategories
      @products = @category.products
      @parent = @category.parent_id
-     @users = @category.leaderboard.leaders(1)
+     @leaders =  HIGHSCORE_LB.leaders(1)
+     @users = @category.leaderboard.leaders(1, {:with_member_data => true})
      if !@parent.nil?
       @subcatparent = Category.find(@parent)
       @parentsubcats = @subcatparent.subcategories

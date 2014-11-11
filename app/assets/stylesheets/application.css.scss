@@ -894,7 +894,7 @@ html {
 }
 body {
   font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.42857143;
   color: #333333;
   background-color: #FCFBFB;
@@ -908,7 +908,8 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #9E916A;
+  font-family: sans-serif;
+  color: #196BB0;
   text-decoration: none;
 }
 a:hover,
@@ -1033,7 +1034,7 @@ h2,
 .h2,
 h3,
 .h3 {
-  margin-top: 22px;
+  margin-top: 35px;
   margin-bottom: 11px;
 }
 h1 small,
@@ -2074,7 +2075,7 @@ th {
 .table > thead > tr > td,
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
-  padding: 8px;
+  padding: 1px;
   line-height: 1.42857143;
   vertical-align: top;
   border-top: 1px solid #dddddd;
@@ -2730,8 +2731,8 @@ select[multiple].input-lg {
   background-image: none;
   border: 1px solid transparent;
   white-space: nowrap;
-  padding: 8px 12px;
-  font-size: 16px;
+  padding: 14px 12px;
+  font-size: 18px;
   line-height: 1.42857143;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -3590,9 +3591,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   display: block;
 }
 .nav > li > a {
+  font-family: inherit;
   position: relative;
   display: block;
-  padding: 10px 15px;
+  padding: 15px 15px;
   color: white;
 }
 .nav > li > a:hover,
@@ -3884,7 +3886,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-brand {
   float: left;
   padding: 21.5px 15px;
-  font-size: 20px;
+  font-size: 30px;
   line-height: 22px;
   height: 0px;
 }
@@ -4098,11 +4100,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   background-color: black;
 }
 .navbar-default .navbar-brand {
-  color: #FFE685;
+  color: #FAE091;;
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-  color: #FFE685;
+  color: #FAE091;;
   background-color: transparent;
 }
 .navbar-default .navbar-text {
@@ -4113,7 +4115,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #FFE685;
+  color: #FAE091;;
   background-color: transparent;
 }
 .navbar-default .navbar-nav > .active > a,
@@ -4171,17 +4173,17 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default .navbar-link {
-  color: #FFE685;
+  color: #FAE091;;
 }
 .navbar-default .navbar-link:hover {
-  color: #FFE685;
+  color: #FAE091;;
 }
 .navbar-default .btn-link {
-  color: #FFE685;
+  color: #FAE091;;
 }
 .navbar-default .btn-link:hover,
 .navbar-default .btn-link:focus {
-  color: #FFE685;
+  color: #FAE091;;
 }
 .navbar-default .btn-link[disabled]:hover,
 fieldset[disabled] .navbar-default .btn-link:hover,
@@ -4816,7 +4818,7 @@ a.thumbnail.active {
 .list-group-item {
   position: relative;
   display: block;
-  padding: 10px 15px;
+  padding: 15px 15px;
   margin-bottom: -1px;
   background-color: #ffffff;
   border: 1px solid #dddddd;
@@ -6214,7 +6216,7 @@ button.close {
   color: #333333;
 }
 .navbar-brand {
-  padding-top: 12px;
+  padding-top: 16px;
 }
 @media (max-width: 768px) {
   .navbar .navbar-nav > li > a {
@@ -6337,13 +6339,12 @@ legend {
 }
 .product_box{
   border-width: 3px;
-  max-width: 403px;
+  max-width: 515px;
   margin-left: auto;
   margin-right: auto;
   border-radius: 3px;
-  margin-top: 0px;
-  margin-bottom: 10px;
-  margin-bottom: 10px;
+  margin-top: 50px;
+  margin-bottom: 50px;
   background-color: white;
   border: #dddddd solid 1px;
 }
@@ -6359,9 +6360,10 @@ legend {
 }
 .user_name{
   position: absolute;
-  margin-left: -80px;
+  margin-left: -85px;
+  width: 85px;
   font-size: 12px;
-  margin-top: -413px;
+  margin-top: -533px;
 }
 .show_box{
   max-width: 750px;
@@ -6377,7 +6379,7 @@ legend {
   position: absolute;
   width: 40px;
   text-align: center;
-  margin-left: 96px;
+  margin-left: 4%;
   margin-top: 85px;
  }
  .voted{
@@ -6399,8 +6401,8 @@ legend {
  .to_the_left{
   color: #3154B2;
   position: absolute;
-  margin-left: 20px;
   margin-top: 91px;
+  left: 225px;
  }
 
  .space{
@@ -6415,8 +6417,48 @@ legend {
  .hoter{
   display: none;
  }
- .fash{
- 
+ .fixer{
+  position: fixed;
+  width: 161px;
+  right: 12px;
+  font-size: 13px;
  }
+ .fber{
+  position: fixed;
+  left: 3%;
+  margin-top: 20px;
+ }
+
+ .reddit{
+  position: fixed;
+  left: 3%;
+  margin-top: 60px;
+ }
+
+ .twitter-share-button{
+  position: fixed;
+  left: 3%;
+  margin-top: 100px;
+ }
+
+ .pinterest{
+  position: fixed;
+  left: 3%;
+  margin-top: 141px;
+ }
+
+ .show-buttons{
+  position: fixed;
+  right: 2%;
+ }
+
+ .buyer{
+  margin: 15px;
+ }
+
+ .fb-comments{
+  margin-top: 20px;
+ }
+
 
  

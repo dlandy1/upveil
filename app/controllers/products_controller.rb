@@ -16,6 +16,7 @@ class ProductsController < ApplicationController
   def create
      @product = current_user.products.build(product_params)
       if @product.save
+        @product.increase(current_user, 100)
         subcat = @product.subcat_id
         @product.up_vote!(@product.user)
         @category = Category.find(subcat)
@@ -24,7 +25,7 @@ class ProductsController < ApplicationController
         redirect_to [@category, @product]
       else
         flash[:error] = "There was an error saving the product. Please try again."
-        redirect_to [@category, @product]
+        render :new
       end
   end
 
@@ -47,6 +48,7 @@ class ProductsController < ApplicationController
     @subcategory = Category.find(subcat)
 
     if @product.destroy
+      @product.increase(current_user, -100)
       @category.increase_grade(current_user, -100)
       flash[:notice] = "#{@product.title} was deleted successfully."
       redirect_to  @subcategory
@@ -58,6 +60,6 @@ class ProductsController < ApplicationController
 
     private
     def product_params
-    params.require(:product).permit(:title, :price, :link, :description, :gender, :category_id, :subcat_id, :image)
+    params.require(:product).permit(:title, :price, :link, :description, :gender, :category_id, :subcat_id, :image, :remote_image_url)
    end
 end

@@ -8,8 +8,12 @@
         <%= render "formal" %>
       <% end %>
   <div>
-    <a href=""><%= @user.instagram_url %></a>
-    <a href=""><%= @user.twitter_url %></a>
+    <% if @user.instagram_url  != "" %>
+      <a href=""><%= link_to "Instagram", @user.instagram_url, :target => "_blank" %></a>
+    <% end %>
+    <% if @user.twitter_url != ""%>
+      <a href=""><%= link_to "Twitter", @user.twitter_url, :target => "_blank"  %></a>
+    <% end %>
   </div>
 <div class="show_box">
     <% @user.products.each do |product| %>

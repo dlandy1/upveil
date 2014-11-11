@@ -25,14 +25,6 @@ class Category < ActiveRecord::Base
     parent = self.parent_id
     category = Category.find(parent)
     category.leaderboard.rank_member(user.id, current_score + points)
-    points_manager = PointsManager.new(user, nil)
-    points_manager.post!(points)
     end
   end
-
-  def increase_points(user, points)
-     points_manager = PointsManager.new(user, nil)
-     points_manager.post!(points)
-  end
-
 end

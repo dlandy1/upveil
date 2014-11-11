@@ -35,7 +35,10 @@ class Product < ActiveRecord::Base
       vote_manager = VotesManager.new(voting_user, self)
       vote_manager.remove_up_vote!
       self.category.increase_grade(self.user, -20)
-      self.category.increase_points(voting_user, -3)
+      subcategory = Category.find(self.subcat_id)
+      subcategory.increase_grade(self.user, -20)
+      current_score = HIGHSCORE_LB.score_for(voting_user.id).to_i
+      HIGHSCORE_LB.rank_member(voting_user.id, current_score - 3)
     end
 
     def already_down_voted_by_user?(voting_user)
@@ -46,7 +49,10 @@ class Product < ActiveRecord::Base
       vote_manager = VotesManager.new(voting_user, self)
       vote_manager.remove_down_vote!
       self.category.increase_grade(self.user, 15)
-      self.category.increase_points(voting_user, -1)
+      subcategory = Category.find(self.subcat_id)
+      subcategory.increase_grade(self.user, 15)
+      current_score = HIGHSCORE_LB.score_for(voting_user.id).to_i
+      HIGHSCORE_LB.rank_member(voting_user.id, current_score - 1)
     end
 
     def up_votes
@@ -58,14 +64,25 @@ class Product < ActiveRecord::Base
       vote_manager = VotesManager.new(voting_user, self)
       vote_manager.down_vote!
       self.category.increase_grade(self.user, -15)
-      self.category.increase_points(voting_user, 1)
+      subcategory = Category.find(self.subcat_id)
+      subcategory.increase_grade(self.user, -15)
+       current_score = HIGHSCORE_LB.score_for(voting_user.id).to_i
+      HIGHSCORE_LB.rank_member(voting_user.id, current_score - 3)
     end
 
     def up_vote!(voting_user)
       vote_manager = VotesManager.new(voting_user, self)
       vote_manager.up_vote!
       self.category.increase_grade(self.user, 20)
-      self.category.increase_points(voting_user, 3)
+      subcategory = Category.find(self.subcat_id)
+      subcategory.increase_grade(self.user, 20)
+      current_score = HIGHSCORE_LB.score_for(voting_user.id).to_i
+      HIGHSCORE_LB.rank_member(voting_user.id, current_score + 3)
+    end
+
+    def increase(voting_user, points)
+      current_score = HIGHSCORE_LB.score_for(voting_user.id).to_i
+      HIGHSCORE_LB.rank_member(voting_user.id, current_score + points)
     end
 
     def points

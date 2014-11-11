@@ -8,13 +8,15 @@ class CategoriesController < ApplicationController
   def show
      @category = Category.find(params[:id])
      @subcategories = @category.subcategories
-     @products = @category.products.page(params[:page]).per(10)
      @parent = @category.parent_id
      @leaders = @category.leaderboard.leaders(1)
      @users = @category.leaderboard.leaders(1, {:with_member_data => true})
      if !@parent.nil?
       @subcatparent = Category.find(@parent)
       @parentsubcats = @subcatparent.subcategories
+      @products = Product.where(subcat_id: @category.id).page(params[:page]).per(10)
+    else
+       @products = @category.products.page(params[:page]).per(10)
     end
   end
 

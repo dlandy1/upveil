@@ -1,8 +1,1 @@
-// views/posts/index.js.erb
-$('#page').append("<%=j render(partial: 'product', collection: @products, format: 'html') %>");
-
-<% if @products.current_page == @products.total_pages %>
-  $('#view-more').remove();
-<% else %>
-  $('#view-more a').attr('href', '<%= url_for(page: @products.current_page + 1) %>');
-<% end %>
+$("#posts").append("<div class='page'><%= escape_javascript(render(@products)) %></div>");

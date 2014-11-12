@@ -1,0 +1,10 @@
+<% if !@product.already_up_voted_by_user?(current_user) %>
+  $('#upvote-'+<%= @product.id %>).css('color', 'grey');
+  $('#downvote-'+<%= @product.id %>).css('color', 'grey');
+  $('#vote-'+<%= @product.id %>).empty().append("<strong><%=@product.points %></strong>");
+<% else %>
+ $('#upvote-'+<%= @product.id %>).css('color', '#9E916A');
+ $('#downvote-'+<%= @product.id %>).css('color', 'grey');
+ $('#vote-'+<%= @product.id %>).empty().append("<strong><%=@product.points %></strong>");
+<% end %>
+

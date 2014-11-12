@@ -1,5 +1,5 @@
-  <a href="#" class="btn btn-xs btn-primary space hoter">Look by Hotest</a>
-  <a href="#" class="btn btn-xs btn-primary space newer">Look by Newest</a>
+  <a class="btn btn-xs btn-primary space hotter" id= "hotter">Look by Hottest</a>
+  <a class="btn btn-xs btn-primary space newer" id= "newer">Look by Newest</a>
     <h1 class="h3 text-center">All<br><p class="h6">The Newest and Best Products</p></h1>
     <%= link_to "New Product", new_product_path(@product), class: 'btn btn-success btn-xs pull-right to-right' %>
     <div class="leaderboard">
@@ -24,13 +24,11 @@
       <% end %>
     </div>
 
-  <div class="show_box newer" id="posts">
-    <div class="page">
+  <div class="show_box" id="posts">
+    <div class="page newer">
      <%= render @products %>
     </div>
-  </div>
-  <div class="show_box hoter" id="posts">
-    <div class ="page">
+    <div class ="page hotter">
     <%= render :partial => 'product', :collection => @products.unscoped.all.reverse%>
     </div>
   </div>

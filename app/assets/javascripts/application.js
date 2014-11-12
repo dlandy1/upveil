@@ -65,12 +65,12 @@
          $(".females").show();
      })
     
-    $(".newer").on("click", function(){
+    $("#newer").on("click", function(){
          $(".newer").hide();
-         $(".hoter").show();
+         $(".hotter").show();
      })
-    $(".hoter").on("click", function(){
-         $(".hoter").hide();
+    $("#hotter").on("click", function(){
+         $(".hotter").hide();
          $(".newer").show();
      })
     });

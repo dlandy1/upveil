@@ -8,7 +8,7 @@ class Product < ActiveRecord::Base
     :presence => true, 
     :file_size => { 
       :minimum => 0.015.megabytes.to_i, 
-      :maximum => 0.5.megabytes.to_i 
+      :maximum => 3.0.megabytes.to_i 
     } 
 
   validates :title, length: {minimum: 3}, presence: true
@@ -39,6 +39,8 @@ class Product < ActiveRecord::Base
       subcategory.increase_grade(self.user, -20)
       current_score = HIGHSCORE_LB.score_for(voting_user.id).to_i
       HIGHSCORE_LB.rank_member(voting_user.id, current_score - 3)
+      product_score = HIGHSCORE_LB.score_for(self.user.id).to_i
+      HIGHSCORE_LB.rank_member(self.user.id, product_score - 20)
     end
 
     def already_down_voted_by_user?(voting_user)
@@ -53,6 +55,8 @@ class Product < ActiveRecord::Base
       subcategory.increase_grade(self.user, 15)
       current_score = HIGHSCORE_LB.score_for(voting_user.id).to_i
       HIGHSCORE_LB.rank_member(voting_user.id, current_score - 1)
+      product_score = HIGHSCORE_LB.score_for(self.user.id).to_i
+      HIGHSCORE_LB.rank_member(self.user.id, product_score + 15)
     end
 
     def up_votes
@@ -67,7 +71,9 @@ class Product < ActiveRecord::Base
       subcategory = Category.find(self.subcat_id)
       subcategory.increase_grade(self.user, -15)
        current_score = HIGHSCORE_LB.score_for(voting_user.id).to_i
-      HIGHSCORE_LB.rank_member(voting_user.id, current_score - 3)
+      HIGHSCORE_LB.rank_member(voting_user.id, current_score + 1)
+      product_score = HIGHSCORE_LB.score_for(self.user.id).to_i
+      HIGHSCORE_LB.rank_member(self.user.id, product_score - 15)
     end
 
     def up_vote!(voting_user)
@@ -78,6 +84,8 @@ class Product < ActiveRecord::Base
       subcategory.increase_grade(self.user, 20)
       current_score = HIGHSCORE_LB.score_for(voting_user.id).to_i
       HIGHSCORE_LB.rank_member(voting_user.id, current_score + 3)
+      product_score = HIGHSCORE_LB.score_for(self.user.id).to_i
+      HIGHSCORE_LB.rank_member(self.user.id, product_score + 20)
     end
 
     def increase(voting_user, points)
@@ -104,7 +112,7 @@ class Product < ActiveRecord::Base
 
      seconds = (self.created_at.to_i - 1134028003).to_f
  
-     new_rank = (order + sign) + (seconds / 45000)
+     new_rank = (order + sign.to_f) + (seconds / 45000)
  
      update_attribute(:rank, new_rank)
    end

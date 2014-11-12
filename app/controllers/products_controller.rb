@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
   
   def new
     if current_user != nil
-    @product = Product.new
+      @product = Product.new
      else
        flash[:error] = "You must sign in or up before posting a product."
        redirect_to new_user_session_path
@@ -22,7 +22,7 @@ class ProductsController < ApplicationController
         @category = Category.find(subcat)
         @category.increase_grade(current_user, 100)
         flash[:notice] = "product was saved."
-        redirect_to [@category, @product]
+        redirect_to [@category]
       else
         flash[:error] = "There was an error saving the product. Please try again."
         render :new

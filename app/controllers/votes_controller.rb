@@ -5,46 +5,45 @@ class VotesController < ApplicationController
   after_action :update_product
 
   def up_vote
-    if current_user.id == 1 || current_user.id == 2 || current_user.id == 3
-        5.times { @product.up_vote!(current_user) }
-        redirect_to :back
+    if current_user.id == 1 
+       @product.up_vote!(current_user) 
     elsif current_user
       if @product.already_up_voted_by_user?(current_user)
         @product.already_upvote(current_user)
-        redirect_to :back
       elsif @product.already_down_voted_by_user?(current_user)
         @product.already_downvote(current_user)
         @product.up_vote!(current_user)
-        redirect_to :back
       else
         @product.up_vote!(current_user)
-        redirect_to :back
       end
     else
       flash[:error] = "You must sign in"
-      redirect_to new_user_session_path
+      format.html {redirect_to new_user_session_path}
+    end
+    respond_with(@product) do |format|
+      format.html { redirect_to :back}
     end
   end
 
   def down_vote
-    if current_user.id == 1 || 2 || 3 || 4 || 5 || 6
-        5.times { @product.down_vote!(current_user) }
-        redirect_to :back
+    if current_user.id == 1 
+        @product.down_vote!(current_user) 
     elsif current_user
       if @product.already_down_voted_by_user?(current_user)
          @product.already_downvote(current_user)
-         redirect_to :back
       elsif @product.already_up_voted_by_user?(current_user)
         @product.already_upvote(current_user)
         @product.down_vote!(current_user)
-        redirect_to :back
       else
         @product.down_vote!(current_user)
-        redirect_to :back
       end
       else
       flash[:error] = "You must sign in"
        redirect_to new_user_session_path
+       format.html {redirect_to new_user_session_path}
+    end
+     respond_with(@product) do |format|
+      format.html { redirect_to :back}
     end
   end
 

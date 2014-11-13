@@ -8,10 +8,11 @@ class Product < ActiveRecord::Base
     :presence => true, 
     :file_size => { 
       :minimum => 0.015.megabytes.to_i, 
-      :maximum => 3.0.megabytes.to_i 
+      :maximum => 10.0.megabytes.to_i 
     } 
 
   validates :title, length: {minimum: 3}, presence: true
+  validates_uniqueness_of :title
   validates :link, :format => URI::regexp(%w(http https))
   validates :price, :numericality => { :greater_than_or_equal_to => 0 }
   validates :user, presence: true
@@ -19,7 +20,6 @@ class Product < ActiveRecord::Base
   validates :description,length: {maximum: 140}, :allow_blank => true
   validates :subcat_id, presence: true
   validates :gender, :if => :in_fashion?, presence: true
-   default_scope { order('rank DESC') }
 
 
     def in_fashion?

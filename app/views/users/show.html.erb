@@ -1,13 +1,13 @@
-<h1 class="h3 text-center"><b><%=@user.name %></b><br><p class="h6">Best Products</p></h1>
-<% if @user == current_user %>
-  <%= link_to "Change User Name", edit_user_path %>
-<% end %>
+<h1 class="h3 text-center font-best"><b><%=@user.name %></b></h1>
  <% if @user == current_user && @user.instagram_url.nil? && @user.twitter_url.nil? %>
-      <h4>Link to you're social media</h4>
+      <h4>Link to your social media</h4>
       <div class='new-social'>
         <%= render "formal" %>
       <% end %>
   <div>
+    <% if @user == current_user %>
+      <%= link_to "Change User Name", edit_user_path, class: 'user-name' %>
+    <% end %>
     <% if @user.instagram_url  != "" %>
       <a href=""><%= link_to "Instagram", @user.instagram_url, :target => "_blank" %></a>
     <% end %>

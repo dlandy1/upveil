@@ -11,7 +11,7 @@
 */
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 html {
-  font-family: sans-serif;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -908,8 +908,8 @@ textarea {
   line-height: inherit;
 }
 a {
-  font-family: sans-serif;
-  color: #196BB0;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  color:  #071680;
   text-decoration: none;
 }
 a:hover,
@@ -996,7 +996,6 @@ h6,
 .h5,
 .h6 {
   font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: bold;
   line-height: 1.1;
   color: inherit;
 }
@@ -1076,27 +1075,27 @@ h6 .small,
 }
 h1,
 .h1 {
-  font-size: 41px;
+  font-size: 51px;
 }
 h2,
 .h2 {
-  font-size: 34px;
+  font-size: 44px;
 }
 h3,
 .h3 {
-  font-size: 28px;
+  font-size: 32px;
 }
 h4,
 .h4 {
-  font-size: 20px;
+  font-size: 18px;
 }
 h5,
 .h5 {
-  font-size: 16px;
+  font-size: 18px;
 }
 h6,
 .h6 {
-  font-size: 14px;
+  font-size: 16px;
 }
 p {
   margin: 0 0 0px;
@@ -1399,10 +1398,10 @@ pre code {
 }
 @media (min-width: 768px) {
   .container {
-    width: 700px;
+    width: 100%;
   }
 }
-@media (min-width: 992px) {
+@media (min-width: 980px) {
   .container {
     width: 70%;
   }
@@ -2075,7 +2074,7 @@ th {
 .table > thead > tr > td,
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
-  padding: 1px;
+  padding: 3px;
   line-height: 1.42857143;
   vertical-align: top;
   border-top: 1px solid #dddddd;
@@ -3591,11 +3590,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   display: block;
 }
 .nav > li > a {
-  font-family: inherit;
   position: relative;
   display: block;
-  padding: 15px 15px;
+  padding: 12px 30px;
   color: white;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-size: 20px;
 }
 .nav > li > a:hover,
 .nav > li > a:focus {
@@ -3802,7 +3802,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-collapse.in {
   overflow-y: auto;
 }
-@media (min-width: 768px) {
+@media (min-width: 800px) {
   .navbar-collapse {
     width: auto;
     border-top: 0;
@@ -3890,6 +3890,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   line-height: 22px;
   height: 0px;
 }
+
 .navbar-brand:hover,
 .navbar-brand:focus {
   text-decoration: none;
@@ -6190,6 +6191,7 @@ button.close {
 }
 .navbar {
   font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  box-shadow: 0px 21px 9px #FFFFFF;
 }
 .navbar-nav,
 .navbar-form {
@@ -6329,7 +6331,13 @@ legend {
   padding: 3px 5px;
   font-size: 11px;
 }
+@media (min-width: 89px){
+  .to-right{
+  display: none;
+  }
+ }
 .to-right{
+  display: inherit;
   position: fixed;
   font-size: 14px;
   padding: 1px;
@@ -6338,20 +6346,19 @@ legend {
   right: 35px;
 }
 .product_box{
-  border-width: 3px;
-  max-width: 515px;
+  max-width: 513px;
   margin-left: auto;
   margin-right: auto;
   border-radius: 3px;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin-top: 20px;
+  margin-bottom: 70px;
   background-color: white;
   border: #dddddd solid 1px;
+  box-shadow: 10px 10px 18px #797979;
 }
 .image_box{
   text-align: center;
-  border-top: #dddddd solid 1px;
-  border-bottom: #dddddd solid 1px;
+  border-top: 1px solid rgb(218, 218, 218);
 }
 .money{
   color: green;
@@ -6379,7 +6386,7 @@ legend {
   position: absolute;
   width: 40px;
   text-align: center;
-  margin-left: 4%;
+  margin-left: 5%;
   margin-top: 85px;
  }
  .voted{
@@ -6387,7 +6394,6 @@ legend {
  }
  .texter-center{
   text-align: center;
-  margin-left: 35px;
  }
 
  .share_row{
@@ -6417,11 +6423,19 @@ legend {
  .hotter{
   display: none;
  }
- .fixer{
-  position: fixed;
-  width: 161px;
-  right: 12px;
-  font-size: 13px;
+ @media (min-width: 89px){
+  .fixer{
+  display: none;
+ }
+ }
+ @media (min-width: 890px) {
+   .fixer{
+    display: inherit;
+    position: fixed;
+    width: 133px;
+    right: 2%;
+    font-size: 13px;
+   }
  }
  .fber{
   position: fixed;
@@ -6459,6 +6473,68 @@ legend {
  .fb-comments{
   margin-top: 20px;
  }
-
-
+@media (min-width: 400px) {
+ .nav > li > a {
+   padding: 15px 5px;
+ }
+}
+@media (min-width: 780px) {
+ .nav > li > a {
+   padding: 15px 10px;
+ }
+}
+@media (min-width: 880px) {
+ .nav > li > a {
+   padding: 15px 15px;
+ }
+}
+@media (min-width: 980px) {
+ .nav > li > a {
+   padding: 15px 20px;
+ }
+}
+@media (min-width: 990px) {
+ .nav > li > a {
+   padding: 15px 25px;
+ }
+}
+@media (min-width: 1086px) {
+ .nav > li > a {
+  font-family: inherit;
+  position: relative;
+  display: block;
+  padding: 15px 30px;
+  color: white;
+  }
+}
+.smallerer{
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+.price{
+  font-size: 14px;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  position: absolute;
+  left: 475px;
+}
+.font-best{
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+.user-name{
+  position: absolute;
+  top: 82px;
+  margin-left: 120px;
+  font-size: 15px;
+}
+.female{
+  background-color: rgb(243, 230, 255);
+}
+.female:hover{
+  background-color: rgb(243, 230, 255);
+  color: blue;
+}
+.male:hover{
+  background-color: rgb(223, 239, 255);
+  color: blue;
+}
  

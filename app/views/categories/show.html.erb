@@ -12,8 +12,8 @@
   <% if @category.title == "Fashion" %>
 
     <div class="btn-group btn-group-justified size gender">
-      <a href= "#" class="btn btn-default size male"> Male </a>
       <a href= "#" class="btn btn-default size female"> Female </a>
+      <a href= "#" class="btn btn-default size male"> Male </a>
     </div>
 
     <% elsif @category.title == "Lingerie" %>
@@ -26,9 +26,9 @@
 
         <% if @parent != nil && @subcatparent.title == "Fashion" %>
 
-        <div class="btn-group btn-group-justified size gender">
-        <a href= "#" class="btn btn-default size male"> Male </a>
+      <div class="btn-group btn-group-justified size gender">
         <a href= "#" class="btn btn-default size female"> Female </a>
+        <a href= "#" class="btn btn-default size male"> Male </a>
       </div>
 
       <%end %>
@@ -80,7 +80,7 @@
            <table class="table table-striped table-hover fixer">
               <thead>
                 <tr>
-                  <th>Top Users</th>
+                  <th><%= @category.title %> Leaders</th>
                   <th>Score</th>
                 </tr>
               </thead>
@@ -99,29 +99,18 @@
 
  <% if @parent.nil? %>
   <% if @category.title == "Fashion" %>
-  <div class="males">
-    <div class="show_box newer">
-      <div id="page">
-      <% @category.products.where(:gender => "Male").each do |product| %>
-         <%= render product %>
-         <% end %>
-      </div>
-    </div>
-  </div>
 
-  <div class="females">
-     <div class="show_box newer">
-      <div id="page">
-      <% @category.products.where(:gender => "Female").each do |product| %>
-       <%= render product %>
-       <% end %>
-      </div>
+    <div class="males">
+      <%= render :partial => "male" %>
     </div>
-  </div>
+
+     <div class="females">
+      <%= render :partial => "female" %>
+    </div>    
 
     <% else %>
-    <div class="show_box newer">
-      <div id="page">
+    <div class="show_box newer" id="products">
+      <div class="page">
       <% @products.all.each do |product| %>
        <%= render product %>
        <% end %>
@@ -131,29 +120,19 @@
 
     <% else %>
    <% if @subcatparent.title == "Fashion"  %>
+
     <div class="males">
-      <div class="show_box newer">
-        <div id="page">
-      <% @products.where(:gender => "Male").each do |product| %>
-         <%= render product %>
-         <% end %>
-       </div>
-      </div>
+      <%= render :partial => "male" %>
     </div>
 
-    <div class="females">
-      <div class="show_box newer">
-        <div id="page">
-        <% @products.where(:gender => "Female").each do |product| %>
-       <%= render product %>
-       <% end %>
-        </div>
-      </div>   
-    </div>
+     <div class="females">
+      <%= render :partial => "female" %>
+    </div>    
+
 
     <% else %>
-    <div class="show_box newer">
-      <div id="page">
+    <div class="show_box newer"> 
+      <div class="page">
       <% @products.all.each do |product| %>
        <%= render product %>
        <% end %>
@@ -164,28 +143,29 @@
 
  <% if @parent.nil? %>
      <% if @category.title == "Fashion" %>
-
      <div class="males">
-      <div class="show_box hoter">
-        <div id="page">
-          <%= render :partial => 'products/product', :collection => @products.where(:gender => "Male").unscoped.all.reverse%> 
+      <div class="show_box hotter">
+        <div class="page">
+          <%= render :partial => 'products/product', :collection => @maleproducts.unscoped.all.reverse%> 
         </div>
       </div>
     </div>
 
     <div class="females">
-       <div class="show_box hoter">
+       <div class="show_box hotter">
         <div id="page">
-        <%= render :partial => 'products/product', :collection => @products.where(:gender => "Female").unscoped.all.reverse%>
+        <%= render :partial => 'products/product', :collection => @femaleproducts.unscoped.all.reverse%>
         </div>
       </div>
     </div>
 
     <% else %>
 
-    <div class="show_box hoter">
+    <div class="show_box hotter">
         <div id="page">
-         <%= render :partial => 'products/product', :collection => @products.unscoped.all.reverse%>
+          <% @unscope.all.each do |product| %>
+           <%= render product %>
+          <% end %>
           </div>
       </div>
     <% end %>
@@ -193,34 +173,43 @@
     <% else %>
    <% if @subcatparent.title == "Fashion"  %>
     <div class="males">
-      <div class="show_box hoter">
+      <div class="show_box hotter">
         <div id="page">
-          <%= render :partial => 'products/product', :collection => @products.where(:gender => "Male").unscoped.all.reverse%> 
+          <%= render :partial => 'products/product', :collection => @maleproducts.unscoped.all.reverse%> 
         </div>
       </div>
     </div>
 
     <div class="females">
-       <div class="show_box hoter">
+       <div class="show_box hotter">
         <div id="page">
-        <%= render :partial => 'products/product', :collection => @products.where(:gender => "Female").unscoped.all.reverse%>
+        <%= render :partial => 'products/product', :collection =>  @femaleunscope%>
         </div>
       </div>
     </div>
 
     <% else %>
 
-    <div class="show_box hoter">
-        <div id="page">
-         <%= render :partial => 'products/product', :collection => @products.unscoped.all.reverse%>
+    <div class="show_box hotter">
+        <div class="page">
+        <% @unscope.all.each do |product| %>
+           <%= render product %>
+          <% end %>
           </div>
       </div>
 
     <% end %>
     <% end %>
-    <% unless @products.current_page == @products.total_pages %>
-    <p id="view-more">
-      <%= link_to('View More', url_for(page: @products.current_page + 1)) %>
-    </p>
-<% end %>
-
+  <% if @products != nil %>
+    <% if @parent %>
+       <% if @subcatparent.title == "Fashion" %>
+      <% else %>
+        <%= paginate @products %>
+      <% end %>
+    <%else %>
+      <% if @category.title == "Fashion" %>
+      <% else %>
+          <%= paginate @products %>
+      <% end %>
+    <% end %>
+  <% end %>

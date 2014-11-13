@@ -1,6 +1,7 @@
   <a class="btn btn-xs btn-primary space hotter" id= "hotter">Look by Hottest</a>
   <a class="btn btn-xs btn-primary space newer" id= "newer">Look by Newest</a>
-    <h1 class="h3 text-center">All<br><p class="h6">The Newest and Best Products</p></h1>
+    <h1 class="text-center font-best" style="
+    font-family: times, Times New Roman, times-roman, georgia, serif;">All<br><p class="h6">The Newest and Best Products</p></h1>
     <%= link_to "New Product", new_product_path(@product), class: 'btn btn-success btn-xs pull-right to-right' %>
     <div class="leaderboard">
       <% if current_user && Product.first !=nil %>
@@ -24,13 +25,13 @@
       <% end %>
     </div>
 
-  <div class="show_box" id="posts">
+  <div class="show_box" id="products">
     <div class="page newer">
      <%= render @products %>
     </div>
+  </div>
     <div class ="page hotter">
     <%= render :partial => 'product', :collection => @products.unscoped.all.reverse%>
     </div>
-  </div>
   <br>
   <%= paginate @products %>

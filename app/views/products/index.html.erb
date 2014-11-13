@@ -5,7 +5,7 @@
     <%= link_to "New Product", new_product_path(@product), class: 'btn btn-success btn-xs pull-right to-right' %>
     <div class="leaderboard">
       <% if current_user && Product.first !=nil %>
-           <table class="table table-striped table-hover fixer">
+          <!--  <table class="table table-striped table-hover fixer">
               <thead>
                 <tr>
                   <th>Top Users</th>
@@ -21,7 +21,7 @@
                 </tr>
                 <% end %>
             </tbody>
-          </table> 
+          </table>  -->
       <% end %>
     </div>
 

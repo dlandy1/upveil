@@ -2730,7 +2730,7 @@ select[multiple].input-lg {
   background-image: none;
   border: 1px solid transparent;
   white-space: nowrap;
-  padding: 14px 12px;
+  padding: 8px 12px;
   font-size: 18px;
   line-height: 1.42857143;
   border-radius: 4px;
@@ -3592,7 +3592,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a {
   position: relative;
   display: block;
-  padding: 12px 30px;
+  padding: 9px 30px;
   color: white;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-size: 20px;
@@ -4098,7 +4098,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: black;
+  background-color: #2d2d2d;
 }
 .navbar-default .navbar-brand {
   color: #FAE091;;
@@ -6191,7 +6191,7 @@ button.close {
 }
 .navbar {
   font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  box-shadow: 0px 21px 9px #FFFFFF;
+  box-shadow: 0px 30px 9px rgba(255, 255, 255, 0.9);
 }
 .navbar-nav,
 .navbar-form {
@@ -6218,7 +6218,7 @@ button.close {
   color: #333333;
 }
 .navbar-brand {
-  padding-top: 16px;
+  padding-top: 10px;
 }
 @media (max-width: 768px) {
   .navbar .navbar-nav > li > a {
@@ -6475,27 +6475,27 @@ legend {
  }
 @media (min-width: 400px) {
  .nav > li > a {
-   padding: 15px 5px;
+   padding: 7px 5px;
  }
 }
 @media (min-width: 780px) {
  .nav > li > a {
-   padding: 15px 10px;
+   padding: 7px 10px;
  }
 }
 @media (min-width: 880px) {
  .nav > li > a {
-   padding: 15px 15px;
+   padding: 7px 15px;
  }
 }
 @media (min-width: 980px) {
  .nav > li > a {
-   padding: 15px 20px;
+   padding: 7px 20px;
  }
 }
 @media (min-width: 990px) {
  .nav > li > a {
-   padding: 15px 25px;
+   padding: 7px 25px;
  }
 }
 @media (min-width: 1086px) {
@@ -6503,7 +6503,7 @@ legend {
   font-family: inherit;
   position: relative;
   display: block;
-  padding: 15px 30px;
+  padding: 7px 30px;
   color: white;
   }
 }

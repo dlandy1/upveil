@@ -8,18 +8,24 @@ class VotesController < ApplicationController
     if current_user
       if @product.already_up_voted_by_user?(current_user)
         @product.already_upvote(current_user)
+        respond_with(@product) do |format|
+        format.html { redirect_to :back}
+        end
       elsif @product.already_down_voted_by_user?(current_user)
         @product.already_downvote(current_user)
         @product.up_vote!(current_user)
+        respond_with(@product) do |format|
+        format.html { redirect_to :back}
+        end
       else
         @product.up_vote!(current_user)
+        respond_with(@product) do |format|
+        format.html { redirect_to :back}
+        end
       end
     else
       flash[:error] = "You must sign in"
-      format.html {redirect_to new_user_session_path}
-    end
-    respond_with(@product) do |format|
-      format.html { redirect_to :back}
+      redirect_to new_user_session_path
     end
   end
 
@@ -27,19 +33,24 @@ class VotesController < ApplicationController
     if current_user
       if @product.already_down_voted_by_user?(current_user)
          @product.already_downvote(current_user)
+         respond_with(@product) do |format|
+        format.html { redirect_to :back}
+        end
       elsif @product.already_up_voted_by_user?(current_user)
         @product.already_upvote(current_user)
         @product.down_vote!(current_user)
+        respond_with(@product) do |format|
+        format.html { redirect_to :back}
+        end
       else
         @product.down_vote!(current_user)
+        respond_with(@product) do |format|
+        format.html { redirect_to :back}
+        end
       end
       else
       flash[:error] = "You must sign in"
        redirect_to new_user_session_path
-       format.html {redirect_to new_user_session_path}
-    end
-     respond_with(@product) do |format|
-      format.html { redirect_to :back}
     end
   end
 

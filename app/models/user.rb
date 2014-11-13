@@ -13,6 +13,9 @@ class User < ActiveRecord::Base
   validates :twitter_url, :format => URI::regexp(%w(http https)), :allow_blank => true 
   validates :name, length: {minimum: 3}, presence: true
 
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
    def admin?
     role == 'admin'
    end

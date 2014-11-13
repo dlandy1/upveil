@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-     @category = Category.find(params[:id])
+     @category = Category.friendly.find(params[:id])
      @subcategories = @category.subcategories
      @parent = @category.parent_id
      @leaders = @category.leaderboard.leaders(1)
@@ -17,7 +17,7 @@ class CategoriesController < ApplicationController
       @unscopemale = @category.products.where(:gender => "Male").order("created_at DESC").page(params[:page]).per(15)
       @femaleunscope = @category.products.order("created_at DESC").where(:gender => "Female").page(params[:page]).per(15)
      elsif !@parent.nil?
-      @subcatparent = Category.find(@parent)
+      @subcatparent = Category.friendly.find(params[:id])
       @parentsubcats = @subcatparent.subcategories
       if @subcatparent.title == "Fashion"
         @maleproducts = @subcatparent.products.where(:gender => "Male").where(subcat_id: @category.id).order('rank DESC').page(params[:page]).per(10)
@@ -35,7 +35,7 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-    @category = Category.find(params[:id])
+    @category = Category.friendly.find(params[:id])
     authorize @category
   end
 
@@ -51,7 +51,7 @@ class CategoriesController < ApplicationController
   end
 
  def update
-  @category = Category.find(params[:id])
+  @category = Category.friendly.find(params[:id])
   if @category.update_attributes(category_params)
     redirect_to @category
   else
@@ -61,7 +61,7 @@ class CategoriesController < ApplicationController
  end
 
  def destroy
-  @category = Category.find(params[:id])
+  @category = Category.friendly.find(params[:id])
   name = @category.title
 
   authorize @category

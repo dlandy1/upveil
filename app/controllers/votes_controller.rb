@@ -59,7 +59,7 @@ class VotesController < ApplicationController
   private
 
     def load_post_and_vote
-      @product = Product.find(params[:product_id])
+      @product = Product.friendly.find(params[:product_id])
       @category = @product.category
     end
 

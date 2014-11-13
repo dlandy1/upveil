@@ -10,6 +10,9 @@ class Category < ActiveRecord::Base
   scope :parent_categories, -> { where(parent_id: nil)}
   scope :sub_categories, -> {where("parent_id IS NOT NULL")}
 
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   def to_s
     title
   end
@@ -23,7 +26,7 @@ class Category < ActiveRecord::Base
     self.leaderboard.rank_member(user.id, current_score + points)
     if self.parent_id
     parent = self.parent_id
-    category = Category.find(parent)
+    category = Category.friendly.find(parent)
     category.leaderboard.rank_member(user.id, current_score + points)
     end
   end

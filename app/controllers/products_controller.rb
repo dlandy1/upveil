@@ -19,7 +19,7 @@ class ProductsController < ApplicationController
         @product.increase(current_user, 100)
         subcat = @product.subcat_id
         @product.up_vote!(@product.user)
-        @category = Category.find(subcat)
+        @category = Category.friendly.find(subcat)
         @category.increase_grade(current_user, 100)
         flash[:notice] = "product was saved."
         redirect_to [@category]
@@ -30,7 +30,7 @@ class ProductsController < ApplicationController
   end
 
     def update
-      @product = Product.find(params[:id])
+      @product = Product.friendly.find(params[:id])
       @category = @product.category
        if @product.update_attributes(product_params)
          flash[:notice] = "Post was updated."
@@ -42,10 +42,10 @@ class ProductsController < ApplicationController
    end
    
    def destroy
-    @product = Product.find(params[:id])
+    @product = Product.friendly.find(params[:id])
     @category = @product.category
     subcat = @product.subcat_id
-    @subcategory = Category.find(subcat)
+    @subcategory = Category.friendly.find(subcat)
 
     if @product.destroy
       @product.increase(current_user, -100)

@@ -21,6 +21,9 @@ class Product < ActiveRecord::Base
   validates :subcat_id, presence: true
   validates :gender, :if => :in_fashion?, presence: true
 
+   extend FriendlyId
+  friendly_id :title, use: :slugged
+
 
     def in_fashion?
       category == 'Fashion'
@@ -35,7 +38,7 @@ class Product < ActiveRecord::Base
       vote_manager = VotesManager.new(voting_user, self)
       vote_manager.remove_up_vote!
       self.category.increase_grade(self.user, -20)
-      subcategory = Category.find(self.subcat_id)
+      subcategory = Category.friendly.find(self.subcat_id)
       subcategory.increase_grade(self.user, -20)
       current_score = HIGHSCORE_LB.score_for(voting_user.id).to_i
       HIGHSCORE_LB.rank_member(voting_user.id, current_score - 3)
@@ -51,7 +54,7 @@ class Product < ActiveRecord::Base
       vote_manager = VotesManager.new(voting_user, self)
       vote_manager.remove_down_vote!
       self.category.increase_grade(self.user, 15)
-      subcategory = Category.find(self.subcat_id)
+      subcategory = Category.friendly.find(self.subcat_id)
       subcategory.increase_grade(self.user, 15)
       current_score = HIGHSCORE_LB.score_for(voting_user.id).to_i
       HIGHSCORE_LB.rank_member(voting_user.id, current_score - 1)
@@ -68,7 +71,7 @@ class Product < ActiveRecord::Base
       vote_manager = VotesManager.new(voting_user, self)
       vote_manager.down_vote!
       self.category.increase_grade(self.user, -15)
-      subcategory = Category.find(self.subcat_id)
+      subcategory = Category.friendly.find(self.subcat_id)
       subcategory.increase_grade(self.user, -15)
        current_score = HIGHSCORE_LB.score_for(voting_user.id).to_i
       HIGHSCORE_LB.rank_member(voting_user.id, current_score + 1)
@@ -80,7 +83,7 @@ class Product < ActiveRecord::Base
       vote_manager = VotesManager.new(voting_user, self)
       vote_manager.up_vote!
       self.category.increase_grade(self.user, 20)
-      subcategory = Category.find(self.subcat_id)
+      subcategory = Category.friendly.find(self.subcat_id)
       subcategory.increase_grade(self.user, 20)
       current_score = HIGHSCORE_LB.score_for(voting_user.id).to_i
       HIGHSCORE_LB.rank_member(voting_user.id, current_score + 3)

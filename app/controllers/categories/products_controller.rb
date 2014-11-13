@@ -2,12 +2,12 @@ class Categories::ProductsController < ApplicationController
   
 
   def show
-    @product = Product.find(params[:id])
+    @product = Product.friendly.find(params[:id])
   end
 
    def edit
-      @category = Category.find(params[:category_id])
-      @product = Product.find(params[:id])
+      @category = Category.friendly.find(params[:category_id])
+      @product = Product.friendly.find(params[:id])
     end
    private
 

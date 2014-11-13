@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141113051312) do
+ActiveRecord::Schema.define(version: 20141113201015) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -19,7 +19,23 @@ ActiveRecord::Schema.define(version: 20141113051312) do
     t.datetime "updated_at"
     t.string   "gender"
     t.integer  "parent_id"
+    t.string   "slug"
   end
+
+  add_index "categories", ["slug"], name: "index_categories_on_slug", unique: true
+
+  create_table "friendly_id_slugs", force: true do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
 
   create_table "identities", force: true do |t|
     t.integer  "user_id"
@@ -44,9 +60,11 @@ ActiveRecord::Schema.define(version: 20141113051312) do
     t.string   "gender"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
 
   add_index "products", ["category_id"], name: "index_products_on_category_id"
+  add_index "products", ["slug"], name: "index_products_on_slug", unique: true
   add_index "products", ["subcat_id"], name: "index_products_on_subcat_id"
   add_index "products", ["user_id"], name: "index_products_on_user_id"
 
@@ -66,9 +84,11 @@ ActiveRecord::Schema.define(version: 20141113051312) do
     t.string   "name"
     t.string   "twitter_url"
     t.string   "instagram_url"
+    t.string   "slug"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["slug"], name: "index_users_on_slug", unique: true
 
 end

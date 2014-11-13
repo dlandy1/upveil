@@ -3,12 +3,12 @@ class UsersController < ApplicationController
 
   # GET /users/:id.:format
   def show
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
   end
 
   # GET /users/:id/edit
   def edit
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
   end
 
   # PATCH/PUT /users/:id.:format
@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   
   private
     def set_user
-      @user = User.find(params[:id])
+      @user = User.friendly.find(params[:id])
     end
 
     def user_params

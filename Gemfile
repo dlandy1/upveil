@@ -35,6 +35,8 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+gem 'friendly_id'
+
 gem 'bootstrap-sass', '~> 3.2.0'
 
 gem 'autoprefixer-rails'

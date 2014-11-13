@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   def index
    @products = Product.order('rank DESC').page(params[:page]).per(10)
-   # @leaders =  HIGHSCORE_LB.leaders(1)
+   @leaders =  HIGHSCORE_LB.leaders(1)
   end
   
   def new

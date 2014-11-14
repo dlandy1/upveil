@@ -12,15 +12,7 @@
                   <th>Score</th>
                 </tr>
               </thead>
-              <tbody>
-                 <% @leaders.each do |leader| %>
-                   <% user = User.friendly.find(leader[:member].to_i) %>
-                <tr>
-                  <td><%= link_to user.name, [user] %></td>
-                  <td><%= leader[:score].to_i %></td>
-                </tr>
-                <% end %>
-            </tbody>
+            
           </table> 
       <% end %>
     </div>

@@ -1,3 +1,4 @@
+@import "font-awesome";
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import url("//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700");
@@ -3592,7 +3593,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a {
   position: relative;
   display: block;
-  padding: 9px 30px;
+  padding: 9px 20px;
   color: white;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-size: 20px;
@@ -6523,7 +6524,7 @@ legend {
   font-family: inherit;
   position: relative;
   display: block;
-  padding: 7px 30px;
+  padding: 7px 20px;
   color: white;
   }
 }
@@ -6564,5 +6565,8 @@ legend {
   top: 256px;
   transform: translateY(-50%);
 }
-
+.fa{
+  color: white;
+  padding-right: 5px;
+}
  

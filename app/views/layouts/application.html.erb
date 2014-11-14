@@ -6,6 +6,7 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <%= favicon_link_tag '/images/favicon.ico' %>
 </head>
 <body>
   <div class="navbar navbar-default navbar-fixed-top">
@@ -35,11 +36,13 @@
     <div class="navbar-inner">
     <ul class="nav">
       <li><%= link_to "All", root_path%></li>
-          <% Category.all.each do |category| %>
-          <% if category.parent_id.nil? %>
-         <li><%= link_to category.title, category %></li>
-         <% end %>
-         <%end %>
+        <li><%= link_to Category.find(1) do%>
+         <%= fa_icon "plug" %><%= Category.find(1).title %>
+        <% end %>
+        <li><%= link_to Category.find(2) do%>
+         <img src="/images/tshirt.png" height="20px" width="20px"><%= Category.find(2).title %>
+        <% end %>
+        </li>
     </ul>
       </div>
   </div>

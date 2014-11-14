@@ -87,7 +87,7 @@ Upveil::Application.configure do
     user_name: 'someuser',
     password: 'somepass',
     authentication: :plain,
-    domain: 'localhost:3000'
+    domain: 'https://upveil.herokuapp.com/'
   }
 
   # Use default logging formatter so that PID and timestamp are not suppressed.

@@ -74,7 +74,7 @@ Upveil::Application.configure do
 
   # Disable automatic flushing of the log to improve performance.
   # config.autoflush_log = false
-  config.app_domain = 'https://upveil.herokuapp.com/'
+  config.app_domain = 'upveil.herokuapp.com/'
 
   # Email
   config.action_mailer.delivery_method = :smtp
@@ -87,7 +87,7 @@ Upveil::Application.configure do
     user_name: 'someuser',
     password: 'somepass',
     authentication: :plain,
-    domain: 'https://upveil.herokuapp.com/'
+    domain: 'upveil.herokuapp.com/'
   }
 
   # Use default logging formatter so that PID and timestamp are not suppressed.

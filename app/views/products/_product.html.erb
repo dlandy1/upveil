@@ -17,5 +17,7 @@
     <%= product.description if product.description?%>
   </p>
 </div>
-<%= image_tag(current_user.identity.smallimage)%>
+  <% if current_user %> 
+    <%= image_tag(current_user.identity.smallimage)%>
+  <% end %>
 </div>

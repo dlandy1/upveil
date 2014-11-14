@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
     :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
     has_many :products, dependent: :destroy
+    has_one :identity, dependent: :destroy
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
   validates :instagram_url, :format => URI::regexp(%w(http https)), :allow_blank => true 
   validates :twitter_url, :format => URI::regexp(%w(http https)), :allow_blank => true 

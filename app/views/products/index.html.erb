@@ -29,9 +29,9 @@
     <div class="page newer">
      <%= render @products %>
     </div>
-  </div>
     <div class ="page hotter">
-    <%= render :partial => 'product', :collection => @products.unscoped.all.reverse%>
+      <%= render :partial => 'product', :collection => @products.unscoped.all.reverse%>
     </div>
+  </div>
   <br>
   <%= paginate @products %>

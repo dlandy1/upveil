@@ -14,7 +14,7 @@
       <a href="https://twitter.com/share" class="twitter-share-button" data-via="upveil">Tweet</a>
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
     <div class="pinterest"><%= pinterest_button %></div>
-
+    </div>
 
       <div class="show-buttons">
       <% if current_user %>
@@ -25,7 +25,6 @@
         <%if current_user == @product.user || current_user.id == 1 || current_user.id == 2 || current_user.id == 3 || current_user.id == 4 || current_user.id == 5 || current_user.id == 6 %>
         <% end %>
       <% end %>
-    </div>
     </div>
   <div class="text-center"> 
     <h1 class="text-center"> 

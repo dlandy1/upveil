@@ -6849,13 +6849,13 @@ td{
     padding: 0px;
   }
   .image_box{
-    height: 250px;
+    height: 220px;
   }
   .hider{
     display: none;
   }
   .product_box{
-    width: 250px;
+    width: 220px;
   }
     .user_names {
     margin-top: 0px;
@@ -6916,3 +6916,44 @@ td{
   padding-left: 14px;
   padding-right: 14px;
 }
+@media(max-width: 998px){
+  .reddit{
+    left: 2%;
+  }
+  .fber{
+    left: 2%;
+  }
+  .twitter-share-button{
+    left: 2%;
+  }
+  .pinterest{
+    left: 2%;
+  }
+}
+
+@media(max-width: 923px){
+  .reddit{
+    left: 1%;
+  }
+  .fber{
+    left: 1%;
+  }
+  .twitter-share-button{
+    left: 1%;
+  }
+  .pinterest{
+    left: 1%;
+  }
+}
+
+@media(max-width: 876px){
+  .socialer{
+    display: none
+  }
+}
+
+
+
+
+
+

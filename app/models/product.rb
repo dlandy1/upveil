@@ -22,6 +22,14 @@ class Product < ActiveRecord::Base
   validates :subcat_id, presence: true
   validates :gender, :if => :in_fashion?, presence: true
 
+def flexible_quantity
+  price
+end
+
+def flexible_quantity=(quantity)
+  self.price = price.gsub(',', '') unless price.blank?
+end
+
    extend FriendlyId
   friendly_id :title, use: :slugged
 

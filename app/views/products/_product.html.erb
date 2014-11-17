@@ -1,8 +1,8 @@
 <div class="product">
   <div class="user_tag user_names link_color">
     <%= link_to product.user do %>
-    <%= image_tag(product.user.identity.smallimage)%>
-       <%= product.user.name %>
+    <span class="hider"><%= image_tag(product.user.identity.smallimage)%></span>
+      <p> <%= product.user.name %></p>
     <% end %>
     <%= render partial: 'votes/voter', locals: {product: product} %>
   </div>

@@ -14,7 +14,6 @@ class Product < ActiveRecord::Base
   validates :title, length: {minimum: 3, maximum: 40}, presence: true
   validates_uniqueness_of :title
   validates :link, :format => URI::regexp(%w(http https))
-  validates :flexible_quantity, presence: true
   validates :price, :numericality => { :greater_than_or_equal_to => 0 }
   validates :user, presence: true
   validates :category, presence: true
@@ -22,13 +21,9 @@ class Product < ActiveRecord::Base
   validates :subcat_id, presence: true
   validates :gender, :if => :in_fashion?, presence: true
 
-def flexible_quantity
-  price
-end
-
-def flexible_quantity=(quantity)
-  self.price = price.gsub(',', '') unless price.blank?
-end
+  def price=(num)
+    self[:price] = num.to_s.scan(/\b-?[\d.]+/).join.to_f
+  end
 
    extend FriendlyId
   friendly_id :title, use: :slugged

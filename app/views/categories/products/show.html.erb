@@ -8,36 +8,41 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 </script>
-    <a class="fber"><div class="fb-share-button" data-href= <%= request.original_url %> data-layout="button_count"></div></a>
-    <a class="reddit"><script type="text/javascript" src="//www.redditstatic.com/button/button1.js"></script></a>
-    <a href="https://twitter.com/share" class="twitter-share-button" data-via="upveil">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-  <div class="pinterest"><%= pinterest_button %></div>
+    <div class="socialer">
+      <a class="fber"><div class="fb-share-button" data-href= <%= request.original_url %> data-layout="button_count"></div></a>
+      <a class="reddit"><script type="text/javascript" src="//www.redditstatic.com/button/button1.js"></script></a>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-via="upveil">Tweet</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <div class="pinterest"><%= pinterest_button %></div>
 
 
-    <div class="show-buttons">
-    <% if current_user %>
-      <%if current_user == @product.user || current_user.id == 1 || current_user.id == 2 || current_user.id == 3 %>
-        <%= link_to "Edit",  edit_category_product_path(@product.category, @product) %>
+      <div class="show-buttons">
+      <% if current_user %>
+        <%if current_user == @product.user || current_user.id == 1 || current_user.id == 2 || current_user.id == 3 %>
+          <p><%= link_to "Edit Post",  edit_category_product_path(@product.category, @product), class: 'btn btn-xs btn-warning fonter' %></p>
+          <%= link_to "Delete Post", [@categoy, @product], method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure you want to delete this product?'} %>
+        <% end %>
+        <%if current_user == @product.user || current_user.id == 1 || current_user.id == 2 || current_user.id == 3 || current_user.id == 4 || current_user.id == 5 || current_user.id == 6 %>
+        <% end %>
       <% end %>
-      <%if current_user == @product.user || current_user.id == 1 || current_user.id == 2 || current_user.id == 3 || current_user.id == 4 || current_user.id == 5 || current_user.id == 6 %>
-        <%= link_to "Delete Post", [@categoy, @product], method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure you want to delete this product?'} %>
-      <% end %>
-    <% end %>
-
     </div>
-  <div class="text-center">
-    <a class="to_the_left">
-        <%= @product.user.name %>
-      </a>
-    <h1 class="text-center"><%= @product.title %></h1>
+    </div>
+  <div class="text-center"> 
+    <h1 class="text-center"> 
+      <%= @product.title %></h1>
       <p class="text-center"><%= link_to "Buy here", @product.link, :target => "_blank", class: 'btn btn-sm btn-primary buyer' %></p>
-      <%= render partial: 'votes/voter', locals: {product: @product} %>
-    <p class="text-center">
-      <%= image_tag(@product.image.thumb.url) %>
-    </p>
-    <p class="text-center">
-      <%= @product.description %>
-    </p>
+      <div class ="product_show">
+         <div class="user_tag user_names link_color">
+            <%= link_to @product.user do %>
+            <%= image_tag(@product.user.identity.smallimage)%>
+              <p> <%= @product.user.name %></p>
+            <% end %>
+            <%= render partial: 'votes/voter', locals: {product: @product} %>
+          </div>
+        </div>
+          <div class="showest_box"><%= image_tag(@product.image.thumb.url) %></div>
+        <p class="text-center">
+          <%= @product.description %>
+        </p>
     <div class="fb-comments" data-href= <%= request.original_url %> data-numposts="10" data-colorscheme="light"></div>
 </div>

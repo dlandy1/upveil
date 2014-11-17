@@ -41,15 +41,33 @@
           <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default size' %>
        <% end %>
     </div>
+    <div class="mobiler females">
+      <p>Subcategories</p>
+         <% @subcategories.each do |sub| %>
+          <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default spacer' %>
+       <% end %>
+    </div>
     <div class="btn-group btn-group-justified size males">
        <% @subcategories.where(:gender => nil).each do |sub| %>
           <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default size' %>
+       <% end %>
+    </div>
+    <div class="mobiler males">
+      <p>Subcategories</p>
+         <% @subcategories.where(:gender => nil).each do |sub| %>
+          <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default spacer' %>
        <% end %>
     </div>
   <% elsif @parent.nil? %>
   <div class="btn-group btn-group-justified size">
     <% @subcategories.each do |sub| %>
           <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default size' %>
+       <% end %>
+    </div>
+    <div class="mobiler">
+      <p>Subcategories</p>
+         <% @subcategories.each do |sub| %>
+          <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default spacer' %>
        <% end %>
     </div>
   <% else %>
@@ -59,10 +77,22 @@
             <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default size' %>
       <% end %>
       </div>
+       <div class="mobiler females">
+      <p>Subcategories</p>
+         <% @parentsubcats.each do |sub| %>
+          <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default spacer' %>
+       <% end %>
+    </div>
       <div class="btn-group btn-group-justified size males">
     <% @parentsubcats.where(:gender => nil).each do |sub| %>
             <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default size' %>
       <% end %>
+    </div>
+    <div class="mobiler males">
+      <p>Subcategories</p>
+         <% @parentsubcats.each do |sub| %>
+          <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default spacer' %>
+       <% end %>
     </div>
     <% else %>
     <div class="btn-group btn-group-justified size">
@@ -70,6 +100,12 @@
             <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default size' %>
       <% end %>
      </div>
+     <div class="mobiler">
+      <p>Subcategories</p>
+         <% @parentsubcats.each do |sub| %>
+          <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default spacer' %>
+       <% end %>
+    </div>
     <% end %>
   <% end %>
  </div>

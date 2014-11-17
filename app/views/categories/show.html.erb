@@ -1,5 +1,5 @@
-<a href="#" class="btn btn-xs btn-primary space hotter" id="hotter">Look by Hottest</a>
-<a href="#" class="btn btn-xs btn-primary space newer" id="newer">Look by Newest</a>
+<a class="btn btn-xs btn-primary hotter mobile-button spay" id= "hotter">Look by Hottest</a>
+<a class="btn btn-xs btn-primary newer mobile-button spay" id= "newer">Look by Newest</a>
 
 <% if @parent.nil? %>
 <h1 class="h3 text-center"><b><%=@category.title %></b><br><p class="h6">Best Products</p></h1>
@@ -73,16 +73,16 @@
     <% end %>
   <% end %>
  </div>
-    <%= link_to "New Product", new_product_path(@product), class: 'btn btn-primary btn-xs pull-right to-right' %>
-
+ <div class = "outerfixed" >
+      <div class = "interstatic">
+        <%= link_to "New Product", new_product_path(@product), class: 'btn btn-primary btn-xs to-right' %>
      <div class="leaderboard">
       <% if current_user && Product.first !=nil %>
            <table class="table table-striped table-hover fixer">
               <thead>
                 <tr>
-                  <th></th>
-                  <th><%= @category.title %> Leaders</th>
-                  <th>Score</th>
+                   <th colspan="2" class="names">Top Users</th>
+                   <th class="names">Score</th>
                 </tr>
               </thead>
               <tbody>
@@ -90,20 +90,21 @@
                    <% user = User.friendly.find(leader[:member].to_i) %>
                    <% rank = leader[:rank].to_i %>
                 <tr>
-                  <td><%= rank %></td>
+                  <td class="td"><%= rank %></td>
                   <td>
                     <%= link_to [user] do %>
-                      <%= image_tag(user.identity.smallimage)%><p><%= user.name %></p>
+                      <%= image_tag(user.identity.smallimage)%><p class="names"><%= user.name %></p>
                     <% end %>
                   </td>
-                  <td><%= leader[:score].to_i %></td>
+                  <td class="td"><%= leader[:score].to_i %></td>
                 </tr>
                 <% end %>
             </tbody>
           </table> 
       <% end %>
     </div>
-
+  </div>
+</div>
  <% if @parent.nil? %>
   <% if @category.title == "Fashion" %>
 

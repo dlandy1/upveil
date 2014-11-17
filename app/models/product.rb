@@ -11,13 +11,14 @@ class Product < ActiveRecord::Base
       :maximum => 10.0.megabytes.to_i 
     } 
 
-  validates :title, length: {minimum: 3}, presence: true
+  validates :title, length: {minimum: 3, maximum: 40}, presence: true
   validates_uniqueness_of :title
   validates :link, :format => URI::regexp(%w(http https))
+  validates :flexible_quantity, presence: true
   validates :price, :numericality => { :greater_than_or_equal_to => 0 }
   validates :user, presence: true
   validates :category, presence: true
-  validates :description,length: {maximum: 140}, :allow_blank => true
+  validates :description,length: {minimum: 3, maximum: 140}, :allow_blank => true
   validates :subcat_id, presence: true
   validates :gender, :if => :in_fashion?, presence: true
 

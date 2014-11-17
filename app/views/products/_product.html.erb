@@ -1,19 +1,20 @@
 <div class="product">
-<%= render partial: 'votes/voter', locals: {product: product} %>
-<%= link_to product.user do %>
   <div class="user_tag user_names link_color">
+    <%= link_to product.user do %>
     <%= image_tag(product.user.identity.smallimage)%>
        <%= product.user.name %>
+    <% end %>
+    <%= render partial: 'votes/voter', locals: {product: product} %>
   </div>
-  <% end %>
   <div class="product_box">
     <%= link_to [product.category, product] do %>
       <div class="image_box">
         <%= image_tag(product.image.url(:thumb), :class => "image")%>
       </div>
-      <span class="money">$<%= product.price %></span>
-        <p class="title"><%= link_to (product.title), [product.category, product], :class => "golder" %></p>
-      <p class="description"><%= product.description %></p>
+        <div class="title"> <span class="money">$<%= product.price %></span><div class="tighter"><span><%= link_to (product.title), [product.category, product], :class => "golder" %></div></span></div>
+        <% if product.description != ""%>
+          <p class="description"><%= product.description %></p>
+        <% end %>
       <% end %>
   </div>
 </div>

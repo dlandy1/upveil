@@ -26,7 +26,7 @@
                  <%= link_to current_user, class: 'btn btn-link' do %>
                   <li><%= image_tag(current_user.identity.smallimage)%></li>
                   <% end %>
-                <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-link' do %>
+                <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-link smallest' do %>
                   <li>Log out</li>
                   <% end %>
                 <% else %>
@@ -42,7 +42,7 @@
          <%= fa_icon "plug" %><%= Category.find(1).title %>
         <% end %>
         <li><%= link_to Category.find(2) do%>
-         <img src="/images/teeshirt.png" height="25px" width="25px" class="fashion"><%= Category.find(2).title %>
+         <img src="/images/teeshirt.png" height="21px" width="25px" class="fashion"><%= Category.find(2).title %>
         <% end %>
         </li>
         <li><%= link_to Category.find(3) do%>

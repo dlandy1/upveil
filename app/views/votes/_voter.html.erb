@@ -1,4 +1,4 @@
-<div class="pull-left vote-arrows">
+<div class="vote-arrows">
     <div>
       <% if current_user %>
       <%= link_to "", 
@@ -12,7 +12,8 @@
     <%= link_to "", 
         product_up_vote_path(product), 
         class: "glyphicon glyphicon-chevron-up", method: :post %></div>
-    <div><strong><%= product.points %></strong></div>
+    <div><strong style="
+    color: #666666;"><%= product.points %></strong></div>
     <div><%= link_to "", product_down_vote_path(product), 
     class: "glyphicon glyphicon-chevron-down", method: :post  %></div>
     <% end %>

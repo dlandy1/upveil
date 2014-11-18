@@ -11,7 +11,7 @@ class Product < ActiveRecord::Base
       :maximum => 10.0.megabytes.to_i 
     } 
 
-  validates :title, length: {minimum: 3, maximum: 100Ï}, presence: true
+  validates :title, length: {minimum: 3, maximum: 100}, presence: true
   validates :link, :format => URI::regexp(%w(http https))
   validates :price, :numericality => { :greater_than_or_equal_to => 0 }, presence: true
   validates :user, presence: true

@@ -32,7 +32,7 @@ class ProductsController < ApplicationController
         redirect_to [@category]
       else
         flash[:error] = "There was an error saving the product. Please try again."
-        redirect_to root_path
+        render :edit
       end
   end
 

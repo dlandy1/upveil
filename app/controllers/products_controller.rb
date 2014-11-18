@@ -22,7 +22,7 @@ class ProductsController < ApplicationController
   def create
      @product = current_user.products.build(product_params)
       if @product.save
-        @product.rank(0)
+        @product.update_rank
         @product.increase(current_user, 100)
         subcat = @product.subcat_id
         @product.up_vote!(@product.user)

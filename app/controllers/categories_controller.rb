@@ -17,7 +17,7 @@ class CategoriesController < ApplicationController
       @parentsubcats = @subcatparent.subcategories
       if @subcatparent.title == "Fashion"
         @maleproducts = @subcatparent.products.where(:gender => "Male").where(subcat_id: @category.id).order('rank DESC').page(params[:page]).per(10)
-        @femaleproducts  = @subcatparent.products.where(:gender => "Female").where(subcat_id: @category.id).order("created_at DESC").page(params[:page]).per(10)
+        @femaleproducts  = @subcatparent.products.where(:gender => "Female").where(subcat_id: @category.id).order("rank DESC").page(params[:page]).per(10)
         @unscopemale = @subcatparent.products.order("created_at DESC").where(:gender => "Male").where(subcat_id: @category.id).page(params[:page]).per(15)
         @femaleunscope = @subcatparent.products.order("created_at DESC").where(:gender => "Female").where(subcat_id: @category.id).page(params[:page]).per(15)
       else

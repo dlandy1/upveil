@@ -38,13 +38,14 @@
         </div>
       </div>
     </div>
-
-  <div class="show_box" id="products">
-    <div class="page newer">
-     <%= render @products %>
-    </div>
-     <div class ="page hotter">
+<div class="show_box hotter" id="products">
+ <div class ="page">
       <%= render :partial => 'product', :collection => @unscopes%>
+  </div>
+</div>
+  <div class="show_box newer" id="products">
+    <div class="page">
+     <%= render @products %>
     </div>
   </div>
   <br>

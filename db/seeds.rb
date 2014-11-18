@@ -40,7 +40,7 @@
    Category.create(title: 'Alcohol', parent_id:6)
    Category.create(title: 'Meals', parent_id:6)
    Category.create(title: 'Snacks', parent_id:6)
-   Category.create(title: 'Desserts', parent_id:6)
+   Category.create(title: 'Dessert', parent_id:6)
 
 
 

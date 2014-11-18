@@ -84,20 +84,24 @@
         <% end %>
       </div>
     </div>
-       <div class="mobiler females">
+     <div class="mobiler">
+       <div class="females">
          <% @parentsubcats.each do |sub| %>
           <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default spacer' %>
        <% end %>
     </div>
+     </div>
       <div class="btn-group btn-group-justified size males elo">
     <% @parentsubcats.where(:gender => nil).each do |sub| %>
             <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default size' %>
       <% end %>
     </div>
-    <div class="mobiler males">
+    <div class="mobiler">
+    <div class="males">
          <% @parentsubcats.each do |sub| %>
           <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default spacer' %>
        <% end %>
+    </div>
     </div>
     <% else %>
     <div class="btn-group btn-group-justified size">

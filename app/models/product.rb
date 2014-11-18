@@ -127,7 +127,7 @@ class Product < ActiveRecord::Base
 
      seconds = (self.created_at.to_i - 1134028003).to_f
  
-     new_rank = (order + sign.to_f) + (seconds / 45000)
+     new_rank = (order * sign.to_f) + (seconds / 45000)
  
      update_attribute(:rank, new_rank)
    end

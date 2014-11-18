@@ -38,14 +38,13 @@
         </div>
       </div>
     </div>
-
-  <div class="show_box" id="products">
-    <div class="page newer">
+  <div class ="vow_box hotter">
+      <%= render :partial => 'product', :collection => @unscopes%>
+    </div>
+  <div class="show_box newer" id="products">
+    <div class="page">
      <%= render @products %>
     </div>
   </div>
-   <div class ="vow_box hotter">
-      <%= render :partial => 'product', :collection => @unscopes%>
-    </div>
   <br>
   <%= paginate @products %>

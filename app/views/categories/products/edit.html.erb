@@ -1,16 +1,18 @@
 <h1>Edit Post</h1>
-<div class = "row">
-  <div class = "col-md-4">
-    <p>Guidlines for posts</p>
-      <ul>
-        <li>Make sure the it rhymes.</li>
-        <li>Don't use the letter "A".</li>
-        <li>The incessant use of hashtags will get you banned.</li>
-      </ul>
-  </div>
-  <div class="col-md-8">
+     <div class="col-md-5">
+     <p><b>Requirments for Products</b></p>
+     <ul class="requirments">
+       <li>Must have a category.</li>
+       <li>Must have a subcategory.</li>
+       <li>Must have an image.</li>
+       <li>Must have the price.</li>
+       <li>Must have a title.</li>
+       <li>Must have a link of where to buy.</li>
+       <li>Fashion must have a gender</li>
+     </ul>
+   </div>
+  <div class="col-md-7">
 
   <%= render partial: 'formb', locals: {category: @product.category, image: @image, product: @product} %>
 
    </div>
-</div>

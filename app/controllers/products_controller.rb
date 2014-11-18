@@ -22,12 +22,13 @@ class ProductsController < ApplicationController
   def create
      @product = current_user.products.build(product_params)
       if @product.save
+        @product.rank(0)
         @product.increase(current_user, 100)
         subcat = @product.subcat_id
         @product.up_vote!(@product.user)
         @category = Category.friendly.find(subcat)
         @category.increase_grade(current_user, 100)
-        flash[:notice] = "product was saved."
+        flash[:notice] = "Product was saved."
         redirect_to [@category]
       else
         flash[:error] = "There was an error saving the product. Please try again."
@@ -52,7 +53,7 @@ class ProductsController < ApplicationController
     @category = @product.category
     subcat = @product.subcat_id
     @subcategory = Category.friendly.find(subcat)
-    if @current_user == @product.user 
+    if current_user == @product.user 
       if @product.destroy
         @product.increase(@product.user, -100)
         @category.increase_grade(@product.user, -100)
@@ -60,11 +61,11 @@ class ProductsController < ApplicationController
         redirect_to  @subcategory
       else 
         flash[:error] = "There was an error deleting the post."
-        render :show
+        redirect_to [@category, @product]
       end
      else 
         flash[:error] = "There was an error deleting the post."
-        render :show
+        redirect_to [@category, @product]
       end
    end
 

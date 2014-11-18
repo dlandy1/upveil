@@ -14,19 +14,7 @@
                     </tr>
                   </thead>
                    <tbody>
-                     <% @leaders.each do |leader| %>
-                       <% user = User.friendly.find(leader[:member].to_i) %>
-                       <% rank = leader[:rank].to_i %>
-                    <tr>
-                      <td class="td"><%= rank %></td>
-                      <td>
-                        <%= link_to [user] do %>
-                          <%= image_tag(user.identity.smallimage)%><p class="names"><%= user.name %></p>
-                        <% end %>
-                      </td>
-                      <td class="td"><%= leader[:score].to_i %></td>
-                    </tr>
-                   <% end %>
+                    
                     <tr>
                       <td></td>
                       <td>

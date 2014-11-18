@@ -43,9 +43,9 @@
     <div class="page newer">
      <%= render @products %>
     </div>
-    <div class ="page hotter">
+  </div>
+   <div class ="page hotter">
       <%= render :partial => 'product', :collection => @unscopes%>
     </div>
-  </div>
   <br>
   <%= paginate @products %>

@@ -1,15 +1,15 @@
 <%= form_for [ @user] do |f| %>
-  <div class="form-group">
-   <label for="inputPassword" class="col-sm-1 control-label">
-       <%= f.label :twitter%>
-   </label>
-      <%= f.text_field :twitter_url, class: 'form-control'%>
-      <label for="inputPassword" class="col-sm-1 control-label">
-       <%= f.label :instagram%>
-   </label>
-      <%= f.text_field :instagram_url, class: 'form-control'%>
-    <div class="col-md-2 text-center">
-      <%= f.submit "Link to media"%>
+<div class="text-center">
+  <div class="gram">
+       <%= fa_icon "instagram" %><%= f.label :instagram%>
+      <%= f.text_field :instagram_url, class: 'media'%>
+  </div>
+   <div class="gram">
+       <%= fa_icon "twitter" %><%= f.label :twitter%>
+      <%= f.text_field :twitter_url, class: 'media tweet'%>
+    </div>
+    <div>
+      <%= f.submit "Link to media", class: 'btn btn-sm mediar btn-primary'%>
     </div>
   </div>
 <% end %>

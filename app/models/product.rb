@@ -14,7 +14,7 @@ class Product < ActiveRecord::Base
   validates :title, length: {minimum: 3, maximum: 40}, presence: true
   validates_uniqueness_of :title
   validates :link, :format => URI::regexp(%w(http https))
-  validates :price, :numericality => { :greater_than_or_equal_to => 0 }
+  validates :price, :numericality => { :greater_than_or_equal_to => 0 }, presence: true
   validates :user, presence: true
   validates :category, presence: true
   validates :description,length: {minimum: 3, maximum: 140}, :allow_blank => true
@@ -22,7 +22,10 @@ class Product < ActiveRecord::Base
   validates :gender, :if => :in_fashion?, presence: true
 
   def price=(num)
-    self[:price] = num.to_s.scan(/\b-?[\d.]+/).join.to_f
+     numb = num.to_s
+    if !numb.blank?
+     self[:price] = numb.scan(/\b-?[\d.]+/).join.to_f
+   end
   end
 
    extend FriendlyId

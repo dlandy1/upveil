@@ -1,10 +1,6 @@
 require 'json'
 class CategoriesController < ApplicationController
 
-  def new
-    @category = Category.new
-  end
-
   def show
      @category = Category.friendly.find(params[:id])
      @subcategories = @category.subcategories
@@ -17,7 +13,7 @@ class CategoriesController < ApplicationController
       @unscopemale = @category.products.where(:gender => "Male").order("created_at DESC").page(params[:page]).per(15)
       @femaleunscope = @category.products.order("created_at DESC").where(:gender => "Female").page(params[:page]).per(15)
      elsif !@parent.nil?
-      @subcatparent = Category.friendly.find(params[:id])
+      @subcatparent = Category.friendly.find(@parent)
       @parentsubcats = @subcatparent.subcategories
       if @subcatparent.title == "Fashion"
         @maleproducts = @subcatparent.products.where(:gender => "Male").where(subcat_id: @category.id).order('rank DESC').page(params[:page]).per(10)
@@ -34,45 +30,6 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def edit
-    @category = Category.friendly.find(params[:id])
-    authorize @category
-  end
-
-
-  def create
-    @category = Category.new(topic_params)
-    if @category.save
-      redirect_to @category, notice: "Topic was saved successfully."
-    else
-      flash[:error] = "Error creating topic. Please try again."
-      render :new
-    end
-  end
-
- def update
-  @category = Category.friendly.find(params[:id])
-  if @category.update_attributes(category_params)
-    redirect_to @category
-  else
-    flash[:error] = "There was an error updating the topic. Please try again."
-    render :edit
-  end
- end
-
- def destroy
-  @category = Category.friendly.find(params[:id])
-  name = @category.title
-
-  authorize @category
-  if @category.delete
-     flash[:notice] = "\"#{name}\" was deleted successfully."
-     redirect_to categories_path
-  else
-    flash[:error] = "There was an error deleting the topic."
-    render :show
-  end
- end
 
  def category_params
   params.require(:category).permit(:title)

@@ -14,6 +14,11 @@ class ProductsController < ApplicationController
     end
   end
 
+  def edit
+      @category = Category.friendly.find(params[:category_id])
+      @product = Product.friendly.find(params[:id])
+  end
+
   def create
      @product = current_user.products.build(product_params)
       if @product.save
@@ -26,7 +31,7 @@ class ProductsController < ApplicationController
         redirect_to [@category]
       else
         flash[:error] = "There was an error saving the product. Please try again."
-        render :new
+        redirect_to root_path
       end
   end
 
@@ -47,16 +52,20 @@ class ProductsController < ApplicationController
     @category = @product.category
     subcat = @product.subcat_id
     @subcategory = Category.friendly.find(subcat)
-
-    if @product.destroy
-      @product.increase(current_user, -100)
-      @category.increase_grade(current_user, -100)
-      flash[:notice] = "#{@product.title} was deleted successfully."
-      redirect_to  @subcategory
-    else 
-      flash[:error] = "There was an error deleting the post."
-      render :show
-    end
+    if @current_user == @product.user 
+      if @product.destroy
+        @product.increase(@product.user, -100)
+        @category.increase_grade(@product.user, -100)
+        flash[:notice] = "#{@product.title} was deleted successfully."
+        redirect_to  @subcategory
+      else 
+        flash[:error] = "There was an error deleting the post."
+        render :show
+      end
+     else 
+        flash[:error] = "There was an error deleting the post."
+        render :show
+      end
    end
 
     private

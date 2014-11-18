@@ -1,18 +1,22 @@
-<h1 class="h3 text-center font-best"><b><%=@user.name %></b></h1>
-<% if @user == current_user %>
-      <%= link_to "Change User Name", edit_user_path, class: 'user-name' %>
-    <% end %>
+<h1 class="h3 text-center font-best"><% if @user == current_user %>
+     <%= link_to "Edit User",  edit_user_path(@user), class: 'btn btn-xs btn-warning fonter showel' %>
+    <% end %><b><%=@user.name %></b></h1>
  <% if @user == current_user && @user.instagram_url.nil? && @user.twitter_url.nil? %>
-      <h4>Link to your social media</h4>
-      <div class='new-social'>
+  <div class='new-social'>
+      <h4 class="paddel text-center mediar">Link to your social media</h4>
         <%= render "formal" %>
-      <% end %>
-  <div>
-    <% if @user.instagram_url  != "" %>
-      <a href=""><%= link_to "Instagram", @user.instagram_url, :target => "_blank" %></a>
+    </div>
+     <% end %>
+  <div class="text-center">
+    <% if @user.instagram_url  != "" && @user.twitter_url != nil %>
+      <%= link_to @user.twitter_url, :target => "_blank" do%>
+         <%= fa_icon "instagram 2x", class: 'colorel' %>
+        <% end %>
     <% end %>
-    <% if @user.twitter_url != ""%>
-      <a href=""><%= link_to "Twitter", @user.twitter_url, :target => "_blank"  %></a>
+    <% if @user.twitter_url != "" && @user.twitter_url != nil%>
+     <%= link_to @user.twitter_url, :target => "_blank" do%>
+         <%= fa_icon "twitter 2x", class: 'coloring' %>
+        <% end %>
     <% end %>
   </div>
 <div class="show_box">

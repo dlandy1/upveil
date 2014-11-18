@@ -32,7 +32,7 @@
    Category.create(title: 'Football', parent_id:4)
    Category.create(title: 'Basketball', parent_id:4)
    Category.create(title: 'Golf', parent_id:4)
-   Category.create(title: 'Kitchen', parent_id:4)
+   Category.create(title: 'Kitchen', parent_id:5)
    Category.create(title: 'Livingroom', parent_id:5)
    Category.create(title: 'Dorm', parent_id:5)
    Category.create(title: 'Bathroom', parent_id:5)

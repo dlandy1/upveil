@@ -18,7 +18,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-   <p class="navbar-brand"><b>Upveil</b></p>
+   <p class="navbar-brand"><b><%= link_to "Upveil", root_path, class: 'non_line' %></b></p>
   </div>
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
@@ -65,7 +65,8 @@
       </div>
   </div>
 </div>
-  <div class="container">
+ <%= mail_to "contact@upveil.com","contact@upveil.com", class: 'email' %>
+ <div class="container">
    <% if flash[:notice] %>
          <div class="alert alert-success">
            <button type="button" class="close" data-dismiss="alert">&times;</button>

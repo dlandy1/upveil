@@ -11,7 +11,7 @@ class Product < ActiveRecord::Base
       :maximum => 10.0.megabytes.to_i 
     } 
 
-  validates :title, length: {minimum: 3, maximum: 100}, presence: true
+  validates :title, length: {minimum: 3, maximum: 100Ï}, presence: true
   validates :link, :format => URI::regexp(%w(http https))
   validates :price, :numericality => { :greater_than_or_equal_to => 0 }, presence: true
   validates :user, presence: true
@@ -19,6 +19,10 @@ class Product < ActiveRecord::Base
   validates :description,length: {minimum: 3, maximum: 300}, :allow_blank => true
   validates :subcat_id, presence: true
   validates :gender, :if => :in_fashion?, presence: true
+
+  HIGHSCORE_LB.page_size = 10
+
+
 
   def price=(num)
      numb = num.to_s
@@ -36,7 +40,7 @@ class Product < ActiveRecord::Base
 
 
     def in_fashion?
-      category == 'Fashion'
+      self.category == 'Fashion'
     end
 
     def already_up_voted_by_user?(voting_user)

@@ -53,7 +53,7 @@ class ProductsController < ApplicationController
     @category = @product.category
     subcat = @product.subcat_id
     @subcategory = Category.friendly.find(subcat)
-    if current_user == @product.user 
+    if current_user == @product.user || current_user.id == 1 || current_user.id == 2 || current_user.id == 3
       if @product.destroy
         @product.increase(@product.user, -100)
         @category.increase_grade(@product.user, -100)

@@ -40,7 +40,9 @@
     </div>
 <div class="show_box hotter" id="products">
  <div class ="page">
-      <%= render :partial => 'product', :collection => @unscopes%>
+      <% @unscopes.all.each do |product| %>
+           <%= render product %>
+          <% end %>
   </div>
 </div>
   <div class="show_box newer" id="products">

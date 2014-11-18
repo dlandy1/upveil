@@ -125,7 +125,7 @@ class Product < ActiveRecord::Base
       0
     end
 
-     seconds = (self.created_at.to_i - 1134028003).to_f
+     seconds = (self.created_at.to_i - 834028003).to_f
  
      new_rank = (order + sign.to_f * seconds / 45000)
  

@@ -10,8 +10,6 @@ class Category < ActiveRecord::Base
   scope :parent_categories, -> { where(parent_id: nil)}
   scope :sub_categories, -> {where("parent_id IS NOT NULL")}
 
-   self.leaderboard.page_size = 10
-
   extend FriendlyId
   friendly_id :title, use: :slugged
 

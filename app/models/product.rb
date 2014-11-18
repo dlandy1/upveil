@@ -20,8 +20,6 @@ class Product < ActiveRecord::Base
   validates :subcat_id, presence: true
   validates :gender, :if => :in_fashion?, presence: true
 
-  HIGHSCORE_LB.page_size = 10
-
 
 
   def price=(num)
@@ -40,7 +38,7 @@ class Product < ActiveRecord::Base
 
 
     def in_fashion?
-      self.category == 'Fashion'
+      category == 'Fashion'
     end
 
     def already_up_voted_by_user?(voting_user)

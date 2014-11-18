@@ -44,10 +44,8 @@
      <%= render @products %>
     </div>
   </div>
-  <div class="vow-box">
-   <div class ="hotter">
+   <div class ="vow_box hotter">
       <%= render :partial => 'product', :collection => @unscopes%>
     </div>
-  </div>
   <br>
   <%= paginate @products %>

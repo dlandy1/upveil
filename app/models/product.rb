@@ -12,7 +12,6 @@ class Product < ActiveRecord::Base
     } 
 
   validates :title, length: {minimum: 3, maximum: 40}, presence: true
-  validates_uniqueness_of :title
   validates :link, :format => URI::regexp(%w(http https))
   validates :price, :numericality => { :greater_than_or_equal_to => 0 }, presence: true
   validates :user, presence: true

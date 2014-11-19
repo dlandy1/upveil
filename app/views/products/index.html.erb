@@ -27,11 +27,6 @@
                       <td class="td"><%= leader[:score].to_i %></td>
                     </tr>
                    <% end %>
-                    <tr>
-                      <td></td>
-                      <td>
-                      </td>
-                    </tr>
                 </tbody>
               </table> 
           <% end %>
@@ -39,9 +34,18 @@
       </div>
     </div>
 
-  <div class="vow-box newer" id="products">
+  <div class="show-box newer" id="products">
     <div class="page">
      <%= render @products %>
     </div>
+      <%= render :partial => "best" %>
   </div>
-<%= paginate @products %>
+
+  <div class="show-box newer" id="products">
+    <div class="page">
+     <%= render @unscopes %>
+    </div>
+      <%= render :partial => "newness" %>
+  </div>
+
+

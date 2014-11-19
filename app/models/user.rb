@@ -10,12 +10,24 @@ class User < ActiveRecord::Base
     has_many :products, dependent: :destroy
     has_one :identity, dependent: :destroy
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
-  validates :instagram_url, :format => URI::regexp(%w(http https)), :allow_blank => true 
-  validates :twitter_url, :format => URI::regexp(%w(http https)), :allow_blank => true 
+  validates :instagram_url, length:{minimum: 1}, :allow_blank => true 
+  validates :twitter_url, length:{minimum: 1}, :allow_blank => true 
   validates :name, length: {minimum: 3}, presence: true
 
   extend FriendlyId
   friendly_id :name, use: :slugged
+
+  def instagram_url=(name)
+    name.gsub!('@','')
+    name.insert(0, 'http://instagram.com/') 
+    self[:instagram_url] = name.to_s
+  end
+
+  def twitter_url=(name)
+    name.gsub!('@','')
+    name.insert(0, 'http://twitter.com/') 
+    self[:twitter_url] = name.to_s
+  end
 
   def should_generate_new_friendly_id?
     name_changed?

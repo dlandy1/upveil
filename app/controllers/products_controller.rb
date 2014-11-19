@@ -1,13 +1,12 @@
 class ProductsController < ApplicationController
   def index
    @products = Product.order('rank DESC').page(params[:page]).per(10)
-   @unscopes =  Product.order('created_at DESC').page(params[:page]).per(10)
    @leaders =  HIGHSCORE_LB.leaders(1)
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @posts }
-      format.js
-    end
+  end
+
+  def newest
+     @unscopes =  Product.order('created_at DESC').page(params[:page]).per(10)
+     @leaders =  HIGHSCORE_LB.leaders(1)
   end
   
   def new

@@ -2,6 +2,11 @@ Upveil::Application.routes.draw do
   devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
   resources :users, except: [:destroy, :index]
   resources :categories, only: [:show] do
+    get "newest"
+    get "male"
+    get "female"
+    get "male_newest"
+    get "female_newest"
     resources :subcategories, only: [:index]
     resources :products, except: [:index, :destroy, :new, :create], controller: 'categories/products'
   end
@@ -15,6 +20,8 @@ Upveil::Application.routes.draw do
     match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
    root to: 'products#index'
+
+   get "products/newest"
 
 
 

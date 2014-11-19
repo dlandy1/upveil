@@ -1,4 +1,4 @@
-<%= link_to "Look by Newest",  category_newest_path(@category), class: 'btn btn-xs btn-primary mobile-button spay' %>
+<%= link_to "Look by Newest",  category_female_newest_path(@category), class: 'btn btn-xs btn-primary mobile-button spay' %>
 <% if @parent.nil? %>
 <h1 class="h3 titlen text-center"><b><%=@category.title %></b><br><p class="h6 subtitle">Best Products</p></h1>
 <% else %>
@@ -7,61 +7,35 @@
 
  <div class="row">
 
-  <% if @category.title == "Fashion" %>
-
-    <div class="btn-group btn-group-justified size gender">
-      <%= link_to category_female_path(@category), class: 'btn btn-default size'  do %>
-       <%= fa_icon "female" %><span>Female</span>
-       <% end %>
-      <%= link_to category_male_path(@category), class: 'btn btn-default size'  do %>
-       <%= fa_icon "male" %><span>Male</span>
-       <% end %>
-    </div>
-
-    <% elsif @category.title == "Lingerie" %>
-
-      <div class="btn-group btn-group-justified size gender">
-      <%= link_to category_female_path(@category), class: 'btn btn-default size'  do %>
-       <%= fa_icon "female" %><span>Female</span>
-       <% end %>
-     </div>
-
-     <% else @parent %> 
-
-        <% if @parent != nil && @subcatparent.title == "Fashion" %>
-
-      <div class="btn-group btn-group-justified size gender">
-          <%= link_to category_female_path(@category), class: 'btn btn-default size'  do %>
+      <div class="btn-group btn-group-justified size">
+          <%= link_to category_female_path(@category), class: 'btn btn-default size female'  do %>
          <%= fa_icon "female" %><span>Female</span>
          <% end %>
         <%= link_to category_male_path(@category), class: 'btn btn-default size'  do %>
          <%= fa_icon "male" %><span>Male</span>
          <% end %>
       </div>
-      <%end %>
-
-    <%end %>
     
   <% if @parent.nil? %>
   <div class="btn-group btn-group-justified size">
     <% @subcategories.each do |sub| %>
-          <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default size' %>
+          <%= link_to "#{sub.title}", category_female_path(sub), class: 'btn btn-default size' %>
        <% end %>
     </div>
     <div class="mobiler">
          <% @subcategories.each do |sub| %>
-          <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default spacer' %>
+          <%= link_to "#{sub.title}", category_female_path(sub), class: 'btn btn-default spacer' %>
        <% end %>
     </div>
   <% else %>
     <div class="btn-group btn-group-justified size">
     <% @parentsubcats.each do |sub| %>
-            <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default size' %>
+            <%= link_to "#{sub.title}", category_female_path(sub), class: 'btn btn-default size' %>
       <% end %>
      </div>
      <div class="mobiler">
          <% @parentsubcats.each do |sub| %>
-          <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default spacer' %>
+          <%= link_to "#{sub.title}", category_female_path(sub), class: 'btn btn-default spacer' %>
        <% end %>
     </div>
  </div>

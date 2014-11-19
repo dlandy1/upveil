@@ -8,12 +8,12 @@
     </div>
      <% end %>
   <div class="text-center">
-    <% if @user.instagram_url  != "" && @user.instagram_url != nil %>
+    <% if @user.instagram_url.length  > 22 && @user.instagram_url != nil %>
       <%= link_to @user.instagram_url, :target => "_blank" do%>
          <%= fa_icon "instagram 2x", class: 'colorel' %>
         <% end %>
     <% end %>
-    <% if @user.twitter_url != "" && @user.twitter_url != nil%>
+    <% if @user.twitter_url.length  > 19 && @user.twitter_url != nil%>
      <%= link_to @user.twitter_url, :target => "_blank" do%>
          <%= fa_icon "twitter 2x", class: 'coloring' %>
         <% end %>

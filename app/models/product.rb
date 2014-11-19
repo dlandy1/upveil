@@ -38,7 +38,9 @@ class Product < ActiveRecord::Base
 
 
     def in_fashion?
+      if category
       category.title == "Fashion"
+      end
     end
 
     def already_up_voted_by_user?(voting_user)

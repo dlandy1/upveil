@@ -18,7 +18,7 @@ class Product < ActiveRecord::Base
   validates :category, presence: true
   validates :description,length: {minimum: 3, maximum: 300}, :allow_blank => true
   validates :subcat_id, presence: true
-  validates :gender, :if => :in_fashion?, presence: true
+  validates :gender, presence: true, :if => :in_fashion?
 
 
 
@@ -38,7 +38,7 @@ class Product < ActiveRecord::Base
 
 
     def in_fashion?
-      category == 'Fashion'
+      category.title == "Fashion"
     end
 
     def already_up_voted_by_user?(voting_user)

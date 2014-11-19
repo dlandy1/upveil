@@ -36,6 +36,13 @@
     <%end %>
     
     <% if @category.title == "Fashion" %>
+     <div class="elo">
+      <div class="btn-group size nongender btn-group-justified">
+         <% @subcategories.each do |sub| %>
+            <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default size' %>
+         <% end %>
+      </div>
+    </div>
     <div class="elo">
       <div class="btn-group btn-group-justified size females">
          <% @subcategories.each do |sub| %>
@@ -77,6 +84,11 @@
     </div>
   <% else %>
      <% if @parent != nil && @subcatparent.title == "Fashion"  %>
+      <div class="btn-group btn-group-justified size nongender">
+         <% @parentsubcats.each do |sub| %>
+            <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default size' %>
+         <% end %>
+      </div>
      <div class ="elo">
      <div class="btn-group btn-group-justified size females">
       <% @parentsubcats.each do |sub| %>
@@ -152,6 +164,14 @@
  <% if @parent.nil? %>
   <% if @category.title == "Fashion" %>
 
+  <div class="show_box nongender" id="products">
+      <div class="page">
+      <% @products.all.each do |product| %>
+       <%= render product %>
+       <% end %>
+      </div>
+    </div>
+
     <div class="males">
       <%= render :partial => "male" %>
     </div>
@@ -172,6 +192,14 @@
 
     <% else %>
    <% if @subcatparent.title == "Fashion"  %>
+
+     <div class="show_box nongender" id="products">
+      <div class="page">
+      <% @products.all.each do |product| %>
+       <%= render product %>
+       <% end %>
+      </div>
+    </div>
 
     <div class="males">
       <%= render :partial => "male" %>
@@ -195,6 +223,11 @@
 
  <% if @parent.nil? %>
      <% if @category.title == "Fashion" %>
+       <div class="show_box nongender">
+      <div class="page">
+        <%= render :partial => 'products/product', :collection => @unscope%> 
+      </div>
+    </div>
      <div class="males">
       <div class="show_box hotter">
         <div class="page">
@@ -205,7 +238,7 @@
 
     <div class="females">
        <div class="show_box hotter">
-        <div id="page">
+        <div class="page">
         <%= render :partial => 'products/product', :collection => @femaleunscope%>
         </div>
       </div>
@@ -214,7 +247,7 @@
     <% else %>
 
     <div class="show_box hotter">
-        <div id="page">
+        <div class="page">
           <% @unscope.all.each do |product| %>
            <%= render product %>
           <% end %>
@@ -224,9 +257,15 @@
 
     <% else %>
    <% if @subcatparent.title == "Fashion"  %>
+    <div class="show_box nongender">
+      <div class="page">
+        <%= render :partial => 'products/product', :collection => @unscope%> 
+      </div>
+    </div>
+    
     <div class="males">
       <div class="show_box hotter">
-        <div id="page">
+        <div class="page">
           <%= render :partial => 'products/product', :collection => @unscopemale%> 
         </div>
       </div>

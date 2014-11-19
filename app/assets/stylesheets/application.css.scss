@@ -6406,6 +6406,10 @@ legend {
   display: none;
  }
 
+ .females{
+  display: none;
+ }
+
  .hotter{
   display: none;
  }
@@ -6532,7 +6536,7 @@ legend {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 .female{
-  background-color: rgb(243, 230, 255);
+  background-color: white;
 }
 .female:hover{
   background-color: rgb(243, 230, 255);
@@ -7199,4 +7203,13 @@ background-color: white;
   margin-top: 0px;
   margin-bottom: 10px;
 }
-
+.requirments {
+  border: #d32d2d 1px solid;
+  border-radius: 4px;
+  background-color: #FFFFFF;
+  color: #d32d2d;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 15px;
+  font-family: Roboto slab, serif;
+}

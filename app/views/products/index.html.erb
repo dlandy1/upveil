@@ -38,17 +38,17 @@
         </div>
       </div>
     </div>
-<div class="show_box hotter">
- <div class ="page">
-      <% @unscopes.all.each do |product| %>
-           <%= render product %>
-          <% end %>
+
+<div class="show_box hotter" id="products">
+    <div class="page">
+     <%= render @unscopes %>
+    </div>
+     <%= render :partial => "newness" %>
   </div>
-</div>
-  <div class="show_box newer" id="products">
+
+  <div class="vow-box newer" id="products">
     <div class="page">
      <%= render @products %>
     </div>
+     <%= render :partial => "best" %>
   </div>
-  <br>
-  <%= paginate @products %>

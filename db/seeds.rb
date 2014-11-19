@@ -18,7 +18,7 @@
    Category.create(title: 'Gadgets', parent_id:1)
    Category.create(title: 'TVs', parent_id:1)
    Category.create(title: 'Shoes', parent_id:2)
-   Category.create(title: 'Shirts', parent_id:2)
+   Category.create(title: 'Tops', parent_id:2)
    Category.create(title: 'Pants', parent_id:2)
    Category.create(title: 'Jackets', parent_id:2)
    Category.create(title: 'Lingerie', parent_id:2, gender: "female")

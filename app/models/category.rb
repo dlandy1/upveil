@@ -25,6 +25,10 @@ class Category < ActiveRecord::Base
     @leaderboard ||= Leaderboard.new("#{self.title.downcase.gsub(" ", '')}_highscores", Leaderboard::DEFAULT_OPTIONS, {:redis_connection => REDIS})
   end
 
+  def score(user)
+    self.leaderboard.score_for(user.id).to_i
+  end
+
   def increase_grade(user, points)
     current_score = self.leaderboard.score_for(user.id).to_i
     self.leaderboard.rank_member(user.id, current_score + points)

@@ -56,12 +56,14 @@
          $(".male").css('background-color', 'rgb(223, 239, 255)');
          $(".female").css('background-color', 'white');
          $(".females").hide();
+         $(".nongender").hide();
          $(".males").show();
      })
     $(".female").on("click", function(){
          $(".male").css('background-color', 'white');
          $(".female").css('background-color', 'rgb(243, 230, 255)');
          $(".males").hide();
+         $(".nongender").hide();
          $(".females").show();
      })
     

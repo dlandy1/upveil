@@ -1,5 +1,4 @@
   <a class="btn btn-xs btn-primary hotter mobile-button spay" id= "hotter">Look by Hottest</a>
-  <%= link_to "Look by Hottest", products_new_path, class: 'btn btn-xs btn-primary hotter mobile-button spay' %>
   <a class="btn btn-xs btn-primary newer mobile-button spay" id= "newer">Look by Newest</a>
     <h1 class="text-center font-best">All<br><p class="h6">The Newest and Best Products</p></h1>
     <div class = "outerfixed" >
@@ -42,7 +41,7 @@
 
   <div class="vow-box newer" id="products">
     <div class="page">
-     <%= render @products %>
+     <%= render @unscopes %>
     </div>
+     <%= render :partial => "newness" %>
   </div>
-<%= paginate @products %>

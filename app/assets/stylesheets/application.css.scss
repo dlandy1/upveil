@@ -7224,3 +7224,15 @@ background-color: white;
   color: #9B9B9B;
   width: 68px;
 }
+@media(miax-width: 400px){
+  .product_box{
+    width: 220px;
+    margin-left: 95px;
+  }
+  .user_names{
+    width: 50px;
+  }
+  .time{
+    width: 50px;
+  }
+}

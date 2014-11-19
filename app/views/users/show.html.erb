@@ -25,8 +25,11 @@
     <% end %>
     </div>
 
-<div class="show_box">
-    <% @user.products.where('created at DESC').each do |product| %>
-      <%= render product %>
-      <% end %>
+<div class="row">
+  <div class="show-box" id="products">
+    <div class="page">
+     <%= render @products %>
+    </div>
+  </div>
+ <%= paginate @products %>
 </div>

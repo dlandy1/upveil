@@ -6761,32 +6761,44 @@ td{
 }
 @media (max-width: 1023px) {
   .user_names{
-    margin-left: 15px;
+    margin-left: 8px;
   }
 }
 @media (max-width: 990px) {
   .user_names{
-    margin-left: 9px;
+    margin-left: 3px;
   }
 }
 @media (max-width: 970px) {
   .user_names{
-    margin-left: 5px;
+    margin-left: -12px;
   }
 }
 @media (max-width: 965px) {
   .user_names{
-    margin-left: 0px;
+    margin-left: -15px;
   }
 }
 @media (max-width: 930px) {
   .user_names{
-    margin-top: -68px;
+   margin-left: -28px;
+  }
+}
+@media (max-width: 900px) {
+  .user_names{
+   margin-left: -33px;
+   font-size: 8px;
+  }
+  .hider{
+   display:none;
   }
 }
 @media (max-width: 879px) {
   .user_names{
     margin-top: 0px;
+  }
+  .hider{
+   display:inherit;
   }
 }
 .smallest{
@@ -6826,6 +6838,7 @@ td{
   }
   .user_names{
     margin-top: 0px;
+    margin-left: 1px;
   }
 }
 @media (max-width: 535px) {

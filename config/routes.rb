@@ -1,14 +1,11 @@
 Upveil::Application.routes.draw do
-  get "newest/index"
   devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
   resources :users, except: [:destroy, :index]
-  resources :newest
   resources :categories, only: [:show] do
     resources :subcategories, only: [:index]
     resources :products, except: [:index, :destroy, :new, :create], controller: 'categories/products'
   end
   resources :products, except: [:show] do 
-    
     post '/up-vote' => 'votes#up_vote', as: :up_vote
     post '/down-vote' => 'votes#down_vote', as: :down_vote
   end

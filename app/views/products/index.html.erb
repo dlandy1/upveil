@@ -1,4 +1,3 @@
-  <% javascript_include_tag :defaults, 'endless_page' %>
   <a class="btn btn-xs btn-primary hotter mobile-button spay" id= "hotter">Look by Hottest</a>
   <a class="btn btn-xs btn-primary newer mobile-button spay" id= "newer">Look by Newest</a>
     <h1 class="text-center font-best">All<br><p class="h6">The Newest and Best Products</p></h1>
@@ -35,11 +34,18 @@
       </div>
     </div>
 
+  <div class="show-box newer" id="products">
+    <div class="page">
+     <%= render @products %>
+    </div>
+      <%= render :partial => "best" %>
+  </div>
 
-
-<div id="products">
-  <%= render @products %>
-</div>
-<p id="loading">Loading more page results...</p>
+  <div class="show-box newer" id="products">
+    <div class="page">
+     <%= render @unscopes %>
+    </div>
+      <%= render :partial => "newness" %>
+  </div>
 
 

@@ -4,7 +4,7 @@
     <span class="hider"><%= image_tag(product.user.identity.smallimage)%></span>
       <p> <%= product.user.name %></p>
     <% end %>
-    <p class="time">submitted <%= time_ago_in_words(product.created_at) %> ago</p>
+    <p class="time"><%= time_ago_in_words(product.created_at) %> ago</p>
     <%= render partial: 'votes/voter', locals: {product: product} %>
   </div>
   <div class="product_box">

@@ -27,21 +27,23 @@
       <% end %>
     </div>
   <div class="text-center"> 
-    <h1 class="text-center padder"> 
+    <h1 class="text-center padder sizem"> 
       <%= @product.title %></h1>
       <p class="text-center">$<%=@product.price%></p>
       <p class="text-center"><%= link_to "Buy here", @product.link, :target => "_blank", class: 'btn btn-sm btn-primary buyer' %></p>
       <div class ="product_show">
-         <div class="user_tag user_names link_color">
+         <div class="user_tag user_names link_color ayo">
             <%= link_to @product.user do %>
+            <div class = "hidelen">
             <%= image_tag(@product.user.identity.smallimage)%>
+            </div>
               <p> <%= @product.user.name %></p>
             <% end %>
             <%= render partial: 'votes/voter', locals: {product: @product} %>
-          </div>
         </div>
+      </div>
           <div class="showest_box"><%= image_tag(@product.image.url(:thumb), :class => "image-show") %></div>
-        <p class="text-center show-font">
+        <p class="text-center show-font descrip">
           <%= @product.description %>
         </p>
     <div class="fb-comments" data-href= <%= request.original_url %> data-numposts="10" data-colorscheme="light"></div>

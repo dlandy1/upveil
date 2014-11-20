@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
     if current_user != nil
       @product = Product.new
      else
-       flash[:error] = "You must sign in or up before posting a product."
+       flash[:error] = "You must sign in before posting a product."
        redirect_to new_user_session_path
     end
   end

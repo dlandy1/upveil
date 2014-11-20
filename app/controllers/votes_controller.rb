@@ -30,7 +30,7 @@ class VotesController < ApplicationController
           end
         end
       else
-        flash[:error] = "You must sign in"
+        flash[:error] = "You must sign in before voting"
         redirect_to new_user_session_path
       end
   end
@@ -60,7 +60,7 @@ class VotesController < ApplicationController
         end
       end
       else
-      flash[:error] = "You must sign in"
+      flash[:error] = "You must sign in before voting"
        redirect_to new_user_session_path
     end
   end

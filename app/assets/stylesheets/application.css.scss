@@ -7432,8 +7432,24 @@ background-color: white;
     box-shadow: none;
   }
 }
-@media (max-width: 500px) {
+@media (max-width: 737px) {
   .email{
     display: none;
   }
+}
+@media (max-width: 736px) {
+  .showel{
+    display: none;
+  }
+}
+.nopro{
+  margin-top: 15px;
+  font-family: Roboto slab, serif;
+}
+.socialer{
+  padding-bottom: 15px;
+  left: 1%;
+}
+.olo{
+  color: #bdbaba;
 }

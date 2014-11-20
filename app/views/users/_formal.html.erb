@@ -2,11 +2,11 @@
 <div class="text-center">
   <div class="gram">
        <%= fa_icon "instagram" %><%= f.label :instagram%>
-      <%= f.text_field :instagram_url, class: 'media'%>
+      <%= f.text_field :instagram_url, class: 'media', placeholder: "@danlandy"%>
   </div>
    <div class="gram">
        <%= fa_icon "twitter" %><%= f.label :twitter%>
-      <%= f.text_field :twitter_url, class: 'media tweet'%>
+      <%= f.text_field :twitter_url, class: 'media tweet', placeholder: "@danlandy"%>
     </div>
     <div>
       <%= f.submit "Link to media", class: 'btn btn-sm mediar btn-primary'%>

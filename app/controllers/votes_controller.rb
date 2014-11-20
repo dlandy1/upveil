@@ -6,7 +6,13 @@ class VotesController < ApplicationController
 
   def up_vote
   if current_user
-        if @product.already_up_voted_by_user?(current_user)
+    if current_user.id == 1 || current_user.id == 2 || current_user.id == 3
+        @product.up_vote!(current_user)
+          respond_with(@product) do |format|
+          format.html { redirect_to :back}
+          end
+        elsif
+         @product.already_up_voted_by_user?(current_user)
           @product.already_upvote(current_user)
           respond_with(@product) do |format|
           format.html { redirect_to :back}
@@ -27,11 +33,16 @@ class VotesController < ApplicationController
         flash[:error] = "You must sign in"
         redirect_to new_user_session_path
       end
-    end
+  end
 
   def down_vote
     if current_user
-      if @product.already_down_voted_by_user?(current_user)
+      if current_user.id == 1 || current_user.id == 2 || current_user.id == 3
+        @product.down_vote!(current_user)
+          respond_with(@product) do |format|
+          format.html { redirect_to :back}
+          end
+      elsif @product.already_down_voted_by_user?(current_user)
          @product.already_downvote(current_user)
          respond_with(@product) do |format|
         format.html { redirect_to :back}

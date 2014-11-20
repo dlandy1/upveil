@@ -6341,7 +6341,7 @@ legend {
   display: inherit;
   font-size: 14px;
   padding: 1px;
-  width: 107px;
+  width: 124px;
   margin-bottom: 30px;
   margin-top: 122px;
 }
@@ -6682,7 +6682,7 @@ td{
   overflow: hidden;
   position: fixed;
   height: 1000px;
-  width: 118px;
+  width: 135px;
   padding: 0px;
   top: 63px;
   right: 3%;
@@ -7454,15 +7454,54 @@ background-color: white;
     display: none;
   }
 }
+@media (max-width: 1164px) {
+    .outerfixed {
+    overflow: hidden;
+    position: fixed;
+    height: 1000px;
+    width: 135px;
+    padding: 0px;
+    top: 63px;
+    right: 2%;
+    margin-top: -84px;
+    text-align: center;
+  }
+}
 @media (max-width: 1080px) {
     .outerfixed {
     overflow: hidden;
     position: fixed;
     height: 1000px;
-    width: 118px;
+    width: 135px;
     padding: 0px;
     top: 63px;
     right: 2%;
+    margin-top: -84px;
+    text-align: center;
+  }
+}
+@media (max-width: 1057px) {
+    .outerfixed {
+    overflow: hidden;
+    position: fixed;
+    height: 1000px;
+    width: 135px;
+    padding: 0px;
+    top: 63px;
+    right: 1%;
+    margin-top: -84px;
+    text-align: center;
+  }
+}
+@media (max-width: 967px) {
+    .outerfixed {
+    overflow: hidden;
+    position: fixed;
+    height: 1000px;
+    width: 135px;
+    padding: 0px;
+    top: 63px;
+    right: 0%;
     margin-top: -84px;
     text-align: center;
   }

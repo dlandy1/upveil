@@ -6,7 +6,7 @@ class VotesController < ApplicationController
 
   def up_vote
   if current_user
-    if current_user.id == 1 || current_user.id == 2 || current_user.id == 3
+    if current_user.id == 1 || current_user.id == 2 || current_user.id == 3 || current_user.id == 4
         @product.up_vote!(current_user)
           respond_with(@product) do |format|
           format.html { redirect_to :back}
@@ -37,7 +37,7 @@ class VotesController < ApplicationController
 
   def down_vote
     if current_user
-      if current_user.id == 1 || current_user.id == 2 || current_user.id == 3
+      if current_user.id == 1 || current_user.id == 2 || current_user.id == 3 || current_user.id == 4
         @product.down_vote!(current_user)
           respond_with(@product) do |format|
           format.html { redirect_to :back}

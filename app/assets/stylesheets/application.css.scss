@@ -6704,14 +6704,16 @@ td{
   margin-top: 57px;
   margin-left: -126px;
  }
- @media (min-width: 880px) {
+ @media(max-width: 1160px){
   .spay{
-    margin-left: -129px;
+    left: 13%;
+    top: 39px;
   }
 }
- @media (min-width: 1010px) {
+@media(max-width: 1060px){
   .spay{
-    margin-left: -139px;
+    left: 15%;
+    top: 39px;
   }
 }
  @media (max-width: 879px) {
@@ -7249,7 +7251,7 @@ background-color: white;
     width: 50px;
   }
 }
-@media(max-width: 1274px){
-
+.lefteren{
+  margin-top: 3px;
+  margin-left: -22px;
 }
-

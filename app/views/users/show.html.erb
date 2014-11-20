@@ -34,9 +34,11 @@
    <%= paginate @products %>
   </div>
   <% else %>
-    <% if current_user == @user %>
-  <p class="text-center nopro">You have no Products. Help the world unveil the best products and post.</p>
-    <% else %>
-  <p class="text-center nopro"><%= @user.name %> has not unveiled any products.</p>
-     <% end %>
+    <% if current_user %>
+      <% if current_user == @user %>
+    <p class="text-center nopro">You have no Products. Help the world unveil the best products and post.</p>
+      <% else %>
+    <p class="text-center nopro"><%= @user.name %> has not unveiled any products.</p>
+       <% end %>
+    <% end %>
   <% end %>

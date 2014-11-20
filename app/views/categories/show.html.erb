@@ -70,8 +70,7 @@
  <div class = "outerfixed" >
       <div class = "interstatic">
         <%= link_to "New Product", new_product_path(@product), class: 'btn btn-primary btn-xs to-right' %>
-     <div class="leaderboard">
-      <% if current_user && Product.first !=nil %>
+     <div class="leaderboard"> 
            <table class="table table-striped table-hover fixer">
               <thead>
                 <tr>
@@ -95,7 +94,6 @@
                 <% end %>
             </tbody>
           </table> 
-      <% end %>
     </div>
   </div>
 </div>

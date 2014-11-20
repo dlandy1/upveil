@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
      @id= @category.id
      @subcategories = @category.subcategories
      @parent = @category.parent_id
-     @category.leaderboard.page_size = 5
+     @category.leaderboard.page_size = 10
      @leaders = @category.leaderboard.leaders(1)
      @users = @category.leaderboard.leaders(1)
      if !@parent.nil?
@@ -22,7 +22,7 @@ class CategoriesController < ApplicationController
      @category = Category.friendly.find(params[:category_id])
      @subcategories = @category.subcategories
      @parent = @category.parent_id
-     @category.leaderboard.page_size = 5
+     @category.leaderboard.page_size = 10
      @leaders = @category.leaderboard.leaders(1)
      @users = @category.leaderboard.leaders(1)
     if !@parent.nil?
@@ -38,7 +38,7 @@ class CategoriesController < ApplicationController
     @category = Category.friendly.find(params[:category_id])
     @subcategories = @category.subcategories.where(:gender => nil)
     @parent = @category.parent_id
-    @category.leaderboard.page_size = 5
+    @category.leaderboard.page_size = 10
     @leaders = @category.leaderboard.leaders(1)
     @users = @category.leaderboard.leaders(1)
     if !@parent.nil?
@@ -54,7 +54,7 @@ class CategoriesController < ApplicationController
     @category = Category.friendly.find(params[:category_id])
     @subcategories = @category.subcategories.where(:gender => nil)
     @parent = @category.parent_id
-    @category.leaderboard.page_size = 5
+    @category.leaderboard.page_size = 10
     @leaders = @category.leaderboard.leaders(1)
     @users = @category.leaderboard.leaders(1)
     if !@parent.nil?
@@ -70,7 +70,7 @@ class CategoriesController < ApplicationController
     @category = Category.friendly.find(params[:category_id])
     @subcategories = @category.subcategories
     @parent = @category.parent_id
-    @category.leaderboard.page_size = 5
+    @category.leaderboard.page_size = 10
     @leaders = @category.leaderboard.leaders(1)
     @users = @category.leaderboard.leaders(1)
     if !@parent.nil?
@@ -86,7 +86,7 @@ class CategoriesController < ApplicationController
     @category = Category.friendly.find(params[:category_id])
     @subcategories = @category.subcategories
     @parent = @category.parent_id
-    @category.leaderboard.page_size = 5
+    @category.leaderboard.page_size = 10
     @leaders = @category.leaderboard.leaders(1)
     @users = @category.leaderboard.leaders(1)
     if !@parent.nil?

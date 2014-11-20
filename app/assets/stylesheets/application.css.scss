@@ -7347,7 +7347,7 @@ background-color: white;
 }
 @media(max-width: 1060px){
   .hay{
-    left: 15%;
+    left: 16%;
     top: 39px;
   }
 }
@@ -7430,5 +7430,10 @@ background-color: white;
   }
   .navbar-fixed-top{
     box-shadow: none;
+  }
+}
+@media (max-width: 500px) {
+  .email{
+    display: none;
   }
 }

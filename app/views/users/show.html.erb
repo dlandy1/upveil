@@ -1,6 +1,11 @@
-<h1 class="h3 text-center font-best"><% if @user == current_user %>
+<h1 class="h3 text-center font-best">
+  <p><%= image_tag(@user.identity.normalimage)%></p>
+  <% if @user == current_user %>
      <%= link_to "Edit User",  edit_user_path(@user), class: 'btn btn-xs btn-warning fonter showel' %>
-    <% end %><b><%=@user.name %></b></h1>
+    <% end %>
+    <b><%=@user.name %></b>
+  </h1>
+  <p class="text-center pades">Socre:<%= HIGHSCORE_LB.score_for(@user.id).to_i %></p>
  <% if @user == current_user && @user.instagram_url.nil? && @user.twitter_url.nil? %>
   <div class='new-social'>
       <h4 class="paddel text-center mediar">Link to your social media</h4>

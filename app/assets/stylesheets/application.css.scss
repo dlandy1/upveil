@@ -7342,13 +7342,13 @@ background-color: white;
  @media(max-width: 1160px){
   .hay{
     left: 13%;
-    top: 39px;
+   top: 44px;
   }
 }
 @media(max-width: 1060px){
   .hay{
     left: 16%;
-    top: 39px;
+   top: 44px;
   }
 }
  @media (max-width: 879px) {
@@ -7402,55 +7402,6 @@ background-color: white;
 }
  @media (max-width: 879px) {
   .shay{
-     margin-left: 0px;
-  }
-    .mobile-button{
-    position: fixed;
-    left: -5px;
-    margin-top: 0px;
-    margin-right: -1px;
-    border-radius: 0px;
-    padding: 13px 5px;
-    font-size: 12px;
-    width: 113px;
-    z-index: 1;
-  }
-}
-@media (max-width: 767px) {
-  .mobile-button{
-    position: fixed;
-    left: -5px;
-    margin-top: 0px;
-    margin-right: -1px;
-    border-radius: 0px;
-    padding: 13px 5px;
-    font-size: 12px;
-    width: 113px;
-    z-index: 1;
-  }
-  .navbar-fixed-top{
-    box-shadow: none;
-  }
-}
-.cray{
-  position: fixed;
-  top: 90px;
-  margin-left: -150px;
- }
- @media(max-width: 1160px){
-  .cray{
-    left: 15%;
-    top: 90px;
-  }
-}
-@media(max-width: 1060px){
-  .cray{
-    left: 16%;
-    top: 90px;
-  }
-}
- @media (max-width: 879px) {
-  .cray{
      margin-left: 0px;
   }
     .mobile-button{

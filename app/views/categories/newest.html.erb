@@ -1,10 +1,10 @@
-<%= link_to "Look by Hottest",  category_path(@category), class: 'btn btn-xs btn-primary mobile-button hay' %>
+
 <% if @parent.nil? %>
 <h1 class="h3 titlen text-center"><b><%=@category.title %></b><br><p class="h6 subtitle">Best Products</p></h1>
 <% else %>
 <h1 class="h3 titlen text-center"><b><%=@category.title %></b><br><p class="h6 subtitle">Best Products related to <%=@category.title %></p></h1>
 <% end %>
-
+<%= link_to "Look by Hottest",  category_path(@category), class: 'btn btn-xs btn-primary mobile-button hay' %>
  <div class="row">
 
   <% if @category.title == "Fashion" %>

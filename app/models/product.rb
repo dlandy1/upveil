@@ -21,6 +21,7 @@ class Product < ActiveRecord::Base
   validates :gender, presence: true, :if => :in_fashion?
 
 
+  HIGHSCORE_LB.page_size = 10
 
   def price=(num)
      numb = num.to_s

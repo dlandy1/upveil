@@ -26,7 +26,7 @@ class Product < ActiveRecord::Base
   def price=(num)
      numb = num.to_s
     if !numb.blank?
-     self[:price] = numb.scan(/\b-?[\d.]+/).join.to_f
+     self[:price] = numb.scan(/\b-?[\d.]+/).join.to_f.ceil
    end
   end
 

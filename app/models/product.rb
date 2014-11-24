@@ -23,6 +23,15 @@ class Product < ActiveRecord::Base
 
   HIGHSCORE_LB.page_size = 10
 
+  def client
+      client = Twitter::REST::Client.new do |config|
+        config.consumer_key        = ENV['TW_KEY']
+        config.consumer_secret     = ENV['TW_PASS']
+        config.access_token        = ENV['TW_TOKEN']
+        config.access_token_secret = ENV['TW_SECRET']
+      end
+  end
+
   def price=(num)
      numb = num.to_s
     if !numb.blank?

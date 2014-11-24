@@ -4,7 +4,7 @@
       <%= link_to "", 
         product_up_vote_path(product), 
         class: "glyphicon glyphicon-chevron-up #{(product.already_up_voted_by_user?(current_user)) ? 'voted' : ''} ",
-         method: :post,id: "upvote-#{product.id}", remote: true %></div>
+         method: :post,id: "upvote-#{product.id}", remote: true %><i class="fa fa-chevron-up"></i></div>
     <div><strong id="vote-<%=product.id%>"><%= product.points %></strong></div>
     <div><%= link_to "", product_down_vote_path(product), 
     class: "glyphicon glyphicon-chevron-down #{(product.already_down_voted_by_user?(current_user))  ? 'voted' : ''}", id: "downvote-#{product.id}", method: :post, remote: true %></div>

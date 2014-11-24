@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
   def create
      @product = current_user.products.build(product_params)
       if @product.save
-        @product.client.update("Check out #{@product.title} on www.upveil.com/categories/#{@product.category.slug}/products/#{@product.category.title} ##{@product.category.title}")
+        @product.client.update("Check out #{@product.title} on www.upveil.com/categories/#{@product.category.slug}/products/#{@product.category.title.slug} ##{@product.category.title}")
         @product.update_rank
         @product.increase(current_user, 100)
         subcat = @product.subcat_id

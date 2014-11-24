@@ -29,6 +29,7 @@ class Product < ActiveRecord::Base
         config.consumer_secret     = ENV['TW_PASS']
         config.access_token        = ENV['TW_TOKEN']
         config.access_token_secret = ENV['TW_SECRET']
+        # yep
       end
   end
 

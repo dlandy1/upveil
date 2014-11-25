@@ -1,4 +1,5 @@
 require 'file_size_validator' 
+require 'open-uri'
 class Product < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
@@ -29,8 +30,14 @@ class Product < ActiveRecord::Base
         config.consumer_secret     = ENV['TW_PASS']
         config.access_token        = ENV['TW_TOKEN']
         config.access_token_secret = ENV['TW_SECRET']
-        # yep
       end
+  end
+
+  def tweet
+    uri = URI.parse(self.image.url)
+    media = uri.open
+    media.instance_eval("def original_filename; '#{File.basename(uri.path)}'; end")
+    client.update_with_media("Check out the #{self.title} on www.upveil.com/categories/#{self.category.slug}/products/#{self.slug} ##{self.category.title}", media)
   end
 
   def price=(num)

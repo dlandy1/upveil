@@ -127,7 +127,7 @@ class Product < ActiveRecord::Base
       product_score = HIGHSCORE_LB.score_for(self.user.id).to_i
       HIGHSCORE_LB.rank_member(self.user.id, product_score + 20)
       if self.tweet != true
-        if self.points.to_i >= 10
+        if self.points.to_i == 10
            self.twoot
            self.update_attributes(tweet: true)
         end

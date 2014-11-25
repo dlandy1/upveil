@@ -33,7 +33,7 @@ class ProductsController < ApplicationController
         @category = Category.friendly.find(subcat)
         @category.increase_grade(current_user, 100)
         flash[:notice] = "Product was saved."
-        redirect_to [@category]
+        redirect_to [@category, :newest]
       else
         flash[:error] = "There was an error saving the product. Please try again."
         render :edit

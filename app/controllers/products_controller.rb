@@ -26,7 +26,6 @@ class ProductsController < ApplicationController
   def create
      @product = current_user.products.build(product_params)
       if @product.save
-        @product.tweet
         @product.update_rank
         @product.increase(current_user, 100)
         subcat = @product.subcat_id

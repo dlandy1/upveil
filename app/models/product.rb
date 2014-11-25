@@ -33,7 +33,7 @@ class Product < ActiveRecord::Base
       end
   end
 
-  def tweet
+  def twoot
     uri = URI.parse(self.image.url)
     media = uri.open
     media.instance_eval("def original_filename; '#{File.basename(uri.path)}'; end")
@@ -99,6 +99,11 @@ class Product < ActiveRecord::Base
       vote_manager.votes_count
     end
 
+    def points
+      vote_manager = VotesManager.new(nil, self)
+      vote_manager.votes_count
+    end
+
     def down_vote!(voting_user)
       vote_manager = VotesManager.new(voting_user, self)
       vote_manager.down_vote!
@@ -121,6 +126,12 @@ class Product < ActiveRecord::Base
       HIGHSCORE_LB.rank_member(voting_user.id, current_score + 3)
       product_score = HIGHSCORE_LB.score_for(self.user.id).to_i
       HIGHSCORE_LB.rank_member(self.user.id, product_score + 20)
+      if self.tweet != true
+        if self.points.to_i == 10
+           self.twoot
+           self.update_attributes(tweet: true)
+        end
+      end
     end
 
     def increase(voting_user, points)
@@ -128,10 +139,6 @@ class Product < ActiveRecord::Base
       HIGHSCORE_LB.rank_member(voting_user.id, current_score + points)
     end
 
-    def points
-      vote_manager = VotesManager.new(nil, self)
-      vote_manager.votes_count
-    end
     
     def update_rank
     s = self.points

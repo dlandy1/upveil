@@ -1,4 +1,5 @@
 Upveil::Application.routes.draw do
+  get "activities/index"
   devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
   resources :users, except: [:destroy, :index]
   resources :categories, only: [:show] do
@@ -14,6 +15,7 @@ Upveil::Application.routes.draw do
     post '/up-vote' => 'votes#up_vote', as: :up_vote
     post '/down-vote' => 'votes#down_vote', as: :down_vote
   end
+  resources :activities
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

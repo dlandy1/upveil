@@ -8,7 +8,7 @@ class VotesController < ApplicationController
   if current_user
     if current_user.id == 1 || current_user.id == 2 || current_user.id == 3 || current_user.id == 4
         @product.up_vote!(current_user)
-          @product.create_activity :create, owner: current_user
+          @product.create_activity :create, owner: current_user,  recipient: @product.user
           respond_with(@product) do |format|
           format.html { redirect_to :back}
           end
@@ -21,13 +21,13 @@ class VotesController < ApplicationController
         elsif @product.already_down_voted_by_user?(current_user)
           @product.already_downvote(current_user)
           @product.up_vote!(current_user)
-          @product.create_activity :create, owner: current_user
+          @product.create_activity :create, owner: current_user,  recipient: @product.user
           respond_with(@product) do |format|
           format.html { redirect_to :back}
           end
         else
           @product.up_vote!(current_user)
-          @product.create_activity :create, owner: current_user
+          @product.create_activity :create, owner: current_user,  recipient: @product.user
           respond_with(@product) do |format|
           format.html { redirect_to :back}
           end

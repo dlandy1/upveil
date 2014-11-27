@@ -1,5 +1,6 @@
 class ActivitiesController < ApplicationController
   def index
-    @activities = PublicActivity::Activity.order("created_at desc").where(owner_id: current_user, owner_type: "User")
+    @cactivities = PublicActivity::Activity.where(recipient_id: current_user.id, owner_type: "User").order("created_at desc")
+     @activities = PublicActivity::Activity.where(read: false).where(recipient_id: current_user.id, owner_type: "User").order("created_at desc").limit(80)
   end
 end

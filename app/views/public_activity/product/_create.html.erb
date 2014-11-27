@@ -1,7 +1,15 @@
-<p>upvoted your post
-<% if activity.trackable %>
-  <%= link_to activity.trackable.title,  [activity.trackable.category, activity.trackable] %>
+<% if activity.trackable.purchase %>
+clicked buy here on
+  <% if activity.trackable %>
+    <b><%= activity.trackable.title %></b>
+  <% else %>
+    which has since been removed
+  <% end %>
 <% else %>
-  which has since been removed
+  upvoted
+  <% if activity.trackable %>
+    <b><%= activity.trackable.title %></b>
+  <% else %>
+    which has since been removed
+  <% end %>
 <% end %>
-</p>

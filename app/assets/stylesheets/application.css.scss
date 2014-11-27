@@ -3938,7 +3938,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-nav > li > a {
   padding-top: 10px;
   padding-bottom: 10px;
-  line-height: 22px;
+  line-height: 0px;
 }
 @media (max-width: 500px) {
   .navbar-nav .open .dropdown-menu {
@@ -6205,12 +6205,11 @@ button.close {
 }
 .navbar-nav > li > a {
   padding: 0px 12px;
-  margin: 12px 6px;
+  margin: 3px 0px;
   border: 1px solid transparent;
   border-radius: 4px;
 }
 .navbar-nav > li > a:hover {
-  border: 1px solid #ddd;
 }
 .navbar-nav > .active > a,
 .navbar-nav > .active > a:hover {
@@ -7516,4 +7515,109 @@ background-color: white;
 }
 .pades{
   padding-bottom: 10px;
+}
+#nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+#nav ul li {
+    display: inline-block;
+}
+#nav ul li {
+}
+#nav ul li a, visited {
+    text-decoration: none;
+}
+#nav ul li ul {
+   
+}
+#nav ul ul {
+    position: absolute;
+    background-color: white; 
+    border: 1px solid #A9A9A9;
+    border-top: 0;
+    margin-left: -115px;
+    min-width: 270px;
+}
+#nav ul ul li {
+    display: block;
+    border-bottom: 1px solid rgb(229, 229, 229);
+}
+.no-marg{
+  margin: 0;
+}
+.notes{
+  font-size: 11px;
+}
+.space{
+  padding: 0 3px;
+}
+span > span > img{
+   height: 27px;
+   width: 27px;
+   margin-top: -3px;
+   margin-bottom: 22px;
+}
+.samller{
+  margin-right: 10px;
+}
+.camo{
+  display: none;
+}
+.ooo{
+  display: block;
+}
+.ololo{
+  padding: 5px;
+}
+.sizzle{
+  font-size: 10px;
+}
+.inline{
+  display: inline-block;
+}
+.noty{
+  color: white;
+  padding: 0px 6px;
+  background-color: red;
+  border-radius: 46px;
+  font-size: 12px;
+  z-index: 1;
+  position: absolute;
+  margin-left: 24px;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+.topfull{
+  position: relative;
+}
+.scrolly{
+  height: 600px;
+  overflow: auto;
+  position: relative;
+}
+.marker{
+  color: rgb(39, 39, 126);
+  font-size: 12px;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+.helvetica{
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+@media (max-width: 824px) {
+    .clike{
+      display: none;
+    }
+    .noty{
+      display: none;
+    }
+}
+.fb-li{
+  display: block;
+  padding: 16px 20px;
+  color: rgb(89, 89, 89);  
+}
+.fb-li:hover{
+  background-color: rgb(234, 225, 164);
 }

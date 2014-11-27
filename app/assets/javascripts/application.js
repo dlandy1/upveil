@@ -45,36 +45,15 @@
                 }
             });
         });
-    $('product[category_id] select').click(function () {
-    if ($(this).val() === '2') {
-        $(".fash").show();
-    }
-})
-
-
-    $(".male").on("click", function(){
-         $(".male").css('background-color', 'rgb(223, 239, 255)');
-         $(".female").css('background-color', 'white');
-         $(".females").hide();
-         $(".nongender").hide();
-         $(".males").show();
-     })
-    $(".female").on("click", function(){
-         $(".male").css('background-color', 'white');
-         $(".female").css('background-color', 'rgb(243, 230, 255)');
-         $(".males").hide();
-         $(".nongender").hide();
-         $(".females").show();
-     })
-    
-    $("#newer").on("click", function(){
-         $(".newer").hide();
-         $(".hotter").show();
-     })
-    $("#hotter").on("click", function(){
-         $(".hotter").hide();
-         $(".newer").show();
-     })
+    $('.clike').click(function() {
+      var clicks = $(this).data('clicks');
+      if (clicks) {
+         $(".camo").hide();
+      } else {
+        $(".camo").show();
+      }
+      $(this).data("clicks", !clicks);
+    })
     });
 /*global jQuery: true */
 

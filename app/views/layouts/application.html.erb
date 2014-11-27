@@ -50,9 +50,10 @@ window._fbq.push(['track', '6017250074008', {'value':'0.01','currency':'USD'}]);
     </button>
    <p class="navbar-brand"><b><%= link_to "Upveil", root_path, class: 'non_line' %></b></p>
   </div>
-  <div class="navbar-collapse collapse navbar-responsive-collapse">
+  <div class="navbar-collapse collapse navbar-responsive-collapse" id="nav">
     <ul class="nav navbar-nav navbar-right">
       <% if current_user %>
+                <%= render partial: 'application/notifications' %>
                  <%= link_to current_user, class: 'btn btn-link' do %>
                   <li><%= image_tag(current_user.identity.smallimage)%></li>
                   <% end %>

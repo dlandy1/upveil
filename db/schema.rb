@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141127063925) do
+ActiveRecord::Schema.define(version: 20141127175336) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -80,7 +80,6 @@ ActiveRecord::Schema.define(version: 20141127063925) do
     t.datetime "updated_at"
     t.string   "slug"
     t.boolean  "tweet",       default: false
-    t.boolean  "purchase",    default: false
   end
 
   add_index "products", ["category_id"], name: "index_products_on_category_id"

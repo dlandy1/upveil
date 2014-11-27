@@ -7558,7 +7558,7 @@ span > span > img{
    height: 27px;
    width: 27px;
    margin-top: -3px;
-   margin-bottom: 22px;
+   margin-bottom: 7px;
 }
 .samller{
   margin-right: 10px;
@@ -7593,7 +7593,7 @@ span > span > img{
   position: relative;
 }
 .scrolly{
-  height: 600px;
+  max-height: 600px;
   overflow: auto;
   position: relative;
 }
@@ -7620,4 +7620,25 @@ span > span > img{
 }
 .fb-li:hover{
   background-color: rgb(234, 225, 164);
+}
+.samller > img{
+   height: 27px;
+   width: 27px;
+}
+.lil{
+  padding: 15px;
+  border: 1px solid #f0f0f0;
+  color: rgb(105, 102, 102);
+  font-size: 13px;
+}
+.lil:hover{
+  background-color: #eae1a4;
+  text-decoration: none;
+}
+.ununder:hover{
+   text-decoration: none;
+}
+.smale{
+  font-size: 11px;
+  color: grey;
 }

@@ -8,33 +8,15 @@
                         <%= link_to "Mark as read", application_read_all_notification_path, method: :post, class: 'marker'%>
                       </li>
                     <% @activities.each do |activity| %>
-                      <% if activity.owner == current_user %>
                       <li class= "notes camo ooo">
                          <%= link_to activity.trackable.title, class: 'fb-li' do%> 
                         <span>
-                          <span class="samller pull-left helvetica"><%= image_tag(activity.owner.identity.smallimage)%></span>
-                          <span>
-                         <b>You</b>
                         <%= render_activity activity %>
                         </span>
-                      </span>
                        <% end %>
                       </li>
-                      <% else %>
-                      <li class= "notes camo ooo">
-                       <%= link_to activity.trackable.title, class: 'fb-li' do%> 
-                        <span>
-                          <span class="samller pull-left helvetica"><%= image_tag(activity.owner.identity.smallimage)%></span>
-                          <span>
-                         <b><%= activity.owner.name %></b>
-                          </span>
-                        <%= render_activity activity %>
-                        </span>
-                        </span>
-                        <% end %>
-                      </li>
-                      <% end %>
                     <% end %>
+                    </div>
                     </div>
                 </ul>
           </li>

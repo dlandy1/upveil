@@ -7,15 +7,6 @@ class ProductsController < ApplicationController
     end
   end
   
-  def purchase
-     @user = current_user
-     @product = Product.friendly.find(params[:product_id])
-     @user.create_activity :create, owner: current_user,  recipient: @product.user
-     respond_with(@activities) do |format|
-          format.html { redirect_to @product.link}
-    end
-  end
-  
   def index
    @products = Product.order('rank DESC').page(params[:page]).per(10)
    @leaders =  HIGHSCORE_LB.leaders(1)

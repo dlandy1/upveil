@@ -9,10 +9,13 @@ class Categories::ProductsController < ApplicationController
      @user = current_user
      @category = Category.friendly.find(params[:category_id])
      @product = Product.friendly.find(params[:product_id])
-     @product.update_attributes(purchase: true)
-     @product.create_activity :create, owner: current_user,  recipient: @product.user
+      if @user != @product.user
+     @product.create_activity :purchase, owner: current_user,  recipient: @product.user
      respond_with(@activities) do |format|
           format.html { redirect_to @product.link}
+    end
+    else
+      redirect_to @product.link
     end
   end
   def show

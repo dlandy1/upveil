@@ -9,7 +9,7 @@
                       </li>
                     <% @activities.each do |activity| %>
                       <li class= "notes camo ooo">
-                         <%= link_to activity.trackable.title, class: 'fb-li' do%> 
+                         <%= link_to [activity.trackable.category,activity.trackable] , class: 'fb-li' do%> 
                         <span>
                         <%= render_activity activity %>
                         </span>

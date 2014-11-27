@@ -1,7 +1,7 @@
 <h1 class="text-center">Notifications</h1>
 <% if @cactivities.first %>
 <% @cactivities.each do |activity| %>
-<%= link_to activity.trackable, class: 'ununder' do%>
+<%= link_to [activity.trackable.category, activity.trackable], class: 'ununder' do%>
 <div class="lil">
     <%= render_activity activity %>
 </div>

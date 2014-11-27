@@ -7606,10 +7606,12 @@ span > span > img{
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 @media (max-width: 824px) {
-    .clike{
+    .noty{
       display: none;
     }
-    .noty{
+}
+@media (min-width: 825px) {
+    .nobile{
       display: none;
     }
 }

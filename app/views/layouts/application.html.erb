@@ -53,7 +53,7 @@ window._fbq.push(['track', '6017250074008', {'value':'0.01','currency':'USD'}]);
   <div class="navbar-collapse collapse navbar-responsive-collapse" id="nav">
     <ul class="nav navbar-nav navbar-right">
       <% if current_user %>
-                <%= render partial: 'application/notifications' %>
+                <div class="noty"><%= render partial: 'application/notifications' %></div>
                  <%= link_to current_user, class: 'btn btn-link' do %>
                   <li><%= image_tag(current_user.identity.smallimage)%></li>
                   <% end %>
@@ -96,6 +96,7 @@ window._fbq.push(['track', '6017250074008', {'value':'0.01','currency':'USD'}]);
       </div>
   </div>
 </div>
+<div class="nobile"><%= render partial: 'application/notifications' %></div>
 <div class="socialer email">
 <a target="_blank" href="https://www.facebook.com/upveil"><%= fa_icon "facebook 2x ", class: 'olo' %></a>
 <a target="_blank" href="https://twitter.com/upveil"><%= fa_icon "twitter 2x", class: 'olo' %></a>

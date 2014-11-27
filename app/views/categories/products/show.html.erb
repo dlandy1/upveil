@@ -28,7 +28,13 @@
     <h1 class="text-center padder sizem"> 
       <%= @product.title %></h1>
       <p class="text-center">$<%=@product.price%></p>
+      <% if current_user %>
+      <p class="text-center">
+        <%= link_to "Buy here", category_product_purchase_path(@product.category, @product), :target => "_blank",class: 'btn btn-sm btn-primary buyer', method: :post %>
+      </p>
+      <% else %> 
       <p class="text-center"><%= link_to "Buy here", @product.link, :target => "_blank", class: 'btn btn-sm btn-primary buyer' %></p>
+      <% end %>
       <div class ="product_show">
          <div class="user_tag user_names link_color ayo">
             <%= link_to @product.user do %>

@@ -1,4 +1,12 @@
 class ProductsController < ApplicationController
+  before_action :load_activities
+  respond_to :html, :js
+  def notifications
+    if current_user
+      @activities = PublicActivity::Activity.where(read: false).where(recipient_id: current_user.id, owner_type: "User").order("created_at desc")
+    end
+  end
+  
   def index
    @products = Product.order('rank DESC').page(params[:page]).per(10)
    @leaders =  HIGHSCORE_LB.leaders(1)
@@ -74,6 +82,13 @@ class ProductsController < ApplicationController
    end
 
     private
+
+    def load_activities
+      if current_user
+        @activities = PublicActivity::Activity.where(read: false).where(recipient_id: current_user.id, owner_type: "User").order("created_at desc")
+      end
+    end
+
     def product_params
     params.require(:product).permit(:title, :price, :link, :description, :gender, :category_id, :subcat_id, :image, :remote_image_url)
    end

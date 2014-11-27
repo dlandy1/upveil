@@ -1,6 +1,7 @@
 require 'file_size_validator' 
 require 'open-uri'
 class Product < ActiveRecord::Base
+  include PublicActivity::Common
   belongs_to :user
   belongs_to :category
   belongs_to :subcategory, :class_name => "Category", :foreign_key => "subcat_id"

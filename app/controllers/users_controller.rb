@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :finish_signup]
+  before_action :load_activities
 
   # GET /users/:id.:format
   def show
@@ -34,7 +35,7 @@ class UsersController < ApplicationController
       if @user.update(user_params)
         @user.skip_reconfirmation! if @user.respond_to?(:skip_confirmation)
         sign_in(@user, :bypass => true)
-        redirect_to root_path, notice: 'Your profile was successfully updated.'
+        render :back, notice: 'Your profile was successfully updated.'
       else
         @show_errors = true
       end
@@ -54,6 +55,12 @@ class UsersController < ApplicationController
   private
     def set_user
       @user = User.friendly.find(params[:id])
+    end
+
+    def load_activities
+      if current_user
+        @activities = PublicActivity::Activity.where(read: false).where(recipient_id: current_user.id, owner_type: "User").order("created_at desc")
+      end
     end
 
     def user_params

@@ -8,12 +8,15 @@ Upveil::Application.routes.draw do
     get "male_newest"
     get "female_newest"
     resources :subcategories, only: [:index]
-    resources :products, except: [:index, :destroy, :new, :create], controller: 'categories/products'
+    resources :products, except: [:index, :destroy, :new, :create], controller: 'categories/products' do
+      post 'purchase'
+    end
   end
   resources :products, except: [:show] do 
     post '/up-vote' => 'votes#up_vote', as: :up_vote
     post '/down-vote' => 'votes#down_vote', as: :down_vote
   end
+  resources :activities , :path => 'notifications'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -22,6 +25,8 @@ Upveil::Application.routes.draw do
    root to: 'products#index'
 
    get "products/newest"
+   get 'application/notifications'
+   post 'application/read_all_notification'
 
 
 

@@ -1,0 +1,11 @@
+<span class="samller pull-left helvetica"><%= image_tag(activity.trackable.image)%></span>
+                          <span>
+                         Someone
+                          </span>
+clicked buy here on
+  <% if activity.trackable %>
+    <b><%= activity.trackable.title %></b>
+  <% else %>
+    which has since been removed
+  <% end %>
+   </span>

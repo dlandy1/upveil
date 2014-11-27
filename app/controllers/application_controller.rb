@@ -1,7 +1,21 @@
 class ApplicationController < ActionController::Base
+  respond_to :html, :js
+  include PublicActivity::StoreController
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  def notifications
+    if current_user
+      @activities = PublicActivity::Activity.where(recipient_id: current_user.id, owner_type: "User").order("created_at desc")
+    end
+  end
+
+  def read_all_notification
+   PublicActivity::Activity.where(recipient_id: current_user.id).update_all(:read => true)
+   respond_with(@activities) do |format|
+          format.html { redirect_to :back}
+    end
+  end 
   
   def ensure_signup_complete
     # Ensure we don't go into an infinite loop

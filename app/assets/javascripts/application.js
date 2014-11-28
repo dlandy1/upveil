@@ -45,7 +45,7 @@
                 }
             });
         });
-    $('.clike').click(function() {
+    $('.clike').click(function(e) {
       var clicks = $(this).data('clicks');
       if (clicks) {
          $(".camo").hide();
@@ -53,6 +53,7 @@
         $(".camo").show();
       }
       $(this).data("clicks", !clicks);
+      e.preventDefault();
     })
     });
 /*global jQuery: true */

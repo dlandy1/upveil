@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
   friendly_id :name, use: :slugged
 
   def instagram_url=(name)
+    if name.length == 0
+    else
     if name.index("http://instagram.com/") == nil
     name.gsub!('@','')
     name.insert(0, 'http://instagram.com/') 
@@ -28,8 +30,11 @@ class User < ActiveRecord::Base
     self[:instagram_url] = name.to_s
    end
   end
+  end
 
   def twitter_url=(name)
+    if name.length == 0
+    else
     if name.index("http://twitter.com/") == nil
     name.gsub!('@','')
     name.insert(0, 'http://twitter.com/') 
@@ -37,6 +42,7 @@ class User < ActiveRecord::Base
    else
     self[:twitter_url] = name.to_s
    end
+  end
   end
 
   def should_generate_new_friendly_id?

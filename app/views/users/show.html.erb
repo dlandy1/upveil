@@ -6,7 +6,7 @@
     <b><%=@user.name %></b>
   </h1>
   <p class="text-center pades">Score: <%= HIGHSCORE_LB.score_for(@user.id).to_i %></p>
- <% if @user == current_user && @user.instagram_url.nil? && @user.twitter_url.nil? %>
+ <% if @user == current_user && @user.instagram_url.nil? && @user.twitter_url.nil? && @user.website.nil? %>
   <div class='new-social'>
       <h4 class="paddel text-center mediar">Link to your media</h4>
         <%= render "formal" %>
@@ -15,7 +15,7 @@
   <div class="text-center">
     <% if @user.instagram_url %>
       <% if @user.instagram_url.length  > 22 && @user.instagram_url != nil %>
-        <%= link_to @user.instagram_url, :target => "_blank" do%>
+        <%= link_to @user.instagram_url, :target => "_blank", class: 'ununder' do%>
            <%= fa_icon "instagram 2x", class: 'colorel' %>
           <% end %>
       <% end %>
@@ -23,7 +23,7 @@
 
     <% if @user.twitter_url %>
       <% if @user.twitter_url.length  > 19 && @user.twitter_url != nil%>
-       <%= link_to @user.twitter_url, :target => "_blank" do%>
+       <%= link_to @user.twitter_url, :target => "_blank", class: 'ununder' do%>
            <%= fa_icon "twitter 2x", class: 'coloring' %>
           <% end %>
       <% end %>

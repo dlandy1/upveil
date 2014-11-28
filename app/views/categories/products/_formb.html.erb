@@ -39,7 +39,7 @@
     </div>
     <%= f.label "Gender*(Needed with Fashion)" %>
      <div class="form-group">
-      <%= f.select :gender, options_for_select(["Female", "Male"], f.object.gender), :prompt => "Select a Gender" %>
+      <%= f.select :gender, options_for_select(["Female", "Male", "Unisex"], f.object.gender), :prompt => "Select a Gender" %>
      </div>
   <div class="form-group">
     <%= f.label "Title*" %>

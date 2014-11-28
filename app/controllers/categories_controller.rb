@@ -45,9 +45,9 @@ class CategoriesController < ApplicationController
     if !@parent.nil?
         @subcatparent = Category.friendly.find(@parent)
         @parentsubcats = @subcatparent.subcategories.where(:gender => nil)
-        @products = @subcatparent.products.order("rank DESC").where(:gender => "Male").where(subcat_id: @category.id).page(params[:page]).per(10)
+        @products = @subcatparent.products.order("rank DESC").where.not(:gender => "Female").where(subcat_id: @category.id).page(params[:page]).per(10)
     else
-        @products = @category.products.where(:gender => "Male").order("rank DESC").page(params[:page]).per(10)
+        @products = @category.products.where.not(:gender => "Female").order("rank DESC").page(params[:page]).per(10)
     end
   end
 
@@ -61,9 +61,9 @@ class CategoriesController < ApplicationController
     if !@parent.nil?
         @subcatparent = Category.friendly.find(@parent)
         @parentsubcats = @subcatparent.subcategories
-        @unscope = @subcatparent.products.order("created_at DESC").where(:gender => "Male").where(subcat_id: @category.id).page(params[:page]).per(10)
+        @unscope = @subcatparent.products.order("created_at DESC").where.not(:gender => "Female").where(subcat_id: @category.id).page(params[:page]).per(10)
     else
-        @unscope = @category.products.where(:gender => "Male").order("created_at DESC").page(params[:page]).per(10)
+        @unscope = @category.products.where.not(:gender => "Female").order("created_at DESC").page(params[:page]).per(10)
     end
   end
 
@@ -77,9 +77,9 @@ class CategoriesController < ApplicationController
     if !@parent.nil?
         @subcatparent = Category.friendly.find(@parent)
         @parentsubcats = @subcatparent.subcategories
-        @products = @subcatparent.products.order("rank DESC").where(:gender => "Female").where(subcat_id: @category.id).page(params[:page]).per(10)
+        @products = @subcatparent.products.order("rank DESC").where.not(:gender => "Male").where(subcat_id: @category.id).page(params[:page]).per(10)
     else
-        @products = @category.products.where(:gender => "Female").order("rank DESC").page(params[:page]).per(10)
+        @products = @category.products.where.not(:gender => "Male").order("rank DESC").page(params[:page]).per(10)
     end
   end
 
@@ -93,9 +93,9 @@ class CategoriesController < ApplicationController
     if !@parent.nil?
         @subcatparent = Category.friendly.find(@parent)
         @parentsubcats = @subcatparent.subcategories
-        @unscope = @subcatparent.products.order("created_at DESC").where(:gender => "Male").where(subcat_id: @category.id).page(params[:page]).per(10)
+        @unscope = @subcatparent.products.order("created_at DESC").where.not(:gender => "Male").where(subcat_id: @category.id).page(params[:page]).per(10)
     else
-        @unscope = @category.products.where(:gender => "Male").order("created_at DESC").page(params[:page]).per(10)
+        @unscope = @category.products.where.not(:gender => "Male").order("created_at DESC").page(params[:page]).per(10)
     end
   end
 

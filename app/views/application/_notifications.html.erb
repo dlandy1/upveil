@@ -1,4 +1,4 @@
-<% if @activities.first %> 
+<% if @activities.first %>
 <span class="noty"><%= @activities.count.to_i %></span>
 <li class="no-marg"> <a href="#" class="clike"><%= fa_icon "bell", class: 'clike' %></a>
                   <ul class="camo">
@@ -9,7 +9,7 @@
                       </li>
                     <% @activities.each do |activity| %>
                       <li class= "notes camo ooo">
-                         <%= link_to [activity.trackable.category,activity.trackable] , class: 'fb-li' do%> 
+                         <%= link_to [activity.trackable.category, activity.trackable] , class: 'fb-li' do%> 
                         <span>
                         <%= render_activity activity %>
                         </span>

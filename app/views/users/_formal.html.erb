@@ -1,12 +1,16 @@
 <%= form_for [ @user] do |f| %>
 <div class="text-center">
   <div class="gram">
-       <%= fa_icon "instagram" %><%= f.label :instagram%>
+       <%= fa_icon "instagram", class: 'colorel' %><%= f.label :instagram%>
       <%= f.text_field :instagram_url, class: 'media', placeholder: "@danlandy"%>
   </div>
    <div class="gram">
-       <%= fa_icon "twitter" %><%= f.label :twitter%>
-      <%= f.text_field :twitter_url, class: 'media tweet', placeholder: "@danlandy"%>
+       <%= fa_icon "twitter", class: 'coloring' %><%= f.label :twitter%>
+      <%= f.text_field :twitter_url, class: 'media tweet', placeholder: "@danoliverlandy"%>
+    </div>
+    <div class="gram">
+       <%= fa_icon "info-circle", class: "url" %><%= f.label :website%>
+      <%= f.text_field :website, class: 'media web', placeholder: "http://www.upveil.com"%>
     </div>
     <div>
       <%= f.submit "Link to media", class: 'btn btn-sm mediar btn-primary'%>

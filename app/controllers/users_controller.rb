@@ -35,7 +35,7 @@ class UsersController < ApplicationController
       if @user.update(user_params)
         @user.skip_reconfirmation! if @user.respond_to?(:skip_confirmation)
         sign_in(@user, :bypass => true)
-        render :back, notice: 'Your profile was successfully updated.'
+       redirect_to root_url, notice: 'Your profile was successfully updated.'
       else
         @show_errors = true
       end
@@ -64,7 +64,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      accessible = [ :name, :email, :instagram_url, :twitter_url ] # extend with your own params
+      accessible = [ :name, :email, :instagram_url, :twitter_url, :website ] # extend with your own params
       accessible << [ :password, :password_confirmation ] unless params[:user][:password].blank?
       params.require(:user).permit(accessible)
     end

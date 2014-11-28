@@ -5,10 +5,10 @@
     <% end %>
     <b><%=@user.name %></b>
   </h1>
-  <p class="text-center pades">Score:<%= HIGHSCORE_LB.score_for(@user.id).to_i %></p>
+  <p class="text-center pades">Score: <%= HIGHSCORE_LB.score_for(@user.id).to_i %></p>
  <% if @user == current_user && @user.instagram_url.nil? && @user.twitter_url.nil? %>
   <div class='new-social'>
-      <h4 class="paddel text-center mediar">Link to your social media</h4>
+      <h4 class="paddel text-center mediar">Link to your media</h4>
         <%= render "formal" %>
     </div>
      <% end %>
@@ -28,6 +28,15 @@
           <% end %>
       <% end %>
     <% end %>
+    </div>
+    <div class="text-center">
+    <% if @user.website %>
+      <% if @user.website.length > 1 %>
+       <%= link_to @user.website, :target => "_blank", class: 'url' do%>
+           <span class="url"><%= fa_icon "info-circle", class: 'url' %><%= @user.website %></span>
+          <% end %>
+      <% end %>
+       <% end %>
     </div>
 <% if @user.products.first %>
   <div class="row">

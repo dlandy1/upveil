@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
   validates :instagram_url, length:{minimum: 1}, :allow_blank => true 
   validates :twitter_url, length:{minimum: 1}, :allow_blank => true 
+  validates :website, length:{minimum: 1}, :allow_blank => true 
   validates :name, length: {minimum: 3}, presence: true
 
   extend FriendlyId

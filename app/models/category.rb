@@ -1,10 +1,14 @@
 class Category < ActiveRecord::Base
+  include PublicActivity::Common
   has_many :subcategories, :class_name => "Category", :foreign_key => "parent_id", :dependent => :destroy
   has_many :products, dependent: :destroy
   has_many :subproducts, :class_name => 'Product', :foreign_key => "subcat_id"
+  has_many :grandproducts, :class_name => 'Product', :foreign_key => "grandcat_id"
 
-  belongs_to :parent_category, :class_name => "Category"
+  belongs_to :parent_category, :class_name => "Category", :foreign_key => "parent_id"
+  belongs_to :user
   validates :title, length: {minimum: 3}, presence: true
+  validates :description, length: {minimum: 7}, :allow_blank => true
 
 
   scope :parent_categories, -> { where(parent_id: nil)}

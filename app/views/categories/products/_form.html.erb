@@ -10,47 +10,58 @@
     </div>
    <% end %>
 
-   <% if product.grandcat_id %>
-    <div class="form-group hide">
-       <%= f.select :category_id, options_from_collection_for_select(Category.parent_categories.all, "id", "title", product.category.id), :prompt => "Select a Category" %>
-        <%= f.select :subcat_id, options_from_collection_for_select(product.category.subcategories, "id", "title", product.subcat_id), :prompt => "Select a Category" %>
-    </div>
-    <div class="form-group">
-      <p>Parent: <b><%= Category.find(product.subcat_id).title %></b></p>
-      <%= f.label "Category*" %>
+    <% if categorie.parent_category %>
+      <% if categorie.parent_category.parent_category %>
       <div class="form-group">
-      <%= f.select :grandcat_id, options_from_collection_for_select(Category.find(product.subcat_id).subcategories, "id", "title", product.grandcat_id), :prompt => "Select a Category" %>
+      <p>Category: <b><%= categorie.parent_category.title %></b></p>
     </div>
-    <% else %>
-   <div class="form-group">
-      <%= f.label "Category*" %>
-      <div class="form-group">
-        <% if product.category %>
-      <%= f.select :category_id, options_from_collection_for_select(Category.parent_categories.all, "id", "title", product.category.id), :prompt => "Select a Category" %>
-         <% else %>
-         <%= f.select :category_id, options_from_collection_for_select(Category.parent_categories.all, "id", "title"), :prompt => "Select a Category" %>
-         <% end %>
+      <div class="form-group hide">
+      <%= f.select :category_id, options_from_collection_for_select(Category.all, "id", "title", Category.find(categorie.parent_id).parent_id), :prompt => "Select a Category" %>
        </div>
-      <%= f.label "Subcategory*" %>
-       <div class="form-group">
-         <% if product.category %>
-        <%= select_tag 'product[subcat_id]', options_from_collection_for_select(f.object.category.subcategories, "id", "title", product.subcat_id),
-                     "data-option-dependent" => true,
-                     "data-option-observed" => "product_category_id",
-                     "data-option-url" => "/categories/:category_id:/subcategories.json",
-                     "data-option-key-method" => :id,
-                     "data-option-value-method" => :title %> 
-            <% else %>
-            <%= select_tag 'product[subcat_id]', options_from_collection_for_select([], "id", "title", product.subcat_id),
-                     "data-option-dependent" => true,
-                     "data-option-observed" => "product_category_id",
-                     "data-option-url" => "/categories/:category_id:/subcategories.json",
-                     "data-option-key-method" => :id,
-                     "data-option-value-method" => :title %> 
-            <% end %>
+
+       <div class="form-group hide">
+       <%= f.select :subcat_id, options_from_collection_for_select(Category.all, "id", "title", categorie.parent_id ), :prompt => "Select a Category" %>
         </div>
+
+          <%= f.label "Subcategory*" %>
+        <div class="form-group">
+       <%= f.select :grandcat_id, options_from_collection_for_select(Category.find(categorie.parent_id).subcategories, "id", "title", categorie.id ), :prompt => "Select a Category" %>
+        </div>
+
+    <% else %>
+
+    <div class="form-group">
+      <p>Category: <b><%= categorie.parent_category.title %></b></p>
     </div>
+
+       <div class="form-group hide">
+      <%= f.select :category_id, options_from_collection_for_select(Category.all, "id", "title", Category.find(categorie.parent_id).id), :prompt => "Select a Category" %>
+       </div>
+
+        <%= f.label "subcategory*" %>
+       <div class="form-group">
+       <%= f.select :subcat_id, options_from_collection_for_select(Category.find(categorie.parent_id).subcategories, "id", "title", categorie.id ), :prompt => "Select a Category" %>
+        </div>
+
     <% end %>
+    <% else %>
+
+       <%= f.label "category*" %>
+       <div class="form-group">
+     <%= f.select :category_id, options_from_collection_for_select(Category.parent_categories.all, "id", "title", categorie.id), :prompt => "Select a Category" %>
+       </div>
+        <%= f.label "subcategory*" %>
+       <div class="form-group">
+       <%= select_tag 'product[subcat_id]', options_from_collection_for_select(categorie.subcategories, "id", "title", product.subcat_id),
+                     "data-option-dependent" => true,
+                     "data-option-observed" => "product_category_id",
+                     "data-option-url" => "/categories/:category_id:/subcategories.json",
+                     "data-option-key-method" => :id,
+                     "data-option-value-method" => :title %> 
+        </div>
+
+      <% end %>
+
     <%= f.label "Gender*(Needed with Fashion)" %>
      <div class="form-group">
       <%= f.select :gender, options_for_select(["Female", "Male", "Unisex"], f.object.gender), :prompt => "Select a Gender" %>

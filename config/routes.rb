@@ -1,14 +1,15 @@
 Upveil::Application.routes.draw do
   devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
   resources :users, except: [:destroy, :index]
-  resources :categories, only: [:show] do
+  resources :categories, except: [:index] do
+    get "subcategory_new"
     get "newest"
     get "male"
     get "female"
     get "male_newest"
     get "female_newest"
     resources :subcategories, only: [:index]
-    resources :products, except: [:index, :destroy, :new, :create], controller: 'categories/products' do
+    resources :products, except: [:index, :destroy], controller: 'categories/products' do
       post 'purchase'
     end
   end

@@ -1,5 +1,4 @@
 
-
 <span class="samller pull-left helvetica"><%= image_tag(activity.owner.identity.smallimage)%></span>
                           <span>
                             <% if activity.owner == current_user %>
@@ -8,10 +7,10 @@
                          <b><%= activity.owner.name %></b>
                          <% end %>
                           </span>
-  upvoted
+  posted in
   <% if activity.trackable %>
     <b><%= activity.trackable.title %></b>
   <% else %>
-    a post which has since been removed
+   a category which has since been removed
   <% end %>
  </span>

@@ -31,17 +31,32 @@ class ProductsController < ApplicationController
       @product = Product.friendly.find(params[:id])
   end
 
-  def create
+def create
      @product = current_user.products.build(product_params)
       if @product.save
+        @cat = @product.category
+        if current_user != @cat.user
+          @cat.create_activity :update, owner: current_user,  recipient: @cat.user_id
+        end
+        @sub = Category.friendly.find(@product.subcat_id)
+         if current_user != @sub.user
+          @sub.create_activity :update, owner: current_user,  recipient: @sub.user_id
+         end
+        if @product.grandcat_id
+            @grand =  Category.find(@product.grandcat_id)
+           if current_user
+          @grand.create_activity :update, owner: current_user,  recipient: @grand.user
+          end
+        end
         @product.update_rank
         @product.increase(current_user, 100)
         subcat = @product.subcat_id
         @product.up_vote!(@product.user)
         @category = Category.friendly.find(subcat)
         @category.increase_grade(current_user, 100)
-        flash[:notice] = "Product was saved."
-        redirect_to [@category, :newest]
+        respond_with(@activities) do |format|
+          format.html { redirect_to @category}
+        end
       else
         flash[:error] = "There was an error saving the product. Please try again."
         render :edit
@@ -90,6 +105,6 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-    params.require(:product).permit(:title, :price, :link, :description, :gender, :category_id, :subcat_id, :image, :remote_image_url)
+    params.require(:product).permit(:title, :price, :link, :description, :gender, :category_id, :subcat_id, :grandcat_id, :image, :remote_image_url)
    end
 end

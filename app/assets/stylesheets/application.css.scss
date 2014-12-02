@@ -2733,7 +2733,7 @@ select[multiple].input-lg {
   border: 1px solid transparent;
   white-space: nowrap;
   padding: 5px 12px;
-  font-size: 18px;
+  font-size: 12px;
   line-height: 1.42857143;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -6947,7 +6947,7 @@ td{
   }
 }
 @media(max-width: 550px){
-  .btn-group-justified{
+  .btn-group{
     display: none;
   }
    .gender{
@@ -7736,4 +7736,13 @@ margin-left: 20px;
 }
 .pagination{
   display: none;
+}
+.a{
+  width: 220px;
+}
+.b{
+  min-width: 110px;
+}
+.paddie{
+  margin-bottom: 15px;
 }

@@ -8,12 +8,12 @@ class ProductsController < ApplicationController
   end
   
   def index
-   @products = Product.order('rank DESC').page(params[:page]).per(10)
+   @products = Product.where.not(category_id: Category.where(adult: true).ids).order('created_at DESC').page(params[:page]).per(10)
    @leaders =  HIGHSCORE_LB.leaders(1)
   end
 
   def newest
-     @unscopes =  Product.order('created_at DESC').page(params[:page]).per(10)
+     @unscopes =  Product.where.not(category_id: Category.where(adult: true).ids).order('created_at DESC').page(params[:page]).per(10)
      @leaders =  HIGHSCORE_LB.leaders(1)
   end
   

@@ -31,6 +31,14 @@
           <% end %>
         <% end %>
       </div>
+        <div class="form-group hide">
+        <%= f.label :adult %>
+       <% if parentcat.adult %>
+            <%= f.check_box :adult, {checked: true} %>  Products in this category are important to gender
+          <% else %>
+            <%= f.check_box :adult %>  Products in this category are for people 18+
+          <% end %>
+      </div>
 
       <div class="form-group">
         <%= f.label :secret, class: 'checkbox' do %>

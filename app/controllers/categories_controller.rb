@@ -183,7 +183,7 @@ class CategoriesController < ApplicationController
 private
 
   def category_params
-  params.require(:category).permit(:title, :description, :parent_id, :user_id, :gendered, :secret)
+  params.require(:category).permit(:title, :description, :parent_id, :user_id, :gendered, :secret, :adult)
  end
 
     def load_activities

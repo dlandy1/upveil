@@ -22,10 +22,25 @@
           <%= f.check_box :gendered %> Products in this category are important to gender
         <% end %>
       </div>
+        <% if category.adult %>
+      <div class="form-group hide">
+        <%= f.label :adult, class: 'checkbox' do %>
+          <%= f.check_box :secret %> Do not let users know who created this category
+        <% end %>
+      </div>
+      <% else %>
+       <div class="form-group">
+        <%= f.label :adult, class: 'checkbox' do %>
+          <%= f.check_box :adult %> Products in this category are for people 18+
+        <% end %>
+      </div>
+       <% end %>
+    
       <div class="form-group">
         <%= f.label :secret, class: 'checkbox' do %>
           <%= f.check_box :secret %> Do not let users know who created this category
         <% end %>
       </div>
+     
       <%= f.submit "Save", class: 'btn btn-sm btn-primary former' %>
     <% end %>

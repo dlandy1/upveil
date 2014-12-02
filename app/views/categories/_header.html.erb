@@ -36,19 +36,21 @@
 
   <% if @category.title == "Fashion" || @category.gendered %>
 
-    <div class="btn-group btn-group-justified size gender">
-      <%= link_to category_female_path(@category), class: 'btn btn-default size'  do %>
+  <div class="text-center">
+    <div class="btn-group size gender">
+      <%= link_to category_female_path(@category), class: 'btn btn-default size a'  do %>
        <%= fa_icon "female" %><span>Female</span>
        <% end %>
-      <%= link_to category_male_path(@category), class: 'btn btn-default size'  do %>
+      <%= link_to category_male_path(@category), class: 'btn btn-default size a'  do %>
        <%= fa_icon "male" %><span>Male</span>
        <% end %>
     </div>
+  </div>
 
     <% elsif @category.title == "Lingerie" %>
 
-      <div class="btn-group btn-group-justified size gender">
-      <%= link_to category_female_path(@category), class: 'btn btn-default size'  do %>
+      <div class="btn-group size gender">
+      <%= link_to category_female_path(@category), class: 'btn btn-default size a'  do %>
        <%= fa_icon "female" %><span>Female</span>
        <% end %>
      </div>
@@ -57,11 +59,11 @@
 
         <% if @parent != nil && @subcatparent.title == "Fashion" %>
 
-      <div class="btn-group btn-group-justified size gender">
-          <%= link_to category_female_path(@category), class: 'btn btn-default size'  do %>
+      <div class="btn-group size gender">
+          <%= link_to category_female_path(@category), class: 'btn btn-default size a'  do %>
          <%= fa_icon "female" %><span>Female</span>
          <% end %>
-        <%= link_to category_male_path(@category), class: 'btn btn-default size'  do %>
+        <%= link_to category_male_path(@category), class: 'btn btn-default size a'  do %>
          <%= fa_icon "male" %><span>Male</span>
          <% end %>
       </div>
@@ -70,28 +72,31 @@
     <%end %>
  <% if @subcategories.count > 0 %>
   <p class="subcats text-center">Top Subcategories:</p>
-  <div class="btn-group btn-group-justified">
-    <% if @parent.nil? %>
-    <% @subcategories.each do |sub| %>
-          <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default' %>
-       <% end %>
-       <% elsif @subcategories.first %>
-        <% @subcategories.each do |sub| %>
-          <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default' %>
-       <% end %>
-      
-     <% else %>
-     <% if @parentsubcats.count > 1 %>
-         <% @parentsubcats.each do |sub| %>
-            <%= link_to "#{sub.title}", category_path(sub), class: 'cats' %>
-         <% end %>
-     <% else %>
-        <% end %>
-      <% end %>
-    </div>
-       
 
-    <div class="mobiler">
+  <div class="text-center">
+    <div class="btn-group paddie">
+      <% if @parent.nil? %>
+      <% @subcategories.each do |sub| %>
+            <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default b' %>
+         <% end %>
+         <% elsif @subcategories.first %>
+          <% @subcategories.each do |sub| %>
+            <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default b' %>
+         <% end %>
+        
+       <% else %>
+       <% if @parentsubcats.count > 1 %>
+           <% @parentsubcats.each do |sub| %>
+              <%= link_to "#{sub.title}", category_path(sub), class: 'cats' %>
+           <% end %>
+       <% else %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+     <p class="text-center"><%= link_to_next_page @subcategories, 'Load More', :remote => true, :id=>"load_more_link", class: "text-center" %></p>
+
+    <div class="mobiler paddie">
        <% if @parent.nil? %>
          <% @subcategories.each do |sub| %>
           <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default spacer' %>
@@ -109,6 +114,11 @@
        <% end %>
     </div>
     <% end %>
+
+    <div class="text-center">
+      <div class="btn-group add">
+      </div>
+    </div>
 
  <div class="row">
  <div class = "outerfixed" >

@@ -27,6 +27,7 @@ Upveil::Application.routes.draw do
    get "products/newest"
    get 'application/notifications'
    post 'application/read_all_notification'
+   get 'sitemap.xml', :to => 'sitemap#index', :defaults => { :format => 'xml' }
 
 
 

@@ -3,6 +3,18 @@ require 'rubygems'
 require 'sitemap_generator'
 SitemapGenerator::Sitemap.default_host = "http://www.upveil.com"
 
+# The remote host where your sitemaps will be hosted
+ SitemapGenerator::Sitemap.sitemaps_host = "http://s3.amazonaws.com/sitemap-generator/"
+
+ # The directory to write sitemaps to locally
+ SitemapGenerator::Sitemap.public_path = 'tmp/'
+
+ # Set this to a directory/path if you don't want to upload to the root of your `sitemaps_host`
+ SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
+
+ # Instance of `SitemapGenerator::WaveAdapter`
+ SitemapGenerator::Sitemap.adapter = SitemapGenerator::WaveAdapter.new
+
 if Rails.env == "enviornment"
   SitemapGenerator::Sitemap.create do
     Category.find_each do |category|

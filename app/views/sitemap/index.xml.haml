@@ -1,0 +1,8 @@
+!!! XML
+%urlset{:xmlns => "http://www.sitemaps.org/schemas/sitemap/0.9"}
+  - for post in @products
+    %url
+      %loc #{product_url(post)}/
+      %lastmod=post.updated_at.strftime('%Y-%m-%d')
+      %changefreq monthly
+      %priority 0.5

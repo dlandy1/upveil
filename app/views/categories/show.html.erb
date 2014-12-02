@@ -1,6 +1,8 @@
 <%= link_to "Look by Newest",  category_newest_path(@category), class: 'btn btn-xs btn-primary hay mobile-button' %>
 <%= render partial: 'header' %>
 
+ <p class="text-center"><%= link_to_next_page @subcategories, 'Load More', :remote => true, :id=>"load_more_link", class: "text-center" %></p>
+
 
     <div class="show-box newer" id="products"> 
       <div class="page">

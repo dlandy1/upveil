@@ -1,0 +1,4 @@
+<% @subcategories.each do |subcat| %>
+$('.new-cats').append("<%= escape_javascript(link_to subcat.title, category_path(subcat), class: 'cats')%>");
+<% end %>
+$('#load_more_link').replaceWith("<%= escape_javascript(link_to_next_page(@subcategories,    'Load More', :remote => true, :id=>'load_more_link'))%>");

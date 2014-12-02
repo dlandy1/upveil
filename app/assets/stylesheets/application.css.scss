@@ -3408,6 +3408,8 @@ tbody.collapse.in {
   width: 100%;
   table-layout: fixed;
   border-collapse: separate;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 .btn-group-justified > .btn,
 .btn-group-justified > .btn-group {
@@ -6945,7 +6947,7 @@ td{
   }
 }
 @media(max-width: 550px){
-  .new-cats{
+  .btn-group-justified{
     display: none;
   }
    .gender{
@@ -7731,4 +7733,7 @@ margin-left: 20px;
 .no-pad{
  padding: 9px 0;
  margin-top: 2px;
+}
+.pagination{
+  display: none;
 }

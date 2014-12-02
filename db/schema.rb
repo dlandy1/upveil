@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141130053251) do
+ActiveRecord::Schema.define(version: 20141202022203) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20141130053251) do
     t.boolean  "gendered",    default: false
     t.boolean  "secret",      default: false
     t.string   "description"
+    t.float    "rank"
   end
 
   add_index "categories", ["slug"], name: "index_categories_on_slug", unique: true

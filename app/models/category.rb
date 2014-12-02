@@ -25,6 +25,22 @@ class Category < ActiveRecord::Base
     title
   end
 
+  def top
+    a_rank = Product.where(category_id: self.id).count.to_i
+    update_attribute(:rank, a_rank)
+  end
+
+  def top_b
+    b_rank = Product.where(subcat_id: self.id).count.to_i
+    update_attribute(:rank, b_rank)
+  end
+
+    def top_c
+    c_rank = Product.where(grandcat_id: self.id).count.to_i
+    update_attribute(:rank, c_rank)
+  end
+
+
   def leaderboard
     @leaderboard ||= Leaderboard.new("#{self.title.downcase.gsub(" ", '')}_highscores", Leaderboard::DEFAULT_OPTIONS, {:redis_connection => REDIS})
   end

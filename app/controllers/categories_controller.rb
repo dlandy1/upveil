@@ -1,11 +1,11 @@
 require 'json'
 class CategoriesController < ApplicationController
   before_action :load_activities
-
+   respond_to :html, :js
   def show
      @category = Category.friendly.find(params[:id])
      @id= @category.id
-     @subcategories = @category.subcategories
+     @subcategories = @category.subcategories.order('rank DESC').page(params[:page]).per(7)
      @parent = @category.parent_id
      @category.leaderboard.page_size = 10
      @leaders = @category.leaderboard.leaders(1)
@@ -17,9 +17,13 @@ class CategoriesController < ApplicationController
          @products = Product.where(subcat_id: @category.id).order('rank DESC').page(params[:page]).per(10)
       end
       @subcatparent = Category.friendly.find(@parent)
-      @parentsubcats = @subcatparent.subcategories
+      @parentsubcats = @subcatparent.subcategories.order('rank DESC').page(params[:page]).per(7)
     else
        @products = @category.products.order('rank DESC').page(params[:page]).per(10)
+    end
+     respond_to do |format|
+      format.html
+      format.js 
     end
   end
 
@@ -116,7 +120,12 @@ class CategoriesController < ApplicationController
   end
 
   def new
-    @category = Category.new
+    if current_user != nil
+      @category = Category.new
+     else
+       flash[:error] = "You must sign in before creating a category."
+       redirect_to new_user_session_path
+    end
   end
 
   def subcategory_new

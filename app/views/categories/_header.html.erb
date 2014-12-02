@@ -69,16 +69,17 @@
 
     <%end %>
  <% if @subcategories.count > 0 %>
-  <div class="new-cats">
-    <p class="subcats">Subcategories:</p>
+  <p class="subcats text-center">Top Subcategories:</p>
+  <div class="btn-group btn-group-justified">
     <% if @parent.nil? %>
     <% @subcategories.each do |sub| %>
-          <%= link_to "#{sub.title}", category_path(sub), class: 'cats' %>
+          <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default' %>
        <% end %>
        <% elsif @subcategories.first %>
         <% @subcategories.each do |sub| %>
-          <%= link_to "#{sub.title}", category_path(sub), class: 'cats' %>
+          <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default' %>
        <% end %>
+      
      <% else %>
      <% if @parentsubcats.count > 1 %>
          <% @parentsubcats.each do |sub| %>

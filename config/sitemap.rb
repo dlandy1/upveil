@@ -10,5 +10,8 @@ SitemapGenerator::Sitemap.create do
   Product.find_each do |product|
     add category_product_path(product.category, product), :lastmod => product.updated_at
   end
+  User.find_each do |user|
+    add user_path(user), :lastmod => user.updated_at
+  end
 end
 SitemapGenerator::Sitemap.ping_search_engines

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141202203623) do
+ActiveRecord::Schema.define(version: 20141203004941) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -71,6 +71,14 @@ ActiveRecord::Schema.define(version: 20141202203623) do
   end
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id"
+
+  create_table "pg_search_documents", force: true do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "products", force: true do |t|
     t.string   "title"

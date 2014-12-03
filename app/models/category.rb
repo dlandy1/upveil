@@ -1,5 +1,8 @@
 class Category < ActiveRecord::Base
+  include PgSearch
   include PublicActivity::Common
+   multisearchable :against => [:title, :description]
+
   has_many :subcategories, :class_name => "Category", :foreign_key => "parent_id", :dependent => :destroy
   has_many :products, dependent: :destroy
   has_many :subproducts, :class_name => 'Product', :foreign_key => "subcat_id"

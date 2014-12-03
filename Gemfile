@@ -74,6 +74,8 @@ gem 'unicorn'
 gem 'twitter'
 
 gem 'public_activity'
+
+gem 'pg_search'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

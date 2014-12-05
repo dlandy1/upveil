@@ -78,6 +78,8 @@ gem 'public_activity'
 gem 'twitter-typeahead-rails'
 
 gem 'algoliasearch-rails'
+
+gem 'hogan_assets'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

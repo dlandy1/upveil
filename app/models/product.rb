@@ -3,6 +3,9 @@ require 'open-uri'
 class Product < ActiveRecord::Base
   include AlgoliaSearch
   include PublicActivity::Common
+   algoliasearch do
+    hitsPerPage 40
+    end
 
   belongs_to :user
   belongs_to :category

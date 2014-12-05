@@ -20,6 +20,7 @@
 //= require algolia/typeahead.jquery
 //= require twitter/typeahead
 //= require twitter/typeahead.min
+//= require hogan.js
 
  jQuery(document).ready(function () {
         $('select[data-option-dependent=true]').each(function (i) {

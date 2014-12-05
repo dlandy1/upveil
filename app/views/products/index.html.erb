@@ -32,41 +32,68 @@
       </div>
     </div>
 
-<input class="typeahead" type="text" placeholder="Search for users by name, company, ..." id="category-search" spellcheck="false" />
 
-<!-- JQuery -->
-<script src="//cdn.jsdelivr.net/jquery/1.11.1/jquery.min.js"></script>
+
+
+<div class="row">
+  <input class="typeahead" type="text" placeholder="Search for users or categories" id="user-search" spellcheck="false" />
+
+
 <!-- Typahead.js is used to display the auto-completion menu -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.4/typeahead.bundle.min.js"></script>
+<!-- Hogan.js is used to render the hits using Mustache.js templating -->
+<script src="//cdn.jsdelivr.net/hogan.js/3.0.0/hogan.common.js"></script>
 <!-- Algolia -->
 <script src="//cdn.jsdelivr.net/algoliasearch/latest/algoliasearch.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function() {
     // Replace the following values by your ApplicationID and ApiKey.
     var client = new AlgoliaSearch("KFIEIP3I48", "7fffa97e4921141462636272ef5738ea"); // public credentials
-    var index = client.initIndex('Category');
+    // replace YourTeamsIndexName & YourPlayersIndexName by the name of the indexes you want to query.
+    var products = client.initIndex('Product');
+    var users = client.initIndex('User');
+    var categories = client.initIndex('Category');
+
+    // Mustache templating by Hogan.js (http://mustache.github.io/)
+    var templateUser = Hogan.compile('<div class="user">' +
+      '<a href="/users/{{slug}}"><div class="name">{{{ _highlightResult.name.value }}}' +
+    '</div></a>');
+    var templateProduct = Hogan.compile('<div class="product">' +
+      '<a href="categories/{{category_id}}/products/{{slug}}"><div class="name samller"><span class="pull-left samller"><img alt="Thumb overear studio wireless matte black standard thrqrtleft o  1 " src="https://upveil-development.s3.amazonaws.com/uploads/product/image/2/thumb_overear-studio-wireless-matte-black-standard-thrqrtleft-O__1_.png"></span>{{{ _highlightResult.title.value }}}' +
+    '</div></a>');
+     var templateCategory = Hogan.compile('<div class="category">' +
+       '<a href="/categories/{{slug}}"><div class="name">{{{ _highlightResult.title.value }}}' +
+    '</div></a>');
 
     // typeahead.js initialization
-    $('#category-search').typeahead({ hint: false }, {
-      source: index.ttAdapter({ hitsPerPage: 5 }),
-      displayKey: 'title',
-      templates: {
-        suggestion: function(hit) {
-          // render the hit
-          return '<div class="hit">' +
-            '<div class="title">' +
-              '<%= link_to hit._highlightResult.title.value, category_path(hit._highlightResult.id) %>' + ' ' +
-            '</div>' +
-          '</div>';
+    $('#user-search').typeahead({ hint: false }, [
+      {
+        source: categories.ttAdapter({ hitsPerPage: 5 }),
+        displayKey: 'name',
+        templates: {
+          header: '<div class="category">Categories</div>',
+          suggestion: function(hit) { return templateCategory.render(hit); }
+        }
+      },
+      {
+        source: users.ttAdapter({ hitsPerPage: 5 }),
+        displayKey: 'name',
+        templates: {
+          header: '<div class="category">Users</div>',
+          suggestion: function(hit) { return templateUser.render(hit); }
+        }
+      },
+         {
+        source: products.ttAdapter({ hitsPerPage: 3 }),
+        displayKey: 'name',
+        templates: {
+          header: '<div class="category">Products</div>',
+          suggestion: function(hit) { return templateProduct.render(hit); }
         }
       }
-    });
+    ]);
   });
 </script>
-
-
-<div class="row">
-  <div class="show-box" id="products">
     <div class="page">
      <%= render @products %>
     </div>

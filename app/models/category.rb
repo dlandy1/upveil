@@ -1,7 +1,6 @@
 class Category < ActiveRecord::Base
-  include PgSearch
+  include AlgoliaSearch
   include PublicActivity::Common
-   multisearchable :against => [:title, :description]
 
   has_many :subcategories, :class_name => "Category", :foreign_key => "parent_id", :dependent => :destroy
   has_many :products, dependent: :destroy
@@ -19,6 +18,10 @@ class Category < ActiveRecord::Base
 
   extend FriendlyId
   friendly_id :title, use: :slugged
+
+  algoliasearch do
+    hitsPerPage 40
+    end
 
   def should_generate_new_friendly_id?
     slug.blank? || title_changed?

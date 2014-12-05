@@ -1,10 +1,8 @@
 require 'file_size_validator' 
 require 'open-uri'
 class Product < ActiveRecord::Base
-  include PgSearch
+  include AlgoliaSearch
   include PublicActivity::Common
-
-  multisearchable :against => [:title, :description]
 
   belongs_to :user
   belongs_to :category
@@ -143,6 +141,10 @@ class Product < ActiveRecord::Base
     def increase(voting_user, points)
       current_score = HIGHSCORE_LB.score_for(voting_user.id).to_i
       HIGHSCORE_LB.rank_member(voting_user.id, current_score + points)
+    end
+
+    algoliasearch do
+    # associated index settings can be configured from here
     end
 
     

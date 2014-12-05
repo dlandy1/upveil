@@ -16,6 +16,10 @@
 //= require jquery_ujs
 //= require_tree .
 //= require jquery.infinitescroll
+//= require algolia/algoliasearch.min
+//= require algolia/typeahead.jquery
+//= require twitter/typeahead
+//= require twitter/typeahead.min
 
  jQuery(document).ready(function () {
         $('select[data-option-dependent=true]').each(function (i) {

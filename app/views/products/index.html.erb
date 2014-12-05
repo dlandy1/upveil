@@ -31,6 +31,40 @@
         </div>
       </div>
     </div>
+
+<input class="typeahead" type="text" placeholder="Search for users by name, company, ..." id="category-search" spellcheck="false" />
+
+<!-- JQuery -->
+<script src="//cdn.jsdelivr.net/jquery/1.11.1/jquery.min.js"></script>
+<!-- Typahead.js is used to display the auto-completion menu -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.4/typeahead.bundle.min.js"></script>
+<!-- Algolia -->
+<script src="//cdn.jsdelivr.net/algoliasearch/latest/algoliasearch.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    // Replace the following values by your ApplicationID and ApiKey.
+    var client = new AlgoliaSearch("KFIEIP3I48", "7fffa97e4921141462636272ef5738ea"); // public credentials
+    var index = client.initIndex('Category');
+
+    // typeahead.js initialization
+    $('#category-search').typeahead({ hint: false }, {
+      source: index.ttAdapter({ hitsPerPage: 5 }),
+      displayKey: 'title',
+      templates: {
+        suggestion: function(hit) {
+          // render the hit
+          return '<div class="hit">' +
+            '<div class="title">' +
+              '<%= link_to hit._highlightResult.title.value, category_path(hit._highlightResult.id) %>' + ' ' +
+            '</div>' +
+          '</div>';
+        }
+      }
+    });
+  });
+</script>
+
+
 <div class="row">
   <div class="show-box" id="products">
     <div class="page">

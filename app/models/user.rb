@@ -1,8 +1,7 @@
 class User < ActiveRecord::Base
    include PublicActivity::Common
-   include PgSearch
+   include AlgoliaSearch
 
-   multisearchable :against => [:name]
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/
 
@@ -22,6 +21,10 @@ class User < ActiveRecord::Base
 
   extend FriendlyId
   friendly_id :name, use: :slugged
+
+    algoliasearch do
+    # associated index settings can be configured from here
+    end
 
   def instagram_url=(name)
     if name.length == 0
@@ -100,6 +103,7 @@ class User < ActiveRecord::Base
         user.save!
       end
     end
+
 
     # Associate the identity with the user if needed
     if identity.user != user

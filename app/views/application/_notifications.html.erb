@@ -1,11 +1,11 @@
 <% if @activities.first %>
 <span class="noty"><%= @activities.count.to_i %></span>
-<li class="no-marg"> <a href="#" class="clike"><%= fa_icon "bell", class: 'clike' %></a>
+<li class="no-marg"> <a href="#" class="clike"><%= fa_icon "bell", class: 'clike widel' %></a>
                   <ul class="camo">
                     <div class="topfull">
                     <div class="scrolly">
                       <li class="notes camo ololo text-center">
-                        <%= link_to "Mark as read", application_read_all_notification_path, method: :post, class: 'marker widel'%>
+                        <%= link_to "Mark as read", application_read_all_notification_path, method: :post, class: 'marker'%>
                       </li>
                     <% @activities.each do |activity| %>
                       <li class= "notes camo ooo">

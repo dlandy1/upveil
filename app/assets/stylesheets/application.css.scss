@@ -7612,8 +7612,13 @@ span > span > img{
   font-size: 12px;
   z-index: 1;
   position: absolute;
-  margin-left: 24px;
+  margin-left: 19px;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+@media (max-width: 945px) {
+    .noty{
+      margin-left: 11px;
+    }
 }
 .topfull{
   position: relative;

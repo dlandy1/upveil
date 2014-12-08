@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   def notifications
     if current_user
-      @activities = PublicActivity::Activity.where(recipient_id: current_user.id, owner_type: "User").order("created_at desc")
+      @activities = PublicActivity::Activity.where(recipient_id: current_user.id, owner_type: "User").where(read: false).order("created_at desc")
     end
   end
 

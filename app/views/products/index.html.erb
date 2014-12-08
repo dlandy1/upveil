@@ -33,14 +33,12 @@
     </div>
 
 
-
-
 <div class="row">
   <input class="typeahead" type="text" placeholder="Search for users or categories" id="user-search" spellcheck="false" />
 
 
 <!-- Typahead.js is used to display the auto-completion menu -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.4/typeahead.bundle.min.js"></script>
+
 <!-- Hogan.js is used to render the hits using Mustache.js templating -->
 <script src="//cdn.jsdelivr.net/hogan.js/3.0.0/hogan.common.js"></script>
 <!-- Algolia -->
@@ -54,15 +52,16 @@
     var users = client.initIndex('User');
     var categories = client.initIndex('Category');
 
+
     // Mustache templating by Hogan.js (http://mustache.github.io/)
-    var templateUser = Hogan.compile('<div class="user">' +
-      '<a href="/users/{{slug}}"><div class="name">{{{ _highlightResult.name.value }}}' +
+    var templateUser = Hogan.compile('<div class="user fant">' +
+      '<a href="/users/{{slug}}" class="fant"><div class="name"><p class="ayy"><img src={{image}} height="20" width="20" class="spack">{{{ _highlightResult.name.value }}}' +
+    '</p></div></a>');
+    var templateProduct = Hogan.compile('<div class="product fant">' +
+      '<a href="categories/{{category_id}}/products/{{slug}}" class="fant""><div class="name samller"><span class="samller"><img alt="" src="https://upveil-production.s3.amazonaws.com/uploads/product/image/{{id}}/thumb_{{image}}" class="spack"></span>{{{ _highlightResult.title.value }}}' +
     '</div></a>');
-    var templateProduct = Hogan.compile('<div class="product">' +
-      '<a href="categories/{{category_id}}/products/{{slug}}"><div class="name samller"><span class="pull-left samller"><img alt="Thumb overear studio wireless matte black standard thrqrtleft o  1 " src="https://upveil-development.s3.amazonaws.com/uploads/product/image/2/thumb_overear-studio-wireless-matte-black-standard-thrqrtleft-O__1_.png"></span>{{{ _highlightResult.title.value }}}' +
-    '</div></a>');
-     var templateCategory = Hogan.compile('<div class="category">' +
-       '<a href="/categories/{{slug}}"><div class="name">{{{ _highlightResult.title.value }}}' +
+     var templateCategory = Hogan.compile('<div class="categor fant">' +
+       '<a href="/categories/{{slug}}" class="fant"><div class="name">{{{ _highlightResult.title.value }}}' +
     '</div></a>');
 
     // typeahead.js initialization
@@ -94,6 +93,7 @@
     ]);
   });
 </script>
+  <div class="abc"> </div>
     <div class="page">
      <%= render @products %>
     </div>

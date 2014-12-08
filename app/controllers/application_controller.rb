@@ -27,4 +27,20 @@ class ApplicationController < ActionController::Base
       redirect_to finish_signup_path(current_user)
     end
   end
+
+  def holidays
+      @products = Product.where(holiday: true).order('rank DESC').page(params[:page]).per(10)
+       @leaders =  HIGHSCORE_LB.leaders(1)
+        if current_user
+      @activities = PublicActivity::Activity.where(recipient_id: current_user.id, owner_type: "User").order("created_at desc")
+    end
+  end
+
+  def holidays_newest
+      @products = Product.where(holiday: true).order('created_at DESC').page(params[:page]).per(10)
+       @leaders =  HIGHSCORE_LB.leaders(1)
+        if current_user
+      @activities = PublicActivity::Activity.where(recipient_id: current_user.id, owner_type: "User").order("created_at desc")
+    end
+  end
 end

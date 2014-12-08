@@ -5,7 +5,7 @@
                     <div class="topfull">
                     <div class="scrolly">
                       <li class="notes camo ololo text-center">
-                        <%= link_to "Mark as read", application_read_all_notification_path, method: :post, class: 'marker'%>
+                        <%= link_to "Mark as read", application_read_all_notification_path, method: :post, class: 'marker widel'%>
                       </li>
                     <% @activities.each do |activity| %>
                       <li class= "notes camo ooo">
@@ -21,6 +21,6 @@
                 </ul>
           </li>
       <% else %>
-                       <li class="no-marg"> <%= link_to (fa_icon "bell"), activities_path  %>
+                       <li class="no-marg"> <%= link_to (fa_icon "bell"), activities_path, class: 'widel'  %>
                        </li>
       <% end %>

@@ -11,7 +11,7 @@
   <meta name="description" content="Upveil is a place to discover the newest and best products by category. You can post and vote on products. Products are shown by vote and when they were created.">
   <%= favicon_link_tag '/images/favicon.ico' %>
   <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Fredericka+the+Great' rel='stylesheet' type='text/css'>
    <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -90,6 +90,10 @@ window._fbq.push(['track', '6017250074008', {'value':'0.01','currency':'USD'}]);
         </li>
          <li><%= link_to Category.find(6) do%>
          <%= fa_icon "cutlery" %><%= Category.find(6).title %>
+        <% end %>
+        </li>
+        <li><%= link_to application_holidays_path do%>
+         <%= fa_icon "gift", class: 'red' %><span class="greeny">Holidays</span>
         <% end %>
         </li>
     </ul>

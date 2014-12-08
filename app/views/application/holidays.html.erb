@@ -1,0 +1,41 @@
+  <%= link_to "Look by Newest",  application_holidays_newest_path, class: 'btn btn-xs btn-primary mobile-button hay' %>
+    <h1 class="text-center font-best holiday">Holidays<br><p class="h6 liday">The best holiday themed products.</p></h1>
+    <div class = "outerfixed" >
+      <div class = "interstatic">
+        <%= link_to "Post New Product", new_product_path(@product), class: 'btn btn-primary btn-xs to-right' %>
+        <div class="leaderboard">
+               <table class="table table-striped table-hover fixer">
+                  <thead>
+                    <tr>
+                      <th colspan="2" class="names">Top Users</th>
+                      <th class="names">Score</th>
+                    </tr>
+                  </thead>
+                   <tbody>
+                     <% @leaders.each do |leader| %>
+                       <% user = User.friendly.find(leader[:member].to_i) %>
+                       <% rank = leader[:rank].to_i %>
+                    <tr>
+                      <td class="td"><%= rank %></td>
+                      <td>
+                        <%= link_to [user] do %>
+                          <%= image_tag(user.identity.smallimage)%><p class="names"><%= user.name %></p>
+                        <% end %>
+                      </td>
+                      <td class="td"><%= leader[:score].to_i %></td>
+                    </tr>
+                   <% end %>
+                </tbody>
+              </table> 
+        </div>
+      </div>
+    </div>
+<div class="row">
+  <div class="show-box" id="products">
+    <div class="page">
+     <%= render @products %>
+    </div>
+  </div>
+<%= paginate @products %>
+</div>
+

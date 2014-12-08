@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141128055335) do
+ActiveRecord::Schema.define(version: 20141208005526) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -38,9 +38,16 @@ ActiveRecord::Schema.define(version: 20141128055335) do
     t.string   "gender"
     t.integer  "parent_id"
     t.string   "slug"
+    t.integer  "user_id"
+    t.boolean  "gendered",    default: false
+    t.boolean  "secret",      default: false
+    t.string   "description"
+    t.float    "rank"
+    t.boolean  "adult",       default: false
   end
 
   add_index "categories", ["slug"], name: "index_categories_on_slug", unique: true
+  add_index "categories", ["user_id"], name: "index_categories_on_user_id"
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -65,6 +72,14 @@ ActiveRecord::Schema.define(version: 20141128055335) do
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id"
 
+  create_table "pg_search_documents", force: true do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "products", force: true do |t|
     t.string   "title"
     t.integer  "user_id"
@@ -80,9 +95,12 @@ ActiveRecord::Schema.define(version: 20141128055335) do
     t.datetime "updated_at"
     t.string   "slug"
     t.boolean  "tweet",       default: false
+    t.integer  "grandcat_id"
+    t.boolean  "holiday",     default: false
   end
 
   add_index "products", ["category_id"], name: "index_products_on_category_id"
+  add_index "products", ["grandcat_id"], name: "index_products_on_grandcat_id"
   add_index "products", ["slug"], name: "index_products_on_slug", unique: true
   add_index "products", ["subcat_id"], name: "index_products_on_subcat_id"
   add_index "products", ["user_id"], name: "index_products_on_user_id"
@@ -105,6 +123,7 @@ ActiveRecord::Schema.define(version: 20141128055335) do
     t.string   "instagram_url"
     t.string   "slug"
     t.string   "website"
+    t.string   "image"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def read_all_notification
-   PublicActivity::Activity.where(recipient_id: current_user.id).update_all(:read => true)
+   PublicActivity::Activity.where(recipient_id: current_user.id).update_all(read: true)
    respond_with(@activities) do |format|
           format.html { redirect_to :back}
     end

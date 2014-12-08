@@ -6463,43 +6463,43 @@ legend {
  }
 @media (max-width: 767px) {
  .nav > li > a {
-   padding: 7px 0px;
+   padding: 8px 0px;
    font-size: 14px;
  }
 }
 @media (min-width: 768px) {
  .nav > li > a {
-   padding: 8px 0px;
+   padding: 9px 0px;
    font-size: 14px;
  }
 }
 @media (min-width: 800px) {
  .nav > li > a {
-   padding: 7px 0px;
+   padding: 8px 0px;
    font-size: 15px;
  }
 }
 @media (min-width: 860px) {
  .nav > li > a {
-   padding: 7px 0px;
+   padding: 8px 0px;
    font-size: 16px;
  }
 }
 @media (min-width: 880px) {
  .nav > li > a {
-   padding: 7px 0px;
+   padding: 8px 0px;
    font-size: 16px;
  }
 }
 @media (min-width: 980px) {
  .nav > li > a {
-   padding: 6px 3px;
+   padding: 7px 3px;
    font-size: 18px;
  }
 }
 @media (min-width: 990px) {
  .nav > li > a {
-   padding: 6px 5px;
+   padding: 7px 5px;
    font-size: 18px;
  }
 }
@@ -6508,7 +6508,7 @@ legend {
   font-family: inherit;
   position: relative;
   display: block;
-  padding: 6px 10px;
+  padding: 7px 10px;
   font-size: 19px;
   color: white;
   }
@@ -6519,7 +6519,17 @@ legend {
   font-size: 20px;
   position: relative;
   display: block;
-  padding: 5px 13px;
+  padding: 6px 11px;
+  color: white;
+  }
+}
+@media (min-width: 1160px) {
+ .nav > li > a {
+  font-family: inherit;
+  font-size: 20px;
+  position: relative;
+  display: block;
+  padding: 6px 11px;
   color: white;
   }
 }
@@ -7693,4 +7703,8 @@ span > span > img{
 .widel{
   padding: 0;
   width: 10px;
+}
+#product-holiday{
+  width: 20px;
+  height: 15px; 
 }

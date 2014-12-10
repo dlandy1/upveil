@@ -67,6 +67,7 @@ class ProductsController < ApplicationController
     @subcategory = Category.friendly.find(subcat)
     if current_user == @product.user || current_user.id == 1 || current_user.id == 2 || current_user.id == 3
       if @product.destroy
+        PublicActivity::Activity.where(trackable_id: @product.id).destroy_all
         @product.increase(@product.user, -100)
         @category.increase_grade(@product.user, -100)
         flash[:notice] = "#{@product.title} was deleted successfully."

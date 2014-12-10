@@ -34,66 +34,121 @@
 
 
 <div class="row">
-  <input class="typeahead" type="text" placeholder="Search for users or categories" id="user-search" spellcheck="false" />
+    <section class="panel">
+      <header class="panel-heading">
+        <div class="search_box">
+          <form action="#" method="get">
+            <input autocomplete="off" class="autocomplete" id="q" placeholder="Start typing" type="text" spellcheck="false" />
+            <div class='searchbutton'>
+              <i class="icon-search icon-large"></i>
+            </div>
+          </form>
+        </div>
+      </header>
+    </section>
 
+    <div id="categories"></div>
+    <div id="users"></div>
+    <div id="products"></div>
 
-<!-- Typahead.js is used to display the auto-completion menu -->
+    <script type="text/javascript">
+       function searchMultiCallback(success, content) {
+          if (success) {
+            var categories = content.results[0];
+             var html = '';
+            for (var i = 0; i < categories.hits.length; ++i) {
+               var hit = categories.hits[i];
+               html += '<div class="cats">';
+          for (var propertyName in hit._highlightResult) {
+            var el = hit._highlightResult[propertyName];
+            if (Object.prototype.toString.call(el) !== '[object Array]' && el.matchLevel !== 'none') {
+              html += '<div class="attribute">' + hit._highlightResult.title.value + "</div>";
+            }
+          }
+          html += '</div>';
+           $('#categories').html(html);
+            }
 
-<!-- Hogan.js is used to render the hits using Mustache.js templating -->
-<script src="//cdn.jsdelivr.net/hogan.js/3.0.0/hogan.common.js"></script>
-<!-- Algolia -->
-<script src="//cdn.jsdelivr.net/algoliasearch/latest/algoliasearch.min.js"></script>
-<script type="text/javascript">
-  $(document).ready(function() {
-    // Replace the following values by your ApplicationID and ApiKey.
-    var client = new AlgoliaSearch("KFIEIP3I48", "7fffa97e4921141462636272ef5738ea"); // public credentials
-    // replace YourTeamsIndexName & YourPlayersIndexName by the name of the indexes you want to query.
-    var products = client.initIndex('Product');
-    var users = client.initIndex('User');
-    var categories = client.initIndex('Category');
+            var users = content.results[1];
+             var html = '';
+            for (var i = 0; i < users.hits.length; ++i) {
+              var hit = users.hits[i];
+               html += '<div class="hit">';
+                if (Object.prototype.toString.call(hit._highlightResult) !== '[object Array]' && hit._highlightResult.matchLevel !== 'none') {
+              html += '<div class="attribute">'+'<a href="/categories/'+ hit.category_id + '/products/'+hit.slug+'">' + hit._highlightResult.title.value +
+               '</a>' + '</div>';
+             }
+          html += '</div>';
+           $('#products').html(html);
+            }
 
-
-    // Mustache templating by Hogan.js (http://mustache.github.io/)
-    var templateUser = Hogan.compile('<div class="user fant">' +
-      '<a href="/users/{{slug}}" class="fant"><div class="name"><p class="ayy"><img src={{image}} height="20" width="20" class="spack">{{{ _highlightResult.name.value }}}' +
-    '</p></div></a>');
-    var templateProduct = Hogan.compile('<div class="product fant">' +
-      '<a href="categories/{{category_id}}/products/{{slug}}" class="fant""><div class="name samller"><span class="samller"><img alt="" src="https://upveil-production.s3.amazonaws.com/uploads/product/image/{{id}}/thumb_{{image}}" class="spack"></span>{{{ _highlightResult.title.value }}}' +
-    '</div></a>');
-     var templateCategory = Hogan.compile('<div class="categor fant">' +
-       '<a href="/categories/{{slug}}" class="fant"><div class="name">{{{ _highlightResult.title.value }}}' +
-    '</div></a>');
-
-    // typeahead.js initialization
-    $('#user-search').typeahead({ hint: false }, [
-      {
-        source: categories.ttAdapter({ hitsPerPage: 5 }),
-        displayKey: 'name',
-        templates: {
-          header: '<div class="category">Categories</div>',
-          suggestion: function(hit) { return templateCategory.render(hit); }
+            var products = content.results[2];
+            for (var i = 0; i < products.hits.length; ++i) {
+             var hit = products.hits[i];
+             var html = '';
+               html += '<div class="cats">';
+          for (var propertyName in hit._highlightResult) {
+            var el = hit._highlightResult[propertyName];
+            if (Object.prototype.toString.call(el) !== '[object Array]' && el.matchLevel !== 'none') {
+              html += '<div class="attribute">' + hit._highlightResult.name.value + "</div>";
+            }
+          }
+          html += '</div>';
+           $('#users').html(html);
+            }
+          }
         }
-      },
-      {
-        source: users.ttAdapter({ hitsPerPage: 5 }),
-        displayKey: 'name',
-        templates: {
-          header: '<div class="category">Users</div>',
-          suggestion: function(hit) { return templateUser.render(hit); }
+      function searchCallback(success, content) {
+        if (content.query != $("#q").val()) {
+          // do not take out-dated answers into account
+          return;
         }
-      },
-         {
-        source: products.ttAdapter({ hitsPerPage: 3 }),
-        displayKey: 'name',
-        templates: {
-          header: '<div class="category">Products</div>',
-          suggestion: function(hit) { return templateProduct.render(hit); }
+        if (content.hits.length == 0) {
+          // no results
+          $('#hits').empty();
+          return;
         }
+        // Scan all hits and display them
+        var html = '';
+        for (var i = 0; i < content.hits.length; ++i) {
+          var hit = content.hits[i];
+          // For example, display all properties that have at least
+          // one highlighted word (matchLevel = full or partial)
+          html += '<div class="hit">';
+          for (var propertyName in hit._highlightResult) {
+            var el = hit._highlightResult[propertyName];
+            if (Object.prototype.toString.call(el) !== '[object Array]' && el.matchLevel !== 'none') {
+              html += '<div class="attribute"><span>' + propertyName.substr(0,1).toUpperCase() +
+                propertyName.substr(1) + ": </span>" + el.value + "</div>";
+            }
+          }
+          html += '</div>';
+        }
+        $('#hits').html(html);
       }
-    ]);
-  });
-</script>
-  <div class="abc"> </div>
+      $(document).ready(function() {
+        var $inputfield = $("#q");
+        // Replace the following values by your ApplicationID and ApiKey.
+       var client = new AlgoliaSearch("KFIEIP3I48", "7fffa97e4921141462636272ef5738ea");
+        // Replace the following value by the name of the index you want to query.
+        $inputfield.keyup(function() {
+        client.startQueriesBatch();
+        client.addQueryInBatch('Category', $('#q').val(), { hitsPerPage: 10 });
+        client.addQueryInBatch('Product', $('#q').val(), { hitsPerPage: 10 });
+        client.addQueryInBatch('User', $('#q').val(), { hitsPerPage: 10 });
+        client.sendQueriesBatch(searchMultiCallback);
+      }).focus().closest('form').on('submit', function() {
+          // on form submit, store the query string in the anchor
+          location.replace('#q=' + encodeURIComponent($inputfield.val()));
+          return false;
+        });
+        // check if there is a query in the anchor: http://example.org/#q=my+query
+        if (location.hash && location.hash.indexOf('#q=') === 0) {
+          var q = decodeURIComponent(location.hash.substring(3));
+          $inputfield.val(q).trigger('keyup');
+        }
+      });
+    </script> 
     <div class="page">
      <%= render @products %>
     </div>

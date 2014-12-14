@@ -7773,5 +7773,66 @@ margin-left: 20px;
    font-size: 25px;
    color: #534540;
 }
-
-
+.search-glass{
+  color: rgb(98, 98, 98);
+}
+#q{
+  color: white;
+  width: 100px;
+  margin-top: 0px;
+  border: none;
+  padding: 0px 2px;
+  outline: none;
+}
+.search_box{
+  margin-top: -25px;
+  margin-left: 20px;
+}
+.searchbutton{
+  display: inline;
+  border: 1px solid rgb(223, 223, 223);
+  padding: 7px;
+  border-radius: 30px;
+}
+@media (max-width: 764px){
+  .search_box {
+margin-top: -118px;
+margin-left: 91px;
+}
+#q{
+  width: 90%;
+}
+}
+.boxsearch{
+  padding: 0 70px;
+}
+.ats{
+  font-weight: bold;
+  color: rgb(98, 98, 98);
+}
+.pod{
+  padding-left: 45px;
+}
+.attribute{
+  padding: 2px 0;
+  color: #626262;
+}
+.attribute:hover{
+  color: #626262;
+}
+.linkal{
+  color: #626262;
+  vertical-align: bottom;
+}
+.linkal:hover{
+  color: #626262;
+  text-decoration: none;
+}
+.bo{
+  height: 25px;
+  width: 25px;
+}
+.z{
+  margin-top: -27px;
+  padding-left: 37px;
+}

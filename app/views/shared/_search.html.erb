@@ -62,7 +62,7 @@
           for (var propertyName in hit._highlightResult) {
             var el = hit._highlightResult[propertyName];
             if (Object.prototype.toString.call(el) !== '[object Array]' && el.matchLevel !== 'none') {
-              html += '<a class="linkal" href="/users/'+ hit.slug+'"><div class="attribute"><img alt="User" class="bo" src="'+hit.image+'"><p class="z">' + hit.name +"</p></div></a>";
+              html += '<a class="linkal" href="/users/'+ hit.slug+'"><div class="attribute"><img alt="User" class="bo" src="https://upveil-production.s3.amazonaws.com/uploads/product/image/'+hit.id+'/thumb_'+hit.image+'"><p class="z">' + hit.name +"</p></div></a>";
             }
           }
           html += '</div>';

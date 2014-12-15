@@ -1,0 +1,13 @@
+<h1>New subcategory</h1>
+
+<div class="row">
+  <div class="col-md-4">
+    <p>Guidlines for categories:</p>
+    <ul>
+      <li>Make sure there is a title.</li>
+      <li>As a creator you can delete bad posts on your category.</li>
+    </ul>
+  </div>
+  <div class="col-md-8">
+    <%= render partial: 'subcatform', locals: {category: @category, parentcat: @parentcat }%>
+  </div>

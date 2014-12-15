@@ -26,6 +26,12 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     addressable (2.3.6)
+    algoliasearch (1.3.1)
+      httpclient (~> 2.4)
+      json (>= 1.5.1)
+    algoliasearch-rails (1.11.11)
+      algoliasearch (>= 1.2.14)
+      json (>= 1.5.1)
     arel (4.0.2)
     autoprefixer-rails (3.1.0.20140911)
       execjs
@@ -110,9 +116,14 @@ GEM
       railties (>= 4.0.1)
     hashie (3.3.1)
     hike (1.2.3)
+    hogan_assets (1.6.0)
+      execjs (>= 1.2.9)
+      sprockets (>= 2.0.3)
+      tilt (>= 1.3.3)
     http (0.6.2)
       http_parser.rb (~> 0.6.0)
     http_parser.rb (0.6.0)
+    httpclient (2.5.3.3)
     i18n (0.6.11)
     inflecto (0.0.2)
     ipaddress (0.8.0)
@@ -243,6 +254,10 @@ GEM
       memoizable (~> 0.4.0)
       naught (~> 1.0)
       simple_oauth (~> 0.2.0)
+    twitter-typeahead-rails (0.10.5)
+      actionpack (>= 3.1)
+      jquery-rails
+      railties (>= 3.1)
     tzinfo (0.3.42)
     uglifier (2.5.3)
       execjs (>= 0.3.0)
@@ -258,6 +273,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  algoliasearch-rails
   autoprefixer-rails
   bootstrap-sass (~> 3.2.0)
   carrierwave
@@ -267,7 +283,11 @@ DEPENDENCIES
   fog
   font-awesome-rails
   friendly_id
+<<<<<<< HEAD
   haml-rails
+=======
+  hogan_assets
+>>>>>>> create-categories
   jbuilder (~> 1.2)
   jquery-rails
   json
@@ -287,5 +307,6 @@ DEPENDENCIES
   shareable
   sqlite3
   twitter
+  twitter-typeahead-rails
   uglifier (>= 1.3.0)
   unicorn

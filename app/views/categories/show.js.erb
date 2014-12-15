@@ -1,0 +1,3 @@
+
+$('.ab').append("<div class='btn-group paddie'><% @subcategories.each do |subcat| %><%= escape_javascript( link_to subcat.title, category_path(subcat), class: 'btn btn-default b')%><% end %></div>");
+$('#load_more_link').replaceWith("<%= escape_javascript(link_to_next_page(@subcategories,    'Load More', :remote => true, :id=>'load_more_link'))%>");

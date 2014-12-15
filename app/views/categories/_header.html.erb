@@ -1,0 +1,168 @@
+<div class="cat-buttons">
+      <% if current_user %>
+        <%if current_user == @category.user || current_user.id == 1 || current_user.id == 2  %>
+          <p><%= link_to "Edit Category",  edit_category_path(@category), class: 'btn btn-xs btn-warning cat-fonter' %></p>
+        <% end %>
+      <% end %>
+    </div>
+
+<% if @parent.nil? %>
+<h1 class="h3 titlen text-center"><b><%=@category.title %></b><br>
+  <% if @category.description %>
+    <p class="h6 subtitle"><%= @category.description %></p>
+  <% else %>
+  <p class="h6 subtitle">Best Products</p>
+  <% end %>
+</h1>
+<% else %>
+<h1 class="h3 titlen text-center"><p class="parent"><%= link_to @category.parent_category.title, category_path(@category.parent_category) %></p><b><%=@category.title %></b><br>
+  <% if @category.description %>
+    <p class="h6 subtitle"><%= @category.description %></p>
+  <% else %>
+   <p class="h6 subtitle">Best Products related to <%=@category.title %></p>
+  <% end %>
+</h1>
+<% end %>
+<% if @category.secret %>
+<% else %>
+<% if @category.user %>
+  <p class="text-center mod">Moderator: <%= link_to @category.user do%>
+   <span><%= @category.user.name %></span>
+  </p>
+  <% end %>
+<% end %>
+<% end %>
+<% if @category.adult %>
+  <p class="text-center plus">This category is 18+ your name will not be shown on any posts</p>
+<% end %>
+
+
+  <% if @category.title == "Fashion" || @category.gendered %>
+
+  <div class="text-center">
+    <div class="btn-group size gender">
+      <%= link_to category_female_path(@category), class: 'btn btn-default size a'  do %>
+       <%= fa_icon "female" %><span>Female</span>
+       <% end %>
+      <%= link_to category_male_path(@category), class: 'btn btn-default size a'  do %>
+       <%= fa_icon "male" %><span>Male</span>
+       <% end %>
+    </div>
+  </div>
+
+    <% elsif @category.title == "Lingerie" %>
+
+      <div class="btn-group size gender">
+      <%= link_to category_female_path(@category), class: 'btn btn-default size a'  do %>
+       <%= fa_icon "female" %><span>Female</span>
+       <% end %>
+     </div>
+
+     <% else @parent %> 
+
+        <% if @parent != nil && @subcatparent.title == "Fashion" %>
+
+      <div class="btn-group size gender">
+          <%= link_to category_female_path(@category), class: 'btn btn-default size a'  do %>
+         <%= fa_icon "female" %><span>Female</span>
+         <% end %>
+        <%= link_to category_male_path(@category), class: 'btn btn-default size a'  do %>
+         <%= fa_icon "male" %><span>Male</span>
+         <% end %>
+      </div>
+      <%end %>
+
+    <%end %>
+ <% if @subcategories.count > 0 %>
+  <p class="subcats text-center">Top Subcategories:</p>
+
+  <div class="text-center">
+    <div class="btn-group paddie">
+      <% if @parent.nil? %>
+      <% @subcategories.each do |sub| %>
+            <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default b' %>
+         <% end %>
+         <% elsif @subcategories.first %>
+          <% @subcategories.each do |sub| %>
+            <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default b' %>
+         <% end %>
+        
+       <% else %>
+       <% if @parentsubcats.count > 1 %>
+           <% @parentsubcats.each do |sub| %>
+              <%= link_to "#{sub.title}", category_path(sub), class: 'cats' %>
+           <% end %>
+       <% else %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="text-center ab">
+   
+    </div>
+
+     <p class="text-center"><%= link_to_next_page @subcategories, 'Load More', :remote => true, :id=>"load_more_link", class: "text-center" %></p>
+
+    <div class="mobiler paddie">
+       <% if @parent.nil? %>
+         <% @subcategories.each do |sub| %>
+          <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default spacer' %>
+       <% end %>
+       <% elsif @subcategories.first %>
+        <% @subcategories.each do |sub| %>
+          <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default spacer' %>
+       <% end %>
+       <% else %>
+       <% if @parentsubcats.count > 1 %>
+         <% @parentsubcats.each do |sub| %>
+            <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default spacer' %>
+         <% end %>
+        <% end %>
+       <% end %>
+    </div>
+    <% end %>
+
+
+
+ <div class="row">
+ <div class = "outerfixed" >
+      <div class = "interstatic">
+        <%= link_to "Post New Product",  new_category_product_path(@category, @product), class: 'btn btn-primary btn-xs to-right' %>
+        <% if @category.parent_id %>
+        <% if Category.find(@category.parent_id).parent_id %>
+        <% else %>
+         <%= link_to "New Subcategory", category_subcategory_new_path(@category), class: 'btn btn-primary btn-xs fuller' %>
+         <% end %>
+         <% else %>
+         <%= link_to "New Subcategory", category_subcategory_new_path(@category), class: 'btn btn-primary btn-xs fuller' %>
+         <% end %>
+    <% if !@category.adult %>
+     <div class="leaderboard"> 
+           <table class="table table-striped table-hover fixer">
+              <thead>
+                <tr>
+                   <th colspan="2" class="names">Top Users</th>
+                   <th class="names">Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                 <% @leaders.each do |leader| %>
+                   <% user = User.friendly.find(leader[:member].to_i) %>
+                   <% rank = leader[:rank].to_i %>
+                <tr>
+                  <td class="td"><%= rank %></td>
+                  <td>
+                    <%= link_to [user] do %>
+                      <%= image_tag(user.identity.smallimage)%><p class="names"><%= user.name %></p>
+                    <% end %>
+                  </td>
+                  <td class="td"><%= leader[:score].to_i %></td>
+                </tr>
+                <% end %>
+            </tbody>
+          </table> 
+    </div>
+     <% end %>
+  </div>
+</div>

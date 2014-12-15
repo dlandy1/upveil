@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # GET /users/:id.:format
   def show
     @user = User.friendly.find(params[:id])
-    @products = @user.products.order('created_at DESC').page(params[:page]).per(10)
+    @products = @user.products.where.not(category_id: Category.where(adult: true).ids).order('created_at DESC').page(params[:page]).per(10)
   end
 
   # GET /users/:id/edit
@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     # authorize! :update, @user
     respond_to do |format|
       if @user.update(user_params)
+        @user.update_attributes(image: @user.identity.smallimage)
         sign_in(@user == current_user ? @user : current_user, :bypass => true)
         format.html { redirect_to @user, notice: 'Your profile was successfully updated.' }
         format.json { head :no_content }
@@ -33,6 +34,7 @@ class UsersController < ApplicationController
     # authorize! :update, @user 
     if request.patch? && params[:user] #&& params[:user][:email]
       if @user.update(user_params)
+        @user.update_attributes(image: @user.identity.smallimage)
         @user.skip_reconfirmation! if @user.respond_to?(:skip_confirmation)
         sign_in(@user, :bypass => true)
        redirect_to root_url, notice: 'Your profile was successfully updated.'
@@ -64,7 +66,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      accessible = [ :name, :email, :instagram_url, :twitter_url, :website ] # extend with your own params
+      accessible = [ :name, :email, :instagram_url, :twitter_url, :website, :image ] # extend with your own params
       accessible << [ :password, :password_confirmation ] unless params[:user][:password].blank?
       params.require(:user).permit(accessible)
     end

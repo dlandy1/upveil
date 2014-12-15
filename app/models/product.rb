@@ -1,10 +1,16 @@
 require 'file_size_validator' 
 require 'open-uri'
 class Product < ActiveRecord::Base
+  include AlgoliaSearch
   include PublicActivity::Common
+   algoliasearch do
+    hitsPerPage 40
+    end
+
   belongs_to :user
   belongs_to :category
   belongs_to :subcategory, :class_name => "Category", :foreign_key => "subcat_id"
+  belongs_to :grandcategory, :class_name => "Category", :foreign_key => "grandcat_id"
     mount_uploader :image, ImageUploader
       validates :image, 
     :presence => true, 
@@ -19,7 +25,7 @@ class Product < ActiveRecord::Base
   validates :user, presence: true
   validates :category, presence: true
   validates :description,length: {minimum: 3, maximum: 300}, :allow_blank => true
-  validates :subcat_id, presence: true
+  validates :subcat_id, presence: true, :if => :subcategory_present?
   validates :gender, presence: true, :if => :in_fashion?
 
 
@@ -62,6 +68,10 @@ class Product < ActiveRecord::Base
       end
     end
 
+    def subcategory_present?
+      category.subcategories.first
+    end
+
     def already_up_voted_by_user?(voting_user)
       vote_manager = VotesManager.new(voting_user, self)
       vote_manager.already_up_voted?
@@ -71,8 +81,10 @@ class Product < ActiveRecord::Base
       vote_manager = VotesManager.new(voting_user, self)
       vote_manager.remove_up_vote!
       self.category.increase_grade(self.user, -20)
-      subcategory = Category.friendly.find(self.subcat_id)
-      subcategory.increase_grade(self.user, -20)
+      if subcategory
+        subcategory = Category.friendly.find(self.subcat_id)
+        subcategory.increase_grade(self.user, -20)
+      end
       current_score = HIGHSCORE_LB.score_for(voting_user.id).to_i
       HIGHSCORE_LB.rank_member(voting_user.id, current_score - 3)
       product_score = HIGHSCORE_LB.score_for(self.user.id).to_i
@@ -87,8 +99,10 @@ class Product < ActiveRecord::Base
       vote_manager = VotesManager.new(voting_user, self)
       vote_manager.remove_down_vote!
       self.category.increase_grade(self.user, 15)
-      subcategory = Category.friendly.find(self.subcat_id)
-      subcategory.increase_grade(self.user, 15)
+      if subcategory
+        subcategory = Category.friendly.find(self.subcat_id)
+        subcategory.increase_grade(self.user, 15)
+      end
       current_score = HIGHSCORE_LB.score_for(voting_user.id).to_i
       HIGHSCORE_LB.rank_member(voting_user.id, current_score - 1)
       product_score = HIGHSCORE_LB.score_for(self.user.id).to_i
@@ -109,8 +123,10 @@ class Product < ActiveRecord::Base
       vote_manager = VotesManager.new(voting_user, self)
       vote_manager.down_vote!
       self.category.increase_grade(self.user, -15)
-      subcategory = Category.friendly.find(self.subcat_id)
-      subcategory.increase_grade(self.user, -15)
+      if subcategory
+        subcategory = Category.friendly.find(self.subcat_id)
+        subcategory.increase_grade(self.user, -15)
+       end
        current_score = HIGHSCORE_LB.score_for(voting_user.id).to_i
       HIGHSCORE_LB.rank_member(voting_user.id, current_score + 1)
       product_score = HIGHSCORE_LB.score_for(self.user.id).to_i
@@ -121,8 +137,10 @@ class Product < ActiveRecord::Base
       vote_manager = VotesManager.new(voting_user, self)
       vote_manager.up_vote!
       self.category.increase_grade(self.user, 20)
-      subcategory = Category.friendly.find(self.subcat_id)
-      subcategory.increase_grade(self.user, 20)
+      if subcategory
+        subcategory = Category.friendly.find(self.subcat_id)
+        subcategory.increase_grade(self.user, 20)
+      end
       current_score = HIGHSCORE_LB.score_for(voting_user.id).to_i
       HIGHSCORE_LB.rank_member(voting_user.id, current_score + 3)
       product_score = HIGHSCORE_LB.score_for(self.user.id).to_i
@@ -138,6 +156,10 @@ class Product < ActiveRecord::Base
     def increase(voting_user, points)
       current_score = HIGHSCORE_LB.score_for(voting_user.id).to_i
       HIGHSCORE_LB.rank_member(voting_user.id, current_score + points)
+    end
+
+    algoliasearch do
+    # associated index settings can be configured from here
     end
 
     

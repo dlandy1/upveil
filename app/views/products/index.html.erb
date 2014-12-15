@@ -1,8 +1,104 @@
   <%= link_to "Look by Newest",  products_newest_path, class: 'btn btn-xs btn-primary mobile-button hay' %>
     <h1 class="text-center font-best">All<br><p class="h6">The Newest and Best Products</p></h1>
+    <section class="panel">
+      <header class="panel-heading">
+        <div class="search_box">
+          <form action="#" method="get">
+            <div class='searchbutton' style="
+    display: inline">
+              <i class="icon-search icon-large"><%= fa_icon "search", class: 'search-glass' %></i>
+               <input autocomplete="off" class="autocomplete" id="q" placeholder="Search" type="text" spellcheck="false" />
+            </div>
+          </form>
+        </div>
+      </header>
+    </section>
+
+    <div class="boxsearch" style="display: -webkit-box; display: flex;">
+      <div id="categories" class="col-md-3 pull-left"></div>
+      <div id="users" class="col-md-5 pull-right pod"></div>
+      <div id="posts" class="col-md-4 pod"></div>
+    </div>
+
+    <script type="text/javascript">
+       function searchMultiCallback(success, content) {
+          if (success) {
+            var categories = content.results[0];
+             var html = '';
+             html += '<p class="ats">' + "Categories" + '</p>';
+            for (var i = 0; i < categories.hits.length; ++i) {
+               var hit = categories.hits[i];
+               html += '<div class="hits">';
+          for (var propertyName in hit._highlightResult) {
+            var el = hit._highlightResult[propertyName];
+            if (Object.prototype.toString.call(el) !== '[object Array]' && el.matchLevel !== 'none') {
+              html += '<a class="linkal" href="/categories/'+ hit.slug+'"><div class="attribute">' + hit.title +"</div></a>";
+            }
+          }
+          html += '</div>';
+           $('#categories').html(html);
+            }
+
+            var users = content.results[1];
+             var html = '';
+              html += '<p class="ats">' + "Products" + '</p>';
+            for (var i = 0; i < users.hits.length; ++i) {
+                  var hit = users.hits[i];
+               html += '<div class="hits">';
+          for (var propertyName in hit._highlightResult) {
+            var el = hit._highlightResult[propertyName];
+            if (Object.prototype.toString.call(el) !== '[object Array]' && el.matchLevel !== 'none') {
+              html += '<div class="attribute"><a class="linkal" href="/categories/'+hit.category_id+'/products/'+ hit.slug+'"><img alt="User" class="bo" src="'+hit.image+'"><p class="z">' + hit.title +"</p></a></div>";
+            }
+          }
+          html += '</div>';
+           $('#posts').html(html);
+            }
+
+            var products = content.results[2];
+             var html = '';
+             html += '<p class="ats">' + "Users" + '</p>';
+            for (var i = 0; i < products.hits.length; ++i) {
+             var hit = products.hits[i];
+               html += '<div class="hits">';
+          for (var propertyName in hit._highlightResult) {
+            var el = hit._highlightResult[propertyName];
+            if (Object.prototype.toString.call(el) !== '[object Array]' && el.matchLevel !== 'none') {
+              html += '<a class="linkal" href="/users/'+ hit.slug+'"><div class="attribute"><img alt="User" class="bo" src="'+hit.image+'"><p class="z">' + hit.name +"</p></div></a>";
+            }
+          }
+          html += '</div>';
+           $('#users').html(html);
+            }
+          }
+        }
+      $(document).ready(function() {
+        var $inputfield = $("#q");
+        // Replace the following values by your ApplicationID and ApiKey.
+       var client = new AlgoliaSearch("KFIEIP3I48", "7fffa97e4921141462636272ef5738ea");
+        // Replace the following value by the name of the index you want to query.
+        $inputfield.keyup(function() {
+        client.startQueriesBatch();
+        client.addQueryInBatch('Category', $('#q').val(), { hitsPerPage: 10 });
+        client.addQueryInBatch('Product', $('#q').val(), { hitsPerPage: 10 });
+        client.addQueryInBatch('User', $('#q').val(), { hitsPerPage: 10 });
+        client.sendQueriesBatch(searchMultiCallback);
+      }).focus().closest('form').on('submit', function() {
+          // on form submit, store the query string in the anchor
+          location.replace('#q=' + encodeURIComponent($inputfield.val()));
+          return false;
+        });
+        // check if there is a query in the anchor: http://example.org/#q=my+query
+        if (location.hash && location.hash.indexOf('#q=') === 0) {
+          var q = decodeURIComponent(location.hash.substring(3));
+          $inputfield.val(q).trigger('keyup');
+        }
+      });
+    </script> 
     <div class = "outerfixed" >
       <div class = "interstatic">
         <%= link_to "Post New Product", new_product_path(@product), class: 'btn btn-primary btn-xs to-right' %>
+         <%= link_to "New Category", new_category_path, class: 'btn btn-primary btn-xs fuller' %>
         <div class="leaderboard">
                <table class="table table-striped table-hover fixer">
                   <thead>
@@ -30,12 +126,12 @@
         </div>
       </div>
     </div>
+
+
 <div class="row">
-  <div class="show-box" id="products">
     <div class="page">
      <%= render @products %>
     </div>
-  </div>
 <%= paginate @products %>
 </div>
 

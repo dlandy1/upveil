@@ -1,8 +1,13 @@
 <div class="product">
   <div class="user_tag user_names link_color">
-    <%= link_to product.user do %>
-    <span class="hider"><%= image_tag(product.user.identity.smallimage)%></span>
-      <p> <%= product.user.name %></p>
+    <% if product.category.adult %>
+    <% else %>
+      <%= link_to product.user do %>
+      <span class="hider">
+        <%= image_tag(product.user.identity.smallimage)%>
+      </span>
+        <p> <%= product.user.name %></p>
+      <% end %>
     <% end %>
     <p class="time"><%= time_ago_in_words(product.created_at) %> ago</p>
     <%= render partial: 'votes/voter', locals: {product: product} %>

@@ -75,7 +75,15 @@ gem 'twitter'
 
 gem 'public_activity'
 
+<<<<<<< HEAD
 gem 'haml-rails'
+=======
+gem 'twitter-typeahead-rails'
+
+gem 'algoliasearch-rails'
+
+gem 'hogan_assets'
+>>>>>>> create-categories
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -1,0 +1,1 @@
+AlgoliaSearch.configuration = { application_id: "KFIEIP3I48", api_key: ENV["ALGO"], pagination_backend: :kaminari }

@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
    include PublicActivity::Common
+   include AlgoliaSearch
+
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/
 
@@ -9,6 +11,7 @@ class User < ActiveRecord::Base
     :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
     has_many :products, dependent: :destroy
+    has_many :categories, dependent: :destroy
     has_one :identity, dependent: :destroy
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
   validates :instagram_url, length:{minimum: 1}, :allow_blank => true 
@@ -18,6 +21,10 @@ class User < ActiveRecord::Base
 
   extend FriendlyId
   friendly_id :name, use: :slugged
+
+    algoliasearch do
+    # associated index settings can be configured from here
+    end
 
   def instagram_url=(name)
     if name.length == 0
@@ -96,6 +103,7 @@ class User < ActiveRecord::Base
         user.save!
       end
     end
+
 
     # Associate the identity with the user if needed
     if identity.user != user

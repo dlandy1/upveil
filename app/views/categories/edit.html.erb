@@ -1,1 +1,10 @@
+<h1 class="text-center">Edit category</h1>
 
+<div class="row">
+  </div class="col-md-7">
+  <% if @category.parent_category.nil? %>
+    <%= render partial: 'form', locals: {category: @category }%>
+  <% else %>
+    <%= render partial: 'subcatform', locals: {category: @category, parentcat: @category.parent_category}%>
+  <% end %>
+</div>

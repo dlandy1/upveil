@@ -1,7 +1,7 @@
 <% if @parent.nil? %>
   <% if @category.title == "Fashion" %>
 
-    <div class="show_box newer females" id="products">
+    <div class="show-box newer females" id="products">
       <div class="page">
       <% @femaleproducts.each do |product| %>
        <%= render product %>
@@ -11,7 +11,7 @@
   <% end %>
 <% else %>
   <% if @subcatparent.title == "Fashion"  %>
-    <div class="show_box females newer" id="products">
+    <div class="show-box females newer" id="products">
           <div class="page">
           <% @femaleproducts.each do |product| %>
          <%= render product %>

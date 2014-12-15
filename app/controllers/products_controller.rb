@@ -39,11 +39,13 @@ def create
           @cat.create_activity :update, owner: current_user,  recipient: @cat.user_id
           @cat.top
         end
+        if @product.subcat_id
         @sub = Category.friendly.find(@product.subcat_id)
          if current_user != @sub.user
           @sub.create_activity :update, owner: current_user,  recipient: @sub.user_id
           @sub.top
          end
+        end
         if @product.grandcat_id
             @grand =  Category.find(@product.grandcat_id)
             @grand.top

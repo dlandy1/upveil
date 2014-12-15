@@ -17,7 +17,7 @@
     <div class="boxsearch" style="display: -webkit-box; display: flex;">
       <div id="categories" class="col-md-3 pull-left"></div>
       <div id="users" class="col-md-5 pull-right pod"></div>
-      <div id="products" class="col-md-4 pod"></div>
+      <div id="posts" class="col-md-4 pod"></div>
     </div>
 
     <script type="text/javascript">
@@ -32,7 +32,7 @@
           for (var propertyName in hit._highlightResult) {
             var el = hit._highlightResult[propertyName];
             if (Object.prototype.toString.call(el) !== '[object Array]' && el.matchLevel !== 'none') {
-              html += '<div class="attribute"><a class="linkal" href="/categories/'+ hit.slug+'">' + hit.title +"</a></div>";
+              html += '<a class="linkal" href="/categories/'+ hit.slug+'"><div class="attribute">' + hit.title +"</div></a>";
             }
           }
           html += '</div>';
@@ -52,7 +52,7 @@
             }
           }
           html += '</div>';
-           $('#products').html(html);
+           $('#posts').html(html);
             }
 
             var products = content.results[2];
@@ -64,7 +64,7 @@
           for (var propertyName in hit._highlightResult) {
             var el = hit._highlightResult[propertyName];
             if (Object.prototype.toString.call(el) !== '[object Array]' && el.matchLevel !== 'none') {
-              html += '<div class="attribute"><a class="linkal" href="/users/'+ hit.slug+'"><img alt="User" class="bo" src="'+hit.image+'"><p class="z">' + hit.name +"</p></a></div>";
+              html += '<a class="linkal" href="/users/'+ hit.slug+'"><div class="attribute"><img alt="User" class="bo" src="'+hit.image+'"><p class="z">' + hit.name +"</p></div></a>";
             }
           }
           html += '</div>';

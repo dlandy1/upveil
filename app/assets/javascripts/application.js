@@ -35,7 +35,7 @@
     if (!$(event.target).closest('#q').length) {
        var form = $('#q');
         $("#categories").hide();
-        $("#products").hide();
+        $("#posts").hide();
         $("#users").hide();
        form.css("color", "white")
       form.animate({
@@ -51,7 +51,7 @@
     var form = $('#q');
     form.click(function () {
       $("#categories").show();
-        $("#products").show();
+        $("#posts").show();
         $("#users").show();
         form.css("color", "black")
         form.animate({

@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # GET /users/:id.:format
   def show
     @user = User.friendly.find(params[:id])
-    @products = @user.products.order('created_at DESC').page(params[:page]).per(10)
+    @products = @user.products.where.not(category_id: Category.where(adult: true).ids).order('created_at DESC').page(params[:page]).per(10)
   end
 
   # GET /users/:id/edit

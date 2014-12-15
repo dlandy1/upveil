@@ -50,6 +50,7 @@
        <div class="form-group">
      <%= f.select :category_id, options_from_collection_for_select(Category.parent_categories.all, "id", "title", categorie.id), :prompt => "Select a Category" %>
        </div>
+       <% if categorie.subcategories.first %>
         <%= f.label "subcategory*" %>
        <div class="form-group">
        <%= select_tag 'product[subcat_id]', options_from_collection_for_select(categorie.subcategories, "id", "title", product.subcat_id),
@@ -61,6 +62,7 @@
         </div>
 
       <% end %>
+    <% end %>
 
     <%= f.label "Gender*(Needed with Fashion)" %>
      <div class="form-group">

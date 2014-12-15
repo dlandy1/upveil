@@ -55,13 +55,19 @@ def create
         end
         @product.update_rank
         @product.increase(current_user, 100)
-        subcat = @product.subcat_id
         @product.up_vote!(@product.user)
-        @category = Category.friendly.find(subcat)
-        @category.increase_grade(current_user, 100)
+        if @product.subcat_id
+          subcat = @product.subcat_id
+          @category = Category.friendly.find(subcat)
+          @category.increase_grade(current_user, 100)
         respond_with(@activities) do |format|
           format.html { redirect_to @category}
         end
+      else
+         respond_with(@activities) do |format|
+          format.html { redirect_to @product.category}
+        end
+      end
       else
         flash[:error] = "There was an error saving the product. Please try again."
         render :edit

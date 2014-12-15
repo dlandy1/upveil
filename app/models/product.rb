@@ -81,8 +81,10 @@ class Product < ActiveRecord::Base
       vote_manager = VotesManager.new(voting_user, self)
       vote_manager.remove_up_vote!
       self.category.increase_grade(self.user, -20)
-      subcategory = Category.friendly.find(self.subcat_id)
-      subcategory.increase_grade(self.user, -20)
+      if subcategory
+        subcategory = Category.friendly.find(self.subcat_id)
+        subcategory.increase_grade(self.user, -20)
+      end
       current_score = HIGHSCORE_LB.score_for(voting_user.id).to_i
       HIGHSCORE_LB.rank_member(voting_user.id, current_score - 3)
       product_score = HIGHSCORE_LB.score_for(self.user.id).to_i
@@ -97,8 +99,10 @@ class Product < ActiveRecord::Base
       vote_manager = VotesManager.new(voting_user, self)
       vote_manager.remove_down_vote!
       self.category.increase_grade(self.user, 15)
-      subcategory = Category.friendly.find(self.subcat_id)
-      subcategory.increase_grade(self.user, 15)
+      if subcategory
+        subcategory = Category.friendly.find(self.subcat_id)
+        subcategory.increase_grade(self.user, 15)
+      end
       current_score = HIGHSCORE_LB.score_for(voting_user.id).to_i
       HIGHSCORE_LB.rank_member(voting_user.id, current_score - 1)
       product_score = HIGHSCORE_LB.score_for(self.user.id).to_i
@@ -119,8 +123,10 @@ class Product < ActiveRecord::Base
       vote_manager = VotesManager.new(voting_user, self)
       vote_manager.down_vote!
       self.category.increase_grade(self.user, -15)
-      subcategory = Category.friendly.find(self.subcat_id)
-      subcategory.increase_grade(self.user, -15)
+      if subcategory
+        subcategory = Category.friendly.find(self.subcat_id)
+        subcategory.increase_grade(self.user, -15)
+       end
        current_score = HIGHSCORE_LB.score_for(voting_user.id).to_i
       HIGHSCORE_LB.rank_member(voting_user.id, current_score + 1)
       product_score = HIGHSCORE_LB.score_for(self.user.id).to_i
@@ -131,8 +137,10 @@ class Product < ActiveRecord::Base
       vote_manager = VotesManager.new(voting_user, self)
       vote_manager.up_vote!
       self.category.increase_grade(self.user, 20)
-      subcategory = Category.friendly.find(self.subcat_id)
-      subcategory.increase_grade(self.user, 20)
+      if subcategory
+        subcategory = Category.friendly.find(self.subcat_id)
+        subcategory.increase_grade(self.user, 20)
+      end
       current_score = HIGHSCORE_LB.score_for(voting_user.id).to_i
       HIGHSCORE_LB.rank_member(voting_user.id, current_score + 3)
       product_score = HIGHSCORE_LB.score_for(self.user.id).to_i

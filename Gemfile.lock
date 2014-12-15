@@ -283,11 +283,8 @@ DEPENDENCIES
   fog
   font-awesome-rails
   friendly_id
-<<<<<<< HEAD
   haml-rails
-=======
   hogan_assets
->>>>>>> create-categories
   jbuilder (~> 1.2)
   jquery-rails
   json

@@ -95,10 +95,6 @@ class Categories::ProductsController < ApplicationController
     end
 
    def product_params
-<<<<<<< HEAD
-    params.require(:product).permit(:title, :price, :link, :description, :gender, :holiday, :category_id, :subcat_id, :image, :image_cache, :remote_image_url)
-=======
-    params.require(:product).permit(:title, :price, :link, :description, :gender, :category_id, :subcat_id, :grandcat_id, :image, :image_cache, :remote_image_url)
->>>>>>> create-categories
+    params.require(:product).permit(:title, :price, :link, :description, :gender, :holiday, :category_id, :subcat_id, :grandcat_id, :image, :image_cache, :remote_image_url)
    end
 end

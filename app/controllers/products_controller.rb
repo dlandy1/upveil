@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   end
   
   def index
-   @products = Product.where.not(category_id: Category.where(adult: true).ids).order('created_at DESC').page(params[:page]).per(10)
+   @products = Product.where.not(category_id: Category.where(adult: true).ids).order('rank DESC').page(params[:page]).per(10)
    @leaders =  HIGHSCORE_LB.leaders(1)
   end
 

@@ -5,6 +5,7 @@
     <% end %>
     <b><%=@user.name %></b>
   </h1>
+   <%= render "shared/search" %>
   <p class="text-center pades">Score: <%= HIGHSCORE_LB.score_for(@user.id).to_i %></p>
  <% if @user == current_user && @user.instagram_url.nil? && @user.twitter_url.nil? && @user.website.nil? %>
   <div class='new-social'>

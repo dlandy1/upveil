@@ -70,7 +70,9 @@ class Product < ActiveRecord::Base
     end
 
     def subcategory_present?
+      if category
       category.subcategories.first
+    end
     end
 
     def already_up_voted_by_user?(voting_user)

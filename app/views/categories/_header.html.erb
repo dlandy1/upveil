@@ -50,17 +50,18 @@
   </div>
 
     <% elsif @category.title == "Lingerie" %>
-
+     <div class="text-center">
       <div class="btn-group size gender">
       <%= link_to category_female_path(@category), class: 'btn btn-default size a'  do %>
        <%= fa_icon "female" %><span>Female</span>
        <% end %>
      </div>
+     </div>
 
      <% else @parent %> 
 
         <% if @parent != nil && @subcatparent.title == "Fashion" %>
-
+    <div class="text-center">
       <div class="btn-group size gender">
           <%= link_to category_female_path(@category), class: 'btn btn-default size a'  do %>
          <%= fa_icon "female" %><span>Female</span>
@@ -69,14 +70,16 @@
          <%= fa_icon "male" %><span>Male</span>
          <% end %>
       </div>
+         </div>
       <%end %>
+    
 
     <%end %>
  <% if @subcategories.count > 0 %>
   <p class="subcats text-center">Top Subcategories:</p>
 
   <div class="text-center">
-    <div class="btn-group paddie">
+    <div class="btn-group paddie closer">
       <% if @parent.nil? %>
       <% @subcategories.each do |sub| %>
             <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default b' %>

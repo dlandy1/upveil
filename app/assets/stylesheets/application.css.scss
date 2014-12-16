@@ -2740,6 +2740,7 @@ select[multiple].input-lg {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  border-radius: 25px;
 }
 .btn:focus,
 .btn:active:focus,
@@ -6464,46 +6465,72 @@ legend {
 }
 @media (min-width: 768px) {
  .nav > li > a {
-   padding: 5px 0px;
-   font-size: 20px;
+   padding: 10px 2px;
+   font-size: 14px;
  }
 }
 @media (min-width: 800px) {
  .nav > li > a {
-   padding: 5px 2px;
-   font-size: 20px;
+   padding: 8px 0px;
+   font-size: 16px;
  }
 }
 @media (min-width: 860px) {
  .nav > li > a {
-   padding: 6px 3px;
-   font-size: 20px;
+   padding: 7px 0px;
+   font-size: 18px;
  }
 }
 @media (min-width: 880px) {
  .nav > li > a {
-   padding: 6px 5px;
+   padding: 7px 1px;
+   font-size: 18px;
+ }
+}
+@media (min-width: 910px) {
+ .nav > li > a {
+   padding: 6px 0px;
    font-size: 20px;
  }
 }
-@media (min-width: 980px) {
+@media (min-width: 930px) {
  .nav > li > a {
-   padding: 6px 10px;
+   padding: 6px 1px;
+   font-size: 20px;
+ }
+}
+@media (min-width: 985px) {
+ .nav > li > a {
+   padding: 6px 4px;
    font-size: 20px;
  }
 }
 @media (min-width: 990px) {
  .nav > li > a {
-   padding: 6px 14px;
+   padding: 6px 5px;
    font-size: 20px;
  }
 }
-@media (min-width: 1086px) {
+@media (min-width: 1100px) {
+ .nav > li > a {
+  padding: 6px 8px;
+  }
+}
+@media (min-width: 1130px) {
  .nav > li > a {
   font-family: inherit;
   position: relative;
   display: block;
-  padding: 6px 14px;
+  padding: 6px 11px;
+  color: white;
+  }
+}
+@media (min-width: 1166px) {
+ .nav > li > a {
+  font-family: inherit;
+  position: relative;
+  display: block;
+  padding: 6px 12px;
   color: white;
   }
 }
@@ -6947,21 +6974,17 @@ td{
   }
 }
 @media(max-width: 550px){
-  .btn-group{
+  .closer{
     display: none;
   }
    .gender{
-    display: inline;
-  }
-  .male{
-    padding: 20px;
-  }
-  .female{
-    padding: 20px;
   }
   .mobiler{
     text-align: center;
     margin-top: -11px;
+  }
+  .subcats{
+    margin-bottom: 20px;
   }
   .spacer{
     margin-bottom: 10px; 
@@ -7738,13 +7761,13 @@ margin-left: 20px;
   display: none;
 }
 .a{
-  width: 220px;
+  width: 180px;
 }
 .b{
-  min-width: 110px;
+  min-width: 90px;
 }
 .paddie{
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 .twitter-typeahead { width: 100%; }
 .twitter-typeahead .tt-input, .twitter-typeahead .tt-hint { width: 100%; margin: 0px; padding: 8px 12px; border: 1px solid #ccc; outline: none; }
@@ -7882,4 +7905,97 @@ color: red;
 }
 .liday {
 color: #026102;
+}
+@media(max-width: 995px){
+  .b{
+    min-width: 80px;
+  }
+}
+@media(max-width: 1140px){
+  .b{
+    min-width: 75px;
+  }
+}
+@media(max-width: 1080px){
+  .b{
+    min-width: 60px;
+  }
+}
+@media(max-width: 1030px){
+  .b{
+    min-width: 50px;
+  }
+}
+@media(max-width: 1030px){
+  .b{
+    min-width: 60px;
+    font-size: 16px;
+  }
+}
+@media(max-width: 980px){
+  .b{
+    font-size: 14px;
+  }
+}
+@media(max-width: 879px){
+  .b{
+    min-width: 95px;
+  }
+}
+  @media(max-width: 810px){
+  .b{
+    min-width: 75px;
+  }
+}
+@media(max-width: 775px){
+  .b{
+    min-width: 80px;
+  }
+}
+@media(max-width: 775px){
+  .b{
+    min-width: 70px;
+  }
+}
+@media(max-width: 660px){
+  .b{
+    min-width: 45px;
+    font-size: 12px;
+  }
+  }
+  @media(max-width: 630px){
+  .b{
+    min-width: 40px;
+  }
+  }
+@media(max-width: 600px){
+  .b{
+    min-width: 30px;
+     font-size: 12px;
+  }
+}
+@media(max-width: 590px){
+  .b{
+    min-width: 30px;
+     font-size: 11px;
+  }
+}
+@media(max-width: 590px){
+  .b{
+    min-width: 30px;
+     font-size: 11px;
+  }
+}
+@media(max-width: 768px){
+  .size{
+    font-size: 11px;
+    padding: 7px;
+    margin-bottom: 5px;
+  }
+}
+.size{
+   margin-bottom: 4px;
+}
+.paddie{
+  margin-bottom: 30px;
 }

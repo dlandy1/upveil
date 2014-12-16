@@ -34,38 +34,42 @@
 <% end %>
 
 
-      <div class="btn-group btn-group-justified size gender text-center gender">
-          <%= link_to category_female_path(@category), class: 'btn btn-default size female'  do %>
-         <%= fa_icon "female" %><span>Female</span>
-         <% end %>
-          <%= link_to category_male_path(@category), class: 'btn btn-default size'  do %>
-         <%= fa_icon "male" %><span>Male</span>
-         <% end %>
-      </div>
+     <div class="text-center">
+    <div class="btn-group size gender">
+      <%= link_to category_female_path(@category), class: 'btn btn-default size a female'  do %>
+       <%= fa_icon "female" %><span>Female</span>
+       <% end %>
+      <%= link_to category_male_path(@category), class: 'btn btn-default size a'  do %>
+       <%= fa_icon "male" %><span>Male</span>
+       <% end %>
+    </div>
+  </div>
     
  <% if @subcategories.count > 0 %>
-  <div class="new-cats">
+  <div class="text-center">
     <p class="subcats">Subcategories:</p>
+     <div class="btn-group size paddie closer">
     <% if @parent.nil? %>
     <% @subcategories.each do |sub| %>
-         <%= link_to "#{sub.title}", category_female_path(sub), class: 'cats' %>
+         <%= link_to "#{sub.title}", category_female_path(sub), class: 'btn btn-default b' %>
        <% end %>
        <% elsif @subcategories.first %>
         <% @subcategories.each do |sub| %>
-          <%= link_to "#{sub.title}", category_female_path(sub), class: 'cats' %>
+          <%= link_to "#{sub.title}", category_female_path(sub), class: 'btn btn-default b' %>
        <% end %>
      <% else %>
      <% if @parentsubcats.count > 1 %>
          <% @parentsubcats.each do |sub| %>
-            <%= link_to "#{sub.title}", category_female_path(sub), class: 'cats' %>
+            <%= link_to "#{sub.title}", category_female_path(sub), class: 'btn btn-default b' %>
          <% end %>
      <% else %>
         <% end %>
       <% end %>
     </div>
+    </div>
 
 
-    <div class="mobiler">
+    <div class="mobiler paddie">
        <% if @parent.nil? %>
          <% @subcategories.each do |sub| %>
           <%= link_to "#{sub.title}", category_female_path(sub), class: 'btn btn-default spacer' %>

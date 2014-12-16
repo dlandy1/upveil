@@ -23,7 +23,13 @@ class Category < ActiveRecord::Base
     hitsPerPage 40
     end
 
-  
+  def subcat_present?
+    subcategories.first
+  end
+
+  algoliasearch index_name: "Parentcats", if: :subcat_present? do
+    
+  end
 
   def should_generate_new_friendly_id?
     slug.blank? || title_changed?

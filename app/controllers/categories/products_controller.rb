@@ -35,19 +35,6 @@ class Categories::ProductsController < ApplicationController
      @product = current_user.products.build(product_params)
       if @product.save
         @cat = @product.category
-        if current_user != @cat.user
-          @cat.create_activity :update, owner: current_user,  recipient: @cat.user
-        end
-        @sub = Category.friendly.find(@product.subcat_id)
-         if current_user != @sub.user
-          @sub.create_activity :update, owner: current_user,  recipient: @sub.user
-         end
-        if @product.grandcat_id
-            @grand =  Category.friendly.find(@product.grandcat_id)
-           if current_user != @grand.user
-          @grand.create_activity :update, owner: current_user,  recipient: @grand.user
-          end
-        end
         @product.update_rank
         @product.increase(current_user, 100)
         subcat = @product.subcat_id
@@ -89,8 +76,6 @@ class Categories::ProductsController < ApplicationController
    def destroy
     @product = Product.friendly.find(params[:id])
     @category = @product.category
-    subcat = @product.subcat_id
-    @subcategory = Category.friendly.find(subcat)
     if current_user == @product.user || current_user.id == 1 || current_user.id == 2 || current_user.id == 3
       if @product.destroy
         PublicActivity::Activity.where(trackable_id: @product.id).destroy_all

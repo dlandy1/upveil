@@ -86,6 +86,28 @@ class Categories::ProductsController < ApplicationController
        end
    end
 
+   def destroy
+    @product = Product.friendly.find(params[:id])
+    @category = @product.category
+    subcat = @product.subcat_id
+    @subcategory = Category.friendly.find(subcat)
+    if current_user == @product.user || current_user.id == 1 || current_user.id == 2 || current_user.id == 3
+      if @product.destroy
+        PublicActivity::Activity.where(trackable_id: @product.id).destroy_all
+        @product.increase(@product.user, -100)
+        @category.increase_grade(@product.user, -100)
+        flash[:notice] = "#{@product.title} was deleted successfully."
+        redirect_to  @category
+      else 
+        flash[:error] = "There was an error deleting the post."
+        redirect_to [@category, @product]
+      end
+     else 
+        flash[:error] = "There was an error deleting the post."
+        redirect_to [@category, @product]
+      end
+   end
+
    private
 
     def load_activities

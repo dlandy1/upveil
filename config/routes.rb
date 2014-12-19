@@ -9,7 +9,7 @@ Upveil::Application.routes.draw do
     get "male_newest"
     get "female_newest"
     resources :subcategories, only: [:index]
-    resources :products, except: [:index, :destroy], controller: 'categories/products' do
+    resources :products, except: [:index], controller: 'categories/products' do
       post 'purchase'
     end
   end

@@ -12,8 +12,9 @@
    <div class="form-group">
       <%= f.label "Category*" %>
       <div class="form-group">
-      <%= f.select :category_id, options_from_collection_for_select(Category.parent_categories.select { |cat| cat.subcategories.first != nil }, "id", "title"), :prompt => "Select a Category" %>
+      <%= f.select :category_id, options_from_collection_for_select(Category.parent_categories.all, "id", "title"), :prompt => "Select a Category" %>
        </div>
+       <div class="subies">
       <%= f.label "Subcategory*" %>
        <div class="form-group">
         <%= select_tag 'product[subcat_id]', options_from_collection_for_select([], "id", "title"),
@@ -23,6 +24,7 @@
                      "data-option-key-method" => :id,
                      "data-option-value-method" => :title %> 
         </div>
+    </div>
     </div>
     <%= f.label "Gender*(Needed with Fashion)" %>
      <div class="form-group">

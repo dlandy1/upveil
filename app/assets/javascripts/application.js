@@ -80,7 +80,9 @@
                 if (observed.val()) {
                     url = url_mask.replace(regexp, observed.val());
                     $.getJSON(url, function (data) {
+                      $(".subies").hide();
                         $.each(data, function (i, object) {
+                            $(".subies").show();
                             observer.append($('<option>').attr('value', object[key_method]).text(object[value_method]));
                             observer.attr('disabled', false);
                         });

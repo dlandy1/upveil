@@ -35,6 +35,19 @@ class Categories::ProductsController < ApplicationController
      @product = current_user.products.build(product_params)
       if @product.save
         @cat = @product.category
+        if current_user != @cat.user
+          @cat.create_activity :update, owner: current_user,  recipient: @cat.user
+        end
+        @sub = Category.friendly.find(@product.subcat_id)
+         if current_user != @sub.user
+          @sub.create_activity :update, owner: current_user,  recipient: @sub.user
+         end
+        if @product.grandcat_id
+            @grand =  Category.friendly.find(@product.grandcat_id)
+           if current_user != @grand.user
+          @grand.create_activity :update, owner: current_user,  recipient: @grand.user
+          end
+        end
         @product.update_rank
         @product.increase(current_user, 100)
         subcat = @product.subcat_id

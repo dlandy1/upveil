@@ -35,24 +35,6 @@ def create
      @product = current_user.products.build(product_params)
       if @product.save
         @cat = @product.category
-        if current_user != @cat.user
-          @cat.create_activity :update, owner: current_user,  recipient: @cat.user_id
-          @cat.top
-        end
-        if @product.subcat_id
-        @sub = Category.friendly.find(@product.subcat_id)
-         if current_user != @sub.user
-          @sub.create_activity :update, owner: current_user,  recipient: @sub.user_id
-          @sub.top
-         end
-        end
-        if @product.grandcat_id
-            @grand =  Category.find(@product.grandcat_id)
-            @grand.top
-           if current_user != @grand.user
-          @grand.create_activity :update, owner: current_user,  recipient: @grand.user
-          end
-        end
         @product.update_rank
         @product.increase(current_user, 100)
         @product.up_vote!(@product.user)

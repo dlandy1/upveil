@@ -44,10 +44,12 @@ def create
           @category.increase_grade(current_user, 100)
         respond_with(@activities) do |format|
           format.html { redirect_to @category}
+          flash[:notice] = "Post was created."
         end
       else
          respond_with(@activities) do |format|
           format.html { redirect_to @product.category}
+          flash[:notice] = "Post was created."
         end
       end
       else

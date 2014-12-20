@@ -46,7 +46,7 @@
     
  <% if @subcategories.count > 0 %>
    <div class="text-center">
-    <p class="subcats">Subcategories:</p>
+    <p class="subcats">Top Subcategories:</p>
     <div class="btn-group size paddie closer">
     <% if @parent.nil? %>
     <% @subcategories.each do |sub| %>
@@ -86,6 +86,50 @@
        <% end %>
     </div>
   <% end %>
+
+ <% if @parentsubcats.count > 0 %>
+   <div class="text-center">
+    <p class="subcats">Top Subcategories:</p>
+    <div class="btn-group size paddie closer">
+    <% if @parent.nil? %>
+    <% @parentsubcats.each do |sub| %>
+         <%= link_to "#{sub.title}", category_female_path(sub), class: 'btn btn-default b' %>
+       <% end %>
+       <% elsif @parentsubcats.first %>
+        <% @parentsubcats.each do |sub| %>
+          <%= link_to "#{sub.title}", category_female_path(sub), class: 'btn btn-default b' %>
+       <% end %>
+     <% else %>
+     <% if @parentsubcats.count > 0 %>
+         <% @parentsubcats.each do |sub| %>
+            <%= link_to "#{sub.title}", category_female_path(sub), class: 'btn btn-default b' %>
+         <% end %>
+     <% else %>
+        <% end %>
+      <% end %>
+    </div>
+    </div>
+
+
+    <div class="mobiler paddie">
+       <% if @parent.nil? %>
+         <% @subcategories.each do |sub| %>
+          <%= link_to "#{sub.title}", category_female_path(sub), class: 'btn btn-default spacer' %>
+       <% end %>
+       <% elsif @subcategories.first %>
+        <% @subcategories.each do |sub| %>
+             <%= link_to "#{sub.title}", category_female_path(sub), class: 'btn btn-default spacer' %>
+       <% end %>
+       <% else %>
+       <% if @parentsubcats.count > 1 %>
+         <% @parentsubcats.each do |sub| %>
+              <%= link_to "#{sub.title}", category_female_path(sub), class: 'btn btn-default spacer' %>
+         <% end %>
+        <% end %>
+       <% end %>
+    </div>
+  <% end %>
+
    <%= render "shared/search" %>
 <div class="row">
 

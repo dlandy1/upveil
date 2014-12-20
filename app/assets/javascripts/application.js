@@ -56,7 +56,7 @@
         form.css("color", "black")
         form.animate({
             'margin-top' : "37px",
-            'width': form.width() == 100 ? '30px' : '89%'
+            'width': form.width() == 100 ? '30px' : '88%'
         }, 'slow', function () {
             if (form.width() == 0) form.hide()
         });

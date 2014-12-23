@@ -87,6 +87,7 @@
     </div>
   <% end %>
 
+ <% if @parentsubcats %>
  <% if @parentsubcats.count > 0 %>
    <div class="text-center">
     <p class="subcats">Top Subcategories:</p>
@@ -128,6 +129,7 @@
         <% end %>
        <% end %>
     </div>
+  <% end %>
   <% end %>
 
    <%= render "shared/search" %>

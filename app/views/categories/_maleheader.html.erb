@@ -87,6 +87,7 @@
     </div>
   <% end %>
 
+<% if @subcategories.count == 0 %>
  <% if @parentsubcats %>
  <% if @parentsubcats.count > 0 %>
    <div class="text-center">
@@ -129,6 +130,7 @@
         <% end %>
        <% end %>
     </div>
+  <% end %>
   <% end %>
   <% end %>
 

@@ -56,13 +56,8 @@ class CategoriesController < ApplicationController
     @users = @category.leaderboard.leaders(1)
     if !@parent.nil?
         @subcatparent = Category.friendly.find(@parent)
-        @parentsubcats = @subcatparent.subcategories.where(gender: nil)
-         @products = @category.products.where.not(:gender => "Female").order("rank DESC").page(params[:page]).per(10)
-    if @category.parent_category.parent_category
-        @unscope = Product.order("created_at DESC").where.not(:gender => "Female").where(grandcat_id: @category.id).page(params[:page]).per(10)
-    else
-        @unscope = @subcatparent.products.order("created_at DESC").where.not(:gender => "Female").where(subcat_id: @category.id).page(params[:page]).per(10)
-    end
+        @parentsubcats = @subcatparent.subcategories
+        @products = @subcatparent.products.order("rank DESC").where.not(:gender => "Female").where(subcat_id: @category.id).page(params[:page]).per(10)
     else
         @products = @category.products.where.not(:gender => "Female").order("rank DESC").page(params[:page]).per(10)
     end

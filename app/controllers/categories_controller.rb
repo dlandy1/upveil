@@ -36,7 +36,7 @@ class CategoriesController < ApplicationController
      @users = @category.leaderboard.leaders(1)
     if !@parent.nil?
       @subcatparent = Category.friendly.find(@parent)
-      @parentsubcats = @subcatparent.subcategories
+      @parentsubcats = @subcatparent.subcategories.order('rank DESC').page(params[:page]).per(7)
       if @category.parent_category.parent_category
       @unscope = Product.order("created_at DESC").where(grandcat_id: @category.id).page(params[:page]).per(10)
       else

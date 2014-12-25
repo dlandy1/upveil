@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  respond_to :html, :js
   before_action :set_user, only: [:show, :edit, :update, :destroy, :finish_signup]
   before_action :load_activities
 
@@ -6,6 +7,12 @@ class UsersController < ApplicationController
   def show
     @user = User.friendly.find(params[:id])
     @products = @user.products.where.not(category_id: Category.where(adult: true).ids).order('created_at DESC').page(params[:page]).per(10)
+  end
+
+  def follow
+    respond_with(@user) do |format|
+          format.html { redirect_to :back}
+    end
   end
 
   # GET /users/:id/edit

@@ -9,12 +9,6 @@ class UsersController < ApplicationController
     @products = @user.products.where.not(category_id: Category.where(adult: true).ids).order('created_at DESC').page(params[:page]).per(10)
   end
 
-  def follow
-    respond_with(@user) do |format|
-          format.html { redirect_to :back}
-    end
-  end
-
   # GET /users/:id/edit
   def edit
     @user = User.friendly.find(params[:id])

@@ -27,10 +27,6 @@ class Category < ActiveRecord::Base
     parent_category == nil
   end
 
-  algoliasearch index_name: "Category", if: :subcat_present? do
-    
-  end
-
   def should_generate_new_friendly_id?
     slug.blank? || title_changed?
   end

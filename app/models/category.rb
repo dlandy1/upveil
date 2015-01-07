@@ -23,14 +23,6 @@ class Category < ActiveRecord::Base
     hitsPerPage 40
     end
 
-  def subcat_present?
-    subcategories.first
-  end
-
-  algoliasearch index_name: "Parentcats", if: :subcat_present? do
-    
-  end
-
   def should_generate_new_friendly_id?
     slug.blank? || title_changed?
   end
@@ -49,7 +41,7 @@ class Category < ActiveRecord::Base
     update_attribute(:rank, b_rank)
   end
 
-    def top_c
+  def top_c
     c_rank = Product.where(grandcat_id: self.id).count.to_i
     update_attribute(:rank, c_rank)
   end

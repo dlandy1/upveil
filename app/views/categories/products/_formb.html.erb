@@ -31,6 +31,7 @@
          <%= f.select :category_id, options_from_collection_for_select(Category.parent_categories.all, "id", "title"), :prompt => "Select a Category" %>
          <% end %>
        </div>
+        <% if product.category.subcategories.count > 0 %>
       <%= f.label "Subcategory*" %>
        <div class="form-group">
          <% if product.category %>
@@ -49,6 +50,7 @@
                      "data-option-value-method" => :title %> 
             <% end %>
         </div>
+        <% end %>
     </div>
     <% end %>
     <%= f.label "Gender*(Needed with Fashion)" %>

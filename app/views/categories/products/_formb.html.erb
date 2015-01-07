@@ -50,6 +50,18 @@
                      "data-option-value-method" => :title %> 
             <% end %>
         </div>
+          <% else %>
+          <div class="subies">
+          <%= f.label "Subcategory*" %>
+            <div class="form-group">
+              <%= select_tag 'product[subcat_id]', options_from_collection_for_select(f.object.category.subcategories, "id", "title", product.subcat_id),
+                     "data-option-dependent" => true,
+                     "data-option-observed" => "product_category_id",
+                     "data-option-url" => "/categories/:category_id:/subcategories.json",
+                     "data-option-key-method" => :id,
+                     "data-option-value-method" => :title %> 
+              </div>
+            </div>
         <% end %>
     </div>
     <% end %>

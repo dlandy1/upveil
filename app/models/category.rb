@@ -24,7 +24,7 @@ class Category < ActiveRecord::Base
     end
 
   def subcat_present?
-    parent_category != nil
+    parent_category == nil
   end
 
   algoliasearch index_name: "Parentcats", if: :subcat_present? do

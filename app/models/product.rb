@@ -27,7 +27,7 @@ class Product < ActiveRecord::Base
   validates :category, presence: true
   validates :description,length: {minimum: 3, maximum: 300}, :allow_blank => true
   validates :subcat_id, presence: true, :if => :subcategory_present?
-  validates :gender, presence: true, :if => :in_fashion?
+  validates :gender, presence: true, :if => :in_gender?
 
 
   HIGHSCORE_LB.page_size = 10
@@ -63,9 +63,9 @@ class Product < ActiveRecord::Base
   end
 
 
-    def in_fashion?
+    def in_gender?
       if category
-      category.title == "Fashion"
+      category.gendered
       end
     end
 

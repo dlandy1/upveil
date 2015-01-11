@@ -85,6 +85,8 @@ gem 'hogan_assets'
 
 gem "acts_as_follower"
 
+gem "console.log"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

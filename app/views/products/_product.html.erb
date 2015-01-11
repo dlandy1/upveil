@@ -18,9 +18,11 @@
         <%= image_tag(product.image.url(:thumb), :class => "image")%>
       </div>
       <% end %>
+      <% if product.description != ""%>
         <div class="title"> <div class="money">$<%= product.price %></div><div class="tighter"><span><%= link_to (product.title), [product.category, product], :class => "golder" %></div></span></div>
-        <% if product.description != ""%>
           <p class="description"><%= product.description %></p>
-        <% end %>
+        <% else %>
+        <div class="titler"> <div class="money">$<%= product.price %></div><div class="tighter"><span><%= link_to (product.title), [product.category, product], :class => "golder" %></div></span></div>
+         <% end %>
   </div>
 </div>

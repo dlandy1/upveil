@@ -53,6 +53,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    console.log (0.2.0)
+      lspace
     devise (3.4.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -142,6 +144,7 @@ GEM
     kgio (2.9.2)
     leaderboard (3.7.0)
       redis
+    lspace (0.13)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -280,6 +283,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.2.0)
   carrierwave
   coffee-rails (~> 4.0.0)
+  console.log
   devise
   figaro
   fog

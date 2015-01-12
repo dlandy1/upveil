@@ -1,5 +1,6 @@
  <% if @subcategories.count > 0 %>
      <div class="btn-group second paddie closer">
+      <div>
     <% if @parent.nil? %>
     <% @subcategories.each do |sub| %>
          <%= link_to "#{sub.title}", category_female_path(sub), class: 'btn btn-default b' %>
@@ -16,10 +17,12 @@
      <% else %>
         <% end %>
       <% end %>
+      </div>
     </div>
 
 
     <div class="mobiler paddie">
+
        <% if @parent.nil? %>
          <% @subcategories.each do |sub| %>
           <%= link_to "#{sub.title}", category_female_path(sub), class: 'btn btn-default spacer' %>
@@ -42,6 +45,7 @@
 <% if @parentsubcats %>
    <% if @parentsubcats.count > 0 %>
     <div class="btn-group second paddie closer">
+      </div>
     <% if @parent.nil? %>
     <% @parentsubcats.each do |sub| %>
          <%= link_to "#{sub.title}", category_female_path(sub), class: 'btn btn-default b' %>
@@ -58,6 +62,7 @@
      <% else %>
         <% end %>
       <% end %>
+      </div>
     </div>
 
 

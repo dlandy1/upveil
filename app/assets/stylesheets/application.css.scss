@@ -3892,7 +3892,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   padding: 21.5px 15px;
   font-size: 30px;
   height: 35px;
-  width: 148px;
+  width: 186px;
 }
 
 .navbar-brand:hover,
@@ -6330,6 +6330,7 @@ legend {
 }
 
 .navbar-inner {
+  text-align: center;
 }
 
 .size{
@@ -8011,7 +8012,7 @@ color: #026102;
 .subies{
   display: none;
 }
-.closer > .current{
+.closer > div >.current{
   border-bottom: 3px solid #A09471;
   color: #A09471;
 }
@@ -8053,14 +8054,13 @@ margin-left: 10%;
   color: #A09471;
 }
 
-.closer > .current:hover{
+.closer > div > .current:hover{
   color: black;
   border-bottom: 3px solid #898068 ;
 }
 .boxsearch{
   margin-top: 50px;
-  display: -webkit-box; 
-  display: flex;
+  display: -webkit-box; display: flex;
   display: none;
 }
 @media(max-width: 752px){

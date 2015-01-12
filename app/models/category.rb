@@ -11,6 +11,7 @@ class Category < ActiveRecord::Base
   belongs_to :user
   validates :title, length: {minimum: 3}, presence: true
   validates :description, length: {minimum: 7}, :allow_blank => true
+  validates_uniqueness_of :title
 
 
   scope :parent_categories, -> { where(parent_id: nil)}

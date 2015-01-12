@@ -1,53 +1,5 @@
-<div class="cat-buttons">
-      <% if current_user %>
-        <%if current_user == @category.user || current_user.id == 1 || current_user.id == 2  %>
-          <p><%= link_to "Edit Category",  edit_category_path(@category), class: 'btn btn-xs btn-warning cat-fonter' %></p>
-        <% end %>
-      <% end %>
-    </div>
-    
-<% if @parent.nil? %>
-<h1 class="h3 titlen text-center"><b><%=@category.title %></b><br>
-  <% if @category.description %>
-    <p class="h6 subtitle"><%= @category.description %></p>
-  <% else %>
-  <p class="h6 subtitle">Best Products</p>
-  <% end %>
-</h1>
-<% else %>
-<h1 class="h3 titlen text-center"><p class="parent"><%= link_to @category.parent_category.title, category_male_path(@category.parent_category) %></p><b><%=@category.title %></b><br>
-  <% if @category.description %>
-    <p class="h6 subtitle"><%= @category.description %></p>
-  <% else %>
-   <p class="h6 subtitle">Best Products Related to <%=@category.title %></p>
-  <% end %>
-</h1>
-<% end %>
-<% if @category.secret %>
-<% else %>
-<% if @category.user %>
-  <p class="text-center mod">Moderator: <%= link_to @category.user do%>
-   <span><%= @category.user.name %></span>
-  </p>
-  <% end %>
-<% end %>
-<% end %>
-
-  <div class="text-center">
-      <div class="btn-group size gender">
-          <%= link_to category_female_path(@category), class: 'btn btn-default size a'  do %>
-         <%= fa_icon "female" %><span>Female</span>
-         <% end %>
-          <%= link_to category_male_path(@category), class: 'btn btn-default size a male'  do %>
-         <%= fa_icon "male" %><span>Male</span>
-         <% end %>
-      </div>
-    </div>
-    
  <% if @subcategories.count > 0 %>
-   <div class="text-center">
-    <p class="subcats">Top Subcategories:</p>
-    <div class="btn-group size paddie closer">
+    <div class="btn-group second paddie closer">
     <% if @parent.nil? %>
     <% @subcategories.each do |sub| %>
          <%= link_to "#{sub.title}", category_male_path(sub), class: 'btn btn-default b' %>
@@ -64,7 +16,6 @@
      <% else %>
         <% end %>
       <% end %>
-    </div>
     </div>
 
 
@@ -90,9 +41,7 @@
 <% if @subcategories.count == 0 %>
  <% if @parentsubcats %>
  <% if @parentsubcats.count > 0 %>
-   <div class="text-center">
-    <p class="subcats">Top Subcategories:</p>
-    <div class="btn-group size paddie closer">
+    <div class="btn-group second paddie closer">
     <% if @parent.nil? %>
     <% @parentsubcats.each do |sub| %>
          <%= link_to "#{sub.title}", category_male_path(sub), class: 'btn btn-default b' %>
@@ -109,7 +58,6 @@
      <% else %>
         <% end %>
       <% end %>
-    </div>
     </div>
 
 
@@ -134,7 +82,54 @@
   <% end %>
   <% end %>
 
-   <%= render "shared/search" %>
+<div class="cat-buttons">
+      <% if current_user %>
+        <%if current_user == @category.user || current_user.id == 1 || current_user.id == 2  %>
+          <p><%= link_to "Edit Category",  edit_category_path(@category), class: 'btn btn-xs btn-warning cat-fonter' %></p>
+        <% end %>
+      <% end %>
+    </div>
+    
+<% if @parent.nil? %>
+<h1 class="h3 titlen text-center"><b><%=@category.title %></b><br>
+  <% if @category.description %>
+    <p class="h6 subtitle"><%= @category.description %></p>
+  <% else %>
+  <p class="h6 subtitle">Best Products</p>
+  <% end %>
+</h1>
+<% else %>
+<h1 class="h3 titlen text-center"><b><%=@category.title %></b><br>
+  <% if @category.description %>
+    <p class="h6 subtitle"><%= @category.description %></p>
+  <% else %>
+   <p class="h6 subtitle">Best Products Related to <%=@category.title %></p>
+  <% end %>
+</h1>
+<% end %>
+<% if @category.secret %>
+<% else %>
+<% if @category.user %>
+  <p class="text-center mod">Moderator: <%= link_to @category.user do%>
+   <span><%= @category.user.name %></span>
+  </p>
+  <% end %>
+<% end %>
+<% end %>
+
+  <div class="text-center">
+      <div class="size gender">
+          <%= link_to category_female_path(@category), class: 'primal btn btn-default size a'  do %>
+         <%= fa_icon "female" %><span>Female</span>
+         <% end %>
+          <%= link_to category_male_path(@category), class: 'secondal btn btn-default size a male'  do %>
+         <%= fa_icon "male" %><span>Male</span>
+         <% end %>
+      </div>
+    </div>
+    
+
+
 <div class="row">
 
  <div class = "outerfixed" >

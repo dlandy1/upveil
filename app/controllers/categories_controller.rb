@@ -72,7 +72,7 @@ class CategoriesController < ApplicationController
     @users = @category.leaderboard.leaders(1)
     if !@parent.nil?
         @subcatparent = Category.friendly.find(@parent)
-        @parentsubcats = @subcatparent.subcategories.where.not(:gender => "Female")
+        @parentsubcats = @subcatparent.subcategories.where(gender: nil)
     if @category.parent_category.parent_category
         @unscope = Product.order("created_at DESC").where.not(:gender => "Female").where(grandcat_id: @category.id).page(params[:page]).per(10)
     else

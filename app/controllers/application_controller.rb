@@ -33,27 +33,25 @@ class ApplicationController < ActionController::Base
 
   def parent
   if request.original_url.index("categories")
-    yourl = "#{request.fullpath.gsub!('/categories/','')}"
-    if yourl == "tech" || yourl == "fashion" || yourl == "vehicle" || yourl == "sport" || yourl == "decor" || yourl == "food" || yourl.index("/")
+    yourl = "#{request.fullpath.gsub('categories','').gsub('/', '').gsub('newest', '').gsub('female', '').gsub('male', '').gsub('_', '')}"
+    if yourl == "tech" || yourl == "vehicle" || yourl == "sport" || yourl == "decor" || yourl == "food" || yourl.index("/")
       console.log "hello"
     else
-   if Category.find_by_slug(yourl)
-    if Category.find_by_slug(yourl).parent_category
-    @category = Category.friendly.find(params[:id])
-     @variable = Category.find(1).subcategories.collect(&:slug).include?("#{request.original_fullpath.gsub!('/categories/','')}") || Category.find(1).subcategories.include?(@category.parent_category)
-     @variablea = Category.find(2).subcategories.collect(&:slug).include?("#{request.original_fullpath}".capitalize) || Category.find(2).subcategories.include?(@category.parent_category)
-     @variable_b = Category.find(3).subcategories.collect(&:slug).include?("#{request.original_fullpath}".capitalize) || Category.find(3).subcategories.include?(@category.parent_category)
-     @variable_c = Category.find(4).subcategories.collect(&:slug).include?("#{request.original_fullpath}".capitalize) || Category.find(4).subcategories.include?(@category.parent_category)
-     @variable_d = Category.find(5).subcategories.collect(&:slug).include?("#{request.original_fullpath}".capitalize) || Category.find(5).subcategories.include?(@category.parent_category)
-     @variable_e = Category.find(6).subcategories.collect(&:slug).include?("#{request.original_fullpath}".capitalize) || Category.find(6).subcategories.include?(@category.parent_category)
-     console.log  @variable_e
-   console.log "got it"
-  end
-   end
+    if Category.find_by_slug(yourl)
+    @category = Category.find_by_slug(yourl)
+     @variable = Category.find(1).subcategories.collect(&:slug).include?(yourl) || Category.find(1).subcategories.include?(@category.parent_category)
+     @variablea = Category.find(2).subcategories.collect(&:slug).include?(yourl) || Category.find(2).subcategories.include?(@category.parent_category) || Category.parent_categories.collect(&:slug).include?(yourl)
+     @variable_b = Category.find(3).subcategories.collect(&:slug).include?( yourl) || Category.find(3).subcategories.include?(@category.parent_category)
+     @variable_c = Category.find(4).subcategories.collect(&:slug).include?( yourl) || Category.find(4).subcategories.include?(@category.parent_category)
+     @variable_d = Category.find(5).subcategories.collect(&:slug).include?( yourl) || Category.find(5).subcategories.include?(@category.parent_category)
+     @variable_e = Category.find(6).subcategories.collect(&:slug).include?( yourl) || Category.find(6).subcategories.include?(@category.parent_category)
+   console.log  yourl
   end
   end
+  end
+   console.log Category.find(2).subcategories.collect(&:slug).include?(yourl)
+    console.log "/categories/ayooo".gsub('categories', '').gsub('/', '')
    console.log request.original_fullpath
-   console.log request.fullpath
 end
 
   

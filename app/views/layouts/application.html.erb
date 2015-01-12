@@ -51,6 +51,9 @@ window._fbq.push(['track', '6017250074008', {'value':'0.01','currency':'USD'}]);
   </div>
   <div class="navbar-collapse collapse navbar-responsive-collapse" id="nav">
     <ul class="nav navbar-nav navbar-right">
+      <li>
+         <%= render "shared/search" %>
+      </li>
       <% if current_user %>
                 <%= render partial: 'application/notifications' %>
                  <%= link_to current_user, class: 'btn btn-link' do %>
@@ -67,69 +70,69 @@ window._fbq.push(['track', '6017250074008', {'value':'0.01','currency':'USD'}]);
     </ul>
     <div class="navbar-inner">
     <ul class="nav">
-      <li><%= link_to "All", root_path, class: 'home'%></li>
+      <li><%= link_to "All", root_path, class: 'move home'%></li>
       <% if @variable === true %>
-        <li><%= link_to Category.find(1), class: 'current' do%>
+        <li><%= link_to Category.find(1), class: 'move current' do%>
          <%= fa_icon "plug" %><%= Category.find(1).title %>
         <% end %>
         </li>
         <% else %>
-        <li><%= link_to Category.find(1) do%>
+        <li><%= link_to Category.find(1), class: 'move' do%>
          <%= fa_icon "plug" %><%= Category.find(1).title %>
         <% end %>
         </li>
          <% end %>
          <% if @variablea === true %>
-        <li><%= link_to Category.find(2), class: 'current' do%>
+        <li><%= link_to Category.find(2), class: 'move current' do%>
          <%= fa_icon "eye" %><%= Category.find(2).title %>
         <% end %>
         </li>
         <% else %>
-        <li><%= link_to Category.find(2) do%>
+        <li><%= link_to Category.find(2), class: 'move' do%>
          <%= fa_icon "eye" %><%= Category.find(2).title %>
         <% end %>
         </li>
          <% end %>
         <% if @variable_b === true %>
-        <li><%= link_to Category.find(3), class: 'current' do%>
+        <li><%= link_to Category.find(3), class: 'move current' do%>
          <%= fa_icon "car" %><%= Category.find(3).title %>
         <% end %>
         </li>
         <% else %>
-        <li><%= link_to Category.find(3) do%>
+        <li><%= link_to Category.find(3), class: 'move' do%>
          <%= fa_icon "car" %><%= Category.find(3).title %>
         <% end %>
         </li>
          <% end %>
        <% if @variable_c === true %>
-        <li><%= link_to Category.find(4), class: 'current' do%>
+        <li><%= link_to Category.find(4), class: 'move current' do%>
          <%= fa_icon "futbol-o" %><%= Category.find(4).title %>
         <% end %>
         </li>
         <% else %>
-        <li><%= link_to Category.find(4) do%>
+        <li><%= link_to Category.find(4), class: 'move' do%>
          <%= fa_icon "futbol-o" %><%= Category.find(4).title %>
         <% end %>
         </li>
          <% end %>
          <% if @variable_d === true %>
-        <li><%= link_to Category.find(5), class: 'current' do%>
+        <li><%= link_to Category.find(5), class: 'move current' do%>
          <%= fa_icon "home" %><%= Category.find(5).title %>
         <% end %>
         </li>
         <% else %>
-        <li><%= link_to Category.find(5) do%>
+        <li><%= link_to Category.find(5), class: 'move' do%>
          <%= fa_icon "home" %><%= Category.find(5).title %>
         <% end %>
         </li>
          <% end %>
          <% if @variable_e === true %>
-        <li><%= link_to Category.find(6), class: 'current' do%>
+        <li><%= link_to Category.find(6), class: 'move current' do%>
          <%= fa_icon "cutlery" %><%= Category.find(6).title %>
         <% end %>
         </li>
         <% else %>
-        <li><%= link_to Category.find(6) do%>
+        <li><%= link_to Category.find(6), class: 'move' do%>
          <%= fa_icon "cutlery" %><%= Category.find(6).title %>
         <% end %>
         </li>
@@ -138,6 +141,7 @@ window._fbq.push(['track', '6017250074008', {'value':'0.01','currency':'USD'}]);
       </div>
   </div>
 </div>
+
 <div class="socialer email">
 <a target="_blank" href="https://www.facebook.com/upveil"><%= fa_icon "facebook 2x ", class: 'olo' %></a>
 <a target="_blank" href="https://twitter.com/upveil"><%= fa_icon "twitter 2x", class: 'olo' %></a>
@@ -145,6 +149,11 @@ window._fbq.push(['track', '6017250074008', {'value':'0.01','currency':'USD'}]);
 </div>
  <%= mail_to "contact@upveil.com","contact@upveil.com", class: 'email' %>
  <div class="container">
+   <div class="boxsearch" style="">
+      <div id="categories" class="col-md-3 pull-left"></div>
+      <div id="users" class="col-md-5 pull-right pod"></div>
+      <div id="posts" class="col-md-4 pod"></div>
+    </div>
    <% if flash[:notice] %>
          <div class="alert alert-success">
            <button type="button" class="close" data-dismiss="alert">&times;</button>

@@ -98,13 +98,72 @@
     </div>
 
 <% if @parent.nil? %>
-<h1 class="h3 titlen text-center"><b><%=@category.title %></b><br>
-  <% if @category.description %>
-    <p class="h6 subtitle"><%= @category.description %></p>
-  <% else %>
-  <p class="h6 subtitle">Best Products</p>
+
+<div class="banner">
+  <%= link_to category_newest_path(@category), class: 'inliner' do %>
+    <%= fa_icon "calendar", class: "banicon" %></br><span>Look by newest</span>
   <% end %>
-</h1>
+    <% if @category.description %>
+    <h1 class="h3 titlen"><%=@category.title %>
+      <p class="h6 subtitle"><%= @category.description %></p>
+    <% else %>
+   <h1 class="h3 titlen">Best <%=@category.title %> Products
+    <p class="h6 subtitle"><%= @category.products.count %> Products Posted</p>
+    <% end %>
+  </h1>
+   <% if @category.title == "Fashion" || @category.gendered %>
+   <div class="gendicles">
+   <div class="size gender">
+      <%= link_to category_female_path(@category), class: 'primal btn btn-default size a'  do %>
+       <%= fa_icon "female" %><span class="text">Female</span>
+       <% end %>
+      <%= link_to category_male_path(@category), class: 'secondal btn btn-default size a'  do %>
+       <%= fa_icon "male" %><span class="text">Male</span>
+       <% end %>
+    </div>
+     </div>
+     <% elsif @category.title == "Lingerie" %>
+      <div class="gendicles">
+      <div class="size gender">
+      <%= link_to category_female_path(@category), class: 'btn btn-default size a'  do %>
+       <%= fa_icon "female" %><span>Female</span>
+       <% end %>
+     </div>
+     </div>
+
+     <% else @parent %> 
+
+        <% if @parent != nil && @subcatparent.title == "Fashion" %>
+    <div class="gendicles">
+   <div class="size gender">
+      <%= link_to category_female_path(@category), class: 'primal btn btn-default size a'  do %>
+       <%= fa_icon "female" %><span class="text">Female</span>
+       <% end %>
+      <%= link_to category_male_path(@category), class: 'secondal btn btn-default size a'  do %>
+       <%= fa_icon "male" %><span class="text">Male</span>
+       <% end %>
+    </div>
+     </div>
+      <%end %>
+
+          <%end %>
+   <%= link_to  new_category_product_path(@category, @product), class: 'prada' do%>
+     <%= fa_icon "gift", class: "banicon" %></br><span>Post Product</span>
+  <% end %>
+   <% if @category.parent_id %>
+        <% if Category.find(@category.parent_id).parent_id %>
+        <% else %>
+         <%= link_to category_subcategory_new_path(@category), class: 'suber' do %>
+                 <%= fa_icon "sitemap", class: "banicon" %></br><span>New Subcategory</span>
+          <% end %>
+         <% end %>
+         <% else %>
+         <%= link_to category_subcategory_new_path(@category), class: 'suber' do %>
+                 <%= fa_icon "sitemap", class: "banicon" %></br><span>New Subcategory</span>
+          <% end %>
+         <% end %>
+</div>
+
 <% else %>
 <h1 class="h3 titlen text-center"><p class="parent"><%= link_to @category.parent_category.title, category_path(@category.parent_category) %></p><b><%=@category.title %></b><br>
   <% if @category.description %>
@@ -127,58 +186,16 @@
   <p class="text-center plus">This category is 18+ your name will not be shown on any posts</p>
 <% end %>
 
-  <% if @category.title == "Fashion" || @category.gendered %>
+<div class="container">
 
-  <div class="text-center">
-    <div class="size gender">
-      <%= link_to category_female_path(@category), class: 'primal btn btn-default size a'  do %>
-       <%= fa_icon "female" %><span>Female</span>
-       <% end %>
-      <%= link_to category_male_path(@category), class: 'secondal btn btn-default size a'  do %>
-       <%= fa_icon "male" %><span>Male</span>
-       <% end %>
-    </div>
-  </div>
-
-    <% elsif @category.title == "Lingerie" %>
-     <div class="text-center">
-      <div class=" size gender">
-      <%= link_to category_female_path(@category), class: 'btn btn-default size a'  do %>
-       <%= fa_icon "female" %><span>Female</span>
-       <% end %>
-     </div>
-     </div>
-
-     <% else @parent %> 
-
-        <% if @parent != nil && @subcatparent.title == "Fashion" %>
-    <div class="text-center">
-      <div class=" size gender">
-          <%= link_to category_female_path(@category), class: 'primal btn btn-default size a'  do %>
-         <%= fa_icon "female" %><span>Female</span>
-         <% end %>
-        <%= link_to category_male_path(@category), class: 'secondal btn btn-default size a'  do %>
-         <%= fa_icon "male" %><span>Male</span>
-         <% end %>
-      </div>
-         </div>
-      <%end %>
+ 
     
 
-    <%end %>
+
 
  <div class="row">
  <div class = "outerfixed" >
       <div class = "interstatic">
-        <%= link_to "Post New Product",  new_category_product_path(@category, @product), class: 'btn btn-primary btn-xs to-right' %>
-        <% if @category.parent_id %>
-        <% if Category.find(@category.parent_id).parent_id %>
-        <% else %>
-         <%= link_to "New Subcategory", category_subcategory_new_path(@category), class: 'btn btn-primary btn-xs fuller' %>
-         <% end %>
-         <% else %>
-         <%= link_to "New Subcategory", category_subcategory_new_path(@category), class: 'btn btn-primary btn-xs fuller' %>
-         <% end %>
     <% if !@category.adult %>
      <div class="leaderboard"> 
            <table class="table table-striped table-hover fixer">

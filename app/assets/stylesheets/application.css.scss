@@ -7123,7 +7123,7 @@ td{
 }
 .subtitle{
   font-size: 13px;
-  width: 285px;
+  width: 31%;
   color: dimgrey;
   font-weight: 200;
   margin-bottom: 0px;
@@ -8033,7 +8033,6 @@ margin-left: 10%;
   border-bottom: 3px solid #898068 ;
 }
 .boxsearch{
-  margin-top: 50px;
   display: -webkit-box; display: flex;
 }
 @media(max-width: 752px){
@@ -8265,3 +8264,21 @@ color: rgb(202, 46, 46);
 font-size: 15px;
 font-weight: bold;
 }
+.searchy{
+  padding: 6px 0px !important;
+  font-size: 19px !important;
+}
+#categories{
+  display: none;
+}
+#posts{
+  display: none;
+}
+#users{
+  display: none;
+}
+@media(max-width: 1030px){
+  .peek{
+    display: none;
+  }
+  }

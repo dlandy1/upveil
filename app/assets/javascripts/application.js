@@ -53,9 +53,14 @@
         $("#categories").hide();
         $("#posts").hide();
         $("#users").hide();
-        $(".boxsearch").hide();
+        $(".navbar-inner").css('text-allign', 'center')
          mglass.css("color", "white")
          $(".searchbutton").css("background-color", "transparent")
+         $(".navbar-brand").animate({
+          'text-allign': 'center'
+          }, 'slow', function () {
+            if (form.width() == 0) form.hide()
+        });
       form.animate({
             'margin-left' : "0px",
             'width': form.width() == 100 ? '300px' : '65px'
@@ -67,13 +72,14 @@
           }, 'slow', function () {
             if (form.width() == 0) form.hide()
         });
-        items.animate({
-          'padding': '5px 12px'
+        items.removeClass("searchy");
+        $('.noty').animate({
+          'margin-left': '5%',
           }, 'slow', function () {
             if (form.width() == 0) form.hide()
         });
-        $('.noty').animate({
-          'margin-left': '5%',
+        $(".navbar-brand").animate({
+          'width': '186px',
           }, 'slow', function () {
             if (form.width() == 0) form.hide()
         });
@@ -89,11 +95,11 @@
       $("#categories").show();
         $("#posts").show();
         $("#users").show();
-           $(".boxsearch").show();
         form.show();
         form.css("color", "black")
         mglass.css("color", "rgb(98, 98, 98)")
         $(".searchbutton").css("background-color", "white")
+        $(".navbar-inner").css('text-allign', 'left')
         form.animate({
             'width': form.width() == 100 ? '0px' : '300px',
             'margin-left': '-200px'
@@ -105,13 +111,14 @@
           }, 'slow', function () {
             if (form.width() == 0) form.hide()
         });
-        items.animate({
-          'padding': '5px 2px',
+          items.addClass("searchy");
+        $('.noty').animate({
+          'margin-left': '2%',
           }, 'slow', function () {
             if (form.width() == 0) form.hide()
         });
-        $('.noty').animate({
-          'margin-left': '2%',
+        $(".navbar-brand").animate({
+          'width': '115px',
           }, 'slow', function () {
             if (form.width() == 0) form.hide()
         });

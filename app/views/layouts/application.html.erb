@@ -73,7 +73,7 @@ window._fbq.push(['track', '6017250074008', {'value':'0.01','currency':'USD'}]);
       <li><%= link_to "All", root_path, class: 'move home'%></li>
       <% if @variable === true %>
         <li><%= link_to Category.find(1), class: 'move current' do%>
-         <%= fa_icon "plug" %><span><%= Category.find(1).title %></span
+         <%= fa_icon "plug" %><%= Category.find(1).title %>
         <% end %>
         </li>
         <% else %>

@@ -10,7 +10,7 @@ class Category < ActiveRecord::Base
   belongs_to :parent_category, :class_name => "Category", :foreign_key => "parent_id"
   belongs_to :user
   validates :title, length: {minimum: 3, maximum: 60}, presence: true
-  validates :description, length: {minimum: 7, maximum: 200}, :allow_blank => true
+  validates :description, length: {minimum: 7, maximum: 100}, :allow_blank => true
   validates_uniqueness_of :title
 
 

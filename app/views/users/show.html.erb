@@ -1,3 +1,4 @@
+<div class="container">
 <h1 class="h3 text-center font-best">
   <div><%= image_tag(@user.identity.normalimage)%></div>
   <% if current_user == @user %>
@@ -58,3 +59,4 @@
        <p class="text-center nopro"><%= @user.name %> has not unveiled any products.</p>
     <% end %>
   <% end %>
+  </div>

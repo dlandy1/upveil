@@ -1390,7 +1390,7 @@ pre code {
   background-color: #FFFFFF;
   margin-right: auto;
   margin-left: auto;
-  padding-top: 40px; 
+  padding-top: 30px;
   padding-left: 15px;
   padding-right: 15px;
   border: 1px solid rgb(239, 239, 239);
@@ -6715,9 +6715,8 @@ td{
   height: 1000px;
   width: 13%;
   padding: 0px;
-  top: 63px;
+  top: 130px;
   right: 1%;
-  margin-top: -84px;
   text-align: center;
 }
 .interstatic{
@@ -6756,9 +6755,7 @@ td{
     width: 113px;
     z-index: 1;
   }
-  .navbar-fixed-top{
-    box-shadow: none;
-  }
+  
 }
 
 
@@ -6924,7 +6921,7 @@ td{
 }
 @media (max-width: 460px) {
   .container{
-    padding: 0px;
+    padding-top: 20px;
   }
   .hider{
     display: none;
@@ -6944,11 +6941,7 @@ td{
     display: none;
   }
 }
-@media(max-width: 879px){
-  .navbar-default{
-    box-shadow: none;
-  }
-}
+
 @media(max-width: 550px){
   .closer{
     display: none;
@@ -7123,12 +7116,14 @@ td{
 }
 .titlen{
   font-size: 22px;
-  margin-left: 16%;
+  margin-left: 12%;
   padding: 10px 0;
   margin-bottom: 0px; 
+  margin-top: 0px;
 }
 .subtitle{
-  font-size: 14px;
+  font-size: 13px;
+  width: 285px;
   color: dimgrey;
   font-weight: 200;
   margin-bottom: 0px;
@@ -7423,9 +7418,6 @@ background-color: white;
     width: 113px;
     z-index: 1;
   }
-  .navbar-fixed-top{
-    box-shadow: none;
-  }
 }
 .shay{
   position: fixed;
@@ -7472,9 +7464,7 @@ background-color: white;
     width: 113px;
     z-index: 1;
   }
-  .navbar-fixed-top{
-    box-shadow: none;
-  }
+  
 }
 @media (max-width: 737px) {
   .email{
@@ -7493,9 +7483,8 @@ background-color: white;
     height: 1000px;
     width: 13%;
     padding: 0px;
-    top: 63px;
-    right: 1%;
-    margin-top: -84px;
+   top: 130px;
+  right: -1%;
     text-align: center;
   }
 }
@@ -7506,9 +7495,8 @@ background-color: white;
     height: 1000px;
     width: 13%;
     padding: 0px;
-    top: 63px;
-    right: 1%;
-    margin-top: -84px;
+    top: 130px;
+  right: -1%;
     text-align: center;
   }
 }
@@ -7519,9 +7507,8 @@ background-color: white;
     height: 1000px;
     width: 13%;
     padding: 0px;
-    top: 63px;
-    right: 1%;
-    margin-top: -84px;
+   top: 130px;
+  right: -1%;
     text-align: center;
   }
 }
@@ -7532,9 +7519,8 @@ background-color: white;
     height: 1000px;
     width: 125px;
     padding: 0px;
-    top: 63px;
+    top: 130px;
     right: 1%;
-    margin-top: -84px;
     text-align: center;
   }
 }
@@ -7748,11 +7734,12 @@ margin-left: 20px;
   display: none;
 }
 .a{
-  width: 160px;
+  width: 128px;
   font-size: 15px;
 }
 .b{
   min-width: 90px;
+  display: inline;
 }
 .paddie{
   margin-bottom: 30px;
@@ -7923,7 +7910,7 @@ color: #026102;
 @media(max-width: 1030px){
   .b{
     min-width: 60px;
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 @media(max-width: 980px){
@@ -7999,7 +7986,7 @@ color: #026102;
 .subies{
   display: none;
 }
-.closer > div >.current{
+.second > div >.current{
   border-bottom: 3px solid #A09471;
   color: #A09471;
 }
@@ -8065,20 +8052,20 @@ border-bottom: 0;
 border-bottom: 0;
 }
 .banner{
-  margin-top: 73px;
-width: 100%;
-background-color: #F9F6E6;
-border-bottom: 1px solid rgb(182, 182, 182);
-position: relative;
-z-index: 1;
+  width: 100%;
+  background-color: #F9F6E6;
+  border-bottom: 1px solid rgb(182, 182, 182);
+  position: fixed;
+  z-index: 1;
+  top: 78px;
 }
 .inliner{
-position: absolute;
-margin-top: -2px;
-left: 4%;
-color: black;
-line-height: 12px;
-text-align: center;
+  position: absolute;
+  margin-top: -2px;
+  left: 1%;
+  color: black;
+  line-height: 12px;
+  text-align: center;
   color: black;
   font-size: 11px;
 }
@@ -8101,22 +8088,32 @@ text-align: center;
 }
 .suber{
   position: absolute;
-margin-top: -48px;
-right: 11%;
-line-height: 12px;
-text-align: center;
-color: black;
-font-size: 11px;
+  margin-top: -48px;
+  right: 11%;
+  line-height: 12px;
+  text-align: center;
+  color: black;
+  font-size: 11px;
+}
+.suber:hover{
+  color: #867C62;
+text-decoration: none;
+}
+.prada:hover{
+  color: #867C62;
+text-decoration: none;
 }
 @media (max-width: 775px){
   .prada{
     display: none;
   }
-
+  .subtitle{
+     display: none;
+  }
   .suber{
     display: none;
   }
-  .subtitle{
+  .mod{
     display: none;
   }
 
@@ -8124,14 +8121,14 @@ font-size: 11px;
 .gendicles{
   position: absolute;
   top: 5px;
-  left: 50%;
+  width: 100%;
+  text-align: center;
 }
 @media (max-width: 1065px){
   .subtitle{
     display: none;
   }
   .gendicles{
-    left: 42%;
   }
 }
 @media (max-width: 880px){
@@ -8139,7 +8136,6 @@ font-size: 11px;
     display: none;
   }
   .gendicles{
-    left: 52%;
   }
   .a{
     width: 100px;
@@ -8164,16 +8160,109 @@ font-size: 11px;
     width: 60px;
   }
   .gendicles{
-    left: 64%;
   }
   }
 @media (max-width: 470px){
+  .titlen{
+    margin-left: 23%;
+  }
  
   .gendicles{
-    left: 74%;
+    top: -1px;
+    text-align: right;
   }
   .a{
-    width: 40px;
+    width: 60px;
     font-size: 15px;
   }
+}
+.sublime{
+  overflow-x: scroll;
+overflow-y: hidden;
+white-space: nowrap;
+padding: 6px 0;
+}
+.edito{
+  position: absolute;
+  margin-top: -2px;
+  left: 9%;
+  line-height: 12px;
+  color: black;
+  font-size: 11px;
+}
+.edito:hover{
+  color: #867C62;
+  text-decoration: none;
+}
+.fa-edit{
+  margin-left: -3px;
+}
+@media (max-width: 980px){
+  .edito{
+    display: none;
+  }
+  }
+
+.mod > span > img{
+  height: 35px;
+  width: 35px;
+}
+.mod{
+  position: absolute;
+ margin-top: -38px;
+  left: 77%;
+  color: black;
+}
+.badge{
+  position: absolute;
+  top: -5px;
+  font-size: 11px;
+  padding: 4px 5px;
+  background-color: #5B70C2;
+  border-radius: 49px;
+  color: white;
+  left: 84%;
+  font-weight: bold;
+}
+@media (max-width: 1115px){
+  .mod{
+    left: 74%;
+  }
+  }
+  @media (max-width: 853px){
+  .mod{
+    left: 71%;
+  }
+  }
+.rator{
+  margin-left: 7px;
+}
+.toply{
+  top: 42px;
+}
+.dent{
+  margin-bottom: 85px;
+}
+.push{
+  left: 85%
+}
+.posatel{
+  position: absolute;
+left: 29px;
+padding-bottom: 0px;
+}
+
+@media(max-width: 610px){
+  .posatel{
+    display: none;
+  }
+}
+.plus{
+  position: absolute;
+right: 0px;
+top: -3px;
+margin-right: 6px;
+color: rgb(202, 46, 46);
+font-size: 15px;
+font-weight: bold;
 }

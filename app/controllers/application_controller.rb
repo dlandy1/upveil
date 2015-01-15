@@ -40,18 +40,15 @@ class ApplicationController < ActionController::Base
     if Category.find_by_slug(yourl)
     @category = Category.find_by_slug(yourl)
      @variable = Category.find(1).subcategories.collect(&:slug).include?(yourl) || Category.find(1).subcategories.include?(@category.parent_category)
-     @variablea = Category.find(2).subcategories.collect(&:slug).include?(yourl) || Category.find(2).subcategories.include?(@category.parent_category) || Category.parent_categories.collect(&:slug).include?(yourl)
+     @variablea = Category.find(2).subcategories.collect(&:slug).include?(yourl) || Category.find(2).subcategories.include?(@category.parent_category)
      @variable_b = Category.find(3).subcategories.collect(&:slug).include?( yourl) || Category.find(3).subcategories.include?(@category.parent_category)
      @variable_c = Category.find(4).subcategories.collect(&:slug).include?( yourl) || Category.find(4).subcategories.include?(@category.parent_category)
      @variable_d = Category.find(5).subcategories.collect(&:slug).include?( yourl) || Category.find(5).subcategories.include?(@category.parent_category)
      @variable_e = Category.find(6).subcategories.collect(&:slug).include?( yourl) || Category.find(6).subcategories.include?(@category.parent_category)
-   console.log  yourl
+   console.log   @variablea
   end
   end
   end
-   console.log Category.find(2).subcategories.collect(&:slug).include?(yourl)
-    console.log "/categories/ayooo".gsub('categories', '').gsub('/', '')
-   console.log request.original_fullpath
 end
 
   

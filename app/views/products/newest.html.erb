@@ -1,8 +1,22 @@
-<%= link_to "Look by Hottest",  products_path, class: 'btn btn-xs btn-primary mobile-button hay' %>
-    <h1 class="text-center font-best">All<br><p class="h6">The Newest and Best Products</p></h1>
+<div class="dent">
+    <div class="banner toply">
+      <%= link_to root_path, class: 'inliner' do %>
+        <%= fa_icon "line-chart", class: "banicon" %></br><span>Look by hottest</span>
+      <% end %>
+    <h1 class="h3 titlen">All
+        <p class="h6 subtitle">The Newest and Best Products</p>
+    </h1>
+    <%= link_to  new_product_path(@product), class: 'prada' do%>
+     <%= fa_icon "gift", class: "banicon" %></br><span>Post Product</span>
+  <% end %>
+  <%= link_to new_category_path, class: 'suber' do %>
+                 <%= fa_icon "sitemap", class: "banicon" %></br><span>New Category</span>
+          <% end %>
+    </div>
+  </div>
+
     <div class = "outerfixed" >
       <div class = "interstatic">
-        <%= link_to "Post New Product", new_product_path(@product), class: 'btn btn-primary btn-xs to-right' %>
         <div class="leaderboard">
           <% if current_user && Product.first %>
                <table class="table table-striped table-hover fixer">
@@ -32,6 +46,8 @@
         </div>
       </div>
     </div>
+
+<div class="container"> 
  <div class="row">
   <div class="show-box" id="products">
     <div class="page">
@@ -40,4 +56,5 @@
   </div>
  <%= paginate @unscopes %>
 </div>
-
+</div>
+</div>   

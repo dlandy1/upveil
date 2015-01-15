@@ -1,6 +1,6 @@
  <% if @subcategories.count > 0 %>
-    <div class="btn-group second closer">
-      <div>
+    <div class="btn-group second">
+      <div class="sublime">
       <% if @parent.nil? %>
       <% @subcategories.each do |sub| %>
             <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default b' %>
@@ -20,33 +20,20 @@
         <% end %>
         </div>
       </div>
-
-    <div class="mobiler paddie">
-       <% if @parent.nil? %>
-         <% @subcategories.each do |sub| %>
-          <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default spacer' %>
-       <% end %>
-       <% elsif @subcategories.first %>
-        <% @subcategories.each do |sub| %>
-          <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default spacer' %>
-       <% end %>
-       <% else %>
-       <% if @parentsubcats.count > 1 %>
-         <% @parentsubcats.each do |sub| %>
-            <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default spacer' %>
-         <% end %>
-        <% end %>
-       <% end %>
-    </div>
-    <div></div>
-         <p class="text-center"><%= link_to_next_page @subcategories, 'Load More', :remote => true, :id=>"load_more_link", class: "text-center" %></p>
     <% end %>
 
 <% if @subcategories.count == 0 %>  
 <% if @parentsubcats %>
    <% if @parentsubcats.count > 0 %>
-    <div class="btn-group second closer">
-      <div>
+    <div class="btn-group second">
+      <div class="sublime">
+         <% if @category.parent_id %>
+        <% if Category.find(@category.parent_id).parent_id %>
+           <%= link_to Category.find(@category.parent_id), class: 'posatel btn btn-default b' do%>
+           <span><b>Parent:</b> <%=Category.find(@category.parent_id).title %> </span> <%= fa_icon "level-up" %>
+            <%end %> 
+          <% end %>
+          <% end %>
     <% if @parent.nil? %>
     <% @parentsubcats.each do |sub| %>
          <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default b' %>
@@ -65,50 +52,40 @@
       <% end %>
       </div>
     </div>
-
-
-    <div class="mobiler paddie">
-       <% if @parent.nil? %>
-         <% @subcategories.each do |sub| %>
-          <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default spacer' %>
-       <% end %>
-       <% elsif @subcategories.first %>
-        <% @subcategories.each do |sub| %>
-             <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default spacer' %>
-       <% end %>
-       <% else %>
-       <% if @parentsubcats.count > 1 %>
-         <% @parentsubcats.each do |sub| %>
-              <%= link_to "#{sub.title}", category_path(sub), class: 'btn btn-default spacer' %>
-         <% end %>
-        <% end %>
-       <% end %>
-    </div>
-      <p class="text-center"><%= link_to_next_page @parentsubcats, 'Load More', :remote => true, :id=>"load_more_link", class: "text-center" %></p>
       <% end %>
       <% end %>
      <% end %>
-
-<div class="cat-buttons">
-      <% if current_user %>
-        <%if current_user == @category.user || current_user.id == 1 || current_user.id == 2  %>
-          <p><%= link_to "Edit Category",  edit_category_path(@category), class: 'btn btn-xs btn-warning cat-fonter' %></p>
-        <% end %>
-      <% end %>
-    </div>
-
+      
 <% if @parent.nil? %>
-
-<div class="banner">
+<div class="dent">
+<% if @subcategories.count == 0 &&   @parentsubcats.nil? || @parentsubcats && @parentsubcats.count == 0 && @subcategories.count == 0 %> 
+<div class="banner toply">
+  <%else %>
+  <div class="banner" >
+<% end %>
+<% if request.fullpath.index('newest') %>
+  <%= link_to category_path(@category), class: 'inliner' do %>
+    <%= fa_icon "line-chart", class: "banicon" %></br><span>Look by hottest</span>
+  <% end %>
+<% else %>
   <%= link_to category_newest_path(@category), class: 'inliner' do %>
     <%= fa_icon "calendar", class: "banicon" %></br><span>Look by newest</span>
   <% end %>
-    <% if @category.description %>
+<% end %>
+    <% if @category.description && @category.description.length > 0  %>
     <h1 class="h3 titlen"><%=@category.title %>
       <p class="h6 subtitle"><%= @category.description %></p>
     <% else %>
-   <h1 class="h3 titlen">Best <%=@category.title %> Products
+   <h1 class="h3 titlen"><%=@category.title %>
+     <% if  @category.parent_id %>
+      <% if Category.find(@category.parent_id).parent_id %>
+        <p class="h6 subtitle"><%= Product.where(grandcat_id: @category.id).count %> Products Posted</p>
+      <% else %>
+        <p class="h6 subtitle"><%= Product.where(subcat_id: @category.id).count %> Products Posted</p>
+       <% end %>
+    <% else %>
     <p class="h6 subtitle"><%= @category.products.count %> Products Posted</p>
+    <% end %>
     <% end %>
   </h1>
    <% if @category.title == "Fashion" || @category.gendered %>
@@ -162,29 +139,129 @@
                  <%= fa_icon "sitemap", class: "banicon" %></br><span>New Subcategory</span>
           <% end %>
          <% end %>
+  <% if @category.adult %>
+    <p class="plus">18+</p>
+  <% end %>
 </div>
+  </div>
+
 
 <% else %>
-<h1 class="h3 titlen text-center"><p class="parent"><%= link_to @category.parent_category.title, category_path(@category.parent_category) %></p><b><%=@category.title %></b><br>
-  <% if @category.description %>
-    <p class="h6 subtitle"><%= @category.description %></p>
-  <% else %>
-   <p class="h6 subtitle">Best Products Related to <%=@category.title %></p>
+
+<div class="dent">
+<div class="banner">
+  <% if request.fullpath.index('newest') %>
+  <%= link_to category_path(@category), class: 'inliner' do %>
+    <%= fa_icon "line-chart", class: "banicon" %></br><span>Look by hottest</span>
   <% end %>
-</h1>
-<% end %>
-<% if @category.secret %>
 <% else %>
-<% if @category.user %>
-  <p class="text-center mod">Moderator: <%= link_to @category.user do%>
-   <span><%= @category.user.name %></span>
-  </p>
+  <%= link_to category_newest_path(@category), class: 'inliner' do %>
+    <%= fa_icon "calendar", class: "banicon" %></br><span>Look by newest</span>
   <% end %>
 <% end %>
+   <% if current_user %>
+        <%if current_user == @category.user || current_user.id == 1 || current_user.id == 2  %>
+          <%= link_to edit_category_path(@category), class: 'edito' do %>
+            <%= fa_icon "edit", class: "banicon" %></br><span>Edit</span>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% if @category.description && @category.description.length > 0 %>
+    <h1 class="h3 titlen"><%=@category.title %>
+      <p class="h6 subtitle"><%= @category.description %></p>
+    <% else %>
+   <h1 class="h3 titlen"><%=@category.title %>
+    <% if  @category.parent_id %>
+      <% if Category.find(@category.parent_id).parent_id %>
+        <p class="h6 subtitle"><%= Product.where(grandcat_id: @category.id).count %> Products Posted</p>
+      <% else %>
+        <p class="h6 subtitle"><%= Product.where(subcat_id: @category.id).count %> Products Posted</p>
+       <% end %>
+    <% else %>
+    <p class="h6 subtitle"><%= @category.products.count %> Products Posted</p>
+    <% end %>
+    <% end %>
+  </h1>
+   <% if @category.title == "Fashion" || @category.gendered %>
+   <div class="gendicles">
+   <div class="size gender">
+      <%= link_to category_female_path(@category), class: 'primal btn btn-default size a'  do %>
+       <%= fa_icon "female" %><span class="text">Female</span>
+       <% end %>
+      <%= link_to category_male_path(@category), class: 'secondal btn btn-default size a'  do %>
+       <%= fa_icon "male" %><span class="text">Male</span>
+       <% end %>
+    </div>
+     </div>
+     <% elsif @category.title == "Lingerie" %>
+      <div class="gendicles">
+      <div class="size gender">
+      <%= link_to category_female_path(@category), class: 'btn btn-default size a'  do %>
+       <%= fa_icon "female" %><span>Female</span>
+       <% end %>
+     </div>
+     </div>
+     <% else @parent %> 
+
+        <% if @parent != nil && @subcatparent.title == "Fashion" %>
+    <div class="gendicles">
+   <div class="size gender">
+      <%= link_to category_female_path(@category), class: 'primal btn btn-default size a'  do %>
+       <%= fa_icon "female" %><span class="text">Female</span>
+       <% end %>
+      <%= link_to category_male_path(@category), class: 'secondal btn btn-default size a'  do %>
+       <%= fa_icon "male" %><span class="text">Male</span>
+       <% end %>
+    </div>
+     </div>
+      <%end %>
+
+          <%end %>
+          <% if @category.secret %>
+          <% else %>
+          <% if @category.user %>
+          <%= link_to @category.user do%>
+           <% if @category.parent_id %>
+        <% if Category.find(@category.parent_id).parent_id %>
+          <p class="mod push"><span class="badge">M</span>
+        <% else %>
+            <p class="mod"><span class="badge">M</span>
+        <% end %>
+          <% else %>
+          <p class="mod"><span class="badge">M</span>
+         <% end %>
+             <span class="rator"><%= image_tag(@category.user.identity.smallimage) %></span>
+            </p>
+            <% end %>
+          <% end %>
+          <% end %>
+
+
+   <%= link_to  new_category_product_path(@category, @product), class: 'prada' do%>
+     <%= fa_icon "gift", class: "banicon" %></br><span>Post Product</span>
+  <% end %>
+   <% if @category.parent_id %>
+        <% if Category.find(@category.parent_id).parent_id %>
+        <% else %>
+         <%= link_to category_subcategory_new_path(@category), class: 'suber' do %>
+                 <%= fa_icon "sitemap", class: "banicon" %></br><span>New Subcategory</span>
+          <% end %>
+         <% end %>
+         <% else %>
+         <%= link_to category_subcategory_new_path(@category), class: 'suber' do %>
+                 <%= fa_icon "sitemap", class: "banicon" %></br><span>New Subcategory</span>
+          <% end %>
+         <% end %>
+
+  <% if @category.adult %>
+    <p class="plus">18+</p>
+  <% end %>
+
+</div>
+</div>
 <% end %>
-<% if @category.adult %>
-  <p class="text-center plus">This category is 18+ your name will not be shown on any posts</p>
-<% end %>
+
+
 
 <div class="container">
 

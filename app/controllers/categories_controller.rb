@@ -17,7 +17,7 @@ class CategoriesController < ApplicationController
          @products = Product.where(subcat_id: @category.id).order('rank DESC').page(params[:page]).per(10)
       end
       @subcatparent = Category.friendly.find(@parent)
-      @parentsubcats = @subcatparent.subcategories.order('rank DESC').page(params[:page]).per(7)
+      @parentsubcats = @subcatparent.subcategories.order('rank DESC')
     else
        @products = @category.products.order('rank DESC').page(params[:page]).per(10)
     end
@@ -29,7 +29,7 @@ class CategoriesController < ApplicationController
 
   def newest
      @category = Category.friendly.find(params[:category_id])
-     @subcategories = @category.subcategories.order('rank DESC').page(params[:page]).per(7)
+     @subcategories = @category.subcategories.order('rank DESC')
      @parent = @category.parent_id
      @category.leaderboard.page_size = 10
      @leaders = @category.leaderboard.leaders(1)
@@ -49,7 +49,7 @@ class CategoriesController < ApplicationController
 
   def male
     @category = Category.friendly.find(params[:category_id])
-    @subcategories = @category.subcategories.where(gender: nil).order('rank DESC').page(params[:page]).per(7)
+    @subcategories = @category.subcategories.where(gender: nil)
     @parent = @category.parent_id
     @category.leaderboard.page_size = 10
     @leaders = @category.leaderboard.leaders(1)
@@ -65,7 +65,7 @@ class CategoriesController < ApplicationController
 
   def male_newest
     @category = Category.friendly.find(params[:category_id])
-    @subcategories = @category.subcategories.where(gender: nil).order('rank DESC').page(params[:page]).per(7)
+    @subcategories = @category.subcategories.where(gender: nil).order('rank DESC')
     @parent = @category.parent_id
     @category.leaderboard.page_size = 10
     @leaders = @category.leaderboard.leaders(1)
@@ -85,7 +85,7 @@ class CategoriesController < ApplicationController
 
   def female
     @category = Category.friendly.find(params[:category_id])
-    @subcategories = @category.subcategories.order('rank DESC').page(params[:page]).per(7)
+    @subcategories = @category.subcategories.order('rank DESC')
     @parent = @category.parent_id
     @category.leaderboard.page_size = 10
     @leaders = @category.leaderboard.leaders(1)
@@ -101,7 +101,7 @@ class CategoriesController < ApplicationController
 
   def female_newest
     @category = Category.friendly.find(params[:category_id])
-    @subcategories = @category.subcategories.order('rank DESC').page(params[:page]).per(7)
+    @subcategories = @category.subcategories.order('rank DESC')
     @parent = @category.parent_id
     @category.leaderboard.page_size = 10
     @leaders = @category.leaderboard.leaders(1)

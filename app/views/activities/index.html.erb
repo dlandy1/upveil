@@ -1,13 +1,23 @@
+<div class="container">
 <h1 class="text-center">Notifications</h1>
 <% if @cactivities.first %>
 <% @cactivities.each do |activity| %>
+<% if activity.trackable_type == "Product"%>
 <%= link_to [activity.trackable.category, activity.trackable], class: 'ununder' do%>
 <div class="lil">
     <%= render_activity activity %>
 </div>
+<% end %>
+<% else %>
+<%= link_to [activity.trackable], class: 'ununder' do%>
+<div class="lil">
+    <%= render_activity activity %>
+</div>
+<% end %>
 <% end %>
 <% end %>
 <%else %>
 <p class="text-center"> You have no notifications. Post a product and check back soon! </p>
 <p class="text-center smale">Notifications are given when someone upvotes or clicks buy here on your product</p>
 <%end %> 
+</div>

@@ -1,5 +1,5 @@
  <% if @subcategories.count > 0 %>
-    <div class="btn-group secon">
+    <div class="btn-group second">
       <div class="sublime">
       <% if @parent.nil? %>
       <% @subcategories.each do |sub| %>
@@ -25,7 +25,7 @@
 <% if @subcategories.count == 0 %>  
 <% if @parentsubcats %>
    <% if @parentsubcats.count > 0 %>
-    <div class="btn-group secon">
+    <div class="btn-group second">
       <div class="sublime">
          <% if @category.parent_id %>
         <% if Category.find(@category.parent_id).parent_id %>

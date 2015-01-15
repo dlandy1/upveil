@@ -63,7 +63,7 @@
         });
       form.animate({
             'margin-left' : "0px",
-            'width': form.width() == 100 ? '300px' : '65px'
+            'width': form.width() == 100 ? '280px' : '65px'
         }, 'slow', function () {
             if (form.width() == 0) form.hide()
         });
@@ -101,7 +101,7 @@
         $(".searchbutton").css("background-color", "white")
         $(".navbar-inner").css('text-allign', 'left')
         form.animate({
-            'width': form.width() == 100 ? '0px' : '300px',
+            'width': form.width() == 100 ? '0px' : '280px',
             'margin-left': '-200px'
         }, 'slow', function () {
             if (form.width() == 0) form.hide()

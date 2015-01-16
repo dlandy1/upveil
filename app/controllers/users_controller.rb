@@ -38,7 +38,7 @@ class UsersController < ApplicationController
         @user.update_attributes(image: @user.identity.smallimage)
         @user.skip_reconfirmation! if @user.respond_to?(:skip_confirmation)
         sign_in(@user, :bypass => true)
-       redirect_to root_url, notice: 'Your profile was successfully updated.'
+       redirect_to root_url
       else
         @show_errors = true
       end

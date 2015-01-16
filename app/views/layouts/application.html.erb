@@ -141,15 +141,7 @@ window._fbq.push(['track', '6017250074008', {'value':'0.01','currency':'USD'}]);
       </div>
   </div>
 </div>
-<!-- hi -->
-<div class="socialer email">
-<a target="_blank" href="https://www.facebook.com/upveil"><%= fa_icon "facebook 2x ", class: 'olo' %></a>
-<a target="_blank" href="https://twitter.com/upveil"><%= fa_icon "twitter 2x", class: 'olo' %></a>
-<a target="_blank" href="http://instagram.com/upveil" ><%= fa_icon "instagram 2x", class: 'olo' %></a>
-</div>
- <%= mail_to "contact@upveil.com","contact@upveil.com", class: 'email' %>
- <div>
-   <% if flash[:notice] %>
+  <% if flash[:notice] %>
          <div class="alert alert-success">
            <button type="button" class="close" data-dismiss="alert">&times;</button>
            <%= flash[:notice] %>
@@ -165,6 +157,14 @@ window._fbq.push(['track', '6017250074008', {'value':'0.01','currency':'USD'}]);
            <%= flash[:alert] %>
          </div>
        <% end %>
+
+<div class="socialer email">
+<a target="_blank" href="https://www.facebook.com/upveil"><%= fa_icon "facebook 2x ", class: 'olo' %></a>
+<a target="_blank" href="https://twitter.com/upveil"><%= fa_icon "twitter 2x", class: 'olo' %></a>
+<a target="_blank" href="http://instagram.com/upveil" ><%= fa_icon "instagram 2x", class: 'olo' %></a>
+</div>
+ <%= mail_to "contact@upveil.com","contact@upveil.com", class: 'email' %>
+ <div>
 <%= yield %>
   </div>
 </body>

@@ -137,7 +137,7 @@ class CategoriesController < ApplicationController
   @category = Category.friendly.find(params[:id])
   if current_user == @category.user || current_user.id == 1 || current_user.id == 2 || current_user.id == 3 || current_user.id == 4
   if @category.update_attributes(category_params)
-    redirect_to @category, notice: "Category was saved successfully."
+    redirect_to @category
   else
     flash[:error] = "There was an error updating the category. Please try again."
     render :edit

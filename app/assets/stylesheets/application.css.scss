@@ -8049,9 +8049,8 @@ margin-left: 10%;
   display: -webkit-box; display: flex;
 }
 @media(max-width: 752px){
-  .boxsearch{
-  margin-top: 200px;
-    display: none;
+  .mable{
+  margin-top: 157px;
 }
   }
 .scrolly > li > a.current{
@@ -8308,3 +8307,8 @@ font-weight: bold;
   opacity: 0.9;
   margin-top: -6px;
 }
+@media (max-width: 470px){
+  .searchbutton{
+    margin-left: 15px;
+  }
+  }

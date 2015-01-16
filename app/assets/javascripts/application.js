@@ -73,7 +73,6 @@
             if (form.width() == 0) form.hide()
         });
         items.removeClass("searchy");
-        $(".boxsearch").removeClass("mable");
         $('.noty').animate({
           'margin-left': '5%',
           }, 'slow', function () {
@@ -113,7 +112,6 @@
             if (form.width() == 0) form.hide()
         });
           items.addClass("searchy");
-          $(".boxsearch").addClass("mable");
         $('.noty').animate({
           'margin-left': '2%',
           }, 'slow', function () {

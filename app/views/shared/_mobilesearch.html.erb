@@ -1,9 +1,8 @@
  <section>
       <header>
-          <form action="#" method="get">
-            <div class='searchbutton' >
-              <a id = "que"href="#"><i class="icon-search icon-large"><%= fa_icon "search", class: 'search-glass' %></i></a>
-               <input autocomplete="off" class="autocomplete qo" id="q" placeholder=" Search Users, Categories, and Products" type="text" spellcheck="false" />
+          <form action="#" class="farm" method="get">
+            <div class='' >
+               <input autocomplete="off" class="autocomplete" id="m" placeholder=" Search Users, Categories, and Products" type="text" spellcheck="false" />
             </div>
           </form>
       </header>
@@ -62,23 +61,23 @@
           }
         }
       $(document).ready(function() {
-        var $inputfield = $("#q");
+        var $inputfield = $("#m");
         // Replace the following values by your ApplicationID and ApiKey.
        var client = new AlgoliaSearch("4ISPEJF56E", "086c50ff6f93920fb5ea7f2a5845972a");
         // Replace the following value by the name of the index you want to query.
         $inputfield.keyup(function() {
         client.startQueriesBatch();
-        client.addQueryInBatch('Category', $('#q').val(), { hitsPerPage: 10 });
-        client.addQueryInBatch('Product', $('#q').val(), { hitsPerPage: 10 });
-        client.addQueryInBatch('User', $('#q').val(), { hitsPerPage: 10 });
+        client.addQueryInBatch('Category', $('#m').val(), { hitsPerPage: 10 });
+        client.addQueryInBatch('Product', $('#m').val(), { hitsPerPage: 10 });
+        client.addQueryInBatch('User', $('#m').val(), { hitsPerPage: 10 });
         client.sendQueriesBatch(searchMultiCallback);
       }).focus().closest('form').on('submit', function() {
           // on form submit, store the query string in the anchor
-          location.replace('#q=' + encodeURIComponent($inputfield.val()));
+          location.replace('#m=' + encodeURIComponent($inputfield.val()));
           return false;
         });
         // check if there is a query in the anchor: http://example.org/#q=my+query
-        if (location.hash && location.hash.indexOf('#q=') === 0) {
+        if (location.hash && location.hash.indexOf('#m=') === 0) {
           var q = decodeURIComponent(location.hash.substring(3));
           $inputfield.val(q).trigger('keyup');
         }

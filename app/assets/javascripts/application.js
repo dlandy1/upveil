@@ -72,7 +72,6 @@
           }, 'slow', function () {
             if (form.width() == 0) form.hide()
         });
-         form.removeClass("leftie");
         items.removeClass("searchy");
         $(".boxsearch").removeClass("mable");
         $('.noty').animate({
@@ -108,7 +107,6 @@
         }, 'slow', function () {
             if (form.width() == 0) form.hide()
         });
-        form.addClass("leftie");
         clammer.animate({
           'margin-right': '200px'
           }, 'slow', function () {

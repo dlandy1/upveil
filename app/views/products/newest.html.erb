@@ -1,4 +1,4 @@
-<div class="dent">
+<div class="dent sizzle">
     <div class="banner toply">
       <%= link_to root_path, class: 'inliner' do %>
         <%= fa_icon "line-chart", class: "banicon" %></br><span>Look by hottest</span>
@@ -47,7 +47,13 @@
       </div>
     </div>
 
-<div class="container"> 
+<div class="container">
+   <div class="boxsearch" style="">
+      <div id="categories" class="col-md-3 pull-left"></div>
+      <div id="users" class="col-md-5 pull-right pod"></div>
+      <div id="posts" class="col-md-4 pod"></div>
+    </div>
+
  <div class="row">
   <div class="show-box" id="products">
     <div class="page">
@@ -57,4 +63,3 @@
  <%= paginate @unscopes %>
 </div>
 </div>
-</div>   

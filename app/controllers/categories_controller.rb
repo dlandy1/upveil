@@ -125,8 +125,13 @@ class CategoriesController < ApplicationController
   end
 
   def subcategory_new
-    @parentcat =  Category.friendly.find(params[:category_id])
-    @category = Category.new
+    if current_user != nil
+      @parentcat =  Category.friendly.find(params[:category_id])
+      @category = Category.new
+    else
+       flash[:error] = "You must sign in before creating a category."
+       redirect_to new_user_session_path
+    end
   end
 
   def edit

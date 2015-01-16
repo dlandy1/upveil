@@ -43,7 +43,7 @@ def create
           @category = Category.friendly.find(subcat)
           @category.increase_grade(current_user, 100)
         respond_with(@activities) do |format|
-          format.html { redirect_to @category}
+          format.html { redirect_to category_newest_path(@category)}
           flash[:notice] = "Post was created."
         end
       else

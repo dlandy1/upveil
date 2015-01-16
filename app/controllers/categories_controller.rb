@@ -176,7 +176,12 @@ class CategoriesController < ApplicationController
       redirect_to @category, notice: "Category was saved successfully."
     else
       flash[:error] = "Error creating category. Please try again."
-      render :new
+      if @category.parent_id
+        @parentcat =  Category.friendly.find(@category.parent_id)
+        render :subcategory_new
+      else
+        render :new
+      end
     end
   end
 

@@ -27,8 +27,8 @@ class ProductsController < ApplicationController
   end
 
   def edit
-      @category = Category.friendly.find(params[:category_id])
       @product = Product.friendly.find(params[:id])
+      @category = @product.category
   end
 
 def create

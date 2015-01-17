@@ -6427,27 +6427,27 @@ legend {
    }
  }
  .fber{
-  position: fixed;
-  left: 3%;
-  margin-top: 20px;
+  position: absolute;
+  left: 17%;
+  margin-top: 13px;
  }
 
  .reddit{
-  position: fixed;
-  left: 3%;
-  margin-top: 63px;
+  position: absolute;
+   left: 73%;
+  margin-top: 18px;
  }
 
  .twitter-share-button{
-  position: fixed;
-  left: 3%;
-  margin-top: 100px;
+  position: absolute;
+  left: 30%;
+  margin-top: 19px;
  }
 
  .pinterest{
-  position: fixed;
-  left: 3%;
-  margin-top: 138px;
+  position: absolute;
+  left: 60%;
+  margin-top: 18px;
  }
 
  .show-buttons{
@@ -6979,46 +6979,15 @@ td{
 }
 .showest_box{
   border-radius: 4px;
-  border: 1px solid #bababa;
-  box-shadow: 10px 10px 10px grey;
   margin-right: auto;
   margin-left: auto;
-  width: 540px;
-  padding: 10px 0;
 }
 .fonter{
   padding-left: 14px;
   padding-right: 14px;
 }
-@media(max-width: 998px){
-  .reddit{
-    left: 2%;
-  }
-  .fber{
-    left: 2%;
-  }
-  .twitter-share-button{
-    left: 2%;
-  }
-  .pinterest{
-    left: 2%;
-  }
-}
 
-@media(max-width: 923px){
-  .reddit{
-    left: 1%;
-  }
-  .fber{
-    left: 1%;
-  }
-  .twitter-share-button{
-    left: 1%;
-  }
-  .pinterest{
-    left: 1%;
-  }
-}
+
 
 @media(max-width: 876px){
   .socialer{
@@ -7027,7 +6996,6 @@ td{
 }
 
 .show-font{
-  margin-top: 38px;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 .padder{
@@ -7049,47 +7017,13 @@ td{
   }
 }
 
+
 @media(max-width: 704px){
   .image-show{
-    width: 400px;
-  }
-  .showest_box{
-     width: 450px;
-  }
-}
-@media(max-width: 610px){
-  .image-show{
-    width: 350px;
-  }
-  .showest_box{
-     width: 400px;
+    width: 60%;
   }
 }
 
-@media(max-width: 700px){
-  .image-show{
-    width: 310px;
-  }
-  .showest_box{
-     width: 360px;
-  }
-}
-@media(max-width: 520px){
-  .image-show{
-    width: 280px;
-  }
-  .showest_box{
-     width: 282px;
-  }
-}
-@media(max-width: 450px){
-  .image-show{
-    width: 243px;
-  }
-  .showest_box{
-     width: 245px;
-  }
-}
 .fb-button{
   width: 100%;
   padding: 10px 29px;
@@ -7330,7 +7264,10 @@ background-color: white;
 }
 }
 .sizem{
-  font-size: 30px;
+  border-bottom: 1px solid rgb(202, 202, 202);
+  margin: 5px 25px;
+  padding-bottom: 15px;
+  font-size: 38px;
 }
 @media(max-width: 915px){
 .hidelen{
@@ -7340,9 +7277,6 @@ background-color: white;
   font-size: 8px;
   margin-left: -11px;
 }
-}
-.sizem{
-  font-size: 38px;
 }
 
 @media(max-width: 875px){
@@ -7388,9 +7322,6 @@ background-color: white;
 .ayo{
   font-size: 9px;
   margin-left: 10px;
-}
-.showest_box{
-  margin-left: 60px;
 }
 }
 @media(min-width: 710px){
@@ -8221,7 +8152,7 @@ padding: 6px 0;
   margin-left: 7px;
 }
 .toply{
-  top: 42px;
+  top: 43px;
 }
 .dent{
   margin-bottom: 85px;
@@ -8331,4 +8262,72 @@ form > .alert{
   .user_names{
     margin-left: 9%;
   }
+}
+.helvetica{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-weight: 100;
+}
+.green{
+  color: green;
+  font-weight: bold;
+  border-bottom: 1px solid rgb(207, 207, 207);
+  padding-bottom: 22px;
+  margin: 0 25px;
+}
+@media (min-width: 600px){
+  .green{
+    padding-bottom: 0px;
+  }
+}
+
+.led{
+  padding-right: 0px;
+}
+
+.editox{
+  position: absolute;
+  margin-top: -2px;
+  left: 18%;
+  line-height: 12px;
+  color: black;
+  font-size: 11px;
+}
+
+.delito{
+  position: absolute;
+  margin-top: -2px;
+  left: 79%;
+  line-height: 12px;
+  color: black;
+  font-size: 11px;
+}
+
+.moo{
+  margin-left: 9px;
+}
+.prodesc{
+  max-width: 513px;
+  border: 1px solid #c7c7c7;
+  margin-left: auto;
+  margin-right: auto;
+  border-color: #e9eaed #e9eaed #d1d1d1;
+}
+@media (min-width: 600px){
+  .prodesc{
+     max-width: 60%;
+  }
+  .image-show{
+    width: 100%;
+  }
+}
+.descrip{
+  width: 100%;
+text-align: center;
+padding: 8px 10px;
+display: inline-block;
+background-color: white;
+font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+font-weight: 200;
+font-size: 14px;
+color: rgb(71, 71, 71);
 }

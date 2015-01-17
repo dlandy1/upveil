@@ -1,41 +1,50 @@
 <div class="container">
+  <div class="boxsearch" style="">
+      <div id="categories" class="col-md-3 pull-left"></div>
+      <div id="users" class="col-md-5 pull-right pod"></div>
+      <div id="posts" class="col-md-4 pod"></div>
+    </div>
 <div> 
-  <div id="fb-root"></div>
+<div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=308749165979195&version=v2.0";
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-</script>
-    <div class="socialer">
-      <a class="fber"><div class="fb-share-button" data-href= <%= request.original_url %> data-layout="button_count"></div></a>
-      <a class="reddit"><script type="text/javascript" src="//www.redditstatic.com/button/button1.js"></script></a>
-      <a href="https://twitter.com/share" class="twitter-share-button" data-via="upveil">Tweet</a>
-  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-    <div class="pinterest"><%= pinterest_button %></div>
-    </div>
-
-      <div class="show-buttons">
-      <% if current_user %>
+}(document, 'script', 'facebook-jssdk'));</script>
+  <div class="text-center"> 
+    <% if current_user %>
         <%if current_user == @product.user || current_user.id == 1 || current_user.id == 2 || current_user.id == 3 || current_user.id == 4  %>
-          <p><%= link_to "Edit Post",  edit_category_product_path(@product.category, @product), class: 'btn btn-xs btn-warning fonter' %></p>
-          <%= link_to "Delete Post", [@product.category, @product], method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure you want to delete this product?'} %>
+           <%= link_to edit_product_path(@product), class: 'editox' do %>
+            <%= fa_icon "edit", class: "banicon moo" %></br><span>Edit</span>
+          <% end %>
+          <%= link_to [@product.category, @product],method: :delete, class: 'delito', data: { confirm: 'Are you sure you want to delete this product?'}  do %>
+            <%= fa_icon "trash", class: "banicon led" %></br><span>Delete</span>
+          <% end %>
         <% end %>
       <% end %>
-    </div>
-  <div class="text-center"> 
     <h1 class="text-center padder sizem"> 
-      <%= @product.title %></h1>
-      <p class="text-center">$<%=@product.price%></p>
-      <% if current_user %>
-      <p class="text-center">
-        <%= link_to "Buy here", category_product_purchase_path(@product.category, @product), :target => "_blank",class: 'btn btn-sm btn-primary buyer', method: :post %>
-      </p>
-      <% else %> 
-      <p class="text-center"><%= link_to "Buy here", @product.link, :target => "_blank", class: 'btn btn-sm btn-primary buyer' %></p>
-      <% end %>
+      <%= @product.title %>
+    </h1>
+      <div>
+         <div class="socialer">
+      <a class="fber"><div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"></div>
+      </a>
+      <a class="reddit"><script type="text/javascript" src="//www.redditstatic.com/button/button1.js"></script></a>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-via="upveil" data-count="none">Tweet</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <div class="pinterest"><%= pinterest_button %></div>
+    </div>
+        <p class="text-center green">$<%=@product.price%></p>
+        <% if current_user %>
+        <p class="text-center">
+          <%= link_to "Buy here", category_product_purchase_path(@product.category, @product), :target => "_blank",class: 'btn btn-sm btn-primary buyer', method: :post %>
+        </p>
+        <% else %> 
+        <p class="text-center"><%= link_to "Buy here", @product.link, :target => "_blank", class: 'btn btn-sm btn-primary buyer' %></p>
+        <% end %>
+      </div>
       <div class ="product_show">
          <div class="user_tag user_names link_color ayo">
           <% if !@product.category.adult %>
@@ -46,13 +55,18 @@
               <p> <%= @product.user.name %></p>
             <% end %>
            <% end %>
-            <%= render partial: 'votes/voter', locals: {product: @product} %>
+           <%= render partial: 'votes/voter', locals: {product: @product} %>
         </div>
       </div>
-          <div class="showest_box"><%= image_tag(@product.image.url(:thumb), :class => "image-show") %></div>
-        <p class="text-center show-font descrip">
+          <div class="showest_box">
+            <div class="prodesc">
+            <%= image_tag(@product.image.url(:thumb), :class => "image-show") %>
+            <p class="text-center show-font descrip">
           <%= @product.description %>
+          </div>
         </p>
+          </div>
+        
     <div class="fb-comments" data-href= <%= request.original_url %> data-numposts="10" data-colorscheme="light"></div>
 </div>
 </div>

@@ -8319,6 +8319,15 @@ font-weight: 100;
   margin-right: auto;
   border-color: #e9eaed #e9eaed #d1d1d1;
 }
+.classy{
+  border-bottom: 1px solid rgb(205, 205, 205);
+  padding-bottom: 15px;
+  margin: 0 25px;
+}
+.maver{
+  display: inline-block;
+  margin: 0px;
+}
 @media (max-width: 600px){
   .prodesc{
      max-width: 60%;
@@ -8331,6 +8340,18 @@ font-weight: 100;
   }
   .delito{
     display: none;
+  }
+  .classy{
+    margin: 0px;
+  }
+  .maver{
+    font-size: 15px;
+  }
+  .bio > span{
+    font-size: 13px;
+  }
+  .url{
+    font-size: 11px;
   }
 }
 .descrip{
@@ -8354,15 +8375,7 @@ color: rgb(71, 71, 71);
   vertical-align: top;
   margin-left: 25px;
 }
-.maver{
-  display: inline-block;
-  margin: 0px;
-}
 .boxer{
   display: inline-block;
 }
-.classy{
-  border-bottom: 1px solid rgb(205, 205, 205);
-  padding-bottom: 15px;
-  margin: 0 25px;
-}
+

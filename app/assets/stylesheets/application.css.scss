@@ -8274,7 +8274,7 @@ font-weight: 100;
   padding-bottom: 22px;
   margin: 0 25px;
 }
-@media (min-width: 600px){
+@media (max-width: 600px){
   .green{
     padding-bottom: 0px;
   }
@@ -8292,6 +8292,10 @@ font-weight: 100;
   color: black;
   font-size: 11px;
 }
+.editox:hover{
+   color: #867C62;
+  text-decoration: none;
+}
 
 .delito{
   position: absolute;
@@ -8301,7 +8305,10 @@ font-weight: 100;
   color: black;
   font-size: 11px;
 }
-
+.delito:hover{
+   color: #867C62;
+  text-decoration: none;
+}
 .moo{
   margin-left: 9px;
 }
@@ -8312,12 +8319,18 @@ font-weight: 100;
   margin-right: auto;
   border-color: #e9eaed #e9eaed #d1d1d1;
 }
-@media (min-width: 600px){
+@media (max-width: 600px){
   .prodesc{
      max-width: 60%;
   }
   .image-show{
     width: 100%;
+  }
+  .editox{
+    display: none;
+  }
+  .delito{
+    display: none;
   }
 }
 .descrip{

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141224231525) do
+ActiveRecord::Schema.define(version: 20150118034256) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -48,6 +48,17 @@ ActiveRecord::Schema.define(version: 20141224231525) do
 
   add_index "categories", ["slug"], name: "index_categories_on_slug", unique: true
   add_index "categories", ["user_id"], name: "index_categories_on_user_id"
+
+  create_table "comments", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "product_id"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["product_id"], name: "index_comments_on_product_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "follows", force: true do |t|
     t.integer  "followable_id",                   null: false

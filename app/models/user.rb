@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
     has_many :products, dependent: :destroy
     has_many :categories, dependent: :destroy
     has_one :identity, dependent: :destroy
+    has_many :comments, dependent: :destroy
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
   validates :instagram_url, length:{minimum: 1}, :allow_blank => true 
   validates :twitter_url, length:{minimum: 1}, :allow_blank => true 

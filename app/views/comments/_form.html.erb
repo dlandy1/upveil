@@ -1,0 +1,19 @@
+<%= form_for [ @post, @post.comments.new], remote: true do |f| %>
+  <div class="form-group">
+   <label for="inputPassword" class="col-sm-1 control-label">
+       <%= f.label :twitter_url%>
+   </label>
+    <div class="col-sm-4">
+      <%= f.text_field :twitter_url, class: 'form-control'%>
+    </div>
+      <label for="inputPassword" class="col-sm-1 control-label">
+       <%= f.label :instagram_url%>
+   </label>
+    <div class="col-sm-4">
+      <%= f.text_field :instagram_url, class: 'form-control'%>
+    </div>
+    <div class="col-md-2">
+      <%= f.submit "Link to media"%>
+    </div>
+  </div>
+<% end %>

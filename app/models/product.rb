@@ -12,6 +12,7 @@ class Product < ActiveRecord::Base
   belongs_to :category
   belongs_to :subcategory, :class_name => "Category", :foreign_key => "subcat_id"
   belongs_to :grandcategory, :class_name => "Category", :foreign_key => "grandcat_id"
+  has_many :comments, dependent: :destroy
     mount_uploader :image, ImageUploader
       validates :image, 
     :presence => true, 

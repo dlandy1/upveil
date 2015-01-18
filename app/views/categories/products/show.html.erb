@@ -61,9 +61,11 @@
           <div class="showest_box">
             <div class="prodesc">
             <%= image_tag(@product.image.url(:thumb), :class => "image-show") %>
+          <% if @product.description && @product.description.length > 0 %>
             <p class="text-center show-font descrip">
           <%= @product.description %>
           </p>
+          <% end %>
           </div>
           </div>
         

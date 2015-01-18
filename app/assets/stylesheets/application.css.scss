@@ -8313,7 +8313,7 @@ font-weight: 100;
   margin-left: 9px;
 }
 .prodesc{
-  max-width: 513px;
+  max-width: 514px;
   border: 1px solid #c7c7c7;
   margin-left: auto;
   margin-right: auto;
@@ -8330,7 +8330,7 @@ font-weight: 100;
 }
 @media (max-width: 600px){
   .prodesc{
-     max-width: 60%;
+     max-width: 61%;
   }
   .image-show{
     width: 100%;
@@ -8364,6 +8364,8 @@ font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", He
 font-weight: 200;
 font-size: 14px;
 color: rgb(71, 71, 71);
+border-top: 1px solid grey;
+border-color: #e9eaed #e9eaed #d1d1d1;
 }
 .profile-pic{
   display: inline-block;
@@ -8378,4 +8380,4 @@ color: rgb(71, 71, 71);
 .boxer{
   display: inline-block;
 }
-
+  

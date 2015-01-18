@@ -8328,6 +8328,11 @@ font-weight: 100;
   display: inline-block;
   margin: 0px;
 }
+.bio{
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 25px;
+}
 @media (max-width: 600px){
   .prodesc{
      max-width: 61%;
@@ -8346,6 +8351,9 @@ font-weight: 100;
   }
   .maver{
     font-size: 15px;
+  }
+  .bio{
+    margin: 0px;
   }
   .bio > span{
     font-size: 13px;
@@ -8368,11 +8376,6 @@ border-top: 1px solid grey;
 border-color: #e9eaed #e9eaed #d1d1d1;
 }
 .profile-pic{
-  display: inline-block;
-  vertical-align: top;
-  margin-left: 25px;
-}
-.bio{
   display: inline-block;
   vertical-align: top;
   margin-left: 25px;

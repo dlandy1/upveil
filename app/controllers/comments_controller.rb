@@ -2,22 +2,21 @@ class CommentsController < ApplicationController
   respond_to :html, :js
 
   def create
-     @product = Product.friendly.find(params[:id])
+     @product = Product.friendly.find(params[:product_id])
     @comments = @product.comments
 
-    @comment = current_user.comments.new( comment_params )
-    @comment.product = @product
-    @new_comment = Comment.new
+    @commentr = current_user.comments.new( comment_params )
+    @comment = Comment.new
 
     if current_user
-      if @comment.save
+      if @commentr.save
         flash[:notice] = "Comment was created successfully."
       else
         flash[:error] = "Error creating comment."
       end
     end
 
-    respond_with(@comment) do |format|
+    respond_with(@commentr) do |format|
       format.html { redirect_to [@product.category, @product] }
     end
   end

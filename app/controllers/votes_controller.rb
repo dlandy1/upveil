@@ -6,7 +6,7 @@ class VotesController < ApplicationController
 
   def up_vote
   if current_user
-    if current_user.id == 1 || current_user.id == 2 || current_user.id == 3 || current_user.id == 4
+    if  current_user.id == 2 || current_user.id == 3 || current_user.id == 4
         @product.up_vote!(current_user)
           @product.create_activity :create, owner: current_user,  recipient: @product.user
           respond_with(@product) do |format|

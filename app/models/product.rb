@@ -82,6 +82,9 @@ class Product < ActiveRecord::Base
 
     def already_upvote(voting_user)
       vote_manager = VotesManager.new(voting_user, self)
+      PublicActivity::Activity.where(trackable_id: self.id).where(owner_id: voting_user.id).each do |p|
+        p.destroy
+      end
       vote_manager.remove_up_vote!
       self.category.increase_grade(self.user, -20)
       if subcategory

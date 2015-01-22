@@ -22,8 +22,14 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+    @category=  Category.friendly.find(params[:category_id])
+    @product = Product.friendly.find(params[:product_id])
+    @comment = Comment.find(params[:id])
+  end
+
   def destroy
-    @product = Product.friendly.find(params[:id])
+    @product = Product.friendly.find(params[:product_id])
     @category = @product.category
     @comment = @product.comments.find(params[:id])
     @comments = @product.comments

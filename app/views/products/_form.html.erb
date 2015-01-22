@@ -12,7 +12,7 @@
    <div class="form-group">
       <%= f.label "Category*" %>
       <div class="form-group">
-      <%= f.select :category_id, options_from_collection_for_select(Category.parent_categories.where(secret: false) , "id", "title"), :prompt => "Select a Category" %>
+      <%= f.select :category_id, options_from_collection_for_select(Category.parent_categories.where(adult: false) , "id", "title"), :prompt => "Select a Category" %>
        </div>
        <div class="subies">
       <%= f.label "Subcategory*" %>

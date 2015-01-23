@@ -10,7 +10,7 @@ Upveil::Application.routes.draw do
     get "female_newest"
     resources :subcategories, only: [:index]
     resources :products, except: [:index], controller: 'categories/products' do
-      resources :comments, only: [:create, :destroy]
+      resources :comments, only: [:create, :destroy, :edit, :update]
       post 'purchase'
     end
   end

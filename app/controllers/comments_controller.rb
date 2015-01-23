@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   respond_to :html, :js
+  before_action :load_activities
 
   def create
      @product = Product.friendly.find(params[:product_id])
@@ -23,10 +24,21 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @category=  Category.friendly.find(params[:category_id])
-    @product = Product.friendly.find(params[:product_id])
     @comment = Comment.find(params[:id])
+    @product = @comment.product
+    @category= @product.category
   end
+
+  def update
+         @comment = Comment.find(params[:id])
+         @product = @comment.product
+         @category= @product.category
+          if @comment.update_attributes(comment_params)
+            redirect_to [@category, @product]
+          else
+           render :action => "edit" 
+          end
+      end
 
   def destroy
     @product = Product.friendly.find(params[:product_id])
@@ -46,6 +58,12 @@ class CommentsController < ApplicationController
   end
 
   private
+
+     def load_activities
+      if current_user
+        @activities = PublicActivity::Activity.where(read: false).where(recipient_id: current_user.id, owner_type: "User").order("created_at desc")
+      end
+    end
 
   def comment_params
     params.require(:comment).permit(:body)

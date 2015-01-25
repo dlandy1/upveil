@@ -69,7 +69,9 @@
           </div>
           </div>
             <div class="commenter">
+              <span class='js-comments'>
          <%= render partial: 'comments/comment', collection: @comments %>
+            </span>
          <% if current_user != nil %>
       <div class='new-comment'>
         <%= render partial: 'comments/form', locals: { category: @category, product: @product, comment: @comment } %>

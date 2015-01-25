@@ -8380,12 +8380,11 @@ border-top: 1px solid #e9eaed #e9eaed #d1d1d1;
   display: inline-block;
 }
 .commenter{
-  width: 60%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
-  border: 1px solid rgb(231, 231, 231);
-  padding: 10px;
+  padding: 10px 5%;
 }
 .commentprof > img{
   height: 30px;
@@ -8412,4 +8411,15 @@ border-top: 1px solid #e9eaed #e9eaed #d1d1d1;
   margin-right: 25px;
   text-align: left;
   color: rgb(82, 76, 76);
+}
+.indont{
+  border-bottom: 1px solid rgb(213, 213, 213);
+  padding-bottom: 5px;
+  margin-bottom: 8px;
+}
+.flant{
+  font-size: 12px;
+}
+.donl{
+  margin-bottom: 15px;
 }

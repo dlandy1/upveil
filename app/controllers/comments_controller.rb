@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
 
   def create
      @product = Product.friendly.find(params[:product_id])
+     @category= Category.friendly.find(params[:category_id])
     @comments = @product.comments
 
     @comment = current_user.comments.new( comment_params )
@@ -12,7 +13,6 @@ class CommentsController < ApplicationController
 
     if current_user
       if @comment.save
-        flash[:notice] = "Comment was created successfully."
       else
         flash[:error] = "Error creating comment."
       end
@@ -47,7 +47,6 @@ class CommentsController < ApplicationController
     @comments = @product.comments
 
       if @comment.destroy
-        flash[:notice] = "Comment was removed"
       else
         flash[:error] = "Comment was not deleted. Try again."
       end

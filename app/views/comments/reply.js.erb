@@ -1,0 +1,1 @@
+  $('#new-' +<%= @comment.id%>).append("<%= escape_javascript(render partial: 'comments/formthree', locals: { category: @category, product: @product, comment: @new_comment }) %>").fadeIn(500); 

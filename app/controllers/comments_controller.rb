@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
       end
     end
 
-    respond_with(@commentr) do |format|
+    respond_with(@comment) do |format|
       format.html { redirect_to [@product.category, @product] }
     end
   end
@@ -29,8 +29,28 @@ class CommentsController < ApplicationController
     @category= @product.category
   end
 
+  def reply
+    @comment = Comment.find(params[:comment_id])
+    @new_comment = @comment.subcomments.new
+    @product= Product.friendly.find(params[:product_id])
+    @category= @product.category
+     respond_with(@comment) do |format|
+       format.html { redirect_to [@category, @product] }
+    end
+  end
+
+   def cancel
+    @comment = Comment.find(params[:comment_id])
+    @product= Product.friendly.find(params[:product_id])
+    @category= @product.category
+     respond_with(@comment) do |format|
+       format.html { redirect_to [@category, @product] }
+    end
+  end
+
   def update
          @comment = Comment.find(params[:id])
+         @new_comment = @comment
          @product = @comment.product
          @category= @product.category
           if @comment.update_attributes(comment_params)
@@ -41,17 +61,18 @@ class CommentsController < ApplicationController
       end
 
   def destroy
-    @product = Product.friendly.find(params[:product_id])
-    @category = @product.category
+    @category = Category.friendly.find(params[:category_id])
+    @product = @category.products.friendly.find(params[:product_id])
     @comment = @product.comments.find(params[:id])
-    @comments = @product.comments
-
-      if @comment.destroy
-      else
-        flash[:error] = "Comment was not deleted. Try again."
+     if current_user
+        if @comment.destroy
+           flash[:notice] = "Comment was removed."
+        else
+          flash[:error] = "Comment was not deleted. Try again."
+        end
       end
     respond_with(@comment) do |format|
-       format.html { redirect_to [@product.category, @product] }
+       format.html { redirect_to [@category, @product] }
     end
 
   end
@@ -65,7 +86,7 @@ class CommentsController < ApplicationController
     end
 
   def comment_params
-    params.require(:comment).permit(:body)
+    params.require(:comment).permit(:body, :parent_id)
   end
 
 end

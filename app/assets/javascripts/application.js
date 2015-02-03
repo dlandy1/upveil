@@ -61,25 +61,25 @@
           }, 'slow', function () {
             if (form.width() == 0) form.hide()
         });
-      form.animate({
+       $(".navbar-brand").stop().animate({
+          'width': $(".navbar-brand").width() == 100 ? '80px' : '186px'
+          }, 400, function () {
+            if (form.width() == 0) form.hide()
+        });
+      form.stop().animate({
             'margin-left' : "0px",
             'width': form.width() == 100 ? '280px' : '65px'
         }, 'slow', function () {
             if (form.width() == 0) form.hide()
         });
-        clammer.animate({
+        clammer.stop().animate({
           'margin-right': '0px'
           }, 'slow', function () {
             if (form.width() == 0) form.hide()
         });
         items.removeClass("searchy");
-        $('.noty').animate({
+        $('.noty').stop().animate({
           'margin-left': '5%',
-          }, 'slow', function () {
-            if (form.width() == 0) form.hide()
-        });
-        $(".navbar-brand").animate({
-          'width': '186px',
           }, 'slow', function () {
             if (form.width() == 0) form.hide()
         });

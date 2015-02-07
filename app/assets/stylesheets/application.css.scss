@@ -3599,7 +3599,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   padding: 9px 20px;
   color: white;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  font-size: 20px;
 }
 .nav > li > a:hover,
 .nav > li > a:focus {
@@ -3892,7 +3891,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   padding: 21.5px 15px;
   font-size: 30px;
   height: 35px;
-  width: 186px;
+  width: 152px;
 }
 
 .navbar-brand:hover,
@@ -6876,6 +6875,7 @@ td{
 }
 .smallest{
   font-size: 12px;
+  padding: 6px 0px;
 }
 .tighter{
     padding-right: 75px;
@@ -8384,4 +8384,24 @@ border-color: #e9eaed #e9eaed #d1d1d1;
 .boxer{
   display: inline-block;
 }
-  
+.valentine{
+  font-family: 'Fredericka the Great' !important;
+  color: rgb(245, 56, 89) !important;
+} 
+.widel{
+  padding: 5px 0px !important;
+}
+.usher{
+  padding: 6px 3px;
+}
+.navbar-header{
+  width: 104px;
+}
+.vtine{
+  margin-left: -7px;
+}
+@media (max-width: 1170px){
+.vtine{
+  display: none;
+}
+}

@@ -79,7 +79,7 @@
             if (form.width() == 0) form.hide()
         });
         $(".navbar-brand").animate({
-          'width': '186px',
+          'width': '115px',
           }, 'slow', function () {
             if (form.width() == 0) form.hide()
         });

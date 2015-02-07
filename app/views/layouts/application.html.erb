@@ -58,7 +58,7 @@ window._fbq.push(['track', '6017250074008', {'value':'0.01','currency':'USD'}]);
       </li>
       <% if current_user %>
                 <%= render partial: 'application/notifications' %>
-                 <%= link_to current_user, class: 'btn btn-link' do %>
+                 <%= link_to current_user, class: 'btn btn-link usher' do %>
                   <li><%= image_tag(current_user.identity.smallimage)%></li>
                   <% end %>
                 <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-link smallest' do %>
@@ -139,6 +139,16 @@ window._fbq.push(['track', '6017250074008', {'value':'0.01','currency':'USD'}]);
         <% end %>
         </li>
          <% end %>
+           <% if Rails.env == "development" %>
+            <li><%= link_to Category.find(7), class: 'move valentine' do%>
+           <%= fa_icon "heart" %> <span class="vtine">Valentine </span>
+          <% end %>
+        <% else %>
+           <li><%= link_to Category.find(63), class: 'move' do%>
+          <%= fa_icon "heart" %> <span class="vtine">Valentine </span>
+          <% end %>
+        <% end %>
+        </li>
     </ul>
       </div>
   </div>

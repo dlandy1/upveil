@@ -20,7 +20,7 @@
       <% end %>
       <% if product.description != ""%>
         <div class="title"> <div class="money">$<%= product.price %></div><div class="tighter"><span><%= link_to (product.title), [product.category, product], :class => "golder" %></div></span></div>
-          <p class="description"><%= product.description %></p>
+          <span><p class="description"><%= product.description %></p></span>
         <% else %>
         <div class="titler"> <div class="money">$<%= product.price %></div><div class="tighter"><span><%= link_to (product.title), [product.category, product], :class => "golder" %></div></span></div>
          <% end %>

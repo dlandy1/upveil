@@ -21,6 +21,7 @@
 //= require twitter/typeahead
 //= require twitter/typeahead.min
 //= require hogan.js
+//= require jquery.atwho
 
 /*!
  * typeahead.js 0.10.4

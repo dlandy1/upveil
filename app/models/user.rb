@@ -9,7 +9,6 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable, :omniauthable
-
     has_many :products, dependent: :destroy
     has_many :categories, dependent: :destroy
     has_one :identity, dependent: :destroy
@@ -19,9 +18,21 @@ class User < ActiveRecord::Base
   validates :twitter_url, length:{minimum: 1}, :allow_blank => true 
   validates :website, length:{minimum: 1}, :allow_blank => true 
   validates :name, length: {minimum: 3}, presence: true
+  validates :slug, length: {minimum: 1}, presence: true
+  validates_uniqueness_of :slug
 
   extend FriendlyId
   friendly_id :name, use: :slugged
+
+  def nodash
+    name =slug.gsub('-','')
+    update_attributes(slug: name)
+  end
+
+  def should_generate_new_friendly_id?
+    slug_changed?
+  end
+
 
     algoliasearch do
     # associated index settings can be configured from here

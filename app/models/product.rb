@@ -63,7 +63,6 @@ class Product < ActiveRecord::Base
     slug.blank? || title_changed?
   end
 
-
     def in_gender?
       if category
       category.gendered

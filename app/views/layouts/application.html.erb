@@ -139,16 +139,6 @@ window._fbq.push(['track', '6017250074008', {'value':'0.01','currency':'USD'}]);
         <% end %>
         </li>
          <% end %>
-           <% if Rails.env == "development" %>
-            <li><%= link_to Category.find(7), class: 'move valentine' do%>
-           <%= fa_icon "heart" %> <span class="vtine">Valentine </span>
-          <% end %>
-        <% else %>
-           <li><%= link_to Category.find(53), class: 'move valentine' do%>
-          <%= fa_icon "heart" %> <span class="vtine">Valentine </span>
-          <% end %>
-        <% end %>
-        </li>
     </ul>
       </div>
   </div>

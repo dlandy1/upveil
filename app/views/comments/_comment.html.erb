@@ -20,7 +20,7 @@
       <% end %> 
     </small>
     </div>
-    <p class="dint"><%= comment.body %></p>
+    <p class="dint"><%= auto_link_usernames("@danlandy") %></p> 
       </div>
     <%= content_tag :div, id: "response-#{comment.id}" do %>
       <%= render partial: 'comments/response', collection: comment.subcomments, as: :subcomment %>

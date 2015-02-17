@@ -1,7 +1,4 @@
-<script> 
-  data = <%= raw User.pluck(:slug).compact %>;
-  $('textarea').atwho({at:"@", 'data': data}); 
-</script>
+
 <%= form_for [category, product, comment], remote: true do |f| %>
   <div class="form-group">
     <div class="donl">

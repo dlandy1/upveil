@@ -8,4 +8,6 @@ class Comment < ActiveRecord::Base
 
   scope :parent_comments, -> { where(parent_id: nil)}
   scope :children, -> {where("parent_id IS NOT NULL")}
+
+
 end

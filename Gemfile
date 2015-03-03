@@ -53,8 +53,6 @@ gem 'shareable'
 
 gem 'leaderboard'
 
-gem 'redcarpet'
-
 gem 'carrierwave'
 
 gem 'mini_magick'
@@ -75,8 +73,6 @@ gem 'twitter'
 
 gem 'public_activity'
 
-gem 'haml-rails'
-
 gem 'twitter-typeahead-rails'
 
 gem 'algoliasearch-rails'
@@ -85,7 +81,11 @@ gem 'hogan_assets'
 
 gem "acts_as_follower"
 
+gem "socialization"
+
 gem "console.log"
+
+gem "jquery-atwho-rails"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

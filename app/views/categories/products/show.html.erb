@@ -29,7 +29,7 @@
     </h1>
       <div>
          <div class="socialer">
-      <a class="fber"><div class="fb-share-button" data-href= "#{request.original_url}" data-layout="button"></div>
+     <a class="fber"><div class="fb-share-button" data-href= "#{request.original_url}" data-layout="button"></div>
       </a>
       <a class="reddit"><script type="text/javascript" src="//www.redditstatic.com/button/button1.js"></script></a>
       <a href="https://twitter.com/share" class="twitter-share-button" data-via="upveil" data-count="none">Tweet</a>
@@ -42,7 +42,7 @@
           <%= link_to "Buy here", category_product_purchase_path(@product.category, @product), :target => "_blank",class: 'btn btn-sm btn-primary buyer', method: :post %>
         </p>
         <% else %> 
-        <p class="text-center"><%= link_to "Buy here", @product.link, :target => "_blank", class: 'btn btn-sm btn-primary buyer' %></p>
+          <p class="text-center"><%= link_to "Buy here", @product.link, :target => "_blank", class: 'btn btn-sm btn-primary buyer' %></p>
         <% end %>
       </div>
       <div class ="product_show">
@@ -50,25 +50,32 @@
           <% if !@product.category.adult %>
             <%= link_to @product.user do %>
             <div class = "hidelen">
-            <%= image_tag(@product.user.identity.smallimage)%>
+              <%= image_tag(@product.user.identity.smallimage)%>
             </div>
               <p> <%= @product.user.name %></p>
             <% end %>
            <% end %>
-           <%= render partial: 'votes/voter', locals: {product: @product} %>
+             <%= render partial: 'votes/voter', locals: {product: @product} %>
         </div>
       </div>
           <div class="showest_box">
             <div class="prodesc">
             <%= image_tag(@product.image.url(:thumb), :class => "image-show") %>
-          <% if @product.description && @product.description.length > 0 %>
-            <p class="text-center show-font descrip">
-          <%= @product.description %>
+        <% if @product.description && @product.description.length >0 %>
+          <p class="text-center show-font descrip">
+            <%= @product.description %>
           </p>
-          <% end %>
+        <% end %>
           </div>
           </div>
-        
-    <div class="fb-comments" data-href= <%= request.original_url %> data-numposts="10" data-colorscheme="light"></div>
+            <div class="commenter">
+              <span class='js-comments'>
+         <%= render partial: 'comments/comment', collection: @comments.parent_comments %>
+            </span>
+      <div class='new-comment'>
+        <%= render partial: 'comments/form', locals: { category: @category, product: @product, comment: @comment } %>
+      </div>
+    </div>
+
 </div>
 </div>

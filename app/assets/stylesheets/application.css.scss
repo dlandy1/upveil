@@ -1,3 +1,17 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+  *=require jquery.atwho
+ */
 @import "font-awesome";
 @import "bootstrap-sprockets";
 @import "bootstrap/variables";
@@ -7459,6 +7473,7 @@ height: 100vh;
     padding: 0;
     margin: 0;
     position: relative;
+    text-align: right;
 }
 #nav ul li {
     display: inline-block;
@@ -8314,8 +8329,8 @@ font-weight: 100;
   margin-left: 9px;
 }
 .prodesc{
-  max-width: 514px;
-  border: 1px solid #c7c7c7;
+
+  max-width: 513px;
   margin-left: auto;
   margin-right: auto;
   border-color: #e9eaed #e9eaed #d1d1d1;
@@ -8374,8 +8389,7 @@ font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", He
 font-weight: 200;
 font-size: 14px;
 color: rgb(71, 71, 71);
-border-top: 1px solid grey;
-border-color: #e9eaed #e9eaed #d1d1d1;
+border-top: 1px solid #e9eaed #e9eaed #d1d1d1;
 }
 .profile-pic{
   display: inline-block;
@@ -8407,4 +8421,89 @@ border-color: #e9eaed #e9eaed #d1d1d1;
 }
 #nav ul ul li:last-child {
   border-bottom: 0;
+}
+.commenter{
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  padding: 10px 5%;
+}
+.commentprof > img{
+  height: 30px;
+  width: 30px;
+}
+.cament{
+  text-align: left;
+  padding-left: 10px;
+  color: grey;
+}
+.loft{
+  text-align: left;
+  font-size: 11px;
+}
+.trosh{
+  display: inline-block;
+  float: right;
+  font-size: 14px;
+}
+.dint{
+  float: left;
+  font-size: 15px;
+  margin-right: 25px;
+  text-align: left;
+  color: rgb(82, 76, 76);
+  margin-left: 9px;
+}
+.indont{
+  border-bottom: 1px solid #E8E8E8;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+.flant{
+  font-size: 12px;
+}
+.donl{
+  margin-bottom: 15px;
+}
+.widel{
+  padding: 6px 0 !important;
+  margin-top: 5px !important;
+  color: white !important;
+  font-size: 18px !important;
+  margin-bottom: 0 !important;
+}
+.lieft{
+  margin-left: 30px;
+  padding-left: 10px;
+  border-left: 1px solid rgb(223, 223, 223);
+}
+.image-show{
+  border: 1px solid rgb(223, 223, 223);
+  padding-left: 10px;
+}
+.teen{
+  margin-top: 10px;
+}
+.flant:hover{
+  text-decoration: none;
+}
+.reply{
+  font-size: 11px;
+}
+.v{
+  margin-top: 10px;
+}
+.menter{
+  position: relative;
+color: white;
+float: right;
+margin-right: 10px;
+}
+.white{
+   color: white;
+}
+.white:hover{
+  text-decoration: none;
+  color: #9E916A;
 }

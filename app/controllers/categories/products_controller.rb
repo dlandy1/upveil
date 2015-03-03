@@ -65,7 +65,11 @@ class Categories::ProductsController < ApplicationController
   end
 
   def show
+    @category = Category.friendly.find(params[:category_id])
     @product = Product.friendly.find(params[:id])
+    @comments = @product.comments
+    @comment = Comment.new
+    @usernames = User.pluck(:slug)
   end
 
    def edit

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150125023921) do
+ActiveRecord::Schema.define(version: 20150219171705) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -97,6 +97,28 @@ ActiveRecord::Schema.define(version: 20150125023921) do
   end
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id"
+
+  create_table "likes", force: true do |t|
+    t.string   "liker_type"
+    t.integer  "liker_id"
+    t.string   "likeable_type"
+    t.integer  "likeable_id"
+    t.datetime "created_at"
+  end
+
+  add_index "likes", ["likeable_id", "likeable_type"], name: "fk_likeables"
+  add_index "likes", ["liker_id", "liker_type"], name: "fk_likes"
+
+  create_table "mentions", force: true do |t|
+    t.string   "mentioner_type"
+    t.integer  "mentioner_id"
+    t.string   "mentionable_type"
+    t.integer  "mentionable_id"
+    t.datetime "created_at"
+  end
+
+  add_index "mentions", ["mentionable_id", "mentionable_type"], name: "fk_mentionables"
+  add_index "mentions", ["mentioner_id", "mentioner_type"], name: "fk_mentions"
 
   create_table "pg_search_documents", force: true do |t|
     t.text     "content"

@@ -223,6 +223,8 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     simple_oauth (0.2.0)
+    socialization (1.1.0)
+      activerecord
     sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -300,6 +302,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.2)
   sdoc
   shareable
+  socialization
   sqlite3
   twitter
   twitter-typeahead-rails

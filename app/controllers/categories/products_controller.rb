@@ -1,5 +1,4 @@
 class Categories::ProductsController < ApplicationController
-  helper_method :auto_link_usernames
    before_action :load_activities
    respond_to :html, :js
    def notifications
@@ -110,12 +109,6 @@ class Categories::ProductsController < ApplicationController
         redirect_to [@category, @product]
       end
    end
-
-   def auto_link_usernames(text)
-      text.gsub /@(\w+)/ do |username|
-        link_to(username, user_username_path(username.gstub('@', '')))
-      end.html_safe
-    end
 
    private
 

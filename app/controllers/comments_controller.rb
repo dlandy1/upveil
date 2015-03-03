@@ -8,7 +8,6 @@ class CommentsController < ApplicationController
     @comments = @product.comments
 
     @comment = current_user.comments.new( comment_params )
-     @comment.auto_link_usernames
      @comment.product = @product
     @new_comment = Comment.new
 
@@ -54,7 +53,6 @@ class CommentsController < ApplicationController
          @new_comment = @comment
          @product = @comment.product
          @category= @product.category
-         @comment.auto_link_usernames
           if @comment.update_attributes(comment_params)
             redirect_to [@category, @product]
           else

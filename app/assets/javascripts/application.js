@@ -33,8 +33,7 @@
 
  jQuery(document).ready(function () {
 
-data = ['tom','john'];
-$('textarea').atwho({at: "@", 'data': data,  'insertTpl': "<a href='http://www.upveil.com/categories/valentine-s-day'>{slug} <a/>"});
+
     
  if(location.pathname.search( 'newest') >= 0){
       var link = location.pathname.replace('/newest', '').replace('_', '').replace('/female', '').replace('/male', '').replace('newest', '')
@@ -100,6 +99,7 @@ $('textarea').atwho({at: "@", 'data': data,  'insertTpl': "<a href='http://www.u
         $("#posts").show();
         $("#users").show();
         form.show();
+        form.focus();
         form.css("color", "black")
         mglass.css("color", "rgb(98, 98, 98)")
         $(".searchbutton").css("background-color", "white")

@@ -19,10 +19,18 @@
       </div>
       <% end %>
       <% if product.description != ""%>
-        <div class="title"> <div class="money">$<%= product.price %></div><div class="tighter"><span><%= link_to (product.title), [product.category, product], :class => "golder" %></div></span></div>
+        <div class="title"> <div class="money">$<%= product.price %></div><div class="menter"> <%= link_to [product.category, product], :class => "white" do %>
+        <%= fa_icon "comment-o" %><%= product.comments.count %>
+        </div>
+        <% end %><div class="tighter"><span><%= link_to (product.title), [product.category, product], :class => "golder" %></div></span></div>
           <span><p class="description"><%= product.description %></p></span>
         <% else %>
-        <div class="titler"> <div class="money">$<%= product.price %></div><div class="tighter"><span><%= link_to (product.title), [product.category, product], :class => "golder" %></div></span></div>
+        <div class="titler"> <div class="money">$<%= product.price %></div>
+        <div class="menter"><%= link_to [product.category, product], :class => "white" do %>
+        <%= fa_icon "comment-o" %><%= product.comments.count %>
+        </div>
+        <% end %>
+        <div class="tighter"><span><%= link_to (product.title), [product.category, product], :class => "golder" %></div></span></div>
          <% end %>
   </div>
 </div>

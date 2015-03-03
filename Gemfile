@@ -81,6 +81,8 @@ gem 'hogan_assets'
 
 gem "acts_as_follower"
 
+gem "socialization"
+
 gem "console.log"
 
 gem "jquery-atwho-rails"

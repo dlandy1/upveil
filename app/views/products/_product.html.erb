@@ -19,7 +19,13 @@
       </div>
       <% end %>
       <% if product.description != ""%>
-        <div class="title"> <div class="money">$<%= product.price %></div><div class="menter"> <%= link_to [product.category, product], :class => "white" do %>
+        <div class="title"> <div class="money">
+        <% if product.price > 0 %>
+          $<%= product.price %>
+        <% else %>
+          TBA
+          <% end %>
+        </div><div class="menter"> <%= link_to [product.category, product], :class => "white" do %>
         <%= fa_icon "comment-o" %><%= product.comments.count %>
         </div>
         <% end %><div class="tighter"><span><%= link_to (product.title), [product.category, product], :class => "golder" %></div></span></div>

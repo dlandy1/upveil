@@ -6610,7 +6610,6 @@ a > li > img {
 }
 .product_box{
   border-radius: 4px;
-border-right: 1px solid rgb(184, 184, 184);
 max-width: 513px;
 margin-bottom: 80px;
 margin-top: 20px;
@@ -6890,6 +6889,7 @@ td{
 .smallest{
   font-size: 12px;
   padding: 6px 0px;
+  margin-right: 2px;
 }
 .tighter{
     padding-right: 75px;

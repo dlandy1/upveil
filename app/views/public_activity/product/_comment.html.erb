@@ -1,14 +1,17 @@
+
+
+
 <span class="samller pull-left helvetica"><%= image_tag(activity.owner.identity.smallimage)%></span>
-                          <p style="text-align: left; margin-left: 40px;">
+                          <span>
                             <% if activity.owner == current_user %>
                              <b> You</b>
                              <% else %>
                          <b><%= activity.owner.name %></b>
                          <% end %>
-    upvoted
+                          </span>
+    commented on
   <% if activity.trackable %>
     <b><%= activity.trackable.title %></b>
   <% else %>
     a post which has since been removed
   <% end %>
-</p>

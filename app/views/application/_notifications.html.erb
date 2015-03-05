@@ -12,15 +12,15 @@
                       <li class= "notes camo ooo">
                         <% if activity.trackable_type == "Category"%>
                          <%= link_to activity.trackable, class: 'fb-li' do  %>
-                         <span>
+                         <p style="text-align: left;">
                         <%= render_activity activity %>
-                        </span>
+                        </p>
                        <% end %>
                         <% else %>
                          <%= link_to [activity.trackable.category, activity.trackable] , class: 'fb-li' do%> 
-                        <span>
+                       <p style="text-align: left;">
                         <%= render_activity activity %>
-                        </span>
+                        </p>
                        <% end %>
                        <% end %>
                       </li>

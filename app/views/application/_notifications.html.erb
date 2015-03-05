@@ -16,7 +16,13 @@
                         <%= render_activity activity %>
                         </p>
                        <% end %>
-                        <% else %>
+                        <% elsif activity.trackable_type == "Comment" %>
+                          <%= link_to [activity.trackable.product.category, activity.trackable.product], class: 'fb-li' do  %>
+                         <p style="text-align: left;">
+                        <%= render_activity activity %>
+                        </p>
+                       <% end %>
+                        <% else%>
                          <%= link_to [activity.trackable.category, activity.trackable] , class: 'fb-li' do%> 
                        <p style="text-align: left;">
                         <%= render_activity activity %>

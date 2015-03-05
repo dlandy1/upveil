@@ -13,7 +13,10 @@ class CommentsController < ApplicationController
 
     if current_user
       if @comment.save
-        if @product.user != current_user
+        if @comment.parent_comment
+          @comment.create_activity :reply, owner: current_user,  recipient: @comment.user
+        end
+          if @product.user != current_user
         @product.create_activity :comment, owner: current_user,  recipient: @product.user
       end
       else
@@ -69,7 +72,9 @@ class CommentsController < ApplicationController
     @comment = @product.comments.find(params[:id])
      if current_user
         if @comment.destroy
-           flash[:notice] = "Comment was removed."
+          PublicActivity::Activity.where(trackable_id: @product.id).where(owner_id: @comment.user.id).each do |p|
+            p.last.destroy
+          end
         else
           flash[:error] = "Comment was not deleted. Try again."
         end

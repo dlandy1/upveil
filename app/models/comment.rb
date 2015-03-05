@@ -1,4 +1,5 @@
 class Comment < ActiveRecord::Base
+    include PublicActivity::Common
   acts_as_mentioner
   belongs_to :user
   belongs_to :product

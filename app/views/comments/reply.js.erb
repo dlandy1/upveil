@@ -1,4 +1,4 @@
 if($("#form-" +<%= @comment.id%>).length == 0) {
-   $('#new-' +<%= @comment.id%>).append("<%= escape_javascript(render partial: 'comments/formthree', locals: { category: @category, product: @product, comment: @new_comment }) %>").fadeIn(500); 
+   $('#new-' +<%= @comment.id%>).append("<%= escape_javascript(render partial: 'comments/formthree', locals: { category: @category, product: @product, comment: @new_comment  }) %>").fadeIn(500); 
 }
 

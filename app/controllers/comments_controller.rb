@@ -13,7 +13,9 @@ class CommentsController < ApplicationController
 
     if current_user
       if @comment.save
+        if @product.user != current_user
         @product.create_activity :comment, owner: current_user,  recipient: @product.user
+      end
       else
         flash[:error] = "Error creating comment."
       end

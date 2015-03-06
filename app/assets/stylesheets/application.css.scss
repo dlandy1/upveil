@@ -7070,14 +7070,13 @@ td{
 }
 .titlen{
   font-size: 22px;
-  margin-left: 12%;
   padding: 10px 0;
   margin-bottom: 0px; 
   margin-top: 0px;
+  text-align: center;
 }
 .subtitle{
   font-size: 13px;
-  width: 31%;
   color: dimgrey;
   font-weight: 200;
   margin-bottom: 0px;
@@ -8052,8 +8051,18 @@ text-decoration: none;
 .gendicles{
   position: absolute;
   top: 5px;
-  width: 100%;
   text-align: center;
+}
+@media (min-width: 701px){
+  .gendicles {
+    width: 50%;
+  }
+}
+@media (max-width: 700px){
+  .gendicles {
+    right: 3%;
+
+  }
 }
 @media (max-width: 1065px){
   .subtitle{
@@ -8094,9 +8103,6 @@ text-decoration: none;
   }
   }
 @media (max-width: 470px){
-  .titlen{
-    margin-left: 25%;
-  }
  
   .gendicles{
     top: -1px;

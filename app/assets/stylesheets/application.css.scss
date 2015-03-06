@@ -4118,10 +4118,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
  background-color:  rgba(21, 21, 21, 0.95);
 }
 .navbar-default .navbar-brand {
-   background: -webkit-linear-gradient(#F4E2B5, #93834F);
-    background: linear-gradient(#F4E2B5, #93834F);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
@@ -7055,8 +7051,12 @@ td{
   text-decoration: none;
   color: white;
 }
+.non_line{
+  color: #E3D69A;
+}
 .non_line:hover{
   text-decoration: none;
+  color: #E3D69A;
 }
 @media(max-width: 1077px){
   .size{

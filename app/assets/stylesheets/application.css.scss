@@ -88,11 +88,6 @@ svg:not(:root) {
   overflow: hidden;
 }
 
-hr {
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  height: 0;
-}
 
 
 button,
@@ -154,16 +149,11 @@ fieldset {
   margin: 0 2px;
   padding: 0.35em 0.625em 0.75em;
 }
-legend {
-  border: 0;
-  padding: 0;
-}
+
 textarea {
   overflow: auto;
 }
-optgroup {
-  font-weight: bold;
-}
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -249,17 +239,6 @@ th {
   src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-*:before,
-*:after {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
 html {
   font-size: 10px;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -293,9 +272,6 @@ a:focus {
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
-figure {
-  margin: 0;
-}
 img {
   vertical-align: middle;
 }
@@ -317,12 +293,7 @@ img {
 .img-circle {
   border-radius: 50%;
 }
-hr {
-  margin-top: 22px;
-  margin-bottom: 22px;
-  border: 0;
-  border-top: 1px solid #eeeeee;
-}
+
 
 h1,
 h2,
@@ -410,60 +381,7 @@ mark,
   background-color: #fcf8e3;
   padding: .2em;
 }
-.text-left {
-  text-align: left;
-}
-.text-right {
-  text-align: right;
-}
-.text-center {
-  text-align: center;
-}
-.text-justify {
-  text-align: justify;
-}
-.text-nowrap {
-  white-space: nowrap;
-}
-.text-lowercase {
-  text-transform: lowercase;
-}
-.text-uppercase {
-  text-transform: uppercase;
-}
-.text-capitalize {
-  text-transform: capitalize;
-}
-.text-primary {
-  color: #9E916A;
-}
-a.text-primary:hover {
-  color: #1863e6;
-}
-.text-success {
-  color: #3fad46;
-}
-a.text-success:hover {
-  color: #318837;
-}
-.text-info {
-  color: #5bc0de;
-}
-a.text-info:hover {
-  color: #31b0d5;
-}
-.text-warning {
-  color: #f0ad4e;
-}
-a.text-warning:hover {
-  color: #ec971f;
-}
-.text-danger {
-  color: #d9534f;
-}
-a.text-danger:hover {
-  color: #c9302c;
-}
+
 
 .page-header {
   padding-bottom: 10px;

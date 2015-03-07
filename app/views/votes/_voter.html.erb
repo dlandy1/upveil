@@ -24,12 +24,16 @@
           <% end %>
     </div>
     <% else %>
-    <%= link_to "", 
-        product_up_vote_path(product), 
-        class: "glyphicon glyphicon-chevron-up", method: :post %></div>
+      <%= link_to product_up_vote_path(product),  class: "gradie", method: :post do%>
+            <%= fa_icon "chevron-up", class: "upvate" %>
+      <% end %>
+    </div>
     <div><strong style="
     color: #666666;"><%= product.points %></strong></div>
-    <div><%= link_to "", product_down_vote_path(product), 
-    class: "glyphicon glyphicon-chevron-down", method: :post  %></div>
+    <div>
+      <%= link_to product_down_vote_path(product), class: "gradie", method: :post do%>
+            <%= fa_icon "chevron-down", class: "upvate" %>
+         <% end %>
+    </div>
     <% end %>
   </div>

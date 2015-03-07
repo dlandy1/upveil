@@ -7668,6 +7668,7 @@ margin-left: 20px;
   font-size: 15px;
 }
 .b{
+  background-color: transparent;
   min-width: 90px;
   display: inline;
 }
@@ -7938,7 +7939,7 @@ color: #026102;
   z-index: 1;
   border-bottom: 1px solid rgb(221, 221, 221);
   text-align: center;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.95);
   padding: 0px;
 }
 .btn-group > .btn:first-child {

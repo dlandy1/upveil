@@ -1,13 +1,28 @@
 <div class="vote-arrows">
     <div>
       <% if current_user %>
-      <%= link_to "", 
-        product_up_vote_path(product), 
-        class: "glyphicon glyphicon-chevron-up #{(product.already_up_voted_by_user?(current_user)) ? 'voted' : ''} ",
-         method: :post,id: "upvote-#{product.id}", remote: true %></div>
+        <% if product.already_up_voted_by_user?(current_user) %>
+          <%= link_to product_up_vote_path(product), class: "galdie", method: :post, remote: :true do%>
+            <%= fa_icon "chevron-up", id: "upvote-#{product.id}", class: "upvate" %>
+             <% end %>
+          <% else %>
+          <%= link_to product_up_vote_path(product), class: "gradie", method: :post, remote: :true do%>
+            <%= fa_icon "chevron-up", id: "upvote-#{product.id}", class: "upvate" %>
+         <% end %>
+          <% end %>
+      </div>
     <div><strong id="vote-<%=product.id%>"><%= product.points %></strong></div>
-    <div><%= link_to "", product_down_vote_path(product), 
-    class: "glyphicon glyphicon-chevron-down #{(product.already_down_voted_by_user?(current_user))  ? 'voted' : ''}", id: "downvote-#{product.id}", method: :post, remote: true %></div>
+    <div>
+      <% if product.already_down_voted_by_user?(current_user) %>
+          <%= link_to product_down_vote_path(product), class: "galdie", method: :post, remote: :true do%>
+            <%= fa_icon "chevron-down", id: "downvote-#{product.id}", class: "upvate" %>
+             <% end %>
+          <% else %>
+          <%= link_to product_down_vote_path(product), class: "gradie", method: :post, remote: :true do%>
+            <%= fa_icon "chevron-down", id: "downvote-#{product.id}", class: "upvate" %>
+         <% end %>
+          <% end %>
+    </div>
     <% else %>
     <%= link_to "", 
         product_up_vote_path(product), 

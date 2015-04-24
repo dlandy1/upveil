@@ -128,7 +128,7 @@
 
     <% if current_user && !@category.followed_by?(current_user) %>
              <%= link_to  category_follow_path(@category), class: 'fallow', method: :post, remote: :true do %>
-              <% if @category.title = "Fashion" %>
+              <% if @category.title == "Fashion" %>
                 <p>Follow <%= fa_icon "female", class: 'goolod' %> & <%= fa_icon "male", class: 'goolod' %> </p>
               <% else %>
                 <p>Follow</p>
@@ -140,7 +140,7 @@
           <% end %>
       <% else %>
          <%= link_to  category_follow_path(@category), class: 'fallow' do %>
-            <% if @category.title = "Fashion" %>
+            <% if @category.title == "Fashion" %>
                 <p>Follow <%= fa_icon "female", class: 'goolod' %> & <%= fa_icon "male", class: 'goolod' %> </p>
               <% else %>
                 <p>Follow</p>
@@ -266,7 +266,7 @@
 
    <% if current_user && !@category.followed_by?(current_user) %>
            <%= link_to  category_follow_path(@category), class: 'fallow', method: :post, remote: :true do %>
-             <% if @category.title = "Fashion" %>
+             <% if @category.title == "Fashion" %>
                 <p>Follow <%= fa_icon "female", class: 'goolod' %> & <%= fa_icon "male", class: 'goolod' %> </p>
               <% else %>
                 <p>Follow</p>
@@ -278,7 +278,7 @@
         <% end %>
     <% else %>
        <%= link_to  category_follow_path(@category), class: 'fallow' do %>
-          <% if @category.title = "Fashion" %>
+          <% if @category.title == "Fashion" %>
                 <p>Follow <%= fa_icon "female", class: 'goolod' %> & <%= fa_icon "male", class: 'goolod' %> </p>
               <% else %>
                 <p>Follow</p>

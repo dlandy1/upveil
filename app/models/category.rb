@@ -1,4 +1,5 @@
 class Category < ActiveRecord::Base
+   acts_as_followable
   include AlgoliaSearch
   include PublicActivity::Common
 

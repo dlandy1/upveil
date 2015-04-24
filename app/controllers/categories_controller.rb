@@ -185,6 +185,47 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def follow
+     @category = Category.friendly.find(params[:category_id])
+      if @category.followed_by?(current_user)
+        current_user.stop_following(@category)
+        current_user.update_attributes(gendollow: "")
+      else
+         current_user.follow(@category)
+      end
+      respond_with(@category) do |format|
+          format.html { redirect_to :back}
+        end
+  end
+
+  def male_follow
+      @category = Category.friendly.find(params[:category_id])
+      if @category.followed_by?(current_user)
+        current_user.stop_following(@category)
+        current_user.update_attributes(gendollow: "")
+      else
+         current_user.follow(@category)
+         current_user.update_attributes(gendollow: "male")
+      end
+      respond_with(@category) do |format|
+          format.html { redirect_to :back}
+        end
+  end
+
+  def female_follow
+      @category = Category.friendly.find(params[:category_id])
+      if @category.followed_by?(current_user)
+        current_user.stop_following(@category)
+         current_user.update_attributes(gendollow: "")
+      else
+         current_user.follow(@category)
+         current_user.update_attributes(gendollow: "female")
+      end
+      respond_with(@category) do |format|
+          format.html { redirect_to :back}
+        end
+  end
+
 
 private
 

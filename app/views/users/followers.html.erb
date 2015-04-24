@@ -1,3 +1,4 @@
+
 <div class="container">
    <div class="boxsearch" style="">
       <div id="categories" class="col-md-3 pull-left"></div>
@@ -22,7 +23,7 @@
               <p>Unfollow</p>
         <% end %>
     <% else %>
-       <%= link_to  new_user_session_path, class: 'fallaw' do %>
+       <%= link_to  user_follow_path(@user), class: 'fallaw' do %>
           <p>Follow</p>
       <% end %>
     <% end %>
@@ -70,29 +71,22 @@
         <%= render "formal" %>
     </div>
      <% end %>
-
-    <div id="loading-indicator" style="display: none;">
-         <%= image_tag("http://thinkfuture.com/wp-content/uploads/2013/10/loading_spinner.gif", :id => "loading-indicator") %>
-        </div>
   
-<% if @user.products.first %>
-  <div class="row">
-    <div class="show-box" id="products">
-      <div class="page">
-       <%= render @products %>
+   <div class="row">
+    <div class="page">
+       <div id="loading-indicator" style="display: none;">
+         <%= image_tag("http://www.hattricktheatre.net/images/wtagelights.gif", :id => "loading-indicator") %>
+        </div>
+      <div class="flu">
+        <% @followers.each do |f| %>
+         <% if current_user && !User.find(f.id).followed_by?(current_user) %>
+           <p class='hooven'> <img alt='Picture?type=small' src='<%= User.find(f.id).identity.smallimage %>'>  <%= escape_javascript(link_to( User.find(f.id).name , user_path(User.find(f.id)), class: 'flowin')) %> <%= escape_javascript(link_to( 'Follow', user_follow_path(User.find(f.id)),  class: 'fallaw listing', method: :post, remote: :true)) %></p>
+          <% elsif current_user && User.find(f.id).followed_by?(current_user) %>
+            <p class='hooven'> <img alt='Picture?type=small' src='<%= User.find(f.id).identity.smallimage %>'>  <%= link_to( User.find(f.id).name , user_path(User.find(f.id)), class: 'flowin') %> <%= link_to( 'Unfollow', user_follow_path(User.find(f.id)),  class: 'fallaw listing', method: :post, remote: :true) %></p>
+          <% else %>
+             <p class='hooven'> <img alt='Picture?type=small' src='<%= User.find(f.id).identity.smallimage %>'>  <%= link_to( User.find(f.id).name , category_path(User.find(f.id)), class: 'flowin') %> <%= link_to( 'Follow', new_user_session_path,  class: 'fallaw listing') %></p>
+           <% end %>
+        <% end %>
       </div>
     </div>
-   <%= paginate @products %>
-  </div>
-  <% else %>
-    <% if current_user %>
-      <% if current_user == @user %>
-    <p class="text-center nopro">You have no Products. Help the world unveil the best products and post.</p>
-      <% else %>
-    <p class="text-center nopro"><%= @user.name %> has not unveiled any products.</p>
-       <% end %>
-       <% else %>
-       <p class="text-center nopro"><%= @user.name %> has not unveiled any products.</p>
-    <% end %>
-  <% end %>
   </div>

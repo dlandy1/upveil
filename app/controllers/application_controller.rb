@@ -17,6 +17,9 @@ class ApplicationController < ActionController::Base
           format.html { redirect_to :back}
     end
   end 
+
+  def close
+  end
   
   def ensure_signup_complete
     # Ensure we don't go into an infinite loop
@@ -45,7 +48,7 @@ class ApplicationController < ActionController::Base
      @variable_c = Category.find(4).subcategories.collect(&:slug).include?( yourl) || Category.find(4).subcategories.include?(@category.parent_category)
      @variable_d = Category.find(5).subcategories.collect(&:slug).include?( yourl) || Category.find(5).subcategories.include?(@category.parent_category)
      @variable_e = Category.find(6).subcategories.collect(&:slug).include?( yourl) || Category.find(6).subcategories.include?(@category.parent_category)
-   console.log   @category
+   console.log  request.fullpath 
   end
   end
 

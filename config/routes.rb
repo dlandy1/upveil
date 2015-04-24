@@ -1,7 +1,17 @@
 Upveil::Application.routes.draw do
   devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
-  resources :users, except: [:destroy, :index]
+  resources :users, except: [:destroy, :index] do
+    post '/follow' => 'users#follow', as: :follow
+    get "/followers_list"  => 'users#followers_list', as: :followers_list
+    get "/following_list"  => 'users#following_list', as: :following_list
+    get 'followers'
+    get 'following'
+  end
+
   resources :categories, except: [:index] do
+    post '/follow' => 'categories#follow', as: :follow
+    post '/follow_male' => 'categories#male_follow', as: :male_follow
+    post '/follow_female' => 'categories#female_follow', as: :female_follow
     get "subcategory_new"
     get "newest"
     get "male"
@@ -11,15 +21,15 @@ Upveil::Application.routes.draw do
     resources :subcategories, only: [:index]
     resources :products, except: [:index], controller: 'categories/products' do
            post 'purchase'
-      resources :comments, only: [:create, :destroy, :edit, :update] do
-         get "/reply"  => 'comments#reply', as: :reply
-         get "/cancel"  => 'comments#cancel', as: :cancel
-       end
     end
   end
   resources :products, except: [:show] do 
     post '/up-vote' => 'votes#up_vote', as: :up_vote
     post '/down-vote' => 'votes#down_vote', as: :down_vote
+    resources :comments, only: [:create, :destroy, :edit, :update] do
+         get "/reply"  => 'comments#reply', as: :reply
+         get "/cancel"  => 'comments#cancel', as: :cancel
+       end
   end
   resources :activities , :path => 'notifications'
   # The priority is based upon order of creation: first created -> highest priority.
@@ -31,6 +41,8 @@ Upveil::Application.routes.draw do
 
    get "products/newest"
    get 'application/notifications'
+   get 'application/close'  => 'application#close', as: :close
+   get 'feed'  => 'feed#show', as: :feed
    post 'application/read_all_notification'
    get 'sitemap.xml', :to => 'sitemap#index', :defaults => { :format => 'xml' }
 

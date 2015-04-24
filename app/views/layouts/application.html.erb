@@ -58,12 +58,17 @@ window._fbq.push(['track', '6017250074008', {'value':'0.01','currency':'USD'}]);
       </li>
       <% if current_user %>
                 <%= render partial: 'application/notifications' %>
-                 <%= link_to current_user, class: 'btn btn-link usher' do %>
-                  <li><%= image_tag(current_user.identity.smallimage)%></li>
-                  <% end %>
-                <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-link smallest' do %>
-                  <li>Log out</li>
-                  <% end %>
+                <li>
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                  <%= image_tag(current_user.identity.smallimage)%>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                      <li role="presentation"><%= link_to "Profile", user_path(current_user) %></li>
+                      <li role="presentation"><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+                    </ul>
+                  </div>
+                  </li>
                 <% else %>
                     <%= link_to new_user_session_path, class: 'btn btn-link ax' do%>
                       <li>Sign in</li>
@@ -72,7 +77,17 @@ window._fbq.push(['track', '6017250074008', {'value':'0.01','currency':'USD'}]);
     </ul>
     <div class="navbar-inner">
     <ul class="nav">
-      <li><%= link_to "All", root_path, class: 'move home'%></li>
+
+      <li>
+        <%= link_to feed_path, class: 'move' do%>
+          <%= fa_icon "flash" %>Feed
+        <% end %>
+      </li>
+      <li>
+        <%=link_to root_path, class: 'move home' do%>
+          <%= fa_icon "globe" %>All
+        <% end %>
+      </li>
       <% if @variable === true %>
         <li><%= link_to Category.find(1), class: 'move current' do%>
          <%= fa_icon "plug" %><%= Category.find(1).title %>
@@ -106,17 +121,6 @@ window._fbq.push(['track', '6017250074008', {'value':'0.01','currency':'USD'}]);
         <% end %>
         </li>
          <% end %>
-       <% if @variable_c === true %>
-        <li><%= link_to Category.find(4), class: 'move current' do%>
-         <%= fa_icon "futbol-o" %><%= Category.find(4).title %>
-        <% end %>
-        </li>
-        <% else %>
-        <li><%= link_to Category.find(4), class: 'move' do%>
-         <%= fa_icon "futbol-o" %><%= Category.find(4).title %>
-        <% end %>
-        </li>
-         <% end %>
          <% if @variable_d === true %>
         <li><%= link_to Category.find(5), class: 'move current' do%>
          <%= fa_icon "home" %><%= Category.find(5).title %>
@@ -129,12 +133,12 @@ window._fbq.push(['track', '6017250074008', {'value':'0.01','currency':'USD'}]);
         </li>
          <% end %>
          <% if @variable_e === true %>
-        <li><%= link_to Category.find(6), class: 'move current' do%>
+        <li><%= link_to Category.find(6), class: 'move food current' do%>
          <%= fa_icon "cutlery" %><%= Category.find(6).title %>
         <% end %>
         </li>
         <% else %>
-        <li><%= link_to Category.find(6), class: 'move' do%>
+        <li><%= link_to Category.find(6), class: 'move food' do%>
          <%= fa_icon "cutlery" %><%= Category.find(6).title %>
         <% end %>
         </li>
@@ -143,6 +147,8 @@ window._fbq.push(['track', '6017250074008', {'value':'0.01','currency':'USD'}]);
       </div>
   </div>
 </div>
+
+
   <% if flash[:notice] %>
          <div class="alert alert-success">
            <button type="button" class="close" data-dismiss="alert">&times;</button>

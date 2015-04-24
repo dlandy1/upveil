@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
    acts_as_mentionable
+   acts_as_followable
+   acts_as_follower
    include PublicActivity::Common
    include AlgoliaSearch
 
@@ -32,6 +34,44 @@ class User < ActiveRecord::Base
 
   def should_generate_new_friendly_id?
     slug_changed?
+  end
+
+  def food
+    meals = []
+    self.all_following.each do |p|
+      if p.class.name === "Category"
+        if p.title == "Fashion" && self.gendollow == "male"
+        p.products.where(gender: "male").each do |a|
+          if a.points >= 1
+          meals.push(a)
+            end
+          end
+        elsif p.title == "Fashion" && self.gendollow == "female"
+        p.products.where(gender: "female").each do |a|
+          if a.points >= 1
+          meals.push(a)
+            end
+          end
+        else
+        p.products.each do |a|
+        if a.points >= 1
+          meals.push(a)
+        end
+       end
+      Product.where(subcat_id: p.id).each do |b|
+        meals.push(b)
+       end
+      Product.where(grandcat_id: p.id).each do |b|
+        meals.push(b)
+      end
+    end
+    else
+      p.products.each do |u|
+          meals.push(u)
+       end
+     end
+   end
+    meals.uniq
   end
 
 

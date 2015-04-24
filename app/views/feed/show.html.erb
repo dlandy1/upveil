@@ -1,0 +1,23 @@
+<div class="container">
+   <div class="boxsearch" style="">
+      <div id="categories" class="col-md-3 pull-left"></div>
+      <div id="users" class="col-md-5 pull-right pod"></div>
+      <div id="posts" class="col-md-4 pod"></div>
+    </div>
+    <div class="row">
+      <% if current_user && current_user.all_following.count > 0 %>
+      <div class="show-box" id="products"> 
+        <div class="page">
+         <%= render @products %>
+         <%= paginate @products %>
+      </div>
+    </div>
+    <% else %>
+      <p class="text-center"> You are not following any users or categories. </p>
+      <p class="text-center smale">
+        Here are some categories and users you should follow.
+      </p>
+    <% end %>
+
+</div>
+</div>

@@ -54,6 +54,44 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def follow
+         @user = User.friendly.find(params[:user_id])
+      if @user.followed_by?(current_user)
+      current_user.stop_following(@user)
+      else
+      current_user.follow(@user)
+      end
+      respond_with(@user) do |format|
+          format.html { redirect_to :back}
+        end
+  end
+
+  def followers
+    @user = User.friendly.find(params[:user_id])
+    @followers = Kaminari.paginate_array(@user.followers).page(params[:page]).per(20)
+  end
+
+  def followers_list
+    @user = User.friendly.find(params[:user_id])
+    @followers = Kaminari.paginate_array(@user.followers).page(params[:page]).per(20)
+     respond_with(@user) do |format|
+          format.html { redirect_to :back}
+        end
+  end
+
+  def following
+     @user = User.friendly.find(params[:user_id])
+    @followings = @user.all_follows.page(params[:page]).per(20)
+  end
+
+  def following_list
+    @user = User.friendly.find(params[:user_id])
+    @followings = @user.all_follows.page(params[:page]).per(20)
+     respond_with(@user) do |format|
+          format.html { redirect_to :back}
+        end
+  end
   
   private
     def set_user

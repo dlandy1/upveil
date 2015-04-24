@@ -124,6 +124,30 @@
       <%end %>
 
           <%end %>
+
+
+    <% if current_user && !@category.followed_by?(current_user) %>
+             <%= link_to  category_follow_path(@category), class: 'fallow', method: :post, remote: :true do %>
+              <% if @category.title = "Fashion" %>
+                <p>Follow <%= fa_icon "female", class: 'goolod' %> & <%= fa_icon "male", class: 'goolod' %> </p>
+              <% else %>
+                <p>Follow</p>
+              <% end %>
+          <% end %>
+        <% elsif current_user && @category.followed_by?(current_user)%>
+           <%= link_to  category_follow_path(@category), class: 'fallow', method: :post, remote: :true do %>
+                <p>Unfollow</p>
+          <% end %>
+      <% else %>
+         <%= link_to  category_follow_path(@category), class: 'fallow' do %>
+            <% if @category.title = "Fashion" %>
+                <p>Follow <%= fa_icon "female", class: 'goolod' %> & <%= fa_icon "male", class: 'goolod' %> </p>
+              <% else %>
+                <p>Follow</p>
+              <% end %>
+        <% end %>
+      <% end %>
+    
    <%= link_to  new_category_product_path(@category, @product), class: 'prada' do%>
      <%= fa_icon "gift", class: "banicon" %></br><span>Post Product</span>
   <% end %>
@@ -144,6 +168,9 @@
   <% end %>
 </div>
   </div>
+  <div class="have">
+        <p class="zap"></p>
+      </div>
 
 
 <% else %>
@@ -235,6 +262,30 @@
             <% end %>
           <% end %>
           <% end %>
+
+
+   <% if current_user && !@category.followed_by?(current_user) %>
+           <%= link_to  category_follow_path(@category), class: 'fallow', method: :post, remote: :true do %>
+             <% if @category.title = "Fashion" %>
+                <p>Follow <%= fa_icon "female", class: 'goolod' %> & <%= fa_icon "male", class: 'goolod' %> </p>
+              <% else %>
+                <p>Follow</p>
+              <% end %>
+        <% end %>
+      <% elsif current_user && @category.followed_by?(current_user)%>
+         <%= link_to  category_follow_path(@category), class: 'fallow', method: :post, remote: :true do %>
+              <p>Unfollow</p>
+        <% end %>
+    <% else %>
+       <%= link_to  category_follow_path(@category), class: 'fallow' do %>
+          <% if @category.title = "Fashion" %>
+                <p>Follow <%= fa_icon "female", class: 'goolod' %> & <%= fa_icon "male", class: 'goolod' %> </p>
+              <% else %>
+                <p>Follow</p>
+              <% end %>
+      <% end %>
+    <% end %>
+
 
 
    <%= link_to  new_category_product_path(@category, @product), class: 'prada' do%>

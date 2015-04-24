@@ -22,7 +22,7 @@
               <p>Unfollow</p>
         <% end %>
     <% else %>
-       <%= link_to  new_user_session_path, class: 'fallaw' do %>
+       <%= link_to  user_follow_path(@user), class: 'fallaw' do %>
           <p>Follow</p>
       <% end %>
     <% end %>
@@ -70,29 +70,28 @@
         <%= render "formal" %>
     </div>
      <% end %>
-
-    <div id="loading-indicator" style="display: none;">
+  
+   <div class="row">
+    <div class="page">
+       <div id="loading-indicator" style="display: none;">
          <%= image_tag("http://thinkfuture.com/wp-content/uploads/2013/10/loading_spinner.gif", :id => "loading-indicator") %>
         </div>
-  
-<% if @user.products.first %>
-  <div class="row">
-    <div class="show-box" id="products">
-      <div class="page">
-       <%= render @products %>
+      <div class="flu">
+        <% @followings.each do |f| %>
+          <% if f.followable_type == "Category" && current_user && !Category.find(f.followable_id).followed_by?(current_user)%>
+              <p class='hooven'><%= fa_icon 'sitemap 1x' %> <%= link_to( Category.find(f.followable_id).title , category_path(Category.find(f.followable_id)), class: 'flowin') %> <%= link_to( 'Follow', category_follow_path(Category.find(f.followable_id)),  class: 'fallow listing', method: :post, remote: :true) %> </p>
+            <% elsif f.followable_type == "Category" && current_user && Category.find(f.followable_id).followed_by?(current_user)%>
+               <p class='hooven'><%=  fa_icon 'sitemap 1x' %> <%= link_to( Category.find(f.followable_id).title , category_path(Category.find(f.followable_id)), class: 'flowin') %> <%= link_to( 'Unfollow', category_follow_path(Category.find(f.followable_id)),  class: 'fallow listing', method: :post, remote: :true) %> </p>
+            <% elsif f.followable_type == "User" && current_user && !User.find(f.followable_id).followed_by?(current_user) %>
+              <p class='hooven'> <img alt='Picture?type=small' src='<%= User.find(f.followable_id).identity.smallimage %>'>  <%= link_to( User.find(f.followable_id).name , user_path(User.find(f.followable_id)), class: 'flowin') %> <%= link_to( 'Follow', user_follow_path(User.find(f.followable_id)),  class: 'fallaw listing', method: :post, remote: :true) %></p>
+            <% elsif f.followable_type == "User" && current_user && User.find(f.followable_id).followed_by?(current_user) %>
+              <p class='hooven'> <img alt='Picture?type=small' src='<%= User.find(f.followable_id).identity.smallimage %>'>  <%= link_to( User.find(f.followable_id).name , user_path(User.find(f.followable_id), class: 'flowin')) %> <%= link_to( 'Unfollow', user_follow_path(User.find(f.followable_id),  class: 'fallaw listing', method: :post, remote: :true)) %></p>
+            <% elsif f.followable_type == "Category"%>
+              <p class='hooven'>  <%=  fa_icon 'sitemap 1x' %>  <%= link_to( Category.find(f.followable_id).title , category_path(Category.find(f.followable_id)), class: 'flowin') %> <%= link_to( 'Follow', new_user_session_path,  class: 'fallaw listing') %></p>
+            <% elsif f.followable_type == "User"%>
+               <p class='hooven'> <img alt='Picture?type=small' src='<%= User.find(f.followable_id).identity.smallimage %>'>  <%=link_to( User.find(f.followable_id).name , user_path(User.find(f.followable_id)), class: 'flowin') %> <%= link_to( 'Follow', new_user_session_path,  class: 'fallaw listing') %></p>
+             <% end %>
+        <% end %>
       </div>
     </div>
-   <%= paginate @products %>
-  </div>
-  <% else %>
-    <% if current_user %>
-      <% if current_user == @user %>
-    <p class="text-center nopro">You have no Products. Help the world unveil the best products and post.</p>
-      <% else %>
-    <p class="text-center nopro"><%= @user.name %> has not unveiled any products.</p>
-       <% end %>
-       <% else %>
-       <p class="text-center nopro"><%= @user.name %> has not unveiled any products.</p>
-    <% end %>
-  <% end %>
   </div>

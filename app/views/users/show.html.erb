@@ -82,7 +82,9 @@
        <%= render @products %>
       </div>
     </div>
-   <%= paginate @products %>
+    <span class="hideral">
+      <%= paginate @products %>
+   </span>
   </div>
   <% else %>
     <% if current_user %>

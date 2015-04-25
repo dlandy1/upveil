@@ -15,11 +15,11 @@
         <b><%=@user.name %></b>
       </h1>
       <% if current_user && !@user.followed_by?(current_user) %>
-           <%= link_to  user_follow_path(@user), class: 'fallaw', method: :post, remote: :true do %>
+           <%= link_to  user_follow_path(@user), class: 'fallaw', id: @user.id , method: :post, remote: :true do %>
               <p>Follow</p>
         <% end %>
       <% elsif current_user && @user.followed_by?(current_user)%>
-         <%= link_to  user_follow_path(@user), class: 'fallaw', method: :post, remote: :true do %>
+         <%= link_to  user_follow_path(@user), class: 'fallaw', id: @user.id , method: :post, remote: :true do %>
               <p>Unfollow</p>
         <% end %>
     <% else %>
@@ -80,9 +80,9 @@
       <div class="flu">
         <% @followers.each do |f| %>
          <% if current_user && !User.find(f.id).followed_by?(current_user) %>
-           <p class='hooven'> <img alt='Picture?type=small' src='<%= User.find(f.id).identity.smallimage %>'>  <%= escape_javascript(link_to( User.find(f.id).name , user_path(User.find(f.id)), class: 'flowin')) %> <%= escape_javascript(link_to( 'Follow', user_follow_path(User.find(f.id)),  class: 'fallaw listing', method: :post, remote: :true)) %></p>
+           <p class='hooven'> <img alt='Picture?type=small' src='<%= User.find(f.id).identity.smallimage %>'>  <%= link_to( User.find(f.id).name , user_path(User.find(f.id)), class: 'flowin') %> <%= link_to( 'Follow', user_follow_path(User.find(f.id)),  class: 'fallaw listing', id:  f.id, method: :post, remote: :true) %></p>
           <% elsif current_user && User.find(f.id).followed_by?(current_user) %>
-            <p class='hooven'> <img alt='Picture?type=small' src='<%= User.find(f.id).identity.smallimage %>'>  <%= link_to( User.find(f.id).name , user_path(User.find(f.id)), class: 'flowin') %> <%= link_to( 'Unfollow', user_follow_path(User.find(f.id)),  class: 'fallaw listing', method: :post, remote: :true) %></p>
+            <p class='hooven'> <img alt='Picture?type=small' src='<%= User.find(f.id).identity.smallimage %>'>  <%= link_to( User.find(f.id).name , user_path(User.find(f.id)), class: 'flowin') %> <%= link_to( 'Unfollow', user_follow_path(User.find(f.id)),  class: 'fallaw listing',  id: f.id, method: :post, remote: :true) %></p>
           <% else %>
              <p class='hooven'> <img alt='Picture?type=small' src='<%= User.find(f.id).identity.smallimage %>'>  <%= link_to( User.find(f.id).name , category_path(User.find(f.id)), class: 'flowin') %> <%= link_to( 'Follow', new_user_session_path,  class: 'fallaw listing') %></p>
            <% end %>

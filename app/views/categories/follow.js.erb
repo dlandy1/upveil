@@ -1,5 +1,5 @@
 <% if @category.followed_by?(current_user) %>
-  $('.fallow').html("Unfollow")
+  $('#'+<%= @category.id %>).html("Unfollow")
 <% else %>
-  $('.fallow').html("Follow")
+  $('#'+<%= @category.id %>).html("Follow")
 <% end %>

@@ -115,11 +115,11 @@
   <%end %>
 
      <% if current_user && !@category.followed_by?(current_user) %>
-           <%= link_to category_female_follow_path(@category), class: 'fallow', method: :post, remote: :true do %>
+           <%= link_to category_female_follow_path(@category), class: 'fallow', id: @category.id, method: :post, remote: :true do %>
                 <p>Follow only <%= fa_icon "female", class: 'goolod' %> </p>
         <% end %>
       <% elsif current_user && @category.followed_by?(current_user)%>
-         <%= link_to category_female_follow_path(@category), class: 'fallow', method: :post, remote: :true do %>
+         <%= link_to category_female_follow_path(@category), class: 'fallow', id: @category.id,method: :post, remote: :true do %>
               <p>Unfollow</p>
         <% end %>
     <% else %>
@@ -231,11 +231,11 @@
           <% end %>
           
 <% if current_user && !@category.followed_by?(current_user) %>
-           <%= link_to category_female_follow_path(@category), class: 'fallow', method: :post, remote: :true do %>
+           <%= link_to category_female_follow_path(@category), class: 'fallow', id: @category.id, method: :post, remote: :true do %>
                 <p>Follow only <%= fa_icon "female", class: 'goolod' %> </p>
         <% end %>
       <% elsif current_user && @category.followed_by?(current_user)%>
-         <%= link_to category_female_follow_path(@category), class: 'fallow', method: :post, remote: :true do %>
+         <%= link_to category_female_follow_path(@category), class: 'fallow', id: @category.id, method: :post, remote: :true do %>
               <p>Unfollow</p>
         <% end %>
     <% else %>

@@ -3,10 +3,10 @@ history.replaceState(null, "A new title!", "/users/<%= @user.slug %>/followers")
 $('.page').append("<div class='flu'></div>")
 <% @followers.each do |f| %>
  <% if current_user && !User.find(f.id).followed_by?(current_user) %>
-    $('.flu').append(" <p class='hooven'> <img alt='Picture?type=small' src='<%= User.find(f.id).identity.smallimage %>'>  <%= escape_javascript(link_to( User.find(f.id).name , user_path(User.find(f.id)), class: 'flowin')) %> <%= escape_javascript(link_to( 'Follow', user_follow_path(User.find(f.id)),  class: 'fallaw listing', method: :post, remote: :true)) %></p>")
+    $('.flu').append(" <p class='hooven'> <img alt='Picture?type=small' src='<%= User.find(f.id).identity.smallimage %>'>  <%= escape_javascript(link_to( User.find(f.id).name , user_path(User.find(f.id)), class: 'flowin')) %> <%= escape_javascript(link_to( 'Follow', user_follow_path(User.find(f.id)),  class: 'fallaw listing', id: f.id, method: :post, remote: :true)) %></p>")
   <% elsif current_user && User.find(f.id).followed_by?(current_user) %>
-    $('.flu').append(" <p class='hooven'> <img alt='Picture?type=small' src='<%= User.find(f.id).identity.smallimage %>'>  <%= escape_javascript(link_to( User.find(f.id).name , user_path(User.find(f.id)), class: 'flowin')) %> <%= escape_javascript(link_to( 'Unfollow', user_follow_path(User.find(f.id)),  class: 'fallaw listing', method: :post, remote: :true)) %></p>")
+    $('.flu').append(" <p class='hooven'> <img alt='Picture?type=small' src='<%= User.find(f.id).identity.smallimage %>'>  <%= escape_javascript(link_to( User.find(f.id).name , user_path(User.find(f.id)), class: 'flowin')) %> <%= escape_javascript(link_to( 'Unfollow', user_follow_path(User.find(f.id)),  class: 'fallaw listing',  id: f.id, method: :post, remote: :true)) %></p>")
   <% else %>
-    $('.flu').append(" <p class='hooven'> <img alt='Picture?type=small' src='<%= User.find(f.id).identity.smallimage %>'>  <%= escape_javascript(link_to( User.find(f.id).name , user_path(User.find(f.id)), class: 'flowin')) %> <%= escape_javascript(link_to( 'Follow', new_user_session_path,  class: 'fallaw listing')) %></p>")
+    $('.flu').append(" <p class='hooven'> <img alt='Picture?type=small' src='<%= User.find(f.id).identity.smallimage %>'>  <%= escape_javascript(link_to( User.find(f.id).name , user_path(User.find(f.id)), class: 'flowin')) %> <%= escape_javascript(link_to( 'Follow', new_user_session_path,  class: 'fallaw listing',  id: f.id)) %></p>")
    <% end %>
 <% end %>

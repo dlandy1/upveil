@@ -6,11 +6,11 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready ->
-  if window.location.pathname.idexOf("/f")
-  $("#products .page").infinitescroll
+  $("#products .page").infinitescroll if window.location.pathname.indexOf("/f")
     navSelector: "nav.pagination" # selector for the paged navigation (it will be hidden)
     nextSelector: "nav.pagination a[rel=next]" # selector for the NEXT link (to page 2)
     itemSelector: "#products div.product" # selector for all items you'll retrieve
+    console.log(window.location.pathname)
    
     
     

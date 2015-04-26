@@ -1,4 +1,5 @@
 $('.product, .flu, .hideral').remove()
+$('.product').hide()
 history.replaceState(null, "A new title!", "/users/<%= @user.slug %>/followers")
 $('.page').append("<div class='flu'></div>")
 <% @followers.each do |f| %>

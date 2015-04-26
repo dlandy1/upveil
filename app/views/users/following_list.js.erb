@@ -1,4 +1,5 @@
-$('.product, .flu, .hideral').remove()
+$('.product, .flu').remove()
+$('.product').hide()
 history.replaceState(null, "A new title!", "/users/<%= @user.slug %>/following")
 $('.page').append("<div class='flu'></div>")
 <% @followings.each do |f| %>
@@ -13,6 +14,6 @@ $('.page').append("<div class='flu'></div>")
   <% elsif f.followable_type == "Category"%>
     $('.flu').append(" <p class='hooven'>  <%=  escape_javascript(fa_icon 'sitemap 1x') %>  <%= escape_javascript(link_to( Category.find(f.followable_id).title , category_path(Category.find(f.followable_id)), class: 'flowin')) %> <%= escape_javascript(link_to( 'Follow', new_user_session_path,  class: 'fallaw listing', id: f.followable_id)) %></p>")
   <% elsif f.followable_type == "User"%>
-    $('.flu').append(" <p class='hooven'> <img alt='Picture?type=small' src='<%= User.find(f.followable_id).identity.smallimage %>'>  <%= escape_javascript(link_to( User.find(f.followable_id).name , category_path(User.find(f.followable_id)), class: 'flowin')) %> <%= escape_javascript(link_to( 'Follow', new_user_session_path,  class: 'fallaw listing', id: f.followable_id)) %></p>")
+    $('.flu').append(" <p class='hooven'> <img alt='Picture?type=small' src='<%= User.find(f.followable_id).identity.smallimage %>'>  <%= escape_javascript(link_to( User.find(f.followable_id).name , user_path(User.find(f.followable_id)), class: 'flowin')) %> <%= escape_javascript(link_to( 'Follow', new_user_session_path,  class: 'fallaw listing', id: f.followable_id)) %></p>")
    <% end %>
 <% end %>

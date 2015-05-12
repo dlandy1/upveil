@@ -1,6 +1,8 @@
 $('.product, .flu, .pagination').remove()
 $('.product').hide()
 history.replaceState(null, "A new title!", "/users/<%= @user.slug %>/following")
+$('body').addClass("scrall")
+$('.flu').addClass("screal")
 $('.page').append("<div class='flu'></div>")
 <% @followings.each do |f| %>
   <% if f.followable_type == "Category" && current_user && !Category.find(f.followable_id).followed_by?(current_user)%>

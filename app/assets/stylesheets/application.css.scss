@@ -6068,3 +6068,11 @@ button > img {
     display: inline-block;
     position: inherit;
  }
+ .scrall{
+    overflow: hidden;
+ }
+ .screal{
+   overflow: visible;
+    overflow-y: scroll;
+    height: 60vh;
+ }

@@ -4848,6 +4848,7 @@ height: 100vh;
 .socialer{
   padding-bottom: 15px;
   left: 1%;
+  display: none;
 }
 .olo{
   color: rgb(181, 181, 181);
@@ -5685,7 +5686,7 @@ font-weight: 100;
   color: green;
   font-weight: bold;
   border-bottom: 1px solid rgb(207, 207, 207);
-  padding-bottom: 22px;
+  padding-bottom: 5px;
   margin: 0 25px;
 }
 @media (max-width: 600px){
